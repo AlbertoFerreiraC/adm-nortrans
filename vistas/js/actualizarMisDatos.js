@@ -70,7 +70,7 @@ function modificarDatos(){
               if(response['mensaje'] === "ok"){
                 swal({
                  type: "success",
-                 title: "Datos actualizados con exito!!!",
+                 title: "Datos actualizados con exito",
                  showConfirmButton: true,
                  confirmButtonText: "Aceptar"
                 }).then((value) => {
