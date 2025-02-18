@@ -21,10 +21,10 @@
   <section class="content">
 
     <div class="box">
-
+      
       <div class="box-header with-border">
   
-      <div class="form-group col-sm-3 col-xs-12 ">
+      <div class="form-group col-sm-3 col-xs-12 ">  <!--Este codigo hace que la pantalla emergente se ajuste al dipositivo llamado responsive -->
           <button class="btn btn btn-block btn-success" data-toggle="modal" data-target="#modalAgregar">          
           <i class="fa fa-plus" aria-hidden="true"></i> Agregar Registro
           </button>
