@@ -59,6 +59,7 @@
 										</ul>
 								</li>
 								<li><a href="fichaEmpleado"><i class="fa fa-server"></i>Ficha Empleado</a></li>
+								<li><a href="solicitudContratacion"><i class="fa fa-server"></i>Solicitud de Contratacion</a></li>
 							</ul>
 					</li>
 

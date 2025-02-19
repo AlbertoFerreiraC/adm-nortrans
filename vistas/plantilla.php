@@ -145,7 +145,8 @@ CUERPO DOCUMENTO
               $_GET["ruta"] == "empresa" ||
               $_GET["ruta"] == "documento" ||
               $_GET["ruta"] == "tipoEpp" ||
-              $_GET["ruta"] == "fichaEmpleado"){
+              $_GET["ruta"] == "fichaEmpleado" ||
+              $_GET["ruta"] == "solicitudContratacion"){
             include "modulos/recursosHumanos/".$_GET["ruta"].".php";
           }else{
               //GENERALES
