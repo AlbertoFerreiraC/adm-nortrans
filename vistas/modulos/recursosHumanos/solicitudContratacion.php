@@ -103,7 +103,7 @@ MODAL AGREGAR TAREA
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar Registro Base</h4>
+          <h4 class="modal-title">Ingreso de solicitud</h4>
 
         </div>
 
@@ -117,37 +117,37 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="motivoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="divisionAgregar" id="divisionAgregar" value="Industrial">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cargoAgregar">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar">
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="razonAgregar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="nombreAgregar" id="nombreAgregar">
+              <input type="text" class="form-control input-md cajatexto" name="razonAgregar" id="razonAgregar">
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="centrocostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+              <input type="text" class="form-control input-md cajatexto" name="centrocostoAgregar" id="centrocostoAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cantidadAgregar">Cantidad solicitada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+              <input type="number" class="form-control input-md cajatexto" name="cantidadAgregar" id="cantidadAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="equipoAgregar">Tipo equipo (opcional):</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="equipoAgregar" name="equipoAgregar">
                 <option value=" "></option>
                 <option value="BUS">BUS</option>
                 <option value="MINIBUS">MINIBUS</option>
@@ -163,7 +163,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="licenciaAgregar">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="licenciaAgregar" name="licenciaAgregar">
                 <option value=" "></option>
                 <option value="Si">Si</option>
                 <option value="No">No</option>
@@ -172,7 +172,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-12 col-xs-12">
               <label for="tipoturnoAgregar">Tipo Turno:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="tipoturnoAgregar" name="tipoturnoAgregar">
                 <option value=" "></option>
                 <option value="5x2">5x2</option>
                 <option value="ARTICULO 22">ARTICULO 22</option>
@@ -187,7 +187,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="tipocontratoAgregar">Tipo contrato:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="tipocontratoAgregar" name="tipocontratoAgregar" onchange="mostrarFechaTermino()">
                 <option value=" "></option>
                 <option value="Indefinido">Indefinido</option>
                 <option value="Plazo Fijo">Plazo Fijo</option>
@@ -198,17 +198,22 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="fecharequeridaAgregar">Fecha requerida:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="date" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+              <input type="date" class="form-control input-md cajatexto" name="fecharequeridaAgregar" id="fecharequeridaAgregar" onchange="calcularFechaTermino()">
+            </div>
+
+            <div class="form-group col-sm-4 col-xs-12" id="fechaTerminoDiv" style="display: none;">
+              <label for="fechaterminoAgregar">Fecha Término:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+              <input type="date" class="form-control input-md cajatexto" name="fechaterminoAgregar" id="fechaterminoAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="remuneracionAgregar">Remuneración líquida:</label>
-              <input type="text" class="form-control input-md cajatexto" name="telefonoPropioAgregar" id="telefonoPropioAgregar">
+              <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="requisitoseleccionAgregar">Requisito selección:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="requisitoseleccionAgregar" name="requisitoseleccionAgregar">
                 <option value=" "></option>
                 <option value="Entrevista Psicolaboral">Entrevista Psicolaboral</option>
                 <option value="Entrevista Tecnica">Entrevista Tecnica</option>
@@ -218,7 +223,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionAgregar">Observación requisito:</label>
-              <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+              <textarea class="form-control input-md cajatexto" name="observacionAgregar" id="observacionAgregar" rows="4"></textarea>
             </div>
           </div>
 
@@ -227,17 +232,17 @@ MODAL AGREGAR TAREA
               <div class="box-body">
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="comentarioAgregar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+                  <textarea class="form-control input-md cajatexto" name="comentarioAgregar" id="comentarioAgregar" rows="4"></textarea>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                  <label for="centroAgregar">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+                  <label for="preapruebaAgregar">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="preapruebaAgregar" name="preapruebaAgregar"></select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                  <label for="turnoAgregar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
+                  <label for="apruebaAgregar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="apruebaAgregar" name="apruebaAgregar"></select>
                 </div>
               </div>
             </div>
@@ -300,37 +305,37 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="motivoModificar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="motivoModificar" id="motivoModificar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionModificar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="divisionModificar" id="divisionModificar" value="Industrial">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cargoModificar">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+              <input type="text" class="form-control input-md cajatexto solo-ruc" name="cargoModificar" id="cargoModificar">
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="razonModificar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="nombreAgregar" id="nombreAgregar">
+              <input type="text" class="form-control input-md cajatexto" name="razonModificar" id="razonModificar">
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="centrocostoModificar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+              <input type="text" class="form-control input-md cajatexto" name="centrocostoModificar" id="centrocostoModificar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cantidadModificar">Cantidad solicitada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+              <input type="number" class="form-control input-md cajatexto" name="cantidadModificar" id="cantidadModificar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="equipoModificar">Tipo equipo (opcional):</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="equipoModificar" name="equipoModificar">
                 <option value=" "></option>
                 <option value="BUS">BUS</option>
                 <option value="MINIBUS">MINIBUS</option>
@@ -346,7 +351,7 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="licenciaModificar">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="licenciaModificar" name="licenciaModificar">
                 <option value=" "></option>
                 <option value="Si">Si</option>
                 <option value="No">No</option>
@@ -355,7 +360,7 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-12 col-xs-12">
               <label for="tipoturnoModificar">Tipo Turno:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="tipoturnoModificar" name="tipoturnoModificar">
                 <option value=" "></option>
                 <option value="5x2">5x2</option>
                 <option value="ARTICULO 22">ARTICULO 22</option>
@@ -370,7 +375,7 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="tipocontratoModificar">Tipo contrato:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="tipocontratoModificar" name="tipocontratoModificar">
                 <option value=" "></option>
                 <option value="Indefinido">Indefinido</option>
                 <option value="Plazo Fijo">Plazo Fijo</option>
@@ -381,17 +386,17 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="fecharequeridaModificar">Fecha requerida:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="date" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+              <input type="date" class="form-control input-md cajatexto" name="fecharequeridaModificar" id="fecharequeridaModificar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="remuneracionModificar">Remuneración líquida:</label>
-              <input type="text" class="form-control input-md cajatexto" name="telefonoPropioAgregar" id="telefonoPropioAgregar">
+              <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="requisitoseleccionModificar">Requisito selección:</label>
-              <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+              <select class="form-control input-md cajatexto" id="requisitoseleccionModificar" name="requisitoseleccionModificar">
                 <option value=" "></option>
                 <option value="Entrevista Psicolaboral">Entrevista Psicolaboral</option>
                 <option value="Entrevista Tecnica">Entrevista Tecnica</option>
@@ -401,7 +406,7 @@ MODAL EDITAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionModificar">Observación requisito:</label>
-              <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+              <textarea class="form-control input-md cajatexto" name="observacionModificar" id="observacionModificar" rows="4"></textarea>
             </div>
           </div>
 
@@ -410,17 +415,17 @@ MODAL EDITAR TAREA
               <div class="box-body">
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="comentarioModificar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+                  <textarea class="form-control input-md cajatexto" name="comentarioModificar" id="comentarioModificar" rows="4"></textarea>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                  <label for="centroAgregar">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+                  <label for="preapruebaAgregar">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="preapruebaAgregar" name="preapruebaAgregar"></select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                  <label for="turnoAgregar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
+                  <label for="apruebaAgregar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="apruebaAgregar" name="apruebaAgregar"></select>
                 </div>
               </div>
             </div>
@@ -478,37 +483,37 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="motivoVer">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+            <input type="text" class="form-control input-md cajatexto solo-ruc" name="motivoVer" id="motivoVer">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="divisionVer">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+            <input type="text" class="form-control input-md cajatexto solo-ruc" name="divisionVer" id="divisionVer" value="Industrial">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="cargoVer">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+            <input type="text" class="form-control input-md cajatexto solo-ruc" name="cargoVer" id="cargoVer">
           </div>
 
           <div class="form-group col-sm-6 col-xs-12">
             <label for="razonVer">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto" name="nombreAgregar" id="nombreAgregar">
+            <input type="text" class="form-control input-md cajatexto" name="razonVer" id="razonVer">
           </div>
 
           <div class="form-group col-sm-6 col-xs-12">
             <label for="centrocostoVer">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+            <input type="text" class="form-control input-md cajatexto" name="centrocostoVer" id="centrocostoVer">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="cantidadVer">Cantidad solicitada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="text" class="form-control input-md cajatexto" name="apellidoAgregar" id="apellidoAgregar">
+            <input type="number" class="form-control input-md cajatexto" name="cantidadVer" id="cantidadVer">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="equipoVer">Tipo equipo (opcional):</label>
-            <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+            <select class="form-control input-md cajatexto" id="equipoVer" name="equipoVer">
               <option value=" "></option>
               <option value="BUS">BUS</option>
               <option value="MINIBUS">MINIBUS</option>
@@ -524,7 +529,7 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="licenciaVer">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+            <select class="form-control input-md cajatexto" id="licenciaVer" name="licenciaVer">
               <option value=" "></option>
               <option value="Si">Si</option>
               <option value="No">No</option>
@@ -533,7 +538,7 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-12 col-xs-12">
             <label for="tipoturnoVer">Tipo Turno:</label>
-            <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+            <select class="form-control input-md cajatexto" id="tipoturnoVer" name="tipoturnoVer">
               <option value=" "></option>
               <option value="5x2">5x2</option>
               <option value="ARTICULO 22">ARTICULO 22</option>
@@ -548,7 +553,7 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="tipocontratoVer">Tipo contrato:</label>
-            <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+            <select class="form-control input-md cajatexto" id="tipocontratoVer" name="tipocontratoVer">
               <option value=" "></option>
               <option value="Indefinido">Indefinido</option>
               <option value="Plazo Fijo">Plazo Fijo</option>
@@ -559,17 +564,17 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="fecharequeridaVer">Fecha requerida:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="date" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+            <input type="date" class="form-control input-md cajatexto" name="fecharequeridaVer" id="fecharequeridaVer">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="remuneracionVer">Remuneración líquida:</label>
-            <input type="text" class="form-control input-md cajatexto" name="telefonoPropioAgregar" id="telefonoPropioAgregar">
+            <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer">
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="requisitoseleccionVer">Requisito selección:</label>
-            <select class="form-control input-md cajatexto" id="estadoCivilAgregar" name="estadoCivilAgregar">
+            <select class="form-control input-md cajatexto" id="requisitoseleccionVer" name="requisitoseleccionVer">
               <option value=" "></option>
               <option value="Entrevista Psicolaboral">Entrevista Psicolaboral</option>
               <option value="Entrevista Tecnica">Entrevista Tecnica</option>
@@ -579,7 +584,7 @@ MODAL EDITAR TAREA
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="observacionVer">Observación requisito:</label>
-            <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+            <textarea class="form-control input-md cajatexto" name="observacionVer" id="observacionVer" rows="4"></textarea>
           </div>
         </div>
 
@@ -588,17 +593,17 @@ MODAL EDITAR TAREA
             <div class="box-body">
               <div class="form-group col-sm-4 col-xs-12">
                 <label for="comentarioVer">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+                <textarea class="form-control input-md cajatexto" name="comentarioVer" id="comentarioVer" rows="4"></textarea>
               </div>
 
               <div class="form-group col-sm-4 col-xs-12">
                 <label for="preapruebaVer">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+                <select class="form-control input-md cajatexto" id="preapruebaVer" name="preapruebaVer"></select>
               </div>
 
               <div class="form-group col-sm-4 col-xs-12">
                 <label for="apruebaVer">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
+                <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer"></select>
               </div>
             </div>
           </div>
@@ -623,6 +628,46 @@ MODAL EDITAR TAREA
 
 <script src="vistas/js/recursosHumanos/solicitudContratacion.js"></script>
 
+<script>
+  document.getElementById("observacionAgregar").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<script>
+  document.getElementById("comentarioAgregar").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<script>
+  function mostrarFechaTermino() {
+    var tipoContrato = document.getElementById("tipocontratoAgregar").value;
+    var fechaTerminoDiv = document.getElementById("fechaTerminoDiv");
+
+    if (tipoContrato.trim() === "Plazo Fijo") {
+      fechaTerminoDiv.style.display = "block";
+    } else {
+      fechaTerminoDiv.style.display = "none";
+      document.getElementById("fechaterminoAgregar").value = ""; // Limpiar el campo si no es Plazo Fijo
+    }
+  }
+
+  function calcularFechaTermino() {
+    var tipoContrato = document.getElementById("tipocontratoAgregar").value;
+    var fechaRequerida = document.getElementById("fecharequeridaAgregar").value;
+    var fechaTerminoInput = document.getElementById("fechaterminoAgregar");
+
+    if (tipoContrato.trim() === "Plazo Fijo" && fechaRequerida) {
+      var fecha = new Date(fechaRequerida);
+      fecha.setMonth(fecha.getMonth() + 2);
+      var fechaFormateada = fecha.toISOString().split("T")[0];
+      fechaTerminoInput.value = fechaFormateada;
+    }
+  }
+</script>
 
 <style>
   #div1 {
