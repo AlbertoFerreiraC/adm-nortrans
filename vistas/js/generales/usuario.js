@@ -49,7 +49,7 @@ $(document).ready(function (){
       }else{
         swal({
           type: "error",
-          title: "Debe completar todos los campos obligatorios!!!",
+          title: "Debe completar todos los campos obligatorios",
           showConfirmButton: true,
           confirmButtonText: "Aceptar"
         });
@@ -131,7 +131,7 @@ function cargarDatosTabla(){
                   confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Si, anular registro!'
+                    confirmButtonText: 'Si, anular registro'
                 }).then(function(result){
                     if(result.value){
                         eliminarDatos(id_registro); 
@@ -149,7 +149,7 @@ function cargarDatosTabla(){
                 confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
                   cancelButtonText: 'Cancelar',
-                  confirmButtonText: 'Si, resetear contraseña!'
+                  confirmButtonText: 'Si, resetear contraseña'
               }).then(function(result){
                   if(result.value){
                     resetearPass(id_registro); 
@@ -178,7 +178,7 @@ function eliminarDatos(valor){
           if(response['mensaje'] === "ok"){
             swal({
              type: "success",
-             title: "Registro dado de baja con éxito!!!",
+             title: "Registro dado de baja con éxito",
              showConfirmButton: true,
              confirmButtonText: "Aceptar"
             }).then((value) => {
@@ -189,7 +189,7 @@ function eliminarDatos(valor){
           if(response['mensaje'] === "nok"){
             swal({
               type: "error",
-              title: "Ha ocurrido un error al procesar la baja!!!",
+              title: "Ha ocurrido un error al procesar la baja",
               showConfirmButton: true,
               confirmButtonText: "Aceptar"
             });
@@ -199,7 +199,7 @@ function eliminarDatos(valor){
   }).fail( function() {
       swal({
         type: "error",
-        title: "Ha ocurrido un error al procesar la baja!!!",
+        title: "Ha ocurrido un error al procesar la baja",
         showConfirmButton: true,
         confirmButtonText: "Aceptar"
       });
@@ -223,7 +223,7 @@ function resetearPass(valor){
           if(response['mensaje'] === "ok"){
             swal({
              type: "success",
-             title: "Reseteo de contraseña realizado con éxito!!!",
+             title: "Reseteo de contraseña realizado con éxito",
              showConfirmButton: true,
              confirmButtonText: "Aceptar"
             }).then((value) => {
@@ -234,7 +234,7 @@ function resetearPass(valor){
           if(response['mensaje'] === "nok"){
             swal({
               type: "error",
-              title: "Ha ocurrido un error al procesar el reseteo de contraseña!!!",
+              title: "Ha ocurrido un error al procesar el reseteo de contraseña",
               showConfirmButton: true,
               confirmButtonText: "Aceptar"
             });
@@ -244,7 +244,7 @@ function resetearPass(valor){
   }).fail( function() {
       swal({
         type: "error",
-        title: "Ha ocurrido un error al procesar el reseteo de contraseña!!!",
+        title: "Ha ocurrido un error al procesar el reseteo de contraseña",
         showConfirmButton: true,
         confirmButtonText: "Aceptar"
       });
@@ -279,7 +279,7 @@ function agregarDatos(){
               if(response['mensaje'] === "ok"){
                 swal({
                  type: "success",
-                 title: "Registro cargado con exito!!!",
+                 title: "Registro cargado con exito",
                  showConfirmButton: true,
                  confirmButtonText: "Aceptar"
                 }).then((value) => {
@@ -290,7 +290,7 @@ function agregarDatos(){
               if(response['mensaje'] === "nok"){
                 swal({
                   type: "error",
-                  title: "Ha ocurrido un error al procesar la carga, verifique los datos!!!",
+                  title: "Ha ocurrido un error al procesar la carga, verifique los datos",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -299,7 +299,7 @@ function agregarDatos(){
               if(response['mensaje'] === "registro_existente"){
                 swal({
                   type: "error",
-                  title: "El RUT o Nic de este usuario ya existe dentro de sistema como activo, favor verifique!!!",
+                  title: "El RUT o Nic de este usuario ya existe dentro de sistema como activo, favor verifique",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -308,7 +308,7 @@ function agregarDatos(){
       }).fail( function() {
           swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la carga!!!",
+            title: "Ha ocurrido un error al procesar la carga",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
           });
@@ -345,7 +345,7 @@ function obtenerDatosParaModificar(valor){
       }).fail( function() {
           swal({
             type: "error",
-            title: "Ha ocurrido un error al traer los datos solicitados!!!",
+            title: "Ha ocurrido un error al traer los datos solicitados",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
           });
@@ -381,7 +381,7 @@ function modificarDatos(){
               if(response['mensaje'] === "ok"){
                 swal({
                  type: "success",
-                 title: "Registro modificado con exito!!!",
+                 title: "Registro modificado con exito",
                  showConfirmButton: true,
                  confirmButtonText: "Aceptar"
                 }).then((value) => {
@@ -392,7 +392,7 @@ function modificarDatos(){
               if(response['mensaje'] === "nok"){
                 swal({
                   type: "error",
-                  title: "Ha ocurrido un error al procesar la modificación!!!",
+                  title: "Ha ocurrido un error al procesar la modificación",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -401,7 +401,7 @@ function modificarDatos(){
               if(response['mensaje'] === "repetido"){
                 swal({
                   type: "error",
-                  title: "El RUT o Nic de este usuario ya existe dentro de sistema como activo, favor verifique!!!",
+                  title: "El RUT o NIC de este usuario ya existe dentro de sistema como activo, favor verifique",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -410,7 +410,7 @@ function modificarDatos(){
       }).fail( function() {
           swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la modificación!!!",
+            title: "Ha ocurrido un error al procesar la modificación",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
           });

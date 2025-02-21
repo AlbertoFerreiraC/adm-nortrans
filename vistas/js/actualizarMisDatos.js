@@ -37,7 +37,7 @@ $(document).ready(function (){
       }else{
         swal({
           type: "error",
-          title: "Debe completar todos los datos requeridos para actualizar los datos!!!",
+          title: "Debe completar todos los datos requeridos para actualizar los datos",
           showConfirmButton: true,
           confirmButtonText: "Aceptar"
         });
@@ -81,7 +81,7 @@ function modificarDatos(){
               if(response['mensaje'] === "nok"){
                 swal({
                   type: "error",
-                  title: "Ha ocurrido un error al procesar la actualización de datos!!!",
+                  title: "Ha ocurrido un error al procesar la actualización de datos",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -90,7 +90,7 @@ function modificarDatos(){
               if(response['mensaje'] === "npa"){
                 swal({
                   type: "error",
-                  title: "La contraseña actual ingresada no en válida!!!",
+                  title: "La contraseña actual ingresada no en válida",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -99,7 +99,7 @@ function modificarDatos(){
               if(response['mensaje'] === "pi"){
                 swal({
                   type: "error",
-                  title: "Las nuevas contraseñas ingresadas no coinciden!!!",
+                  title: "Las nuevas contraseñas ingresadas no coinciden",
                   showConfirmButton: true,
                   confirmButtonText: "Aceptar"
                 });
@@ -109,7 +109,7 @@ function modificarDatos(){
       }).fail( function() {
           swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la actualización!!!",
+            title: "Ha ocurrido un error al procesar la actualización",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
           });

@@ -223,8 +223,34 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionAgregar">Observación requisito:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionAgregar" id="observacionAgregar" rows="4"></textarea>
+              <textarea class="form-control input-md cajatexto" name="observacionAgregar" id="observacionAgregar" style="width: 536px " rows="1"></textarea>
             </div>
+
+            <div class="agregar-boton">
+              <button
+                class="btn btn-primary mb-3 "
+                type="button"
+                onclick="agregarRequisito()">
+                Agregar Requisito
+              </button>
+            </div>
+
+            <div class="table-container">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="tablaRequisitos">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre del Requisito</th>
+                      <th>Descripción</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
 
           <div class="col-md-12 col-xs-12">
@@ -232,7 +258,7 @@ MODAL AGREGAR TAREA
               <div class="box-body">
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="comentarioAgregar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <textarea class="form-control input-md cajatexto" name="comentarioAgregar" id="comentarioAgregar" rows="4"></textarea>
+                  <textarea class="form-control input-md cajatexto" name="comentarioAgregar" id="comentarioAgregar" rows="1"></textarea>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
@@ -646,12 +672,15 @@ MODAL EDITAR TAREA
   function mostrarFechaTermino() {
     var tipoContrato = document.getElementById("tipocontratoAgregar").value;
     var fechaTerminoDiv = document.getElementById("fechaTerminoDiv");
+    var observacionTextarea = document.getElementById("observacionAgregar");
 
     if (tipoContrato.trim() === "Plazo Fijo") {
       fechaTerminoDiv.style.display = "block";
+      observacionTextarea.style.width = "255px";
     } else {
       fechaTerminoDiv.style.display = "none";
       document.getElementById("fechaterminoAgregar").value = ""; // Limpiar el campo si no es Plazo Fijo
+      observacionTextarea.style.width = "536px";
     }
   }
 
@@ -668,6 +697,69 @@ MODAL EDITAR TAREA
     }
   }
 </script>
+
+<script>
+  let contador = 1;
+
+  function agregarRequisito() {
+    const requisitoSeleccionado = document.getElementById("requisitoseleccionAgregar").value.trim();
+    const observacion = document.getElementById("observacionAgregar").value.trim();
+
+    if (requisitoSeleccionado === "") {
+      alert("Por favor, selecciona un requisito.");
+      return;
+    }
+
+    const tabla = document.querySelector("#tablaRequisitos tbody");
+    const fila = document.createElement("tr");
+
+    fila.innerHTML = `
+            <td>${contador}</td>
+            <td>${requisitoSeleccionado}</td>
+            <td>${observacion || "Sin observación"}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
+        `;
+
+    tabla.appendChild(fila);
+    contador++;
+
+    // Limpiar campos después de agregar
+    document.getElementById("requisitoseleccionAgregar").value = "";
+    document.getElementById("observacionAgregar").value = "";
+  }
+
+  function eliminarFila(boton) {
+    boton.closest("tr").remove();
+    actualizarNumeracion();
+  }
+
+  function actualizarNumeracion() {
+    const filas = document.querySelectorAll("#tablaRequisitos tbody tr");
+    contador = 1;
+    filas.forEach(fila => {
+      fila.cells[0].textContent = contador++;
+    });
+  }
+</script>
+
+<style>
+  .agregar-boton {
+    border-color: #f46717 !important;
+    max-width: 150px;
+    margin-top: 90px;
+  }
+
+  .table-container {
+    margin-top: 15px;
+    position: static;
+  }
+
+  .table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+</style>
+
 
 <style>
   #div1 {

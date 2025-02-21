@@ -76,7 +76,7 @@ function cargarDatosTabla(){
                     confirmButtonColor: '#3085d6',
                       cancelButtonColor: '#d33',
                       cancelButtonText: 'Cancelar',
-                      confirmButtonText: 'Si, anular registro!'
+                      confirmButtonText: 'Si, anular registro'
                   }).then(function(result){
                       if(result.value){
                           eliminarDatos(id_registro); 
@@ -171,7 +171,7 @@ function obtenerDatosParaModificar(valor){
       }).fail( function() {
           swal({
             type: "error",
-            title: "Ha ocurrido un error al traer los datos oslicitados",
+            title: "Ha ocurrido un error al traer los datos solicitados",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
           });

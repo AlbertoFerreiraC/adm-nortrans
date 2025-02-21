@@ -31,7 +31,7 @@ $(document).ready(function(){
             if(http.readyState == 4 && http.status == 401){               
                 swal({
                     type: "error",
-                    title: "Acceso Inválivo, Verifique sus datos!!!",
+                    title: "Acceso Inválivo, Verifique sus datos",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                     });
