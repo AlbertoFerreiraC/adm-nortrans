@@ -414,8 +414,13 @@ MODAL EDITAR TAREA
               <input type="date" class="form-control input-md cajatexto" name="fecharequeridaModificar" id="fecharequeridaModificar">
             </div>
 
+            <div class="form-group col-sm-4 col-xs-12" id="fechaTerminoDiv" style="display: none;">
+              <label for="fechaterminoModificar">Fecha Término:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+              <input type="date" class="form-control input-md cajatexto" name="fechaterminoModificarr" id="fechaterminoModificarr">
+            </div>
+
             <div class="form-group col-sm-4 col-xs-12">
-              <label for="remuneracionModificar">Remuneración líquida:</label>
+              <label for="">Remuneración líquida:</label>
               <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar">
             </div>
 
