@@ -420,7 +420,7 @@ MODAL EDITAR TAREA
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
-              <label for="">Remuneración líquida:</label>
+              <label for="remuneracionModificar">Remuneración líquida:</label>
               <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar">
             </div>
 
@@ -781,7 +781,25 @@ MODAL EDITAR TAREA
 .table-bordes th:nth-child(1),
 .table-bordes td:nth-child(1) {
     width: 10%;
-}
+    margin-left: 15px;
+  }
+
+  .table-bordes th:nth-last-child(2),
+  .table-bordes td:nth-child(2) {
+    width: 30%;
+  }
+
+  .table-bordes th:nth-child(3),
+  .table-bordes td:nth-child(3) {
+    width: 40%;
+  }
+
+  .table-bordes th:nth-child(4),
+  .table-bordes td:nth-child(4) {
+    width: 20%;
+  }
+</style>
+>>>>>>> 2fce6440e1ada6d72891053028a0e04295abfdf0
 
 .table-bordes th:nth-child(2),
 .table-bordes td:nth-child(2) {
