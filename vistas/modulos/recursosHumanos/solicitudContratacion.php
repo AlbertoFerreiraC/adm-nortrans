@@ -115,29 +115,50 @@ MODAL AGREGAR TAREA
 
           <div class="box-body">
 
+
             <div class="form-group col-sm-4 col-xs-12">
-              <label for="motivoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
+              <label for="equipoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+              <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
+                <option value=" "></option>
+                <option value="Reemplazo dotación">Reemplazo dotación</option>
+                <option value="Aumento dotación">Aumento dotación</option>
+              </select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="divisionAgregar" id="divisionAgregar" value="Industrial">
+              <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
+                <option value=" "></option>
+                <option value="Industrial" selected>Industrial</option>
+                <option value="Interurbano">Interurbano</option>
+              </select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cargoAgregar">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar">
+              <select class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar">
+                <option value=" "></option>
+                <option value=""></option>
+              </select>
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="razonAgregar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="razonAgregar" id="razonAgregar">
+              <select class="form-control input-md cajatexto solo-ruc" name="razonAgregar" id="razonAgregar">
+                <option value=" "></option>
+                <option value="Sociedad de Transporte Nortrans SPA">Sociedad de Transporte Nortrans SPA</option>
+                <option value="Transportes Transmat LTDA ">Transportes Transmat LTDA</option>
+              </select>
             </div>
+
 
             <div class="form-group col-sm-6 col-xs-12">
               <label for="centrocostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="centrocostoAgregar" id="centrocostoAgregar">
+              <select class="form-control input-md cajatexto solo-ruc" name="centrocostoAgregar" id="centrocostoAgregar">
+                <option value=" "></option>
+                <option value="76681140-k/Gerencia/9999-001">76681140-k/Gerencia/9999-001</option>
+                <option value="76228401-4/Gerencia/9999-001">76228401-4/Gerencia/9999-001</option>
+              </select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
