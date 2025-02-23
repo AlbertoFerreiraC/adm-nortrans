@@ -768,35 +768,39 @@ MODAL EDITAR TAREA
 </script>
 
 <style>
-  .agregar-boton {
+ .agregar-boton {
+   
     border-color: #f46717;
-    max-width: 150px;
-    margin-top: 90px;
+    max-width: 100px;
+    margin-top: 100px; /* Alineado con la tabla */
     margin-left: 15px;
-  }
+}
 
-  .table-container {
-    margin-top: 15px;
+.table-container {
+    float: right;
+    width: 60%;
+    margin-top: -35px;
     position: static;
-  }
+}
 
-  .table-bordes th,
-  .table-bordes td,
-  .table-bordes {
+.table-responsive {
+    max-height: 100px;
+    overflow-y: auto;
+    width: 133%;  /* Cambiado para que use el ancho del contenedor padre */
+    margin-left: -180px; 
+}
+
+/* Mantener los estilos de la tabla igual */
+.table-bordes th,
+.table-bordes td,
+.table-bordes {
     border: 0.2px solid #111 !important;
     text-align: center;
     padding: 10px;
-  }
+}
 
-  .table-responsive {
-    max-height: 200px;
-    overflow-y: auto;
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .table-bordes th:nth-child(1),
-  .table-bordes td:nth-child(1) {
+.table-bordes th:nth-child(1),
+.table-bordes td:nth-child(1) {
     width: 10%;
     margin-left: 15px;
   }
@@ -816,15 +820,37 @@ MODAL EDITAR TAREA
     width: 20%;
   }
 </style>
+>>>>>>> 2fce6440e1ada6d72891053028a0e04295abfdf0
 
-<style>
-  #div1 {
+.table-bordes th:nth-child(2),
+.table-bordes td:nth-child(2) {
+    width: 30%;
+}
+
+.table-bordes th:nth-child(3),
+.table-bordes td:nth-child(3) {
+    width: 40%;
+}
+
+.table-bordes th:nth-child(4),
+.table-bordes td:nth-child(4) {
+    width: 20%;
+}
+
+/* Clearfix para evitar problemas de float */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Mantener los estilos del div1 */
+#div1 {
     overflow: scroll;
     width: 100%;
-  }
+}
 
-  #div1 table {
+#div1 table {
     width: 100%;
     background-color: lightgray;
-  }
-</style>
+}

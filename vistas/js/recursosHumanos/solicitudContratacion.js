@@ -721,7 +721,7 @@ function CentroDeCostoVerMas(id) {
     });
 }
 
-function (id) {
+function cargoVerMas (id) {
     $('#cargoVer').empty();
     var fila = "";
     $.ajax({
