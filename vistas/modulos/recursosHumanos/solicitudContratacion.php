@@ -228,16 +228,17 @@ MODAL AGREGAR TAREA
 
             <div class="agregar-boton">
               <button
-                class="btn btn-primary mb-3 "
+                class="btn btn-primary mb-3" style="background-color: #adaf9c; border-color: #f46717"
                 type="button"
                 onclick="agregarRequisito()">
                 Agregar Requisito
               </button>
             </div>
 
+
             <div class="table-container">
               <div class="table-responsive">
-                <table class="table table-bordered" id="tablaRequisitos">
+                <table class="table table-bordes" id="tablaRequisitos">
                   <thead class="thead-dark">
                     <tr>
                       <th>#</th>
@@ -257,7 +258,7 @@ MODAL AGREGAR TAREA
             <div class="box box-success">
               <div class="box-body">
                 <div class="form-group col-sm-4 col-xs-12">
-                  <label for="comentarioAgregar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <label for="comentarioAgregar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139; padding-left: 15px;"> (Obligatorio)</span>
                   <textarea class="form-control input-md cajatexto" name="comentarioAgregar" id="comentarioAgregar" rows="1"></textarea>
                 </div>
 
@@ -274,8 +275,6 @@ MODAL AGREGAR TAREA
             </div>
           </div>
         </div>
-
-
 
         <!--=====================================
         PIE DEL MODAL
@@ -744,9 +743,10 @@ MODAL EDITAR TAREA
 
 <style>
   .agregar-boton {
-    border-color: #f46717 !important;
+    border-color: #f46717;
     max-width: 150px;
     margin-top: 90px;
+    margin-left: 15px;
   }
 
   .table-container {
@@ -754,12 +754,39 @@ MODAL EDITAR TAREA
     position: static;
   }
 
+  .table-bordes th,
+  .table-bordes td,
+  .table-bordes {
+    border: 0.2px solid #111 !important;
+    text-align: center;
+    padding: 10px;
+  }
+
   .table-responsive {
-    max-height: 400px;
+    max-height: 200px;
     overflow-y: auto;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .table-bordes th:nth-child(1),
+  .table-bordes td:nth-child(1) {
+    width: 10%;
+    margin-left: 15px;
+  }
+  .table-bordes th:nth-last-child(2),
+  .table-bordes td: :nth-child(2) {
+    width: 30%;
+  }
+  .table-bordes th:nth-child(3),
+  .table-bordes td:nth-child(3) {
+    width: 40%;
+  }
+  .table-bordes th:nth-child(4),
+  .table-bordes td:nth-child(4) {
+    width: 20%;
   }
 </style>
-
 
 <style>
   #div1 {
