@@ -426,7 +426,7 @@ function eliminarDatos(valor) {
             if (response['mensaje'] === "nok") {
                 swal({
                     type: "error",
-                    title: "Ha ocurrido un error al procesar la eliminación!!!",
+                    title: "Ha ocurrido un error al procesar la eliminación",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
@@ -436,7 +436,7 @@ function eliminarDatos(valor) {
     }).fail(function () {
         swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la eliminación!!!",
+            title: "Ha ocurrido un error al procesar la eliminación",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
