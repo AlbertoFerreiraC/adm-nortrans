@@ -186,7 +186,7 @@ MODAL EDITAR TAREA
 
 </div>
 
-<script src="vistas/js/recursosHumanos/cargos.js"></script>
+<script src="vistas/js/recursosHumanos/cargo.js"></script>
 
 
 <style>

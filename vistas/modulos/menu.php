@@ -53,12 +53,11 @@
 								<li><a href="salud"><i class="fa fa-cog"></i>Salud</a></li>
 								<li><a href="turnosLaborales"><i class="fa fa-cog"></i>Turnos Laborales</a></li>
 								<li><a href="empresa"><i class="fa fa-cog"></i>Empresa</a></li>
-								<li><a href="documento"><i class="fa fa-cog"></i>Documento</a></li>
+								<li><a href="documento"><i class="fa fa-cog"	></i>Documento</a></li>
 								<li><a href="tipoEpp"><i class="fa fa-cog"></i>Tipo EPP</a></li>
 								<li><a href="antecedentesMedicos"><i class="fa fa-cog"></i>Antecedentes Médicos</a></li>
 								<li><a href="tipoequipo"><i class="fa fa-cog"></i>Tipo de equipo</a></li>
-								<li><a href="cargos"><i class="fa fa-cog"></i>Cargos</a></li>
-								<li><a href="centroCosto"><i class="fa fa-cog"></i>Centros de Costo</a></li>
+								<li><a href="cargo"><i class="fa fa-cog"></i>Cargos</a></li>
 							</ul>
 						</li>
 						<li><a href="fichaEmpleado"><i class="fa fa-server"></i>Ficha Empleado</a></li>
