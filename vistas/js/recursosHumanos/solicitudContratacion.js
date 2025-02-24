@@ -8,6 +8,8 @@ $(document).ready(function () {
         equipoAgregar();
         turnoAgregar();
         CentroDeCostoAgregar();
+        ApruebaAgregar();
+        PreapruebaAgregar();
     });
 
     $('#empresaAgregar').change(function () {
@@ -178,8 +180,8 @@ function agregarDatos() {
     datos.append("motivo", $("#motivoAgregar").val());
     datos.append("division", $("#divisionAgregar").val());
     datos.append("cargo", $("#cargoAgregar").val());
-    datos.append("empresa", $("#razonAgregar").val());
-    datos.append("centroDeCosto", $("#centrocostoAgregar").val());
+    datos.append("empresa", $("#empresaAgregar").val());
+    datos.append("centroDeCosto", $("#centroDecostoAgregar").val());
     datos.append("cantidadSolicitada", $("#cantidadAgregar").val());
     datos.append("tipoBus", $("#equipoAgregar").val());
     datos.append("licenciaDeConducir", $("#licenciaAgregar").val());
@@ -190,6 +192,9 @@ function agregarDatos() {
     datos.append("remuneracion", $("#remuneracionAgregar").val());
     datos.append("tipoDocumento", $("#requisitoseleccionAgregar").val());
     datos.append("comentarioGeneral", $("#observacionAgregar").val());
+    //*********************************/
+    datos.append("preAprueba", $("#preapruebaAgregar").val());
+    datos.append("aprueba", $("#apruebaAgregar").val());
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funAgregar.php",
         method: "POST",
@@ -540,6 +545,46 @@ function CentroDeCostoAgregar() {
                 listaCentroCosto = listaCentroCosto + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#centroDecostoAgregar').append(listaCentroCosto);
+        }
+    });
+}
+
+function ApruebaAgregar() {
+    $('#apruebaAgregar').empty();
+    $('#apruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaUsuario = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaUsuario = listaUsuario + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#apruebaAgregar').append(listaUsuario);
+        }
+    });
+}
+
+function PreapruebaAgregar() {
+    $('#preapruebaAgregar').empty();
+    $('#preapruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaUsuario = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaUsuario = listaUsuario + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#preapruebaAgregar').append(listaUsuario);
         }
     });
 }

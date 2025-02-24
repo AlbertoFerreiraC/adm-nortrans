@@ -127,7 +127,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
+              <select class="form-control input-md cajatexto solo-ruc" name="divisionAgregar" id="divisionAgregar">
                 <option value=" ">Seleccionar...</option>
                 <option value="Industrial" selected>Industrial</option>
                 <option value="Interurbano">Interurbano</option>
