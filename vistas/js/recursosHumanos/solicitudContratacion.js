@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $('#btnNuevo').click(function () {
         cargoAgregar();
-        tipoBusAgregar();
+        equipoAgregar();
         turnoAgregar();
         empresaAgregar();
     });
@@ -121,10 +121,12 @@ function cargarDatosTabla() {
                     '</div>' +
                     '</center>' +
                     '</td>' +
-                    '<td>' + response[i].cargo + '</td>' +
+                    '<td>' + response[i].idcontratacion + '</td>' +
+                    '<td>' + response[i].fecha_requerida + '</td>' +
                     '<td>' + response[i].division + '</td>' +
-                    '<td>' + response[i].telefono_empresa + '</td>' +
-                    '<td>' + response[i].email_empresa + '</td>'
+                    '<td>' + response[i].cargo + '</td>' +
+                    '<td>' + response[i].cantidad_solicitada + '</td>' +
+                    '<td>' + response[i].estado + '</td>'
 
                     +
                     '</tr>';
@@ -258,7 +260,7 @@ function obtenerDatosParaModificar(valor) {
                 CentroDeCostoModificar(response[i].CentroDeCosto);
                 equipoModificar(response[i].tipoBus);
                 turnoModificar(response[i].turnos_laborales);
-                requisitoseleccionModificar(response[i].requisitoDeSeleccion); // en proceso
+                requisitoseleccionModificar(response[i].requisitoDeSeleccion);
                 CentroDeCostoModificarCargaInicial(response[i].centro_de_costo, response[i].empresa);
 
                 $("#motivoModificar").val(response[i].motivo);
@@ -439,6 +441,26 @@ function eliminarDatos(valor) {
 
 
 // INCIO CARGA SELECT "AGREGAR"
+function cargoAgregar() {
+    $('#cargoAgregar').empty();
+    $('#cargoAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url: "../api_adm_nortrans/cargo/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#cargoAgregar').append(listaEmpresa);
+        }
+    });
+}
+
 function equipoAgregar(id) {
     $('#equipoAgregar').empty();
     var fila = "";
@@ -525,6 +547,26 @@ function CentroDeCostoAgregar() {
 
 
 // INCIO CARGA SELECT "MODIFICAR"
+function cargoModificar(id) {
+    $('#cargoModificar').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/cargo/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#cargoModificar').append(fila);
+            $("#cargoModificar option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
 function equipoModificar(id) {
     $('#equipoModificar').empty();
     var fila = "";
@@ -565,11 +607,11 @@ function turnoModificar(id) {
     });
 }
 
-function requisitoseleccionModificar(id) {
-    $('#requisitoseleccionModificar').empty();
+function empresaModificar(id) {
+    $('#empresaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/requisitoSeleccion/funListar.php",
+        url: "../api_adm_nortrans/empresa/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -579,8 +621,8 @@ function requisitoseleccionModificar(id) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#requisitoseleccionModificar').append(fila);
-            $("#requisitoseleccionModificar option[value='" + id + "']").attr("selected", true);
+            $('#empresaModificar').append(fila);
+            $("#empresaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
@@ -601,26 +643,6 @@ function centroCostoModificar(id) {
             }
             $('#centroCostoModificar').append(fila);
             $("#centroCostoModificar option[value='" + id + "']").attr("selected", true);
-        }
-    });
-}
-
-function empresaModificar(id) {
-    $('#empresaModificar').empty();
-    var fila = "";
-    $.ajax({
-        url: "../api_adm_nortrans/empresa/funListar.php",
-        method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#empresaModificar').append(fila);
-            $("#empresaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
@@ -681,6 +703,46 @@ function CentroDeCostoModificar() {
 
 
 // INCIO CARGA SELECT "VER"
+function cargoVerMas(id) {
+    $('#cargoVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#cargoVer').append(fila);
+            $("#cargoVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function equipoVerMas(id) {
+    $('#equipoVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/turnoLaboral/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#equipoVer').append(fila);
+            $("#equipoVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
 function turnoVerMas(id) {
     $('#turnoVer').empty();
     var fila = "";
@@ -701,66 +763,6 @@ function turnoVerMas(id) {
     });
 }
 
-function CentroDeCostoVerMas(id) {
-    $('#turnoVer').empty();
-    var fila = "";
-    $.ajax({
-        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
-        method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#turnoVer').append(fila);
-            $("#turnoVer option[value='" + id + "']").attr("selected", true);
-        }
-    });
-}
-
-function cargoVerMas (id) {
-    $('#cargoVer').empty();
-    var fila = "";
-    $.ajax({
-        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
-        method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#cargoVer').append(fila);
-            $("#cargoVer option[value='" + id + "']").attr("selected", true);
-        }
-    });
-}
-
-function cargoVerMas(id) {
-    $('#cargoVer').empty();
-    var fila = "";
-    $.ajax({
-        url: "../api_adm_nortrans/cargo/funListar.php",
-        method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#cargoVer').append(fila);
-            $("#cargoVer option[value='" + id + "']").attr("selected", true);
-        }
-    });
-}
-
 function empresaVerMas(id) {
     $('#empresaVer').empty();
     var fila = "";
@@ -777,6 +779,46 @@ function empresaVerMas(id) {
             }
             $('#empresaVer').append(fila);
             $("#empresaVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function centroCostoVerMas(id) {
+    $('#centroCostoVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#centroCostoVer').append(fila);
+            $("#centroCostoVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function CentroDeCostoVerMas(id) {
+    $('#turnoVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#turnoVer').append(fila);
+            $("#turnoVer option[value='" + id + "']").attr("selected", true);
         }
     });
 }
