@@ -4,9 +4,10 @@ $(document).ready(function () {
 
     $('#btnNuevo').click(function () {
         cargoAgregar();
+        empresaAgregar();
         equipoAgregar();
         turnoAgregar();
-        empresaAgregar();
+        CentroDeCostoAgregar();
     });
 
     $('#empresaAgregar').change(function () {
@@ -439,7 +440,6 @@ function eliminarDatos(valor) {
 
 }
 
-
 // INCIO CARGA SELECT "AGREGAR"
 function cargoAgregar() {
     $('#cargoAgregar').empty();
@@ -461,9 +461,10 @@ function cargoAgregar() {
     });
 }
 
-function equipoAgregar(id) {
+function equipoAgregar() {
     $('#equipoAgregar').empty();
-    var fila = "";
+    $('#equipoAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
     $.ajax({
         url: "../api_adm_nortrans/tipoequipo/funListar.php",
         method: "GET",
@@ -473,18 +474,17 @@ function equipoAgregar(id) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#equipoModificar').append(fila);
-            $("#equipoModificar option[value='" + id + "']").attr("selected", true);
+            $('#equipoAgregar').append(listaEmpresa);
         }
     });
 }
 
 function turnoAgregar() {
-    $('#turnoAgregar').empty();
-    $('#turnoAgregar').append('<option value ="-">Seleccionar...</opction>');
-    var listaEmpresa = "";
+    $('#tipoturnoAgregar').empty();
+    $('#tipoturnoAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaTurno = "";
     $.ajax({
         url: "../api_adm_nortrans/turnoLaboral/funListar.php",
         method: "GET",
@@ -494,9 +494,9 @@ function turnoAgregar() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                listaTurno = listaTurno + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#turnoAgregar').append(listaEmpresa);
+            $('#tipoturnoAgregar').append(listaTurno);
         }
     });
 }
@@ -522,11 +522,11 @@ function empresaAgregar() {
 }
 
 function CentroDeCostoAgregar() {
-    $('#centroAgregar').empty();
+    $('#centroDecostoAgregar').empty();
     var params = {
         "empresa": $("#empresaAgregar").val()
     };
-    var listaEmpresa = "";
+    var listaCentroCosto = "";
     $.ajax({
         url: "../api_adm_nortrans/centroDeCosto/funCentrosDeCostosPorEmpresa.php",
         method: "POST",
@@ -537,15 +537,13 @@ function CentroDeCostoAgregar() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                listaCentroCosto = listaCentroCosto + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#centroAgregar').append(listaEmpresa);
+            $('#centroDecostoAgregar').append(listaCentroCosto);
         }
     });
 }
 // FIN CARGA SELECT "AGREGAR"
-
-
 // INCIO CARGA SELECT "MODIFICAR"
 function cargoModificar(id) {
     $('#cargoModificar').empty();
@@ -698,10 +696,7 @@ function CentroDeCostoModificar() {
     });
 
 }
-
 // FIN CARGA SELECT "MODIFICAR"
-
-
 // INCIO CARGA SELECT "VER"
 function cargoVerMas(id) {
     $('#cargoVer').empty();

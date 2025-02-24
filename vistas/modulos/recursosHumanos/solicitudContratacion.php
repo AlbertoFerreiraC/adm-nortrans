@@ -119,7 +119,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="equipoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
-                <option value=" "></option>
+                <option value=" ">Seleccionar...</option>
                 <option value="Reemplazo dotación">Reemplazo dotación</option>
                 <option value="Aumento dotación">Aumento dotación</option>
               </select>
@@ -128,7 +128,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
-                <option value=" "></option>
+                <option value=" ">Seleccionar...</option>
                 <option value="Industrial" selected>Industrial</option>
                 <option value="Interurbano">Interurbano</option>
               </select>
@@ -136,29 +136,18 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="cargoAgregar">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar">
-                <option value=" "></option>
-                <option value=""></option>
-              </select>
+              <select class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar"></select>
             </div>
 
             <div class="form-group col-sm-6 col-xs-12">
-              <label for="razonAgregar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto solo-ruc" name="razonAgregar" id="razonAgregar">
-                <option value=" "></option>
-                <option value="Sociedad de Transporte Nortrans SPA">Sociedad de Transporte Nortrans SPA</option>
-                <option value="Transportes Transmat LTDA ">Transportes Transmat LTDA</option>
-              </select>
+              <label for="empresaAgregar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+              <select class="form-control input-md cajatexto solo-ruc" name="empresaAgregar" id="empresaAgregar"></select>
             </div>
 
 
             <div class="form-group col-sm-6 col-xs-12">
-              <label for="centrocostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <select class="form-control input-md cajatexto solo-ruc" name="centrocostoAgregar" id="centrocostoAgregar">
-                <option value=" "></option>
-                <option value="76681140-k/Gerencia/9999-001">76681140-k/Gerencia/9999-001</option>
-                <option value="76228401-4/Gerencia/9999-001">76228401-4/Gerencia/9999-001</option>
-              </select>
+              <label for="centroDecostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+              <select class="form-control input-md cajatexto solo-ruc" name="centroDecostoAgregar" id="centroDecostoAgregar"></select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
@@ -168,24 +157,13 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="equipoAgregar">Tipo equipo (opcional):</label>
-              <select class="form-control input-md cajatexto" id="equipoAgregar" name="equipoAgregar">
-                <option value=" "></option>
-                <option value="BUS">BUS</option>
-                <option value="MINIBUS">MINIBUS</option>
-                <option value="VAN">VAN</option>
-                <option value="VITO">VITO</option>
-                <option value="TAXI-BUS">TAXI-BUS</option>
-                <option value="CAMIONETA">CAMIONETA</option>
-                <option value="AUTOMOVIL">AUTOMOVIL</option>
-                <option value="TRACTO CAMION">TRACTO CAMION</option>
-                <option value="GRAND CARNIVAL LX 2.9">GRAND CARNIVAL LX 2.9</option>
-              </select>
+              <select class="form-control input-md cajatexto" id="equipoAgregar" name="equipoAgregar"></select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="licenciaAgregar">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto" id="licenciaAgregar" name="licenciaAgregar">
-                <option value=" "></option>
+                <option value="Seleccionar...">Seleccionar...</option>
                 <option value="Si">Si</option>
                 <option value="No">No</option>
               </select>
@@ -193,23 +171,13 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-12 col-xs-12">
               <label for="tipoturnoAgregar">Tipo Turno:</label>
-              <select class="form-control input-md cajatexto" id="tipoturnoAgregar" name="tipoturnoAgregar">
-                <option value=" "></option>
-                <option value="5x2">5x2</option>
-                <option value="ARTICULO 22">ARTICULO 22</option>
-                <option value="4x3 FAENA">4x3 FAENA</option>
-                <option value="7x7">7x7</option>
-                <option value="6x1">6x1</option>
-                <option value="14x14">14x14</option>
-                <option value="ART25">ART25</option>
-                <option value="10x10">10x10</option>
-              </select>
+              <select class="form-control input-md cajatexto" id="tipoturnoAgregar" name="tipoturnoAgregar"></select>
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="tipocontratoAgregar">Tipo contrato:</label>
               <select class="form-control input-md cajatexto" id="tipocontratoAgregar" name="tipocontratoAgregar" onchange="mostrarFechaTermino()">
-                <option value=" "></option>
+                <option value=" ">Seleccionar...</option>
                 <option value="Indefinido">Indefinido</option>
                 <option value="Plazo Fijo">Plazo Fijo</option>
                 <option value="Por Obra">Por Obra</option>
@@ -235,7 +203,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="requisitoseleccionAgregar">Requisito selección:</label>
               <select class="form-control input-md cajatexto" id="requisitoseleccionAgregar" name="requisitoseleccionAgregar">
-                <option value=" "></option>
+                <option value=" ">Seleccionar...</option>
                 <option value="Entrevista Psicolaboral">Entrevista Psicolaboral</option>
                 <option value="Entrevista Tecnica">Entrevista Tecnica</option>
                 <option value="Prueba de Conduccion">Prueba de Conduccion</option>
@@ -768,39 +736,41 @@ MODAL EDITAR TAREA
 </script>
 
 <style>
- .agregar-boton {
-   
+  .agregar-boton {
+
     border-color: #f46717;
     max-width: 100px;
-    margin-top: 100px; /* Alineado con la tabla */
+    margin-top: 100px;
+    /* Alineado con la tabla */
     margin-left: 15px;
-}
+  }
 
-.table-container {
+  .table-container {
     float: right;
     width: 60%;
     margin-top: -35px;
     position: static;
-}
+  }
 
-.table-responsive {
+  .table-responsive {
     max-height: 100px;
     overflow-y: auto;
-    width: 133%;  /* Cambiado para que use el ancho del contenedor padre */
-    margin-left: -180px; 
-}
+    width: 133%;
+    /* Cambiado para que use el ancho del contenedor padre */
+    margin-left: -180px;
+  }
 
-/* Mantener los estilos de la tabla igual */
-.table-bordes th,
-.table-bordes td,
-.table-bordes {
+  /* Mantener los estilos de la tabla igual */
+  .table-bordes th,
+  .table-bordes td,
+  .table-bordes {
     border: 0.2px solid #111 !important;
     text-align: center;
     padding: 10px;
-}
+  }
 
-.table-bordes th:nth-child(1),
-.table-bordes td:nth-child(1) {
+  .table-bordes th:nth-child(1),
+  .table-bordes td:nth-child(1) {
     width: 10%;
     margin-left: 15px;
   }
@@ -820,37 +790,3 @@ MODAL EDITAR TAREA
     width: 20%;
   }
 </style>
->>>>>>> 2fce6440e1ada6d72891053028a0e04295abfdf0
-
-.table-bordes th:nth-child(2),
-.table-bordes td:nth-child(2) {
-    width: 30%;
-}
-
-.table-bordes th:nth-child(3),
-.table-bordes td:nth-child(3) {
-    width: 40%;
-}
-
-.table-bordes th:nth-child(4),
-.table-bordes td:nth-child(4) {
-    width: 20%;
-}
-
-/* Clearfix para evitar problemas de float */
-.container::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Mantener los estilos del div1 */
-#div1 {
-    overflow: scroll;
-    width: 100%;
-}
-
-#div1 table {
-    width: 100%;
-    background-color: lightgray;
-}
