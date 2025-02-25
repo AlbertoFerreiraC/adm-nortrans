@@ -37,6 +37,8 @@ $(document).ready(function () {
             $("#remuneracionAgregar").val() != "-" &&
             $("#requisitoseleccionAgregar").val() != "-" &&
             $("#observacionAgregar").val() != "-" &&
+            $("#preapruebaAgregar").val() != "-" &&
+            $("#apruebaAgregar").val() != "-" &&
             $("#comentarioAgregar").val() != "-") {
             agregarDatos();
         } else {
@@ -64,6 +66,8 @@ $(document).ready(function () {
             $("#remuneracionModificar").val() != "-" &&
             $("#requisitoseleccionModificar").val() != "-" &&
             $("#observacionModificar").val() != "-" &&
+            $("#preapruebaModificar").val() != "-" &&
+            $("#apruebaModificar").val() != "-" &&
             $("#comentarioModificar").val() != "-") {
             modificarDatos();
         } else {
@@ -260,7 +264,6 @@ function obtenerDatosParaModificar(valor) {
         success: function (response) {
             for (var i in response) {
                 $("#idModificar").val(response[i].id);
-                divisionModificar(response[i].division);
                 cargoModificar(response[i].cargo);
                 empresaModificar(response[i].empresa);
                 CentroDeCostoModificar(response[i].CentroDeCosto);
@@ -268,11 +271,15 @@ function obtenerDatosParaModificar(valor) {
                 turnoModificar(response[i].turnos_laborales);
                 requisitoseleccionModificar(response[i].requisitoDeSeleccion);
                 CentroDeCostoModificarCargaInicial(response[i].centro_de_costo, response[i].empresa);
+                apruebaModificar(response[i].aprueba);
+                preapruebaModificar(response[i].preaprueba);
 
                 $("#motivoModificar").val(response[i].motivo);
+                $("#divisionModificar").val(response[i].division);
+                $("#cantidadcantidadModificar").val(response[i].cantidad_solicitada);
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
-                $('#remuneracionModificar option[value="' + response[i].remuneracion);
+                $("#remuneracionModificar").val(response[i].remuneracion);
                 $("#observacionModificar").val(response[i].comentario_general);
             }
 
@@ -307,12 +314,11 @@ function obtenerDatosParaVerMas(valor) {
                 divisionVerMas(response[i].division);
                 cargoVerMas(response[i].cargo);
                 empresaVerMas(response[i].empresa);
-                CentroDeCostoVerMas(response[i].CentroDeCosto); //en proceso
-                equipoVerMas(response[i].tipoBus); // en proceso
+                equipoVerMas(response[i].tipoBus);
                 turnoVerMas(response[i].turnos_laborales);
-                requisitoseleccionVerMas(response[i].requisitoDeSeleccion); // en proceso
                 CentroDeCostoVerMas(response[i].centro_de_costo, response[i].empresa);
 
+                $("#requisitoseleccionVer").val(response[i].motivo);
                 $("#motivoVer").val(response[i].motivo);
                 $("#fecharequeridaVer").val(response[i].fecha_requerida);
                 $("#fechaterminoVer").val(response[i].fecha_termino);
@@ -686,6 +692,46 @@ function centroCostoModificar(id) {
             }
             $('#centroCostoModificar').append(fila);
             $("#centroCostoModificar option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function apruebaModificar(id) {
+    $('#apruebaModificar').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#apruebaModificar').append(fila);
+            $("#apruebaModificar option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function preapruebaModificar(id) {
+    $('#preapruebaModificar').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#preapruebaModificar').append(fila);
+            $("#preapruebaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }

@@ -144,7 +144,6 @@ MODAL AGREGAR TAREA
               <select class="form-control input-md cajatexto solo-ruc" name="empresaAgregar" id="empresaAgregar"></select>
             </div>
 
-
             <div class="form-group col-sm-6 col-xs-12">
               <label for="centroDecostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="centroDecostoAgregar" id="centroDecostoAgregar"></select>
