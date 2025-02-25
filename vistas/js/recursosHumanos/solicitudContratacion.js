@@ -114,22 +114,21 @@ function cargarDatosTabla() {
 
                     '<td>' +
                     '<center>' +
-                    '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                    '<button title="Ver mas" class="btn btn-info btnverMas" id="' + response[i].id + '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
+                            '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
+                            '<button title="Ver mas" class="btn btn-info btnverMas" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
 
-                    '<button title="Modificar" class="btn btn-warning btnModificar" id="' + response[i].id + '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
+                            '<button title="Modificar" class="btn btn-warning btnModificar" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
 
-                    '<button title="Eliminar" class="btn btn-danger btnEliminar" id="' + response[i].id + '"><i class="fa fa-times"></i></button>' +
-                    '</div>' +
+                            '<button title="Eliminar" class="btn btn-danger btnEliminar" id="' + response[i].idcontratacion + '"><i class="fa fa-times"></i></button>'+
+                        '</div>' +
                     '</center>' +
                     '</td>' +
                     '<td>' + response[i].idcontratacion + '</td>' +
-                    '<td>' + response[i].fecha_requerida + '</td>' +
+                    '<td>' + response[i].fecha_requerida + '</td>' + // si podes formateale la fecha en dia/mes/año
                     '<td>' + response[i].division + '</td>' +
                     '<td>' + response[i].cargo + '</td>' +
                     '<td>' + response[i].cantidad_solicitada + '</td>' +
-                    '<td>' + response[i].estado + '</td>'
-
+                    '<td>' + response[i].estado + '</td>' // ponele en mayusculas
                     +
                     '</tr>';
             }
@@ -154,7 +153,7 @@ function cargarDatosTabla() {
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Si, anular registro'
+                    confirmButtonText: 'Si, anular registro!'
                 }).then(function (result) {
                     if (result.value) {
                         eliminarDatos(id_registro);
@@ -163,6 +162,13 @@ function cargarDatosTabla() {
             });
 
         }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al cargar la lista!!!",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
     });
 
 }
