@@ -20,14 +20,12 @@ $(document).ready(function () {
         CentroDeCostoModificar();
     });
 
-
-
     $('#btnGuardar').click(function () {
         if ($("#motivoAgregar").val() != "" &&
             $("#divisionAgregar").val() != "" &&
             $("#cargoAgregar").val() != "" &&
             $("#razonAgregar").val() != "" &&
-            $("#centrocostoAgregar").val() != "-" &&
+            $("#centroDecostoAgregar").val() != "-" &&
             $("#cantidadAgregar").val() != "-" &&
             $("#equipoAgregar").val() != "" &&
             $("#licenciaAgregar").val() != "-" &&
@@ -80,7 +78,6 @@ $(document).ready(function () {
         }
     });
 
-
     $('#filtradoDinamico').keyup(function () {
 
         var busqueda = document.getElementById('filtradoDinamico');
@@ -99,9 +96,7 @@ $(document).ready(function () {
 
     });
 
-
 });
-
 
 function cargarDatosTabla() {
     $("#tabla tbody").empty();
@@ -168,13 +163,6 @@ function cargarDatosTabla() {
             });
 
         }
-    }).fail(function () {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al cargar la lista",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
     });
 
 }
@@ -190,7 +178,7 @@ function agregarDatos() {
     datos.append("tipoBus", $("#equipoAgregar").val());
     datos.append("licenciaDeConducir", $("#licenciaAgregar").val());
     datos.append("turnosLaborales", $("#tipoturnoAgregar").val());
-    datos.append("tipoDocumento", $("#tipocontratoAgregar").val());
+    datos.append("tipoContrato", $("#tipocontratoAgregar").val());
     datos.append("fechaRequerida", $("#fecharequeridaAgregar").val());
     datos.append("fechaTermino", $("#fechaterminoAgregar").val());
     datos.append("remuneracion", $("#remuneracionAgregar").val());
@@ -199,6 +187,7 @@ function agregarDatos() {
     //*********************************/
     datos.append("preAprueba", $("#preapruebaAgregar").val());
     datos.append("aprueba", $("#apruebaAgregar").val());
+
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funAgregar.php",
         method: "POST",
@@ -245,8 +234,8 @@ function agregarDatos() {
             confirmButtonText: "Aceptar"
         });
     });
-
 }
+
 
 function obtenerDatosParaModificar(valor) {
 
@@ -560,7 +549,7 @@ function ApruebaAgregar() {
     $('#apruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
     var listaUsuario = "";
     $.ajax({
-        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -568,7 +557,7 @@ function ApruebaAgregar() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaUsuario = listaUsuario + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                listaUsuario = listaUsuario + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
             }
             $('#apruebaAgregar').append(listaUsuario);
         }
@@ -580,7 +569,7 @@ function PreapruebaAgregar() {
     $('#preapruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
     var listaUsuario = "";
     $.ajax({
-        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -588,7 +577,7 @@ function PreapruebaAgregar() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaUsuario = listaUsuario + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                listaUsuario = listaUsuario + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
             }
             $('#preapruebaAgregar').append(listaUsuario);
         }
