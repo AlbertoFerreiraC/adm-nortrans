@@ -33,10 +33,12 @@ $(document).ready(function () {
             $("#tipocontratoAgregar").val() != "-" &&
             $("#fecharequeridaAgregar").val() != "-" &&
             $("#remuneracionAgregar").val() != "-" &&
-            $("#requisitoseleccionAgregar").val() != "-" &&
             $("#observacionAgregar").val() != "-" &&
             $("#preapruebaAgregar").val() != "-" &&
             $("#apruebaAgregar").val() != "-" &&
+            $("#observacionEntrevistaPsicolaboral").val() != "-" &&
+            $("#observacionEntrevistaTecnica").val() != "-" &&
+            $("#observacionPruebaConduccion").val() != "-" &&
             $("#comentarioAgregar").val() != "-") {
             agregarDatos();
         } else {
@@ -114,13 +116,13 @@ function cargarDatosTabla() {
 
                     '<td>' +
                     '<center>' +
-                            '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                            '<button title="Ver mas" class="btn btn-info btnverMas" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
+                    '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
+                    '<button title="Ver mas" class="btn btn-info btnverMas" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
 
-                            '<button title="Modificar" class="btn btn-warning btnModificar" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
+                    '<button title="Modificar" class="btn btn-warning btnModificar" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
 
-                            '<button title="Eliminar" class="btn btn-danger btnEliminar" id="' + response[i].idcontratacion + '"><i class="fa fa-times"></i></button>'+
-                        '</div>' +
+                    '<button title="Eliminar" class="btn btn-danger btnEliminar" id="' + response[i].idcontratacion + '"><i class="fa fa-times"></i></button>' +
+                    '</div>' +
                     '</center>' +
                     '</td>' +
                     '<td>' + response[i].idcontratacion + '</td>' +
@@ -188,8 +190,10 @@ function agregarDatos() {
     datos.append("fechaRequerida", $("#fecharequeridaAgregar").val());
     datos.append("fechaTermino", $("#fechaterminoAgregar").val());
     datos.append("remuneracion", $("#remuneracionAgregar").val());
-    datos.append("tipoDocumento", $("#requisitoseleccionAgregar").val());
-    datos.append("comentarioGeneral", $("#observacionAgregar").val());
+    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboral").val());
+    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnica").val());
+    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccion").val());
+    datos.append("comentarioGeneral", $("#comentarioAgregar").val());
     //*********************************/
     datos.append("preAprueba", $("#preapruebaAgregar").val());
     datos.append("aprueba", $("#apruebaAgregar").val());
@@ -246,7 +250,7 @@ function agregarDatos() {
 function obtenerDatosParaModificar(valor) {
 
     var params = {
-        "idcontratacion": valor
+        "id": valor
     };
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
@@ -258,24 +262,34 @@ function obtenerDatosParaModificar(valor) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                $("#idModificar").val(response[i].id);
+                $("#idModificar").val(response[i].idcontratacion);
                 cargoModificar(response[i].cargo);
                 empresaModificar(response[i].empresa);
                 CentroDeCostoModificar(response[i].CentroDeCosto);
                 equipoModificar(response[i].tipoBus);
                 turnoModificar(response[i].turnos_laborales);
-                requisitoseleccionModificar(response[i].requisitoDeSeleccion);
                 CentroDeCostoModificarCargaInicial(response[i].centro_de_costo, response[i].empresa);
                 apruebaModificar(response[i].aprueba);
                 preapruebaModificar(response[i].preaprueba);
 
-                $("#motivoModificar").val(response[i].motivo);
-                $("#divisionModificar").val(response[i].division);
-                $("#cantidadcantidadModificar").val(response[i].cantidad_solicitada);
+
+                $('#motivoModificar option[value="' + response[i].motivo + '"]').attr("selected", true);
+                $('#requisitoseleccionModificar option[value="' + response[i].requisito_seleccion + '"]').attr("selected", true);
+                $('#divisionModificar option[value="' + response[i].division + '"]').attr("selected", true);
+                $("#cantidadModificar").val(response[i].cantidad_solicitada);
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
                 $("#remuneracionModificar").val(response[i].remuneracion);
-                $("#observacionModificar").val(response[i].comentario_general);
+                $("#comentarioModificar").val(response[i].comentario_general);
+
+                $("#observacionEntrevistaPsicolaboralMod").val(response[i].entrevista_psicolaboral);
+                $("#observacionEntrevistaTecnicaMod").val(response[i].entrevista_tecnica);
+                $("#observacionPruebaConduccionMod").val(response[i].entrevista_conduccion);
+
+                //--------------------------
+                $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
+                $('#tipocontratoModificar option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+                
             }
 
         }
@@ -336,12 +350,12 @@ function obtenerDatosParaVerMas(valor) {
 
 function modificarDatos() {
     var datos = new FormData();
-    datos.append("id", $("#idModificar").val());
+    datos.append("idcontratacion", $("#idModificar").val());
     datos.append("motivo", $("#motivoModificar").val());
     datos.append("division", $("#divisionModificar").val());
     datos.append("cargo", $("#cargoModificar").val());
-    datos.append("empresa", $("#razonModificar").val());
-    datos.append("centroDeCosto", $("#centrocostoModificar").val());
+    datos.append("empresa", $("#empresaModificar").val());
+    datos.append("centroDeCosto", $("#centroDecostoModificar").val());
     datos.append("cantidadSolicitada", $("#cantidadModificar").val());
     datos.append("tipoBus", $("#equipoModificar").val());
     datos.append("licenciaDeConducir", $("#licenciaModificar").val());
@@ -352,6 +366,12 @@ function modificarDatos() {
     datos.append("remuneracion", $("#remuneracionModificar").val());
     datos.append("tipoDocumento", $("#requisitoseleccionModificar").val());
     datos.append("comentarioGeneral", $("#observacionModificar").val());;
+    datos.append("preAprueba", $("#preapruebaModificar").val());
+    datos.append("aprueba", $("#apruebaModificar").val());
+    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
+    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
+    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
+
     $.ajax({
         url: "../api_adm_nortrans/solicitudContrato/funModificar.php",
         method: "POST",
@@ -632,7 +652,7 @@ function equipoModificar(id) {
 }
 
 function turnoModificar(id) {
-    $('#turnoModificar').empty();
+    $('#tipoturnoModificar').empty();
     var fila = "";
     $.ajax({
         url: "../api_adm_nortrans/turnoLaboral/funListar.php",
@@ -645,8 +665,8 @@ function turnoModificar(id) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#turnoModificar').append(fila);
-            $("#turnoModificar option[value='" + id + "']").attr("selected", true);
+            $('#tipoturnoModificar').append(fila);
+            $("#tipoturnoModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
@@ -695,7 +715,7 @@ function apruebaModificar(id) {
     $('#apruebaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -703,7 +723,7 @@ function apruebaModificar(id) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                fila = fila + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
             }
             $('#apruebaModificar').append(fila);
             $("#apruebaModificar option[value='" + id + "']").attr("selected", true);
@@ -715,7 +735,7 @@ function preapruebaModificar(id) {
     $('#preapruebaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/usuario/funAprueba.php",
+        url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -723,7 +743,7 @@ function preapruebaModificar(id) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                fila = fila + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
             }
             $('#preapruebaModificar').append(fila);
             $("#preapruebaModificar option[value='" + id + "']").attr("selected", true);
@@ -733,7 +753,7 @@ function preapruebaModificar(id) {
 
 function CentroDeCostoModificarCargaInicial(id, empresa) {
     // alert(id);
-    $('#centroModificar').empty();
+    $('#centroDecostoModificar').empty();
     var params = {
         "empresa": empresa
     };
@@ -750,16 +770,15 @@ function CentroDeCostoModificarCargaInicial(id, empresa) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#centroModificar').append(fila);
-            $("#centroModificar option[value='" + id + "']").attr("selected", true);
+            $('#centroDecostoModificar').append(fila);
+            $("#centroDecostoModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 
 }
 
 function CentroDeCostoModificar() {
-    // alert(id);
-    $('#centroModificar').empty();
+    $('#centroDecostoModificar').empty();
     var params = {
         "empresa": $("#empresaModificar").val()
     };
@@ -776,7 +795,7 @@ function CentroDeCostoModificar() {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#centroModificar').append(fila);
+            $('#centroDecostoModificar').append(fila);
             //  $("#centroModificar option[value='"+ id +"']").attr("selected",true);
         }
     });
