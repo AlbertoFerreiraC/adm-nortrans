@@ -200,20 +200,21 @@ MODAL AGREGAR TAREA
               <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar">
             </div>
 
-            <div class="form-group col-sm-12 col-xs-12">
-              <label for="observacionEntrevistaPsicolaboral">Entrevista Psicolaboral:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
-            </div>
+           
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="comentarioAgregar">Entrevista Psicolaboral:</label > 
+                    <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
+                  </div>  
 
-            <div class="form-group col-sm-12 col-xs-12">
-              <label for="observacionEntrevistaTecnica">Entrevista Tecnica:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnica" id="observacionEntrevistaTecnica" rows="1"></textarea>
-            </div>
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="preapruebaAgregar">Entrevista Tecnica:</label>
+                    <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnica" id="observacionEntrevistaTecnica" rows="1"></textarea>
+                  </div>
 
-            <div class="form-group col-sm-12 col-xs-12">
-              <label for="observacionPruebaConduccion">Prueba de Conduccion:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccion" id="observacionPruebaConduccion" rows="1"></textarea>
-            </div>
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="apruebaAgregar">Prueba de Conduccion:</label>
+                    <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccion" id="observacionPruebaConduccion" rows="1"></textarea>
+                  </div>
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -278,7 +279,7 @@ MODAL EDITAR TAREA
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Editar Solicitud de Contratacion</h4>
+          <h4 class="modal-title">Ingreso de solicitud</h4>
 
         </div>
 
