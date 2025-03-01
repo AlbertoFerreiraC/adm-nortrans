@@ -278,7 +278,7 @@ MODAL EDITAR TAREA
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Ingreso de solicitud</h4>
+          <h4 class="modal-title">Editar Solicitud de Contratacion</h4>
 
         </div>
 

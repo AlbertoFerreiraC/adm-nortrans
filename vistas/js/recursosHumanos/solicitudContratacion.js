@@ -282,14 +282,14 @@ function obtenerDatosParaModificar(valor) {
                 $("#remuneracionModificar").val(response[i].remuneracion);
                 $("#comentarioModificar").val(response[i].comentario_general);
 
-                $("#observacionEntrevistaPsicolaboralMod").val(response[i].entrevista_psicolaboral);
-                $("#observacionEntrevistaTecnicaMod").val(response[i].entrevista_tecnica);
-                $("#observacionPruebaConduccionMod").val(response[i].entrevista_conduccion);
+                $("#observacionEntrevistaPsicolaboralMod").val(response[i].observacionEntrevistaPsicolaboral);
+                $("#observacionEntrevistaTecnicaMod").val(response[i].observacionEntrevistaTecnica);
+                $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
 
                 //--------------------------
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoModificar option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
-                
+
             }
 
         }
@@ -351,23 +351,22 @@ function obtenerDatosParaVerMas(valor) {
 function modificarDatos() {
     var datos = new FormData();
     datos.append("idcontratacion", $("#idModificar").val());
-    datos.append("motivo", $("#motivoModificar").val());
-    datos.append("division", $("#divisionModificar").val());
     datos.append("cargo", $("#cargoModificar").val());
     datos.append("empresa", $("#empresaModificar").val());
     datos.append("centroDeCosto", $("#centroDecostoModificar").val());
-    datos.append("cantidadSolicitada", $("#cantidadModificar").val());
-    datos.append("tipoBus", $("#equipoModificar").val());
-    datos.append("licenciaDeConducir", $("#licenciaModificar").val());
     datos.append("turnosLaborales", $("#tipoturnoModificar").val());
-    datos.append("tipoContrato", $("#tipocontratoModificar").val());
+    datos.append("tipoBus", $("#equipoModificar").val());
+    datos.append("preAprueba", $("#preapruebaModificar").val());
+    datos.append("aprueba", $("#apruebaModificar").val());
+    datos.append("division", $("#divisionModificar").val());
+    datos.append("cantidadSolicitada", $("#cantidadModificar").val());
+    datos.append("licenciaDeConducir", $("#licenciaModificar").val());
     datos.append("fechaRequerida", $("#fecharequeridaModificar").val());
     datos.append("fechaTermino", $("#fechaterminoModificar").val());
     datos.append("remuneracion", $("#remuneracionModificar").val());
-    datos.append("tipoDocumento", $("#requisitoseleccionModificar").val());
-    datos.append("comentarioGeneral", $("#observacionModificar").val());;
-    datos.append("preAprueba", $("#preapruebaModificar").val());
-    datos.append("aprueba", $("#apruebaModificar").val());
+    datos.append("comentarioGeneral", $("#comentarioModificar").val());
+    datos.append("motivo", $("#motivoModificar").val());
+    datos.append("tipoContrato", $("#tipocontratoModificar").val());
     datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
     datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
     datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
@@ -384,24 +383,20 @@ function modificarDatos() {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro modificado con exito",
+                    title: "Registro modificado con éxito",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
                     location.reload();
                 });
-            }
-
-            if (response['mensaje'] === "nok") {
+            } else if (response['mensaje'] === "nok") {
                 swal({
                     type: "error",
                     title: "Ha ocurrido un error al procesar la modificación",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
-            }
-
-            if (response['mensaje'] === "repetido") {
+            } else if (response['mensaje'] === "repetido") {
                 swal({
                     type: "error",
                     title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
@@ -418,8 +413,9 @@ function modificarDatos() {
             confirmButtonText: "Aceptar"
         });
     });
-
 }
+
+
 
 function eliminarDatos(valor) {
     var params = {
