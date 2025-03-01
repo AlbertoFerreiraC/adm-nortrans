@@ -194,7 +194,6 @@ function agregarDatos() {
     datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnica").val());
     datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccion").val());
     datos.append("comentarioGeneral", $("#comentarioAgregar").val());
-    //*********************************/
     datos.append("preAprueba", $("#preapruebaAgregar").val());
     datos.append("aprueba", $("#apruebaAgregar").val());
 
