@@ -375,21 +375,20 @@ MODAL EDITAR TAREA
               <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar">
             </div>
 
-            <div class="form-group col-sm-12 col-xs-12">
+            <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionEntrevistaPsicolaboralMod">Entrevista Psicolaboral:</label>
               <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboralMod" id="observacionEntrevistaPsicolaboralMod" rows="1"></textarea>
             </div>
 
-            <div class="form-group col-sm-12 col-xs-12">
+            <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionEntrevistaTecnicaMod">Entrevista Tecnica:</label>
               <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaMod" id="observacionEntrevistaTecnicaMod" rows="1"></textarea>
             </div>
 
-            <div class="form-group col-sm-12 col-xs-12">
+            <div class="form-group col-sm-4 col-xs-12">
               <label for="observacionPruebaConduccionMod">Prueba de Conduccion:</label>
               <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionMod" id="observacionPruebaConduccionMod" rows="1"></textarea>
             </div>
-
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -467,7 +466,6 @@ MODAL VER MAS
           <div class="form-group col-sm-4 col-xs-12">
             <label for="motivoVer">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
             <select class="form-control input-md cajatexto solo-ruc" name="motivoVer" id="motivoVer" disabled>
-
               <option value="Reemplazo dotación">Reemplazo dotación</option>
               <option value="Aumento dotación">Aumento dotación</option>
             </select>
@@ -532,60 +530,61 @@ MODAL VER MAS
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
-            <label for="remuneracionVer">Remuneración líquida:</label>
-            <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer" disabled>
+            <label for="observacionEntrevistaPsicolaboralVer">Entrevista Psicolaboral:</label>
+            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboralVer" id="observacionEntrevistaPsicolaboralMod" rows="1"></textarea>
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
-              <label for="comentarioAgregar">Entrevista Psicolaboral:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
-            </div>
+            <label for="comentarioAgregar">Entrevista Psicolaboral:</label>
+            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboralVer" rows="1"></textarea>
+          </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="preapruebaAgregar">Entrevista Tecnica:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnica" id="observacionEntrevistaTecnica" rows="1"></textarea>
-            </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="apruebaAgregar">Prueba de Conduccion:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccion" id="observacionPruebaConduccion" rows="1"></textarea>
-            </div>
+          <div class="form-group col-sm-4 col-xs-12">
+            <label for="observacionEntrevistaTecnicaVer">Entrevista Tecnica:</label>
+            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaVer" id="observacionEntrevistaTecnicaVer" rows="1"></textarea>
+          </div>
 
-        <div class="col-md-12 col-xs-12">
-          <div class="box box-success">
-            <div class="box-body">
-              <div class="form-group col-sm-4 col-xs-12">
-                <label for="comentarioVer">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <textarea class="form-control input-md cajatexto" name="comentarioVer" id="comentarioVer" rows="4"></textarea>
-              </div>
+          <div class="form-group col-sm-4 col-xs-12">
+            <label for="observacionPruebaConduccionVer">Prueba de Conduccion:</label>
+            <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionVer" id="observacionPruebaConduccionVer" rows="1"></textarea>
+          </div>
 
-              <div class="form-group col-sm-4 col-xs-12">
-                <label for="preapruebaVer">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <select class="form-control input-md cajatexto" id="preapruebaVer" name="preapruebaVer"></select>
-              </div>
+          <div class="col-md-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-body">
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="comentarioVer">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <textarea class="form-control input-md cajatexto" name="comentarioVer" id="comentarioVer" rows="1"></textarea>
+                </div>
 
-              <div class="form-group col-sm-4 col-xs-12">
-                <label for="apruebaVer">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer"></select>
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="preapruebaVer">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="preapruebaVer" name="preapruebaVer"></select>
+                </div>
+
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="apruebaVer">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer"></select>
+                </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
 
-    <!--=====================================
+        <!--=====================================
         PIE DEL MODAL
         ======================================-->
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+        </div>
+
+      </form>
+
     </div>
 
-    </form>
-
   </div>
-
-</div>
 
 </div>
 
