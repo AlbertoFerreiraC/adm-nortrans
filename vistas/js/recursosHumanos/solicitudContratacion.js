@@ -318,19 +318,32 @@ function obtenerDatosParaVerMas(valor) {
         success: function (response) {
             for (var i in response) {
                 $("#divisionVer").val(response[i].division);
-                divisionVerMas(response[i].division);
-                cargoVerMas(response[i].cargo);
-                empresaVerMas(response[i].empresa);
-                equipoVerMas(response[i].tipoBus);
-                turnoVerMas(response[i].turnos_laborales);
-                CentroDeCostoVerMas(response[i].centro_de_costo, response[i].empresa);
+                cargoVerMas(response[i].cargo); //listo
+                empresaVerMas(response[i].empresa); //listo
+                CentroDeCostoVerMas(response[i].CentroDeCosto); // listo
+                equipoVerMas(response[i].tipoBus); // listo
+                turnoVerMas(response[i].turnos_laborales); //listo
+                CentroDeCostoVerMas(response[i].centro_de_costo, response[i].empresa); //listo
+                apruebaVerMas(response[i].aprueba); //verificar
+                preapruebaVerMas(response[i].pre_aprueba); //verificar
 
-                $("#requisitoseleccionVer").val(response[i].motivo);
-                $("#motivoVer").val(response[i].motivo);
+
+                $('#motivoVer option[value="' + response[i].motivo + '"]').attr("selected", true); //listo
+                $('#divisionVer option[value="' + response[i].division + '"]').attr("selected", true);//verificar
+                $("#cantidadVer").val(response[i].cantidad_solicitada);
                 $("#fecharequeridaVer").val(response[i].fecha_requerida);
-                $("#fechaterminoVer").val(response[i].fecha_termino);
-                $('#remuneracionVer option[value="' + response[i].remuneracion);
-                $("#observacionVer").val(response[i].comentario_general);
+                $("#fechaterminoVerMas").val(response[i].fecha_termino);
+                $("#remuneracionVer").val(response[i].remuneracion);
+                $("#comentarioVer").val(response[i].comentario_general);
+
+                $("#observacionEntrevistaPsicolaboralVer").val(response[i].observacionEntrevistaPsicolaboral);
+                $("#observacionEntrevistaTecnicaVer").val(response[i].observacionEntrevistaTecnica);
+                $("#observacionPruebaConduccionVer").val(response[i].observacionPruebaConduccion);
+
+                //--------------------------
+                $('#licenciaVerMas option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
+                $('#tipocontratoVerMas option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+
 
             }
 
@@ -799,7 +812,7 @@ function cargoVerMas(id) {
     $('#cargoVer').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        url: "../api_adm_nortrans/cargo/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -819,7 +832,7 @@ function equipoVerMas(id) {
     $('#equipoVer').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/turnoLaboral/funListar.php",
+        url: "../api_adm_nortrans/tipoequipo/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -836,7 +849,7 @@ function equipoVerMas(id) {
 }
 
 function turnoVerMas(id) {
-    $('#turnoVer').empty();
+    $('#tipoturnoVer').empty();
     var fila = "";
     $.ajax({
         url: "../api_adm_nortrans/turnoLaboral/funListar.php",
@@ -849,14 +862,54 @@ function turnoVerMas(id) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#turnoVer').append(fila);
-            $("#turnoVer option[value='" + id + "']").attr("selected", true);
+            $('#tipoturnoVer').append(fila);
+            $("#tipoturnoVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function apruebaVerMas(id) {
+    $('#apruebaVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
+            }
+            $('#apruebaVer').append(fila);
+            $("#apruebaVer option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function preapruebaVerMas(id) {
+    $('#preapruebaVer').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/usuario/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
+            }
+            $('#preapruebaVer').append(fila);
+            $("#preapruebaVer option[value='" + id + "']").attr("selected", true);
         }
     });
 }
 
 function empresaVerMas(id) {
-    $('#empresaVer').empty();
+    $('#razonVer').empty();
     var fila = "";
     $.ajax({
         url: "../api_adm_nortrans/empresa/funListar.php",
@@ -869,8 +922,8 @@ function empresaVerMas(id) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#empresaVer').append(fila);
-            $("#empresaVer option[value='" + id + "']").attr("selected", true);
+            $('#razonVer').append(fila);
+            $("#razonVer option[value='" + id + "']").attr("selected", true);
         }
     });
 }
@@ -896,7 +949,7 @@ function centroCostoVerMas(id) {
 }
 
 function CentroDeCostoVerMas(id) {
-    $('#turnoVer').empty();
+    $('#centrocostoVer').empty();
     var fila = "";
     $.ajax({
         url: "../api_adm_nortrans/centroDeCosto/funListar.php",
@@ -909,8 +962,8 @@ function CentroDeCostoVerMas(id) {
             for (var i in response) {
                 fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#turnoVer').append(fila);
-            $("#turnoVer option[value='" + id + "']").attr("selected", true);
+            $('#centrocostoVer').append(fila);
+            $("#centrocostoVer option[value='" + id + "']").attr("selected", true);
         }
     });
 }

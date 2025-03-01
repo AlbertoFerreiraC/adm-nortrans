@@ -296,7 +296,6 @@ MODAL EDITAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="motivoModificar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="motivoModificar" id="motivoModificar">
-                <option value=" ">Seleccionar...</option>
                 <option value="Reemplazo dotación">Reemplazo dotación</option>
                 <option value="Aumento dotación">Aumento dotación</option>
               </select>
@@ -305,8 +304,6 @@ MODAL EDITAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionModificar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="divisionModificar" id="divisionModificar">
-                <option value=" "></option>
-                <option value=" ">Seleccionar...</option>
                 <option value="Industrial">Industrial</option>
                 <option value="Interurbano">Interurbano</option>
               </select>
@@ -473,7 +470,10 @@ MODAL VER MAS
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="divisionVer">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <select class="form-control input-md cajatexto solo-ruc" name="divisionVer" id="divisionVer" disabled></select>
+            <select class="form-control input-md cajatexto solo-ruc" name="divisionVer" id="divisionVer" disabled>
+              <option value="Industrial">Industrial</option>
+              <option value="Interurbano">Interurbano</option>
+            </select>
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
@@ -526,28 +526,28 @@ MODAL VER MAS
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="fecharequeridaVer">Fecha requerida:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <input type="date" class="form-control input-md cajatexto" name="fecharequeridaVer" id="fecharequeridaVer">
+            <input type="date" class="form-control input-md cajatexto" name="fecharequeridaVer" id="fecharequeridaVer" disabled>
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
-            <label for="observacionEntrevistaPsicolaboralVer">Entrevista Psicolaboral:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboralVer" id="observacionEntrevistaPsicolaboralMod" rows="1"></textarea>
+            <label for="remuneracionVer">Remuneración líquida:</label>
+            <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer" disabled>
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
-            <label for="comentarioAgregar">Entrevista Psicolaboral:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboralVer" rows="1"></textarea>
+            <label for="observacionEntrevistaPsicolaboral">Entrevista Psicolaboral:</label>
+            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboralVer" rows="1" disabled></textarea>
           </div>
 
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="observacionEntrevistaTecnicaVer">Entrevista Tecnica:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaVer" id="observacionEntrevistaTecnicaVer" rows="1"></textarea>
+            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaVer" id="observacionEntrevistaTecnicaVer" rows="1" disabled></textarea>
           </div>
 
           <div class="form-group col-sm-4 col-xs-12">
             <label for="observacionPruebaConduccionVer">Prueba de Conduccion:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionVer" id="observacionPruebaConduccionVer" rows="1"></textarea>
+            <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionVer" id="observacionPruebaConduccionVer" rows="1" disabled></textarea>
           </div>
 
           <div class="col-md-12 col-xs-12">
@@ -555,17 +555,17 @@ MODAL VER MAS
               <div class="box-body">
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="comentarioVer">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <textarea class="form-control input-md cajatexto" name="comentarioVer" id="comentarioVer" rows="1"></textarea>
+                  <textarea class="form-control input-md cajatexto" name="comentarioVer" id="comentarioVer" rows="1" disabled></textarea>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="preapruebaVer">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="preapruebaVer" name="preapruebaVer"></select>
+                  <select class="form-control input-md cajatexto" id="preapruebaVer" name="preapruebaVer" disabled></select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
                   <label for="apruebaVer">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer"></select>
+                  <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer" disabled></select>
                 </div>
               </div>
             </div>
@@ -605,6 +605,35 @@ MODAL VER MAS
 </script>
 
 <script>
+  document.getElementById("comentarioModificar").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<script>
+  document.getElementById("observacionEntrevistaPsicolaboralMod").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<script>
+  document.getElementById("observacionEntrevistaTecnicaMod").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<script>
+  document.getElementById("observacionPruebaConduccionMod").addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+</script>
+
+<!--Campo de fecha termino-->
+<script>
   function mostrarFechaTermino() {
     var tipoContrato = document.getElementById("tipocontratoAgregar").value;
     var fechaTerminoDiv = document.getElementById("fechaTerminoDiv");
@@ -631,50 +660,6 @@ MODAL VER MAS
       var fechaFormateada = fecha.toISOString().split("T")[0];
       fechaTerminoInput.value = fechaFormateada;
     }
-  }
-</script>
-
-<script>
-  let contador = 1;
-
-  function agregarRequisito() {
-    const requisitoSeleccionado = document.getElementById("requisitoseleccionAgregar").value.trim();
-    const observacion = document.getElementById("observacionAgregar").value.trim();
-
-    if (requisitoSeleccionado === "") {
-      alert("Por favor, selecciona un requisito.");
-      return;
-    }
-
-    const tabla = document.querySelector("#tablaRequisitos tbody");
-    const fila = document.createElement("tr");
-
-    fila.innerHTML = `
-            <td>${contador}</td>
-            <td>${requisitoSeleccionado}</td>
-            <td>${observacion || "Sin observación"}</td>
-            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">Eliminar</button></td>
-        `;
-
-    tabla.appendChild(fila);
-    contador++;
-
-    // Limpiar campos después de agregar
-    document.getElementById("requisitoseleccionAgregar").value = "";
-    document.getElementById("observacionAgregar").value = "";
-  }
-
-  function eliminarFila(boton) {
-    boton.closest("tr").remove();
-    actualizarNumeracion();
-  }
-
-  function actualizarNumeracion() {
-    const filas = document.querySelectorAll("#tablaRequisitos tbody tr");
-    contador = 1;
-    filas.forEach(fila => {
-      fila.cells[0].textContent = contador++;
-    });
   }
 </script>
 
