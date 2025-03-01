@@ -246,7 +246,6 @@ function agregarDatos() {
     });
 }
 
-
 function obtenerDatosParaModificar(valor) {
 
     var params = {
@@ -310,7 +309,7 @@ function obtenerDatosParaVerMas(valor) {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContrato/funDatosParaModificar.php",
+        url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -372,7 +371,7 @@ function modificarDatos() {
     datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
 
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContrato/funModificar.php",
+        url: "../api_adm_nortrans/solicitudContratacion/funModificar.php",
         method: "POST",
         cache: false,
         data: datos,
@@ -415,14 +414,12 @@ function modificarDatos() {
     });
 }
 
-
-
 function eliminarDatos(valor) {
     var params = {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContrato/funEliminar.php",
+        url: "../api_adm_nortrans/solicitudContratacion/funEliminar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),

@@ -234,21 +234,21 @@ MODAL AGREGAR TAREA
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </div>
+        </div>
 
-          <!--=====================================
+        <!--=====================================
         PIE DEL MODAL
         ======================================-->
 
-          <div class="modal-footer">
+        <div class="modal-footer">
 
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-            <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnGuardar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Guardar</button>
+          <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnGuardar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Guardar</button>
 
-          </div>
+        </div>
 
       </form>
 
@@ -435,6 +435,9 @@ MODAL EDITAR TAREA
 
 </div>
 
+<!--=====================================
+MODAL VER MAS
+======================================-->
 <div id="modalVermas" class="modal fade" role="dialog">
 
   <div class="modal-dialog modal-lg">
