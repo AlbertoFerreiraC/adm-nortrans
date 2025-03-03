@@ -186,7 +186,7 @@ function agregarDatos() {
     datos.append("tipoBus", $("#equipoAgregar").val());
     datos.append("licenciaDeConducir", $("#licenciaAgregar").val());
     datos.append("turnosLaborales", $("#tipoturnoAgregar").val());
-    datos.append("tipoContrato", $("#tipocontratoAgregar").val());
+    datos.append("tipo_contrato", $("#tipocontratoAgregar").val());
     datos.append("fechaRequerida", $("#fecharequeridaAgregar").val());
     datos.append("fechaTermino", $("#fechaterminoAgregar").val());
     datos.append("remuneracion", $("#remuneracionAgregar").val());
@@ -286,7 +286,7 @@ function obtenerDatosParaModificar(valor) {
 
                 //--------------------------
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
-                $('#tipocontratoModificar option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+                $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
 
             }
 
@@ -381,6 +381,7 @@ function modificarDatos() {
     datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
     datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
     datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
+
 
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funModificar.php",
