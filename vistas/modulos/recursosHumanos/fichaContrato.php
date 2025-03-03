@@ -21,11 +21,7 @@
               <div class="d-flex align-items-center gap-3 flex-wrap">
                 <div class="form-group col-sm-3">
                   <label for="empresaAgregar">Empresa:</label>
-                  <select class="form-control input-md" name="empresaAgregar" id="empresaAgregar">
-                    <option value=" " selected>Seleccionar...</option>
-                    <option value="SOCIEDAD DE TRANSPORTE NORTRANS SPA">SOCIEDAD DE TRANSPORTE NORTRANS SPA</option>
-                    <option value="TRANSPORTE TRANSMAT LDTA">TRANSPORTE TRANSMAT LDTA</option>
-                  </select>
+                  <select class="form-control input-md" name="empresaAgregar" id="empresaAgregar"></select>
                 </div>
 
                 <div class="form-group col-sm-3">
@@ -203,7 +199,7 @@
 
 </div>
 
-<script src="vistas/js/recursosHumanos/solicitudContratacion.js"></script>
+<script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
   <!--Campo para ocultar y aparecer el sector ficha contrato y solicitudes activas-->
 <script>

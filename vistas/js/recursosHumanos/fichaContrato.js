@@ -1,6 +1,9 @@
 $(document).ready(function () {
     cargarDatosTabla();
 
+    //carga la empresa
+    empresaAgregar();
+
 });
 
 function cargarDatosTabla() {
@@ -81,3 +84,23 @@ function cargarDatosTabla() {
     });
 
 }
+
+function empresaAgregar(){
+    $('#empresaAgregar').empty();
+    $('#empresaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/empresa/funListar.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+            }
+            $('#empresaAgregar').append(listaEmpresa);
+        }        
+    });
+  }
