@@ -33,13 +33,10 @@
         <div class="form-group col-sm-9 col-xs-12 ">
           <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm" name="filtradoDinamico" id="filtradoDinamico" autocomplete="off" placeholder="Filtrado General ...">
         </div>
-
-
       </div>
 
       <div class="box-body">
-
-        <div id="div1">
+        <div id="div1" class="table-responsive">
           <table class="table table-bordered table-striped dt-responsive" id="tabla" width="100%" style="text-align: center;">
             <thead>
               <tr>
@@ -67,20 +64,15 @@
                 <th>
                   <center> Estado</center>
                 </th>
-
               </tr>
             </thead>
-
-            <tbody></tbody>
+            <tbody>
+            </tbody>
           </table>
         </div>
-
       </div>
-
     </div>
-
   </section>
-
 </div>
 
 <!--=====================================
@@ -662,59 +654,3 @@ MODAL VER MAS
     }
   }
 </script>
-
-<style>
-  .agregar-boton {
-
-    border-color: #f46717;
-    max-width: 100px;
-    margin-top: 100px;
-    /* Alineado con la tabla */
-    margin-left: 15px;
-  }
-
-  .table-container {
-    float: right;
-    width: 60%;
-    margin-top: -35px;
-    position: static;
-  }
-
-  .table-responsive {
-    max-height: 100px;
-    overflow-y: auto;
-    width: 133%;
-    /* Cambiado para que use el ancho del contenedor padre */
-    margin-left: -180px;
-  }
-
-  /* Mantener los estilos de la tabla igual */
-  .table-bordes th,
-  .table-bordes td,
-  .table-bordes {
-    border: 0.2px solid #111 !important;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .table-bordes th:nth-child(1),
-  .table-bordes td:nth-child(1) {
-    width: 10%;
-    margin-left: 15px;
-  }
-
-  .table-bordes th:nth-last-child(2),
-  .table-bordes td:nth-child(2) {
-    width: 30%;
-  }
-
-  .table-bordes th:nth-child(3),
-  .table-bordes td:nth-child(3) {
-    width: 40%;
-  }
-
-  .table-bordes th:nth-child(4),
-  .table-bordes td:nth-child(4) {
-    width: 20%;
-  }
-</style>

@@ -69,7 +69,7 @@
                 <div class="table-responsive">
                   <div class="box-body">
                     <div id="lista">
-                      <table class="table table-bordered table-striped dt-responsive" id="" width="100%" style="text-align: center;">
+                      <table class="table table-bordered table-striped dt-responsive" id="listaSolicitud" width="100%" style="text-align: center;">
                         <thead>
                           <tr>
                             <th style="width:120px">
@@ -137,7 +137,7 @@
     text-decoration: underline;
    }
 </style>
-  </style>
+  
 </div>
 
 <script src="vistas/js/recursosHumanos/solicitudContratacion.js"></script>
