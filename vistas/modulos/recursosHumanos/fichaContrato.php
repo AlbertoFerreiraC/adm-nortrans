@@ -114,6 +114,65 @@
           </div>
         </div>
       </div>
+    
+      <div class="panel-group" id="panelFichaContrato">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="padding: 1px;">
+            <h4 class="panel-panel-fichaContrato-link">
+              <a data-toggle="collapse" href="#fichaContrato_content"
+                class="panel-fichaContrato-link" aria-expanded="true">Listas de Ficha Contrato</a>
+            </h4>
+          </div>
+
+          <div id="fichaContrato_content" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="table-container">
+                <div class="table-responsive">
+                  <div class="box-body">
+                    <div id="ficha">
+                      <table class="table table-bordered table-striped dt-responsive" id="fichaContrato" width="100%" style="text-align: center;">
+                        <thead>
+                          <tr>
+                            <th style="width:120px">
+                              <center>N° Ficha</center>
+                            </th>
+                            <th>
+                              <center>Empresa</center>
+                            </th>
+                            <th>
+                              <center>Rut</center>
+                            </th>
+                            <th>
+                              <center>Nombre</center>
+                            </th>
+                            <th>
+                              <center>Fecha Contratación</center>
+                            </th>
+                            <th>
+                              <center>Tipo Contrato</center>
+                            </th>
+                            <th>
+                              <center>Tipo Turno</center>
+                            </th>
+                            <th>
+                              <center>Editar</center>
+                            </th>
+                            <th>
+                              <center>Terminar</center>
+                            </th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
