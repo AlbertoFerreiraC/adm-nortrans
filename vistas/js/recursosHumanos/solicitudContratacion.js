@@ -341,8 +341,8 @@ function obtenerDatosParaVerMas(valor) {
                 $("#observacionPruebaConduccionVer").val(response[i].observacionPruebaConduccion);
 
                 //--------------------------
-                $('#licenciaVerMas option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
-                $('#tipocontratoVerMas option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+                $('#licenciaVer option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
+                $('#tipocontratoVer option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
 
 
             }
@@ -377,7 +377,7 @@ function modificarDatos() {
     datos.append("remuneracion", $("#remuneracionModificar").val());
     datos.append("comentarioGeneral", $("#comentarioModificar").val());
     datos.append("motivo", $("#motivoModificar").val());
-    datos.append("tipoContrato", $("#tipocontratoModificar").val());
+    datos.append("tipo_contrato", $("#tipocontratoModificar").val());
     datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
     datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
     datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());

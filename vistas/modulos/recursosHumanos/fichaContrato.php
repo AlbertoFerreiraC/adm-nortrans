@@ -114,7 +114,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="panel-group" id="panelFichaContrato">
         <div class="panel panel-default">
           <div class="panel-heading" style="padding: 1px;">
@@ -160,7 +160,7 @@
                             <th>
                               <center>Terminar</center>
                             </th>
-                            
+
                           </tr>
                         </thead>
                         <tbody></tbody>
@@ -181,22 +181,46 @@
     #lista table {
       font-size: 10px;
     }
+
     #lista th {
       font-size: 13px;
     }
+
     #lista td {
       font-size: 15px;
     }
-  .panel-listaSolicitudActivas-link:focus,
-  .panel-listaSolicitudActivas-link:active {
-    text-decoration: underline;
-   }
-   .panel-opcion-link:focus,
-   .panel-opcion-link:active {
-    text-decoration: underline;
-   }
-</style>
-  
+
+    .panel-listaSolicitudActivas-link:focus,
+    .panel-listaSolicitudActivas-link:active {
+      text-decoration: underline;
+    }
+
+    .panel-opcion-link:focus,
+    .panel-opcion-link:active {
+      text-decoration: underline;
+    }
+  </style>
+
 </div>
 
 <script src="vistas/js/recursosHumanos/solicitudContratacion.js"></script>
+
+  <!--Campo para ocultar y aparecer el sector ficha contrato y solicitudes activas-->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnListaFichaContrato = document.getElementById("btnListaFichaContrato")
+    const btnListaSolicitudes = document.getElementById("btnListaSolicitudes")
+    const panelFichaContrato = document.getElementById("panelFichaContrato")
+    const panelListaSolicitudActivas = document.getElementById("panelListaSolicitudActivas")
+    panelFichaContrato.style.display = "none"
+    panelListaSolicitudActivas.style.display = "block"
+    btnListaFichaContrato.addEventListener("click", () => {
+      panelFichaContrato.style.display = "block"
+      panelListaSolicitudActivas.style.display = "none"
+    })
+    btnListaSolicitudes.addEventListener("click", () => {
+      panelListaSolicitudActivas.style.display = "block"
+      panelFichaContrato.style.display = "none"
+    })
+  })
+</script>
