@@ -174,6 +174,7 @@ function cargarDatosTabla(){
 
 function agregarDatos(){
       var datos = new FormData();
+     // var idusuario = $("#idUsuario").val();
           datos.append("rut", $("#rutAgregar").val());
           datos.append("fechaNacimiento", $("#fechaNacimientoAgregar").val());
           datos.append("genero", $("#generoAgregar").val());

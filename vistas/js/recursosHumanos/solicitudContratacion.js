@@ -167,7 +167,7 @@ function cargarDatosTabla() {
     }).fail(function () {
         swal({
             type: "error",
-            title: "Ha ocurrido un error al cargar la lista!!!",
+            title: "Ha ocurrido un error al cargar la lista",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
