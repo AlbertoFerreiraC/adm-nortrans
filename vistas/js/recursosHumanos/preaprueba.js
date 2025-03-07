@@ -99,7 +99,7 @@ function cargarDatosTabla() {
                 })
 
                 $(".btnverMas").click(function () {
-                    obtenerDatosParaVerMas(this.id)
+                    obtenerDatosParaVerMasPreprueba(this.id)
                 })
             } else {
                 $("#tabla tbody").append(
@@ -240,6 +240,63 @@ function modificarDatos() {
     });
 }
 
+function obtenerDatosParaVerMasPreprueba(valor) {
+
+    var params = {
+        "id": valor
+    };
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                $("#divisionVer").val(response[i].division);
+                cargoVerMas(response[i].cargo); //listo
+                empresaVerMas(response[i].empresa); //listo
+                CentroDeCostoVerMas(response[i].CentroDeCosto); // listo
+                equipoVerMas(response[i].tipoBus); // listo
+                turnoVerMas(response[i].turnos_laborales); //listo
+                CentroDeCostoVerMas(response[i].centro_de_costo, response[i].empresa); //listo
+                apruebaVerMas(response[i].aprueba); //verificar
+                preapruebaVerMas(response[i].pre_aprueba); //verificar
+
+
+                $('#motivoVer option[value="' + response[i].motivo + '"]').attr("selected", true); //listo
+                $('#divisionVer option[value="' + response[i].division + '"]').attr("selected", true);//verificar
+                $("#cantidadVer").val(response[i].cantidad_solicitada);
+                $("#fecharequeridaVer").val(response[i].fecha_requerida);
+                $("#fechaterminoVerMas").val(response[i].fecha_termino);
+                $("#remuneracionVer").val(response[i].remuneracion);
+                $("#comentarioVer").val(response[i].comentario_general);
+
+                $("#observacionEntrevistaPsicolaboralVer").val(response[i].observacionEntrevistaPsicolaboral);
+                $("#observacionEntrevistaTecnicaVer").val(response[i].observacionEntrevistaTecnica);
+                $("#observacionPruebaConduccionVer").val(response[i].observacionPruebaConduccion);
+
+                //--------------------------
+                $('#licenciaVer option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
+                $('#tipocontratoVer option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+
+                $("#comentarioPreapruebaVer").val(response[i].observacion_pre_aprobacion);
+
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al traer los datos solicitados",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
 
 // INCIO CARGA SELECT "MODIFICAR"
 function cargoModificar(id) {

@@ -198,8 +198,8 @@ MODAL VER MAS
                                 </div>
 
                                 <div class="form-group col-sm-4 col-xs-12">
-                                    <label for="comentarioPreaprueba">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                    <textarea class="form-control input-md cajatexto" name="comentarioPreaprueba" id="comentarioPreaprueba" rows="1" disabled></textarea>
+                                    <label for="comentarioPreapruebaVer">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                    <textarea class="form-control input-md cajatexto" name="comentarioPreapruebaVer" id="comentarioPreapruebaVer" rows="1" disabled></textarea>
                                 </div>
 
                                 <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 12px; float: right; width: 90px;" id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>

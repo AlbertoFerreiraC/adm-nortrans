@@ -1,6 +1,40 @@
 $(document).ready(function () {
     cargarDatosTabla();
 
+    $('#btnPreAprobar').click(function () {
+        if ($("#motivoModificar").val() != "" &&
+            $("#divisionModificar").val() != "" &&
+            $("#cargoModificar").val() != "" &&
+            $("#razonModificar").val() != "" &&
+            $("#centrocostoModificar").val() != "-" &&
+            $("#cantidadModificar").val() != "-" &&
+            $("#equipoModificar").val() != "" &&
+            $("#licenciaModificar").val() != "-" &&
+            $("#tipoturnoModificar").val() != "-" &&
+            $("#tipocontratoModificar").val() != "-" &&
+            $("#fecharequeridaModificar").val() != "-" &&
+            $("#remuneracionModificar").val() != "-" &&
+            $("#requisitoseleccionModificar").val() != "-" &&
+            $("#observacionModificar").val() != "-" &&
+            $("#preapruebaModificar").val() != "-" &&
+            $("#apruebaModificar").val() != "-" &&
+            $("#comentarioModificar").val() != "-" &&
+            $("#preapruebaComentarioMod").val() != "-" &&
+            $("#fechaPreaprobacion").val() != "-" ) {
+
+            $("#fechaAprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' ')); //fecha actual del sistema
+
+            modificarDatos();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+
 });
 
 function cargarDatosTabla() {
@@ -65,7 +99,7 @@ function cargarDatosTabla() {
                 })
 
                 $(".btnverMas").click(function () {
-                    obtenerDatosParaVerMas(this.id)
+                    obtenerDatosParaVerMasAprueba(this.id)
                 })
             } else {
                 $("#tabla tbody").append(
@@ -121,6 +155,11 @@ function obtenerDatosParaModificar(valor) {
 
                 
                 $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
+                
+                $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
+                $("#fechaPreaprobacion").val(response[i].fecha_pre_aperobacion);
+
+                $("#apruebaComentarioMod").val(response[i].observacion_aprobacion);
 
             }
 
@@ -136,6 +175,139 @@ function obtenerDatosParaModificar(valor) {
 
 }
 
+function modificarDatos() {
+    var datos = new FormData();
+    datos.append("idcontratacion", $("#idModificar").val());
+    datos.append("cargo", $("#cargoModificar").val());
+    datos.append("empresa", $("#empresaModificar").val());
+    datos.append("centroDeCosto", $("#centroDecostoModificar").val());
+    datos.append("turnosLaborales", $("#tipoturnoModificar").val());
+    datos.append("tipoBus", $("#equipoModificar").val());
+    datos.append("preAprueba", $("#preapruebaModificar").val());
+    datos.append("aprueba", $("#apruebaModificar").val());
+    datos.append("division", $("#divisionModificar").val());
+    datos.append("cantidadSolicitada", $("#cantidadModificar").val());
+    datos.append("licenciaDeConducir", $("#licenciaModificar").val());
+    datos.append("fechaRequerida", $("#fecharequeridaModificar").val());
+    datos.append("fechaTermino", $("#fechaterminoModificar").val());
+    datos.append("remuneracion", $("#remuneracionModificar").val());
+    datos.append("comentarioGeneral", $("#comentarioModificar").val());
+    datos.append("motivo", $("#motivoModificar").val());
+    datos.append("tipo_contrato", $("#tipocontratoModificar").val());
+    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
+    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
+    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
+    datos.append("observacion_pre_aprobacion", $("#preapruebaComentarioMod").val());
+    datos.append("fecha_pre_aperobacion", $("#fechaPreaprobacion").val());
+    
+    datos.append("fecha_aprobacion", $("#fechaAprobacion").val());
+    datos.append("observacion_aprobacion", $("#apruebaComentarioMod").val());
+
+
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funModificar.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro modificado con éxito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });
+            } else if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la modificación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            } else if (response['mensaje'] === "repetido") {
+                swal({
+                    type: "error",
+                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la modificación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+}
+
+function obtenerDatosParaVerMasAprueba(valor) {
+
+    var params = {
+        "id": valor
+    };
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                $("#divisionVer").val(response[i].division);
+                cargoVerMas(response[i].cargo); //listo
+                empresaVerMas(response[i].empresa); //listo
+                CentroDeCostoVerMas(response[i].CentroDeCosto); // listo
+                equipoVerMas(response[i].tipoBus); // listo
+                turnoVerMas(response[i].turnos_laborales); //listo
+                CentroDeCostoVerMas(response[i].centro_de_costo, response[i].empresa); //listo
+                apruebaVerMas(response[i].aprueba); //verificar
+                preapruebaVerMas(response[i].pre_aprueba); //verificar
+
+
+                $('#motivoVer option[value="' + response[i].motivo + '"]').attr("selected", true); //listo
+                $('#divisionVer option[value="' + response[i].division + '"]').attr("selected", true);//verificar
+                $("#cantidadVer").val(response[i].cantidad_solicitada);
+                $("#fecharequeridaVer").val(response[i].fecha_requerida);
+                $("#fechaterminoVerMas").val(response[i].fecha_termino);
+                $("#remuneracionVer").val(response[i].remuneracion);
+                $("#comentarioVer").val(response[i].comentario_general);
+
+                $("#observacionEntrevistaPsicolaboralVer").val(response[i].observacionEntrevistaPsicolaboral);
+                $("#observacionEntrevistaTecnicaVer").val(response[i].observacionEntrevistaTecnica);
+                $("#observacionPruebaConduccionVer").val(response[i].observacionPruebaConduccion);
+
+                //--------------------------
+                $('#licenciaVer option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
+                $('#tipocontratoVer option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
+
+                $("#preapruebaComentarioVer").val(response[i].observacion_pre_aprobacion);
+                $("#fechaPreaprobacionVer").val(response[i].fecha_pre_aperobacion);
+                
+                $("#apruebaComentarioVer").val(response[i].observacion_aprobacion);
+
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al traer los datos solicitados",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
 
 // INCIO CARGA SELECT "MODIFICAR"
 function cargoModificar(id) {
