@@ -110,37 +110,54 @@
 
     <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
 
-<section class="content">
-    <div class="box">
-        <div class="panel-group" id="panelRequisitos">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="padding: 1px;">
-                    <h4 class="panel-requisitos">
-                        <a data-toggle="collapse" href="#panelRequisitos_content" class="panel-requisitos-link" aria-expanded="true">
-                            Requisitos Solicitados
-                        </a>
-                    </h4>
-                </div>
+    <section class="content">
+        <div class="box">
+            <div class="panel-group" id="panelRequisitos">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="padding: 1px;">
+                        <h4 class="panel-requisitos">
+                            <a data-toggle="collapse" href="#panelRequisitos_content" class="panel-requisitos-link" aria-expanded="true">
+                                Requisitos Solicitados
+                            </a>
+                        </h4>
+                    </div>
 
-                <div class="modal-body">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                                <label for="requiSelec">Requisito de Selección</label>
-                                <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
-                            </div>
+                    <div class="modal-body">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="form-group col-sm-3 col-xs-12">
+                                    <label for="requiSelec">Requisito de Selección</label>
+                                    <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
+                                </div>
 
-                            <div class="form-group col-sm-3 col-xs-12">
-                                <label for="comentarioRequisito">Comentario:</label><span></span>
-                                <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
-                            </div>
-                            
-                            <div class="form-group col-sm-3 col-xs-12">
-                                <label for="btnSeleccionar">Seleccionar Archivo</label>
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="btnSeleccionar">
-                                        <i class="fa fa-search" aria-hidden="true"></i> Seleccionar
-                                    </button>
+                                <div class="form-group col-sm-3 col-xs-12">
+                                    <label for="comentarioRequisito">Comentario:</label><span></span>
+                                    <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
+                                </div>
+
+                                <div class="form-group col-sm-3 col-xs-12">
+                                    <label for="btnSeleccionar">Seleccionar Archivo</label>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" id="btnSeleccionar">
+                                            <i class="fa fa-search" aria-hidden="true"></i> Seleccionar
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-container">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordes" id="tablaRequisitos">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Id Tipo Requisito</th>
+                                                    <th>Documento</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -148,5 +165,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>

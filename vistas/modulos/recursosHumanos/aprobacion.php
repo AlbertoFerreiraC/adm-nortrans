@@ -212,7 +212,7 @@ MODAL VER MAS
                   <textarea class="form-control input-md cajatexto" id="apruebaComentarioVer" name="apruebaComentarioVer" rows="1" disabled></textarea>
                 </div>
 
-                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 12px; float: right; width: 90px;" id="btnApruebaSalir">
+                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 10px; float: right; width: 90px;" id="btnApruebaSalir" data-dismiss="modal">
                   <i class="fa fa-hdd-o" aria-hidden="true"></i>
                   Salir
                 </button>
@@ -220,14 +220,6 @@ MODAL VER MAS
               </div>
             </div>
           </div>
-        </div>
-
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
         </div>
 
       </form>
@@ -407,23 +399,11 @@ MODAL EDITAR TAREA
 
                   <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
 
-                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 12px; float: right; width: 90px;" id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
+                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 12px; float: right; width: 90px;" id="btnModificar" data-dismiss="modal" ><i class="fa fa-hdd-o"  aria-hidden="true"></i>Salir</button>
 
                 </div>
               </div>
             </div>
-          </div>
-
-          <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-          <div class="modal-footer">
-
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-            <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Modificar Registro</button>
-
           </div>
 
       </form>
