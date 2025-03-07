@@ -196,6 +196,19 @@ MODAL VER MAS
                   <label for="apruebaVer">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                   <select class="form-control input-md cajatexto" id="apruebaVer" name="apruebaVer" disabled></select>
                 </div>
+
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="comentarioPreaprueba">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <textarea class="form-control input-md cajatexto" name="comentarioPreaprueba" id="comentarioPreaprueba" rows="1" disabled></textarea>
+                </div>
+
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="comentarioAprueba">Comentario Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                  <textarea class="form-control input-md cajatexto" name="comentarioAprueba" id="comentarioAprueba" rows="1" disabled></textarea>
+                </div>
+
+                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 12px; float: right; width: 90px;" id="btnApruebaSalir"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
+
               </div>
             </div>
           </div>
@@ -364,6 +377,22 @@ MODAL EDITAR TAREA
                     <label for="apruebaModificar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                     <select class="form-control input-md cajatexto" id="apruebaModificar" name="apruebaModificar"></select>
                   </div>
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="modiicarComentarioPreaprueba">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                    <textarea class="form-control input-md cajatexto" id="modiicarComentarioPreaprueba" name="modiicarComentarioPreaprueba" rows="1"></textarea>
+                  </div>
+
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="modiicarComentarioAprueba">Comentario Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                    <textarea class="form-control input-md cajatexto" id="modiicarComentarioAprueba" name="modiicarComentarioAprueba" rows="1"></textarea>
+                  </div>
+
+                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
+
+                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
+
+                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 12px; float: right; width: 90px;" id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
+
                 </div>
               </div>
             </div>
