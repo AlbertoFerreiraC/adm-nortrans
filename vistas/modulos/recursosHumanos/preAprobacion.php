@@ -361,13 +361,15 @@ MODAL EDITAR TAREA
                                         <select class="form-control input-md cajatexto" id="apruebaModificar" name="apruebaModificar"></select>
                                     </div>
 
+                                    <input type="hidden" id="fechaPreaprobacion" name="fechaPreaprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>">
+
                                     <div class="form-group col-sm-4 col-xs-12">
-                                        <label for="modiicarComentarioPreaprueba">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                        <textarea class="form-control input-md cajatexto" id="modiicarComentarioPreaprueba" name="modiicarComentarioPreaprueba" rows="1"></textarea>
+                                        <label for="preapruebaComentarioMod">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                        <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="1"></textarea>
                                     </div>
-
+                                    <!--btnPreRechazar-->
                                     <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
-
+                                    <!--btnPreAprobar-->
                                     <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
 
                                     <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 12px; float: right; width: 90px;" id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>

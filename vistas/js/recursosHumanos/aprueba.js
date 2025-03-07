@@ -119,6 +119,9 @@ function obtenerDatosParaModificar(valor) {
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
 
+                
+                $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
+
             }
 
         }

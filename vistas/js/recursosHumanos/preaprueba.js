@@ -2,6 +2,39 @@ $(document).ready(function () {
     //preapruebaSelect();
     cargarDatosTabla();
 
+    $('#btnPreAprobar').click(function () {
+        if ($("#motivoModificar").val() != "" &&
+            $("#divisionModificar").val() != "" &&
+            $("#cargoModificar").val() != "" &&
+            $("#razonModificar").val() != "" &&
+            $("#centrocostoModificar").val() != "-" &&
+            $("#cantidadModificar").val() != "-" &&
+            $("#equipoModificar").val() != "" &&
+            $("#licenciaModificar").val() != "-" &&
+            $("#tipoturnoModificar").val() != "-" &&
+            $("#tipocontratoModificar").val() != "-" &&
+            $("#fecharequeridaModificar").val() != "-" &&
+            $("#remuneracionModificar").val() != "-" &&
+            $("#requisitoseleccionModificar").val() != "-" &&
+            $("#observacionModificar").val() != "-" &&
+            $("#preapruebaModificar").val() != "-" &&
+            $("#apruebaModificar").val() != "-" &&
+            $("#comentarioModificar").val() != "-" &&
+            $("#preapruebaComentarioMod").val() != "-") {
+
+            $("#fechaPreaprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' ')); //fecha actual del sistema
+
+            modificarDatos();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+
 });
 
 function cargarDatosTabla() {
@@ -120,6 +153,9 @@ function obtenerDatosParaModificar(valor) {
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
 
+
+                $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
+
             }
 
         }
@@ -132,6 +168,76 @@ function obtenerDatosParaModificar(valor) {
         });
     });
 
+}
+
+function modificarDatos() {
+    var datos = new FormData();
+    datos.append("idcontratacion", $("#idModificar").val());
+    datos.append("cargo", $("#cargoModificar").val());
+    datos.append("empresa", $("#empresaModificar").val());
+    datos.append("centroDeCosto", $("#centroDecostoModificar").val());
+    datos.append("turnosLaborales", $("#tipoturnoModificar").val());
+    datos.append("tipoBus", $("#equipoModificar").val());
+    datos.append("preAprueba", $("#preapruebaModificar").val());
+    datos.append("aprueba", $("#apruebaModificar").val());
+    datos.append("division", $("#divisionModificar").val());
+    datos.append("cantidadSolicitada", $("#cantidadModificar").val());
+    datos.append("licenciaDeConducir", $("#licenciaModificar").val());
+    datos.append("fechaRequerida", $("#fecharequeridaModificar").val());
+    datos.append("fechaTermino", $("#fechaterminoModificar").val());
+    datos.append("remuneracion", $("#remuneracionModificar").val());
+    datos.append("comentarioGeneral", $("#comentarioModificar").val());
+    datos.append("motivo", $("#motivoModificar").val());
+    datos.append("tipo_contrato", $("#tipocontratoModificar").val());
+    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
+    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
+    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
+    datos.append("observacion_pre_aprobacion", $("#preapruebaComentarioMod").val());
+    datos.append("fecha_pre_aperobacion", $("#fechaPreaprobacion").val());
+
+
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funModificar.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro modificado con éxito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });
+            } else if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la modificación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            } else if (response['mensaje'] === "repetido") {
+                swal({
+                    type: "error",
+                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la modificación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
 }
 
 
