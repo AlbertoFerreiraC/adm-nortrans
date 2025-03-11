@@ -348,170 +348,170 @@
                             <button type="button" class="btn btn-primary" id="btnGrabarFicha">
                                 <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
                             </button>
-    
-<div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-<section class="content">
-    <div class="box">
-        <div class="panel-group" id="panelDatos">
-            <div class="panel panel-default">
-                <div class="modal-body">
-                    <div class="button-container">
-                        <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                            <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                        </button>
 
-                        <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
-                            <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
-                        </button>
 
-                        <button type="button" class="btn btn-primary" id="btnListadoFicha">
-                            <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
-                        </button>
+                        </div>
                     </div>
+                </div>
+    </section>
+    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
+    <section class="content">
+        <div class="box">
+            <div class="panel-group" id="panelDatos">
+                <div class="panel panel-default">
+                    <div class="modal-body">
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" id="btnGrabarFicha">
+                                <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
+                            </button>
 
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
-                            document.getElementById('btnGrabarFicha').style = 'background-color: #10b981; border-color: #10b981; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                            <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
+                                <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
+                            </button>
 
-                            document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
-                            document.getElementById('btnListadoSolicitud').style = 'background-color: #f59e0b; border-color: #f59e0b; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                            <button type="button" class="btn btn-primary" id="btnListadoFicha">
+                                <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
+                            </button>
+                        </div>
 
-                            document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
-                            document.getElementById('btnListadoFicha').style = 'background-color: #6366f1; border-color: #6366f1; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
-
-                            const buttons = document.querySelectorAll('.btn');
-                            buttons.forEach(button => {
-                                button.addEventListener('mouseover', function() {
-                                    if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#059669';
-                                    if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#d97706';
-                                    if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#4f46e5';
-                                    this.style.transform = 'translateY(-2px)';
-                                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-                                });
-
-                                    button.addEventListener('mouseout', function() {
-                                        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
-                                        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
-                                        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
-                                        this.style.transform = '';
-                                        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                                    });
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</div>
 
-    <script>
-        document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
-            window.location.href = "fichaContrato?view=listaSolicitudes";
-        });
-    </script>
+<style>
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
 
-    <script>
-        document.getElementById("btnListadoFicha").addEventListener("click", function() {
-            window.location.href = "fichaContrato";
-        });
-    </script>
-                                button.addEventListener('mouseout', function() {
-                                    if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
-                                    if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
-                                    if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
-                                    this.style.transform = '';
-                                    this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                                });
-                            });
-                        });
-                    </script>
-
-                    <style>
-                        .button-container {
-                            display: flex;
-                            flex-wrap: wrap;
-                            gap: 20px;
-                            justify-content: center;
-                        }
-
-                        @media (max-width: 600px) {
-                            .btn {
-                                width: 100%;
-                                text-align: center;
-                            }
-                        }
-                    </style>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-    <script>
-        document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
-            window.location.href = "fichaContrato?view=listaSolicitudes";
-        });
-    </script>
-
-    <script>
-        document.getElementById("btnListadoFicha").addEventListener("click", function() {
-            window.location.href = "fichaContrato";
-        });
-    </script>
-
-    <style>
-        .agregar-boton {
-
-            border-color: #f46717;
-            max-width: 100px;
-            margin-top: 100px;
-            margin-left: 8px;
-        }
-
-        .table-container {
-            float: left;
-            width: 60%;
-            margin-top: 35px;
-            position: static;
-        }
-
-        .table-responsive {
-            max-height: 80px;
-            overflow-y: auto;
-            width: 80%;
-            margin-left: 50px;
-        }
-
-        .table-bordes th,
-        .table-bordes td,
-        .table-bordes {
-            border: 0.2px solid #111 !important;
+    @media (max-width: 600px) {
+        .btn {
+            width: 100%;
             text-align: center;
-            padding: 10px;
         }
+    }
+</style>
 
-        .table-bordes th:nth-child(1),
-        .table-bordes td:nth-child(1) {
-            width: 10%;
-            margin-left: 10px;
-        }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
+        document.getElementById('btnGrabarFicha').style = 'background-color: #10b981; border-color: #10b981; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-        .table-bordes th:nth-last-child(2),
-        .table-bordes td:nth-child(2) {
-            width: 10%;
-        }
+        document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
+        document.getElementById('btnListadoSolicitud').style = 'background-color: #f59e0b; border-color: #f59e0b; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-        .table-bordes th:nth-child(3),
-        .table-bordes td:nth-child(3) {
-            width: 10%;
-        }
+        document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
+        document.getElementById('btnListadoFicha').style = 'background-color: #6366f1; border-color: #6366f1; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-        .table-bordes th:nth-child(4),
-        .table-bordes td:nth-child(4) {
-            width: 20%;
-        }
-    </style>
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', function() {
+                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#059669';
+                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#d97706';
+                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#4f46e5';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+            });
+
+            button.addEventListener('mouseout', function() {
+                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
+                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
+                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
+                this.style.transform = '';
+                this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            });
+        });
+    });
+</script>
+
+<script>
+    document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
+        window.location.href = "fichaContrato?view=listaSolicitudes";
+    });
+</script>
+
+<script>
+    document.getElementById("btnListadoFicha").addEventListener("click", function() {
+        window.location.href = "fichaContrato";
+    });
+</script>
+
+<script>
+    button.addEventListener('mouseout', function() {
+        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
+        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
+        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
+        this.style.transform = '';
+        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+    });
+</script>
+
+<script>
+    document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
+        window.location.href = "fichaContrato?view=listaSolicitudes";
+    });
+</script>
+
+<script>
+    document.getElementById("btnListadoFicha").addEventListener("click", function() {
+        window.location.href = "fichaContrato";
+    });
+</script>
+
+<style>
+    .agregar-boton {
+
+        border-color: #f46717;
+        max-width: 100px;
+        margin-top: 100px;
+        margin-left: 8px;
+    }
+
+    .table-container {
+        float: left;
+        width: 60%;
+        margin-top: 35px;
+        position: static;
+    }
+
+    .table-responsive {
+        max-height: 80px;
+        overflow-y: auto;
+        width: 80%;
+        margin-left: 50px;
+    }
+
+    .table-bordes th,
+    .table-bordes td,
+    .table-bordes {
+        border: 0.2px solid #111 !important;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .table-bordes th:nth-child(1),
+    .table-bordes td:nth-child(1) {
+        width: 10%;
+        margin-left: 10px;
+    }
+
+    .table-bordes th:nth-last-child(2),
+    .table-bordes td:nth-child(2) {
+        width: 10%;
+    }
+
+    .table-bordes th:nth-child(3),
+    .table-bordes td:nth-child(3) {
+        width: 10%;
+    }
+
+    .table-bordes th:nth-child(4),
+    .table-bordes td:nth-child(4) {
+        width: 20%;
+    }
+</style>
