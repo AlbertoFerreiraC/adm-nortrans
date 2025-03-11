@@ -74,184 +74,183 @@
     </section>
 
 
-    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-
-    <section class="content">
-        <div class="box">
-            <div class="panel-group" id="panelDatos">
-                <div class="panel panel-default">
-                    <div class="modal-body">
-                        <div class="box-body">
-                            <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
-                                <label for="rutAgregar" class="text-center mb-2">Rut</label>
-                                <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
-                            </div>
-
-                            <div class="form-group col-sm-5 col-xs-12">
-                                <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
-                                    <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                                </button>
-                            </div>
-                            <div class="form-group col-sm-5 col-xs-12">
-                                <label for="nomSelec">Nombre</label>
-                                <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec">
-                            </div>
-
-                            <div class="form-group col-sm-5 col-xs-12">
-                                <label for="telSelec">Teléfono Propio</label>
-                                <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-
-    <section class="content">
-        <div class="box">
-            <!-- Navegación por pestañas -->
-            <ul class="nav nav-tabs" id="myTabs" role="tablist">
-                <li class="nav-item active">
-                    <a class="nav-link active" id="requisitos-tab" data-toggle="tab" href="#requisitos-content" role="tab">
-                        Requisitos solicitados
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos-content" role="tab">
-                        Datos constractuales
-                    </a>
-                </li>
-            </ul>
-
-            <!-- Contenido de las pestañas -->
-            <div class="tab-content" id="myTabContent">
-                <!-- Pestaña de Requisitos Solicitados -->
-                <div class="tab-pane fade in active" id="requisitos-content" role="tabpanel">
-                    <div class="panel-group" id="panelRequisitos">
-                        <div class="panel panel-default">
-                            <div class="modal-body">
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="form-group col-sm-3 col-xs-12">
-                                            <label for="requiSelec">Requisito de Selección</label>
-                                            <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
-                                        </div>
-
-                                        <div class="form-group col-sm-3 col-xs-12">
-                                            <label for="comentarioRequisito">Comentario:</label><span></span>
-                                            <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
-                                        </div>
-
-                                        <div class="form-group col-sm-3 col-xs-12">
-                                            <label for="btnSeleccionar">Seleccionar Archivo</label>
-                                            <div>
-                                                <button type="button" class="btn btn-primary" id="btnSeleccionar">
-                                                    <i class="fa fa-search" aria-hidden="true"></i> Seleccionar
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div class="table-container">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordes" id="tablaRequisitos">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th>Id Tipo Requisito</th>
-                                                            <th>Documento</th>
-                                                            <th>Eliminar</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                                    Mostrando registros del 0 al 0 de un total de 0 registros
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pestaña de Datos constractuales -->
-                <div class="tab-pane fade" id="datos-content" role="tabpanel">
+    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;">
+        <section class="content">
+            <div class="box">
+                <div class="panel-group" id="panelDatos">
                     <div class="panel panel-default">
                         <div class="modal-body">
                             <div class="box-body">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
-                                        <h4 class="panel-title">Contrato de trabajo</h4>
-                                    </div>
-                                    <div class="panel-body" style="padding: 15px;">
-                                        <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
-                                            <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                                        </button>
-                                    </div>
+                                <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
+                                    <label for="rutAgregar" class="text-center mb-2">Rut</label>
+                                    <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
                                 </div>
-                                <!-- Sección de Anexos -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
-                                        <h4 class="panel-title">Anexos</h4>
-                                    </div>
-                                    <div class="panel-body" style="padding: 15px;">
-                                        <!-- Formulario de Anexos -->
+
+                                <div class="form-group col-sm-5 col-xs-12">
+                                    <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
+                                        <i class="fa fa-search" aria-hidden="true"></i> Buscar
+                                    </button>
+                                </div>
+                                <div class="form-group col-sm-5 col-xs-12">
+                                    <label for="nomSelec">Nombre</label>
+                                    <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec">
+                                </div>
+
+                                <div class="form-group col-sm-5 col-xs-12">
+                                    <label for="telSelec">Teléfono Propio</label>
+                                    <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;">
+        <section class="content">
+            <div class="box">
+                <!-- Navegación por pestañas -->
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link active" id="requisitos-tab" data-toggle="tab" href="#requisitos-content" role="tab">
+                            Requisitos solicitados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos-content" role="tab">
+                            Datos constractuales
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Contenido de las pestañas -->
+                <div class="tab-content" id="myTabContent">
+                    <!-- Pestaña de Requisitos Solicitados -->
+                    <div class="tab-pane fade in active" id="requisitos-content" role="tabpanel">
+                        <div class="panel-group" id="panelRequisitos">
+                            <div class="panel panel-default">
+                                <div class="modal-body">
+                                    <div class="box-body">
                                         <div class="row">
                                             <div class="form-group col-sm-3 col-xs-12">
-                                                <label for="idAnexo">Id anexo</label>
-                                                <input type="text" class="form-control input-md cajatexto" id="idAnexo" name="idAnexo">
+                                                <label for="requiSelec">Requisito de Selección</label>
+                                                <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
                                             </div>
 
                                             <div class="form-group col-sm-3 col-xs-12">
-                                                <label for="tipoAnexo">Tipo Anexo</label>
-                                                <select class="form-control input-md cajatexto" id="tipoAnexo" name="tipoAnexo">
-                                                    <option value="">Seleccione...</option>
-                                                </select>
+                                                <label for="comentarioRequisito">Comentario:</label><span></span>
+                                                <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
                                             </div>
 
                                             <div class="form-group col-sm-3 col-xs-12">
-                                                <label for="fechaAnexo">Fecha Anexo</label>
-                                                <input type="date" class="form-control input-md cajatexto" id="fechaAnexo" name="fechaAnexo">
-                                            </div>
-
-                                            <div class="form-group col-sm-3 col-xs-12">
-                                                <label for="btnSeleccionarAnexo">Documento Anexo</label>
+                                                <label for="btnSeleccionar">Seleccionar Archivo</label>
                                                 <div>
-                                                    <button type="button" class="btn btn-primary" id="btnSeleccionarAnexo">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i> Selección
+                                                    <button type="button" class="btn btn-primary" id="btnSeleccionar">
+                                                        <i class="fa fa-search" aria-hidden="true"></i> Seleccionar
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Tabla de Anexos -->
-                                        <div style="margin-top: 20px;">
-                                            <table class="table" style="width: 50%; border-collapse: collapse; border: 1px solid #ddd;">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="padding: 8px; text-align: left;">Id Anexo</th>
-                                                        <th style="padding: 8px; text-align: left;">Tipo Anexo</th>
-                                                        <th style="padding: 8px; text-align: left; ">Fecha</th>
-                                                        <th style="padding: 8px; text-align: left;">Documento</th>
-                                                        <th style="padding: 8px; text-align: left;">Eliminar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                                Mostrando registros del 0 al 0 de un total de 0 registros
+                                            <div class="table-container">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordes" id="tablaRequisitos">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Id Tipo Requisito</th>
+                                                                <th>Documento</th>
+                                                                <th>Eliminar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                        Mostrando registros del 0 al 0 de un total de 0 registros
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña de Datos constractuales -->
+                    <div class="tab-pane fade" id="datos-content" role="tabpanel">
+                        <div class="panel panel-default">
+                            <div class="modal-body">
+                                <div class="box-body">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
+                                            <h4 class="panel-title">Contrato de trabajo</h4>
+                                        </div>
+                                        <div class="panel-body" style="padding: 15px;">
+                                            <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
+                                                <i class="fa fa-plus" aria-hidden="true"></i> Selección
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
+                                            <h4 class="panel-title">Anexos</h4>
+                                        </div>
+                                        <div class="panel-body" style="padding: 15px;">
+                                            <div class="row">
+                                                <div class="form-group col-sm-3 col-xs-12">
+                                                    <label for="idAnexo">Id anexo</label>
+                                                    <input type="text" class="form-control input-md cajatexto" id="idAnexo" name="idAnexo">
+                                                </div>
+
+                                                <div class="form-group col-sm-3 col-xs-12">
+                                                    <label for="tipoAnexo">Tipo Anexo</label>
+                                                    <select class="form-control input-md cajatexto" id="tipoAnexo" name="tipoAnexo">
+                                                        <option value="">Seleccione...</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-sm-3 col-xs-12">
+                                                    <label for="fechaAnexo">Fecha Anexo</label>
+                                                    <input type="date" class="form-control input-md cajatexto" id="fechaAnexo" name="fechaAnexo">
+                                                </div>
+
+                                                <div class="form-group col-sm-3 col-xs-12">
+                                                    <label for="btnSeleccionarAnexo">Documento Anexo</label>
+                                                    <div>
+                                                        <button type="button" class="btn btn-primary" id="btnSeleccionarAnexo">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i> Selección
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-container2">
+                                                <div class="table-responsive2">
+                                                    <table class="table table-bordes2" id="tablaAnexo">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Id Anexo</th>
+                                                                <th>Tipo Anexo</th>
+                                                                <th>Fecha</th>
+                                                                <th>Documento</th>
+                                                                <th>Eliminar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                        Mostrando registros del 0 al 0 de un total de 0 registros
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -261,167 +260,131 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <style>
-        /* Estilos para las pestañas */
-        .nav-tabs {
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 15px;
-        }
+    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;">
+        <section class="content">
+            <div class="box">
+                <div class="panel-group" id="panelDatos">
+                    <div class="panel panel-default">
+                        <div class="modal-body">
+                            <div class="button-container">
+                                <button type="button" class="btn btn-primary" id="btnGrabarFicha">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
+                                </button>
 
-        .nav-tabs>li {
-            float: left;
-            margin-bottom: -1px;
-        }
+                                <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
+                                </button>
 
-        .nav-tabs>li>a {
-            margin-right: 2px;
-            line-height: 1.42857143;
-            border: 1px solid transparent;
-            border-radius: 4px 4px 0 0;
-            padding: 10px 15px;
-            display: block;
-            text-decoration: none;
-        }
-
-        .nav-tabs>li.active>a,
-        .nav-tabs>li.active>a:focus,
-        .nav-tabs>li.active>a:hover {
-            color: #555;
-            cursor: default;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-bottom-color: transparent;
-        }
-
-        .nav-tabs>li>a:hover {
-            border-color: #eee #eee #ddd;
-        }
-
-        .tab-content>.tab-pane {
-            display: none;
-        }
-
-        .tab-content>.active {
-            display: block;
-        }
-
-        .fade {
-            opacity: 0;
-            transition: opacity 0.15s linear;
-        }
-
-        .fade.in {
-            opacity: 1;
-        }
-    </style>
-
-    <script>
-        // JavaScript mínimo para manejar las pestañas
-        $(document).ready(function() {
-            // Manejar el clic en las pestañas
-            $('#myTabs a').click(function(e) {
-                e.preventDefault();
-
-                // Desactivar todas las pestañas
-                $('#myTabs li').removeClass('active');
-                $('.tab-pane').removeClass('active in');
-
-                // Activar la pestaña seleccionada
-                $(this).parent('li').addClass('active');
-                var tabId = $(this).attr('href');
-                $(tabId).addClass('active in');
-            });
-        });
-    </script>
-
-
-    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-    <section class="content">
-        <div class="box">
-            <div class="panel-group" id="panelDatos">
-                <div class="panel panel-default">
-                    <div class="modal-body">
-                        <div style="display: flex; gap: 100px;">
-                            <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                                <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                            </button>
-
+                                <button type="button" class="btn btn-primary" id="btnListadoFicha">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
+                                </button>
+                            </div>
 
                         </div>
-                    </div>
-                </div>
-    </section>
-    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-    <section class="content">
-        <div class="box">
-            <div class="panel-group" id="panelDatos">
-                <div class="panel panel-default">
-                    <div class="modal-body">
-                        <div class="button-container">
-                            <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                                <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                            </button>
-
-                            <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
-                                <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
-                            </button>
-
-                            <button type="button" class="btn btn-primary" id="btnListadoFicha">
-                                <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
-                            </button>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
 
 <style>
-    .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
+    /* Estilos para las pestañas */
+    .nav-tabs {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 15px;
     }
 
-    @media (max-width: 600px) {
-        .btn {
-            width: 100%;
-            text-align: center;
-        }
+    .nav-tabs>li {
+        float: left;
+        margin-bottom: -1px;
+    }
+
+    .nav-tabs>li>a {
+        margin-right: 2px;
+        line-height: 1.42857143;
+        border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+        padding: 10px 15px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
+        color: #555;
+        cursor: default;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+    }
+
+    .nav-tabs>li>a:hover {
+        border-color: #eee #eee #ddd;
+    }
+
+    .tab-content>.tab-pane {
+        display: none;
+    }
+
+    .tab-content>.active {
+        display: block;
+    }
+
+    .fade {
+        opacity: 0;
+        transition: opacity 0.15s linear;
+    }
+
+    .fade.in {
+        opacity: 1;
     }
 </style>
 
 <script>
+    $(document).ready(function() {
+        $('#myTabs a').click(function(e) {
+            e.preventDefault();
+
+            $('#myTabs li').removeClass('active');
+            $('.tab-pane').removeClass('active in');
+
+            $(this).parent('li').addClass('active');
+            var tabId = $(this).attr('href');
+            $(tabId).addClass('active in');
+        });
+    });
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
-        document.getElementById('btnGrabarFicha').style = 'background-color: #10b981; border-color: #10b981; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        document.getElementById('btnGrabarFicha').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
         document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
-        document.getElementById('btnListadoSolicitud').style = 'background-color: #f59e0b; border-color: #f59e0b; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        document.getElementById('btnListadoSolicitud').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
         document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
-        document.getElementById('btnListadoFicha').style = 'background-color: #6366f1; border-color: #6366f1; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        document.getElementById('btnListadoFicha').style = 'background-color: #3c8dbc; border-color: #3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
             button.addEventListener('mouseover', function() {
-                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#059669';
-                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#d97706';
-                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#4f46e5';
+                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
                 this.style.transform = 'translateY(-2px)';
                 this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
             });
 
             button.addEventListener('mouseout', function() {
-                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
-                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
-                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
+                if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+                if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+                if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
                 this.style.transform = '';
                 this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
             });
@@ -443,9 +406,9 @@
 
 <script>
     button.addEventListener('mouseout', function() {
-        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
-        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
-        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
+        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
         this.style.transform = '';
         this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
     });
@@ -464,17 +427,9 @@
 </script>
 
 <style>
-    .agregar-boton {
-
-        border-color: #f46717;
-        max-width: 100px;
-        margin-top: 100px;
-        margin-left: 8px;
-    }
-
     .table-container {
         float: left;
-        width: 60%;
+        width: 100%;
         margin-top: 35px;
         position: static;
     }
@@ -513,5 +468,67 @@
     .table-bordes th:nth-child(4),
     .table-bordes td:nth-child(4) {
         width: 20%;
+    }
+
+    .table-container2 {
+        float: left;
+        width: 100%;
+        margin-top: 35px;
+        position: static;
+    }
+
+    .table-responsive2 {
+        max-height: 80px;
+        overflow-y: auto;
+        width: 80%;
+        margin-left: 50px;
+    }
+
+    .table-bordes2 th,
+    .table-bordes2 td,
+    .table-bordes2 {
+        border: 0.2px solid #111 !important;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .table-bordes2 th:nth-child(1),
+    .table-bordes2 td:nth-child(1) {
+        width: 10%;
+        margin-left: 10px;
+    }
+
+    .table-bordes2 th:nth-last-child(2),
+    .table-bordes2 td:nth-child(2) {
+        width: 5%;
+    }
+
+    .table-bordes2 th:nth-child(3),
+    .table-bordes2 td:nth-child(3) {
+        width: 20%;
+    }
+
+    .table-bordes2 th:nth-child(4),
+    .table-bordes2 td:nth-child(4) {
+        width: 20%;
+    }
+
+    .table-bordes2 th:nth-child(5),
+    .table-bordes2 td:nth-child(5) {
+        width: 20%;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 150px;
+        justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
     }
 </style>

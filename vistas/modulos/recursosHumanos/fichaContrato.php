@@ -37,7 +37,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i> Buscar
                 </button>
 
-                <button type="button" class="btn btn-primary" id="btnListaFichaContrato" style="background-color: #76D7C4;">
+                <button type="button" class="btn btn-primary" id="btnListaFichaContrato" style="background-color: #FF6600;">
                   <i class="fa fa-list" aria-hidden="true"></i> Lista de Ficha Contrato
                 </button>
 
