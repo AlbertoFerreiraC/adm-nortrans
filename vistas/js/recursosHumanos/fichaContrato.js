@@ -103,7 +103,7 @@ function empresaAgregar() {
 
 function funcionImprimir(id) {
     var contenido = '';
-    var fila = $('button[data-id="' + id + '"]').closest('tr'); // Obtener la fila correspondiente
+    var fila = $('button[data-id="' + id + '"]').closest('tr'); e
 
     fila.find('td').each(function () {
         contenido += $(this).text() + '\n';
