@@ -65,7 +65,6 @@
 						<li><a href="preAprobacion"><i class="fa fa-server"></i>Pre Aprobación Solicitud</a></li>
 						<li><a href="aprobacion"><i class="fa fa-server"></i>Aprobación Solicitud</a></li>
 						<li><a href="fichaContrato"><i class="fa fa-server"></i>Ficha de Contrato</a></li>
-						<li><a href="seleccionarFicha"><i class="fa fa-server"></i>Seleccionar Ficha</a></li>
 					</ul>
 				</li>
 

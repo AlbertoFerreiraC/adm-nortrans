@@ -171,8 +171,8 @@
                                                     </tbody>
                                                 </table>
                                                 <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                                Mostrando registros del 0 al 0 de un total de 0 registros
-                                            </div>
+                                                    Mostrando registros del 0 al 0 de un total de 0 registros
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -337,7 +337,7 @@
         });
     </script>
 
-    
+
     <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
     <section class="content">
         <div class="box">
@@ -393,6 +393,18 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
+            window.location.href = "fichaContrato?view=listaSolicitudes";
+        });
+    </script>
+
+    <script>
+        document.getElementById("btnListadoFicha").addEventListener("click", function() {
+            window.location.href = "fichaContrato";
+        });
+    </script>
 
     <style>
         .agregar-boton {

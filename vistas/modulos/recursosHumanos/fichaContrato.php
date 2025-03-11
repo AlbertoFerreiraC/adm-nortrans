@@ -201,22 +201,32 @@
 
 <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
-  <!--Campo para ocultar y aparecer el sector ficha contrato y solicitudes activas-->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const btnListaFichaContrato = document.getElementById("btnListaFichaContrato")
-    const btnListaSolicitudes = document.getElementById("btnListaSolicitudes")
-    const panelFichaContrato = document.getElementById("panelFichaContrato")
-    const panelListaSolicitudActivas = document.getElementById("panelListaSolicitudActivas")
-    panelFichaContrato.style.display = "none"
-    panelListaSolicitudActivas.style.display = "block"
+    const btnListaFichaContrato = document.getElementById("btnListaFichaContrato");
+    const btnListaSolicitudes = document.getElementById("btnListaSolicitudes");
+    const panelFichaContrato = document.getElementById("panelFichaContrato");
+    const panelListaSolicitudActivas = document.getElementById("panelListaSolicitudActivas");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const view = urlParams.get("view");
+
+    if (view === "listaSolicitudes") {
+      panelFichaContrato.style.display = "none";
+      panelListaSolicitudActivas.style.display = "block";
+    } else {
+      panelFichaContrato.style.display = "block";
+      panelListaSolicitudActivas.style.display = "none";
+    }
+
     btnListaFichaContrato.addEventListener("click", () => {
-      panelFichaContrato.style.display = "block"
-      panelListaSolicitudActivas.style.display = "none"
-    })
+      panelFichaContrato.style.display = "block";
+      panelListaSolicitudActivas.style.display = "none";
+    });
+
     btnListaSolicitudes.addEventListener("click", () => {
-      panelListaSolicitudActivas.style.display = "block"
-      panelFichaContrato.style.display = "none"
-    })
-  })
+      panelListaSolicitudActivas.style.display = "block";
+      panelFichaContrato.style.display = "none";
+    });
+  });
 </script>
