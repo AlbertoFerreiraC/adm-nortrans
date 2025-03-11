@@ -338,61 +338,79 @@
     </script>
 
     
-    <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
-    <section class="content">
-        <div class="box">
-            <div class="panel-group" id="panelDatos">
-                <div class="panel panel-default">
-                    <div class="modal-body">
-                        <div style="display: flex; gap: 100px;">
-                            <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                                <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                            </button>
+<div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"></div>
+<section class="content">
+    <div class="box">
+        <div class="panel-group" id="panelDatos">
+            <div class="panel panel-default">
+                <div class="modal-body">
+                    <div class="button-container">
+                        <button type="button" class="btn btn-primary" id="btnGrabarFicha">
+                            <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
+                        </button>
 
-                            <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
-                                <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
-                            </button>
+                        <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
+                            <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
+                        </button>
 
-                            <button type="button" class="btn btn-primary" id="btnListadoFicha">
-                                <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-primary" id="btnListadoFicha">
+                            <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
+                        </button>
+                    </div>
 
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                // Una línea para cada botón
-                                document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save', document.getElementById('btnGrabarFicha').style = 'background-color: #10b981; margin-right; border-color: #10b981; margin-right: 10px; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
+                            document.getElementById('btnGrabarFicha').style = 'background-color: #10b981; border-color: #10b981; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-                                document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt', document.getElementById('btnListadoSolicitud').style = 'background-color:hsl(38, 69.30%, 47.30%); border-color: #f59e0b; margin-right: 10px; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                            document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
+                            document.getElementById('btnListadoSolicitud').style = 'background-color: #f59e0b; border-color: #f59e0b; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-                                document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text', document.getElementById('btnListadoFicha').style = 'background-color: #6366f1; border-color: #6366f1; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                            document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
+                            document.getElementById('btnListadoFicha').style = 'background-color: #6366f1; border-color: #6366f1; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-                                // Añadir efecto hover (opcional)
-                                const buttons = document.querySelectorAll('.btn');
-                                buttons.forEach(button => {
-                                    button.addEventListener('mouseover', function() {
-                                        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#059669';
-                                        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#d97706';
-                                        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#4f46e5';
-                                        this.style.transform = 'translateY(-2px)';
-                                        this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-                                    });
+                            const buttons = document.querySelectorAll('.btn');
+                            buttons.forEach(button => {
+                                button.addEventListener('mouseover', function() {
+                                    if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#059669';
+                                    if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#d97706';
+                                    if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#4f46e5';
+                                    this.style.transform = 'translateY(-2px)';
+                                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+                                });
 
-                                    button.addEventListener('mouseout', function() {
-                                        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
-                                        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
-                                        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
-                                        this.style.transform = '';
-                                        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                                    });
+                                button.addEventListener('mouseout', function() {
+                                    if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#10b981';
+                                    if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#f59e0b';
+                                    if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#6366f1';
+                                    this.style.transform = '';
+                                    this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                                 });
                             });
-                        </script>
-                    </div>
+                        });
+                    </script>
+
+                    <style>
+                        .button-container {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 20px;
+                            justify-content: center;
+                        }
+
+                        @media (max-width: 600px) {
+                            .btn {
+                                width: 100%;
+                                text-align: center;
+                            }
+                        }
+                    </style>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <style>
         .agregar-boton {
