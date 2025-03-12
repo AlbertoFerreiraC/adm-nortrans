@@ -65,6 +65,21 @@
 						<li><a href="preAprobacion"><i class="fa fa-server"></i>Pre Aprobación Solicitud</a></li>
 						<li><a href="aprobacion"><i class="fa fa-server"></i>Aprobación Solicitud</a></li>
 						<li><a href="fichaContrato"><i class="fa fa-server"></i>Ficha de Contrato</a></li>
+						
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-wrench"></i>
+								<span>Consulta</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="datosLaboralPorVencer"><i class="fa fa-cog"></i>Datos Laborales por Vencer</a></li>
+								<li><a href="solicitudContrPendiente"><i class="fa fa-cog"></i>Solicitud Contr. Pendientes </a></li>
+								<li><a href="solicitudDeContratacion"><i class="fa fa-cog"></i>Solicitud De Contratación </a></li>
+							</ul>
+						</li>
 					</ul>
 				</li>
 

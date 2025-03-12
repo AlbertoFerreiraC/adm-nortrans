@@ -147,8 +147,8 @@
                                             <div class="form-group col-sm-3 col-xs-12">
                                                 <label for="btnSeleccionar">Seleccionar Archivo</label>
                                                 <div>
-                                                    <button type="button" class="btn btn-primary" id="btnSeleccionar">
-                                                        <i class="fa fa-search" aria-hidden="true"></i> Seleccionar
+                                                    <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i> Selección
                                                     </button>
                                                 </div>
                                             </div>
