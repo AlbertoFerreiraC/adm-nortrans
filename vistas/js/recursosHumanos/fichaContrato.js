@@ -80,6 +80,19 @@ function cargarFichaContrato() {
     });
 
 }
+function funcionImprimir(id) {
+    var contenido = '';
+    var fila = $('button[data-id="' + id + '"]').closest('tr'); e
+
+    fila.find('td').each(function () {
+        contenido += $(this).text() + '\n';
+    });
+
+    var ventanaImpresion = window.open('', '', 'height=600,width=800');
+    ventanaImpresion.document.write('<pre>' + contenido + '</pre>');
+    ventanaImpresion.document.close();
+    ventanaImpresion.print();
+}
 
 function empresaAgregar() {
     $('#empresaAgregar').empty();
@@ -99,20 +112,6 @@ function empresaAgregar() {
             $('#empresaAgregar').append(listaEmpresa);
         }
     });
-}
-
-function funcionImprimir(id) {
-    var contenido = '';
-    var fila = $('button[data-id="' + id + '"]').closest('tr'); e
-
-    fila.find('td').each(function () {
-        contenido += $(this).text() + '\n';
-    });
-
-    var ventanaImpresion = window.open('', '', 'height=600,width=800');
-    ventanaImpresion.document.write('<pre>' + contenido + '</pre>');
-    ventanaImpresion.document.close();
-    ventanaImpresion.print();
 }
 
 /*function cargarFichaContrato() {
@@ -166,34 +165,3 @@ function funcionImprimir(id) {
             $('.btnverMas').click(function () {
                 obtenerDatosParaVerMas(this.id);
             });*/
-
-
-/*$('.btnEliminar').click(function () {
-    var id_registro = this.id;
-    swal({
-        title: '¿Está seguro de anular el registro?',
-        text: "¡Si no lo está puede cancelar la accíón!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, anular registro!'
-    }).then(function (result) {
-        if (result.value) {
-            eliminarDatos(id_registro);
-        }
-    });
-});
-
-}
-}).fail(function () {
-swal({
-type: "error",
-title: "Ha ocurrido un error al cargar la lista",
-showConfirmButton: true,
-confirmButtonText: "Aceptar"
-});
-});
-
-}*/
