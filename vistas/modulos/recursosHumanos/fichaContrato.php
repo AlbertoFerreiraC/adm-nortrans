@@ -72,7 +72,7 @@
                               <center>Id Solicitud</center>
                             </th>
                             <th>
-                              <center>Rut Empresa</center>
+                              <center>Empresa</center>
                             </th>
                             <th>
                               <center>Fecha Solicitud</center>
@@ -134,9 +134,6 @@
                             </th>
                             <th>
                               <center>Empresa</center>
-                            </th>
-                            <th>
-                              <center>Rut</center>
                             </th>
                             <th>
                               <center>Nombre</center>
