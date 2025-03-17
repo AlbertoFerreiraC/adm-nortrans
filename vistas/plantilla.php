@@ -158,7 +158,10 @@ CUERPO DOCUMENTO
           $_GET["ruta"] == "seleccionarFicha" ||
           $_GET["ruta"] == "datosLaboralPorVencer" ||
           $_GET["ruta"] == "solicitudContrPendiente" ||
-          $_GET["ruta"] == "solicitudDeContratacion" 
+          $_GET["ruta"] == "solicitudDeContratacion" ||
+          $_GET["ruta"] == "cargoOrganizacional" ||
+          $_GET["ruta"] == "mantenedorAreaNegocio"||
+          $_GET["ruta"] == "instituciones"
 
         ) {
           include "modulos/recursosHumanos/" . $_GET["ruta"] . ".php";
@@ -203,9 +206,9 @@ CUERPO DOCUMENTO
 
     #contenedorViajes {
       display: inline-block;
-      *display: inline;
+      display: inline;
       /*for IE 7 */
-      *zoom: 1;
+      zoom: 1;
       /*for IE 7 */
       vertical-align: top;
     }

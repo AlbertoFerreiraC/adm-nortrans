@@ -42,21 +42,11 @@
                                                     </tr>
                                                     <!-- Fila de filtros -->
                                                     <tr class="filters">
-                                                        <th>
-                                                            <input type="text" class="form-control filter-input" placeholder="">
-                                                        </th>
-                                                        <th>
-                                                            <input type="text" class="form-control filter-input" placeholder="">
-                                                        </th>
-                                                        <th>
-                                                            <input type="text" class="form-control filter-input" placeholder="">
-                                                        </th>
-                                                        <th>
-                                                            <input type="text" class="form-control filter-input" placeholder="">
-                                                        </th>
-                                                        <th>
-                                                            <input type="text" class="form-control filter-input" placeholder="">
-                                                        </th>
+                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
+                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
+                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
+                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
+                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

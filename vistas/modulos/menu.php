@@ -58,6 +58,8 @@
 								<li><a href="antecedentesMedicos"><i class="fa fa-cog"></i>Antecedentes Médicos</a></li>
 								<li><a href="tipoequipo"><i class="fa fa-cog"></i>Tipo de equipo</a></li>
 								<li><a href="cargo"><i class="fa fa-cog"></i>Cargos</a></li>
+								<li><a href="instituciones"><i class="fa fa-cog"></i>Tipo de Institucion</a></li>
+
 							</ul>
 						</li>
 						<li><a href="fichaEmpleado"><i class="fa fa-server"></i>Ficha Empleado</a></li>
@@ -78,6 +80,20 @@
 								<li><a href="datosLaboralPorVencer"><i class="fa fa-cog"></i>Datos Laborales por Vencer</a></li>
 								<li><a href="solicitudContrPendiente"><i class="fa fa-cog"></i>Solicitud Contr. Pendientes </a></li>
 								<li><a href="solicitudDeContratacion"><i class="fa fa-cog"></i>Solicitud De Contratación </a></li>
+							</ul>
+						</li>
+
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-wrench"></i>
+								<span>Estructura</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="cargoOrganizacional"><i class="fa fa-cog"></i>Cargo Organizacional</a></li>
+								<li><a href="mantenedorAreaNegocio"><i class="fa fa-cog"></i>Mantenedor Area de negocio </a></li>
 							</ul>
 						</li>
 					</ul>
