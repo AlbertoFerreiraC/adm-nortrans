@@ -123,14 +123,14 @@ function cargarFichaContrato() {
             }
             $('#fichaContrato tbody').append(fila);
 
-            $('.btnTerminar').click(function() {
-               configurarEventoTerminar(this.id);
+            $('.btnTerminar').click(function () {
+                configurarEventoTerminar(this.id);
             });
 
-            $('.btnEditar').click(function() {
+            $('.btnEditar').click(function () {
                 var id = this.id;
                 alert(id);
-             });
+            });
 
         }
     }).fail(function () {
@@ -152,14 +152,14 @@ function configurarEventoTerminar(id) {
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#DD6B55',
-              cancelButtonColor: '#d33',
-              confirmButtonText: "Sí, terminar",
-              cancelButtonText: "Cancelar",
-          }).then(function(result){
-              if(result.value){
+            cancelButtonColor: '#d33',
+            confirmButtonText: "Sí, terminar",
+            cancelButtonText: "Cancelar",
+        }).then(function (result) {
+            if (result.value) {
                 inactivarContrato(idContrato);
-              }                        
-          }); 
+            }
+        });
 
     });
 }
@@ -187,7 +187,8 @@ function inactivarContrato(idcontratacion) {
                     text: "El contrato ha sido Finalizado correctamente",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
-                }, function () {
+                }).then(function () {
+                    // Recargar la lista de contratos después de cerrar la alerta
                     cargarFichaContrato();
                 });
             } else {
