@@ -45,7 +45,7 @@ function cargarDatosTabla() {
         "id": idUsuario
     };
     $.ajax({
-        url: "../api_adm_nortrans/preaprueba/funListar.php",
+        url: "../api_adm_nortrans/preaprueba/funListarPreAprueba.php",
         method: "POST",
         data: JSON.stringify(params),
         cache: false,

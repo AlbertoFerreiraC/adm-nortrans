@@ -92,6 +92,9 @@ function empresaAgregar() {
 function cargarFichaContrato() {
     $("#fichaContrato tbody").empty();
     var fila = "";
+
+    $('#fichaContrato').off('click', '.btnTerminar');
+
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funListarContratado.php",
         method: "GET",
@@ -109,22 +112,25 @@ function cargarFichaContrato() {
                     '<td>' + response[i].turnos_laborales + '</td>' +
                     '</td>' +
                     '<td>' +
-                    '<button title="Seleccionar" class="btn btn-success btnSeleccionar" id="' + response[i].seleccionar +
-                    '" onclick="window.location.href=\'seleccionarFicha' + '\'">' +
-                    '<i class="fa fa-check"></i></button>' +
+                    '<button title="Editar" class="btn btn-warning btnEditar" id="' + response[i].idcontratacion +
+                    '" onclick="window.location.href=\'seleccionarFicha?id=' + response[i].idcontratacion + '\'">' +
+                    'Editar</button>' +
                     '</td>' +
                     '<td>' +
-                    '<button title="Imprimir" class="btn btn-info btnImprimir" id="' + response[i].Imprimir + '"><i class="fa fa-print"></i></button>' +
-
-                    '</td>'
-                '</tr>';
+                    '<button title="Terminar" class="btn btn-danger btnTerminar" id="' + response[i].idcontratacion + '">Terminar</button>' +
+                    '</td>' +
+                    '</tr>';
             }
-            $('#fichaContrato').append(fila);
+            $('#fichaContrato tbody').append(fila);
 
-            $('.btnImprimir').on('click', '.btnImprimir', function () {
-                var id = $(this).data('id');
-                funcionImprimir(id);
+            $('.btnTerminar').click(function() {
+               configurarEventoTerminar(this.id);
             });
+
+            $('.btnEditar').click(function() {
+                var id = this.id;
+                alert(id);
+             });
 
         }
     }).fail(function () {
@@ -135,5 +141,74 @@ function cargarFichaContrato() {
             confirmButtonText: "Aceptar"
         });
     });
+}
 
+function configurarEventoTerminar(id) {
+    $('#fichaContrato').on('click', '.btnTerminar', function () {
+        var idContrato = id;
+        swal({
+            title: "¿Está seguro?",
+            text: "¿Desea terminar este contrato? Esta acción cambiará su estado a inactivo.",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+              cancelButtonColor: '#d33',
+              confirmButtonText: "Sí, terminar",
+              cancelButtonText: "Cancelar",
+          }).then(function(result){
+              if(result.value){
+                inactivarContrato(idContrato);
+              }                        
+          }); 
+
+    });
+}
+
+function inactivarContrato(idcontratacion) {
+    console.log("Función inactivarContrato ejecutada con ID:", idcontratacion); // Para depuración
+
+    var datos = {
+        idcontratacion: idcontratacion,
+    };
+
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funCambiarEstadoContrato.php",
+        method: "POST",
+        data: JSON.stringify(datos),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (response) {
+            console.log("Respuesta del servidor:", response);
+
+            if (response.status === "success") {
+                swal({
+                    type: "success",
+                    title: "Contrato Finalizado",
+                    text: "El contrato ha sido Finalizado correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }, function () {
+                    cargarFichaContrato();
+                });
+            } else {
+                swal({
+                    type: "error",
+                    title: "Error",
+                    text: "No se pudo finalizar el contrato: " + response.message,
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error AJAX:", textStatus, errorThrown);
+
+        swal({
+            type: "error",
+            title: "Error de conexión",
+            text: "No se pudo conectar con el servidor",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
 }
