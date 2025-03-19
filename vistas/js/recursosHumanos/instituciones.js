@@ -6,11 +6,6 @@ $(document).ready(function () {
         agregarDatos();
     });
 
-    $('#btnModificar').click(function () {
-        modificarDatos();
-    });
-
-
     $('#filtradoDinamico').keyup(function () {
 
         var busqueda = document.getElementById('filtradoDinamico');
@@ -33,7 +28,7 @@ $(document).ready(function () {
 });
 
 function cargarDatosTabla() {
-    $("#lista tbody").empty();
+    $("#tabla tbody").empty(); // Limpiar la tabla antes de agregar filas
     var fila = "";
     $.ajax({
         url: "../api_adm_nortrans/instituciones/funListar.php",
@@ -44,26 +39,28 @@ function cargarDatosTabla() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<tr><td>' + (parseInt(i) + 1) + '</td><td>' + response[i].tipo_institucion + '</td>' +
-                    '<td>' +
+                fila += '<tr>' +
                     '<td>' + response[i].idinstitucion + '</td>' +
+                    '<td>' + response[i].tipo_institucion + '</td>' +
                     '<td>' + response[i].descripcion + '</td>' +
                     '<td>' + response[i].codigo_externo + '</td>' +
                     '<td>' + response[i].estado + '</td>' +
-                    '<center>' +
+                    '<td>' +
                     '<div class="btn-group">' +
-                    '<button title="Editar" class="btn btn-danger btnModificar" id="' + response[i].idinstitucion + '"><i class="fa fa-times"></i></button>' +
+                    '<button title="Editar" class="btn btn-warning btnModificar" data-id="' + response[i].idinstitucion + '">' +
+                    '<i class="fa fa-edit"></i>' +
+                    '</button>' +
                     '</div>' +
-                    '</center>' +
                     '</td>' +
-                    +'</tr>';
+                    '</tr>';
             }
-            $('#tabla').append(fila);
+            $("#tabla tbody").append(fila);
 
-            $('.btnModificar').click(function () {
-                obtenerDatosParaModificar(this.idinstitucion);
+            // Evento al hacer clic en el botón Editar
+            $(".btnModificar").click(function () {
+                let idInstitucion = $(this).data("id");
+                cargarDatosEnInputs(idInstitucion);
             });
-
         }
     }).fail(function () {
         swal({
@@ -73,48 +70,43 @@ function cargarDatosTabla() {
             confirmButtonText: "Aceptar"
         });
     });
-
 }
 
+
 function agregarDatos() {
+    var idInstitucion = $("#idInstitucion").val();
+    var url = idInstitucion ? "../api_adm_nortrans/instituciones/funActualizar.php" : "../api_adm_nortrans/instituciones/funAgregar.php";
+    var mensaje = idInstitucion ? "Registro actualizado correctamente" : "Registro creado correctamente";
+
     var params = {
+        "id": idInstitucion,
         "tipo_institucion": $("#tipoInstitucion").val(),
         "descripcion": $("#descripcion").val(),
-        "codigo_externo": $("#codigoExterno").val()
+        "codigo_externo": $("#codigoExterno").val(),
+        "estado": $("#estado").val()
     };
+
     $.ajax({
-        url: "../api_adm_nortrans/instituciones/funAgregar.php",
+        url: url,
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
-        contentType: false,
-        processData: false,
+        contentType: "application/json",
         dataType: "json",
         success: function (response) {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro cargado con exito",
+                    title: mensaje,
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
-                }).then((value) => {
+                }).then(() => {
                     location.reload();
                 });
-            }
-
-            if (response['mensaje'] === "nok") {
+            } else {
                 swal({
                     type: "error",
-                    title: "Ha ocurrido un error al procesar la carga",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            }
-
-            if (response['mensaje'] === "registro_existente") {
-                swal({
-                    type: "error",
-                    title: "El registro que quiere cargar ya existe en la base de datos",
+                    title: "Error al procesar la solicitud",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
@@ -123,10 +115,42 @@ function agregarDatos() {
     }).fail(function () {
         swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la carga",
+            title: "Error al comunicarse con el servidor",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
     });
+}
 
+
+function cargarDatosEnInputs(idInstitucion) {
+    $.ajax({
+        url: "../api_adm_nortrans/instituciones/funObtener.php",
+        method: "GET",
+        data: { id: idInstitucion },
+        dataType: "json",
+        success: function (response) {
+            if (response) {
+                $("#idInstitucion").val(response.idinstitucion);
+                $("#tipoInstitucion").val(response.tipo_institucion);
+                $("#descripcion").val(response.descripcion);
+                $("#codigoExterno").val(response.codigo_externo);
+                $("#estado").val(response.estado);
+            } else {
+                swal({
+                    type: "error",
+                    title: "No se encontraron datos",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Error al cargar los datos",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
 }

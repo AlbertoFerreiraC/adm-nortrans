@@ -131,6 +131,7 @@ function cargarFichaContrato() {
                 var id = this.id;
                 alert(id);
                 window.location.href = 'seleccionarFicha?id=' + id;
+                obtenerDatosParaModificar(this.id);
             });
 
         }
@@ -197,127 +198,6 @@ function inactivarContrato(idcontratacion) {
                     type: "error",
                     title: "Error",
                     text: "No se pudo finalizar el contrato: " + response.message,
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            }
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("Error AJAX:", textStatus, errorThrown);
-
-        swal({
-            type: "error",
-            title: "Error de conexión",
-            text: "No se pudo conectar con el servidor",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
-    });
-}
-
-// Función para configurar el evento de edición
-function configurarEventoEditar(id) {
-    var idContrato = id;
-    swal({
-        title: "Editar contrato",
-        text: "¿Desea editar este contrato?",
-        type: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: "Sí, editar",
-        cancelButtonText: "Cancelar",
-    }).then(function (result) {
-        if (result.value) {
-            // Redirigir a la página de edición con el ID del contrato
-            cargarDatosContrato(idContrato);
-        }
-    });
-}
-
-// Función para cargar los datos del contrato para edición
-function cargarDatosContrato(idcontratacion) {
-    console.log("Cargando datos del contrato con ID:", idcontratacion);
-
-    // Mostrar indicador de carga
-    swal({
-        title: "Cargando...",
-        text: "Obteniendo información del contrato",
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            swal.showLoading();
-        }
-    });
-
-    // Realizar petición AJAX para obtener los datos del contrato
-    $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funObtenerContrato.php",
-        method: "POST",
-        data: JSON.stringify({ idcontratacion: idcontratacion }),
-        contentType: "application/json",
-        dataType: "json",
-        success: function (response) {
-            console.log("Respuesta del servidor:", response);
-
-            if (response.status === "success") {
-                swal.close();
-                // Redirigir a la página de edición con el ID
-                window.location.href = 'seleccionarFicha?id=' + idcontratacion;
-            } else {
-                swal({
-                    type: "error",
-                    title: "Error",
-                    text: "No se pudieron obtener los datos del contrato: " + response.message,
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            }
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("Error AJAX:", textStatus, errorThrown);
-
-        swal({
-            type: "error",
-            title: "Error de conexión",
-            text: "No se pudo conectar con el servidor",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
-    });
-}
-
-// Función para guardar los cambios del contrato (para usar en la página de edición)
-function guardarCambiosContrato(idcontratacion, datosContrato) {
-    console.log("Guardando cambios del contrato con ID:", idcontratacion);
-
-    $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funActualizarContrato.php",
-        method: "POST",
-        data: JSON.stringify({
-            idcontratacion: idcontratacion,
-            datos: datosContrato
-        }),
-        contentType: "application/json",
-        dataType: "json",
-        success: function (response) {
-            console.log("Respuesta del servidor:", response);
-
-            if (response.status === "success") {
-                swal({
-                    type: "success",
-                    title: "Contrato Actualizado",
-                    text: "El contrato ha sido actualizado correctamente",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                }).then(function () {
-                    // Redirigir a la lista de contratos
-                    window.location.href = 'listaContratos';
-                });
-            } else {
-                swal({
-                    type: "error",
-                    title: "Error",
-                    text: "No se pudo actualizar el contrato: " + response.message,
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });

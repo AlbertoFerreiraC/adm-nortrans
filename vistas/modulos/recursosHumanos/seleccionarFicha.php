@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="tipoturnoModificar">Seleccionar Empresa:</label>
+                                <label for="empresaSelec">Seleccionar Empresa:</label>
                                 <select class="form-control input-md cajatexto" id="selecotorEmpresa" name="selecotorEmpresa"></select>
                             </div>
 
@@ -148,7 +148,9 @@
                                                 <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
                                                     <i class="fa fa-plus" aria-hidden="true"></i> Selección
                                                 </button>
+                                                <input type="file" id="inputArchivo" style="display: none;" accept=".docx, .pdf, .jpg">
                                             </div>
+                                            <p id="nombreArchivo" style="margin-top: 5px;"></p> <!-- Para mostrar el nombre del archivo seleccionado -->
                                         </div>
 
                                         <div class="table-container">
@@ -341,16 +343,35 @@
 </style>
 
 <script>
+    document.getElementById("btnSeleccionContrato").addEventListener("click", function() {
+        document.getElementById("inputArchivo").click();
+    });
+
+    document.getElementById("inputArchivo").addEventListener("change", function() {
+        if (this.files.length > 0) {
+            alert("Archivo seleccionado: " + this.files[0].name);
+        }
+    });
+</script>
+
+<script>
     $(document).ready(function() {
-        $('#myTabs a').click(function(e) {
-            e.preventDefault();
+        $('#btnSeleccionContrato').click(function() {
+            $('#inputArchivo').click();
+        });
 
-            $('#myTabs li').removeClass('active');
-            $('.tab-pane').removeClass('active in');
+        $('#inputArchivo').on('change', function() {
+            var file = this.files[0];
 
-            $(this).parent('li').addClass('active');
-            var tabId = $(this).attr('href');
-            $(tabId).addClass('active in');
+            if (file) {
+                var ext = file.name.split('.').pop().toLowerCase(); 
+
+                if ($.inArray(ext, ['docx', 'pdf', 'jpg']) === -1) {
+                    alert('Solo se permiten archivos DOCX, PDF o JPG.');
+                    $(this).val('');
+                    $('#nombreArchivo').text(''); // Limpiar el texto mostrado
+                } 
+            }
         });
     });
 </script>
@@ -527,3 +548,5 @@
         }
     }
 </style>
+
+<script src="vistas/js/recursosHumanos/seleccionarficha.js"></script>

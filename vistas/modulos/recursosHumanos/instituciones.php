@@ -23,8 +23,8 @@
                                     <label for="tipoInstitucion">Tipo de Institución:</label>
                                     <select class="form-control input-md cajatexto solo-ruc" name="tipoInstitucion" id="tipoInstitucion">
                                         <option value="">Seleccione una opción</option>
-                                        <option value="Reemplazo dotación">APF</option>
-                                        <option value="Aumento dotación">Fonasa-Isapre</option>
+                                        <option value="APF">APF</option>
+                                        <option value="Fonasa-Isapre">Fonasa-Isapre</option>
                                     </select>
                                 </div>
 
@@ -68,50 +68,25 @@
 
                     <div id="frm_j_idt110_lista_content" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <div class="table-container">
-                                <div class="table-responsive">
-                                    <div class="box-body">
-                                        <div id="lista">
-                                            <table class="table table-bordered table-striped dt-responsive" width="100%" style="text-align: center;">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="width:120px">
-                                                            <center>Tipo Institución</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Id Institución</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Descripción</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Código Externo</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Estado</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Editar</center>
-                                                        </th>
-                                                    </tr>
-                                                    <!-- Fila de filtros -->
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="table-responsive">
+                                <table id="tabla" class="table table-bordered table-striped dt-responsive text-center">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:120px">Id Institución</th>
+                                            <th>Tipo Institución</th>
+                                            <th>Descripción</th>
+                                            <th>Código Externo</th>
+                                            <th>Estado</th>
+                                            <th>Editar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
