@@ -229,4 +229,4 @@
         });
     </script>
 
-    <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
+    <script src="vistas/js/recursosHumanos/instituciones.js"></script>
