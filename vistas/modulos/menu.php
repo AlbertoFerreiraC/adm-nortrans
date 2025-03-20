@@ -58,7 +58,6 @@
 								<li><a href="antecedentesMedicos"><i class="fa fa-cog"></i>Antecedentes Médicos</a></li>
 								<li><a href="tipoequipo"><i class="fa fa-cog"></i>Tipo de equipo</a></li>
 								<li><a href="cargo"><i class="fa fa-cog"></i>Cargos</a></li>
-								<li><a href="instituciones"><i class="fa fa-cog"></i>Tipo de Institucion</a></li>
 
 							</ul>
 						</li>

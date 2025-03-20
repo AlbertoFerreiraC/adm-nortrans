@@ -41,7 +41,7 @@
                   <i class="fa fa-list" aria-hidden="true"></i> Lista de Ficha Contrato
                 </button>
 
-                <button type="button" class="btn btn-primary" id="btnListaSolicitudes"" style="background-color: #FF6600;">
+                <button type="button" class="btn btn-primary" id="btnListaSolicitudes"" style=" background-color: #FF6600;">
                   <i class="fa fa-file" aria-hidden="true"></i> Lista de Solicitudes
                 </button>
               </div>
@@ -169,6 +169,181 @@
 
     </div>
   </section>
+
+  <!--=====================================
+MODAL AGREGAR TAREA
+======================================-->
+
+  <div id="modalAgregar" class="modal fade" role="dialog">
+
+    <div class="modal-dialog modal-lg">
+
+      <div class="modal-content">
+
+        <form role="form" method="post" id="formulario_para_agregar">
+
+          <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+          <div class="modal-header" style="background:#A9A9A9; color:white">
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            <h4 class="modal-title">Ingreso de solicitud</h4>
+
+          </div>
+
+          <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+          <div class="modal-body">
+
+            <div class="box-body">
+
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="equipoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
+                  <option value=" ">Seleccionar...</option>
+                  <option value="Reemplazo dotación">Reemplazo dotación</option>
+                  <option value="Aumento dotación">Aumento dotación</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto solo-ruc" name="divisionAgregar" id="divisionAgregar">
+                  <option value=" "></option>
+                  <option value=" ">Seleccionar...</option>
+                  <option value="Industrial" selected>Industrial</option>
+                  <option value="Interurbano">Interurbano</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="cargoAgregar">Cargo solicitado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto solo-ruc" name="cargoAgregar" id="cargoAgregar"></select>
+              </div>
+
+              <div class="form-group col-sm-6 col-xs-12">
+                <label for="empresaAgregar">Razon social:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto solo-ruc" name="empresaAgregar" id="empresaAgregar"></select>
+              </div>
+
+              <div class="form-group col-sm-6 col-xs-12">
+                <label for="centroDecostoAgregar">Centro costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto solo-ruc" name="centroDecostoAgregar" id="centroDecostoAgregar"></select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="cantidadAgregar">Cantidad solicitada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <input type="number" class="form-control input-md cajatexto" name="cantidadAgregar" id="cantidadAgregar">
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="equipoAgregar">Tipo equipo (opcional):</label>
+                <select class="form-control input-md cajatexto" id="equipoAgregar" name="equipoAgregar"></select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="licenciaAgregar">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="licenciaAgregar" name="licenciaAgregar">
+                  <option value="Seleccionar...">Seleccionar...</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-12 col-xs-12">
+                <label for="tipoturnoAgregar">Tipo Turno:</label>
+                <select class="form-control input-md cajatexto" id="tipoturnoAgregar" name="tipoturnoAgregar"></select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="tipocontratoAgregar">Tipo contrato:</label>
+                <select class="form-control input-md cajatexto" id="tipocontratoAgregar" name="tipocontratoAgregar" onchange="mostrarFechaTermino()">
+                  <option value=" ">Seleccionar...</option>
+                  <option value="Indefinido">Indefinido</option>
+                  <option value="Plazo Fijo">Plazo Fijo</option>
+                  <option value="Por Obra">Por Obra</option>
+                  <option value="Spot">Spot</option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="fecharequeridaAgregar">Fecha requerida:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <input type="date" class="form-control input-md cajatexto" name="fecharequeridaAgregar" id="fecharequeridaAgregar" onchange="calcularFechaTermino()">
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12" id="fechaTerminoDiv" style="display: none;">
+                <label for="fechaterminoAgregar">Fecha Término:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <input type="date" class="form-control input-md cajatexto" name="fechaterminoAgregar" id="fechaterminoAgregar">
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="remuneracionAgregar">Remuneración líquida:</label>
+                <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar">
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="observacionEntrevistaPsicolaboral">Entrevista Psicolaboral:</label>
+                <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="observacionEntrevistaTecnica">Entrevista Tecnica:</label>
+                <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnica" id="observacionEntrevistaTecnica" rows="1"></textarea>
+              </div>
+
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="observacionPruebaConduccion">Prueba de Conduccion:</label>
+                <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccion" id="observacionPruebaConduccion" rows="1"></textarea>
+              </div>
+
+              <div class="col-md-12 col-xs-12">
+                <div class="box box-success">
+                  <div class="box-body">
+                    <div class="form-group col-sm-4 col-xs-12">
+                      <label for="comentarioAgregar">Comentario Solicitud:</label><span style="font-size: 11px; color: #DC3139; padding-left: 15px;"> (Obligatorio)</span>
+                      <textarea class="form-control input-md cajatexto" name="comentarioAgregar" id="comentarioAgregar" rows="1"></textarea>
+                    </div>
+
+                    <div class="form-group col-sm-4 col-xs-12">
+                      <label for="preapruebaAgregar">Pre Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                      <select class="form-control input-md cajatexto" id="preapruebaAgregar" name="preapruebaAgregar"></select>
+                    </div>
+
+                    <div class="form-group col-sm-4 col-xs-12">
+                      <label for="apruebaAgregar">Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                      <select class="form-control input-md cajatexto" id="apruebaAgregar" name="apruebaAgregar"></select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+            <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnGuardar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Guardar</button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <style>
     #lista table {
