@@ -10,7 +10,7 @@
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-group col-sm-5 col-xs-12">
-                                <button type="button" class="btn btn-primary" id="crearCargo">
+                                <button type="button" class="btn btn-primary" id="btncrearCargo" data-toggle="modal" data-target="#modalAgregar">
                                     <i class="fa fa-list" aria-hidden="true"></i> Crear Cargo
                                 </button>
                             </div>
@@ -90,7 +90,6 @@
                                                     <tr class="filters">
                                                         <th><input type="text" class="form-control filter-input" placeholder=""></th>
                                                         <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -106,6 +105,130 @@
             </div>
         </div>
     </section>
+
+    <!--aca debe ir el modal de agregar-->
+
+    <div id="modalAgregar" class="modal fade" role="dialog">
+
+        <div class="modal-dialog modal-lg">
+
+            <div class="modal-content">
+
+                <form role="form" method="post" id="formulario_para_agregar">
+
+                    <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+                    <div class="modal-header" style="background:#A9A9A9; color:white">
+
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        <h4 class="modal-title">Cargo</h4>
+
+                    </div>
+
+                    <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+                    <div class="modal-body">
+
+                        <div class="box-body">
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="observacionEntrevistaPsicolaboral">Nombre:</label>
+                                <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="divisionModificar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="divisionModificar" id="divisionModificar">
+                                    <option value="Industrial">Industrial</option>
+                                    <option value="Interurbano">Interurbano</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="areaNegocio">Area de Negocio:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaNegocio" id="areaNegocio">
+                                    <option value=""> </option>
+                                    <option value=""> </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="areaDependencia">Area Dependecia:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaDependenciar" id="areaDependencia">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="cargoDependecia">Cargo Dependencia:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="cargoDependecia" id="cargoDependecia">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="SolicitudPersonal">¿Solicita Personal?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="SolicitudPersonal" id="SolicitudPersonal">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="autorizaSolicitudMs">¿Autoriza Solicitud MS?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaSolicitudMs" id="autorizaSolicitudMs">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="autorizaOc">¿Autoriza OC?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaOc"" id=" autorizaOc"">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="aprobarSoliPersonal">¿Aprobar Solicitud personal?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto solo-ruc" name="aprobarSoliPersonal" id="aprobarSoliPersonal">
+                                    <option value="Si">Si</option>
+                                    <option value="Si">No</option>
+                                </select>
+                            </div>
+
+                            <div class="button-container">
+                                <button type="button" class="btn btn-primary" id="btnGrabarFicha">
+                                    <i class="fa fa-save" aria-hidden="true"></i> Grabar Ficha
+                                </button>
+
+                                <button type="button" class="btn btn-primary" id="btnMostarListado"" style=" background-color: #FF6600;">
+                                    <i class="fa fa-file" aria-hidden="true"></i> Mostrar Listado
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
 </div>
 
 <style>
@@ -195,6 +318,18 @@
         gap: 8px;
         margin-bottom: 15px;
     }
+
+    #btnGrabarFicha {
+        margin-top: 22px !important;
+        position: relative;
+        left: 20px;
+    }
+
+    #btnMostarListado {
+        margin-top: 22px !important;
+        position: relative;
+        left: 30px;
+    }
 </style>
 
 <script>
@@ -222,5 +357,62 @@
                 });
             });
         });
+
+
+        const btnGrabarFicha = document.getElementById('btnGrabarFicha');
+        if (btnGrabarFicha) {
+            const icon = btnGrabarFicha.querySelector('i');
+            if (icon) {
+                icon.className = 'fa fa-save';
+            }
+            btnGrabarFicha.style.cssText = `
+                background-color: #3c8dbc;
+                border-color: #3c8dbc;
+                padding: 8px 16px;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            `;
+            btnGrabarFicha.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+            });
+            btnGrabarFicha.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            });
+        }
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnMostarListado = document.getElementById('btnMostarListado');
+        if (btnMostarListado) {
+            const icon = btnMostarListado.querySelector('i');
+            if (icon) {
+                icon.className = 'fa fa-save';
+            }
+            btnMostarListado.style.cssText = `
+                background-color: #FF6600;
+                border-color:rgb(248, 137, 64);
+                padding: 8px 16px;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            `;
+            btnMostarListado.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+            });
+            btnMostarListado.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            });
+        }
+    });
+</script>
+
+
+
+<script src="vistas/js/recursosHumanos/cargoOrganizacional.js"></script>
