@@ -251,8 +251,8 @@ MODAL AGREGAR TAREA
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="empresaSelec">Empresa:</label>
-                            <select class="form-control input-md cajatexto" id="selecotorEmpresa" name="selecotorEmpresa"></select>
+                            <label for="empresaModSelec">Empresa:</label>
+                            <select class="form-control input-md cajatexto" id="empresaModSelec" name="empresaModSelec"></select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
