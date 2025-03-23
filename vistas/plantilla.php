@@ -160,7 +160,12 @@ CUERPO DOCUMENTO
           $_GET["ruta"] == "solicitudContrPendiente" ||
           $_GET["ruta"] == "solicitudDeContratacion" ||
           $_GET["ruta"] == "cargoOrganizacional" ||
-          $_GET["ruta"] == "mantenedorAreaNegocio"
+          $_GET["ruta"] == "mantenedorAreaNegocio" ||
+          $_GET["ruta"] == "tipoAnexo"||
+          $_GET["ruta"] == "tipoAntecedenteMedico" ||
+          $_GET["ruta"] == "tipoEstudio" ||
+          $_GET["ruta"] == "tipoTerminoContrato" ||
+          $_GET["ruta"] == "contactoParentesco" 
 
         ) {
           include "modulos/recursosHumanos/" . $_GET["ruta"] . ".php";
