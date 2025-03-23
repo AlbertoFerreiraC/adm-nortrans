@@ -96,7 +96,7 @@ MODAL AGREGAR TAREA
             <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
             
             <div class="form-group">
-                <label for="nuevoNombre">Descripción:</label>
+                <label for="descripcionEstudio">Descripción:</label>
                 <input type="text" class="form-control input-md" name="descripcionEstudio" id="descripcionEstudio" placeholder="Ingresar Descripción" required>
             </div>
   
@@ -157,7 +157,7 @@ MODAL EDITAR TAREA
           <div class="box-body">
             <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->            
             <div class="form-group col-sm-12 col-xs-12">
-                <label for="nuevoNombre">Descripción:</label>
+                <label for="descripcionEstudioModificar">Descripción:</label>
                 <input type="text" class="form-control input-md" name="descripcionEstudioModificar" id="descripcionEstudioModificar" required>
                 <input type="hidden"  name="idEstudioModificar" id="idEstudioModificar" required>
             </div>
