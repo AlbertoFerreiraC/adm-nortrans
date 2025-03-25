@@ -8,11 +8,8 @@ session_start();
 <!-- Borrar el cache -->
 
 <meta http-equiv="Expires" content="0">
-
 <meta http-equiv="Last-Modified" content="0">
-
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-
 <meta http-equiv="Pragma" content="no-cache">
 
 <!--------------------->
@@ -113,9 +110,6 @@ session_start();
 <!-- Input Select -->
 <script src="vistas/bower_components/bootstrap-select/select2.min.js"></script>
 
-
-
-
 </head>
 
 <!--=====================================
@@ -161,23 +155,33 @@ CUERPO DOCUMENTO
           $_GET["ruta"] == "solicitudDeContratacion" ||
           $_GET["ruta"] == "cargoOrganizacional" ||
           $_GET["ruta"] == "mantenedorAreaNegocio" ||
-          $_GET["ruta"] == "tipoAnexo"||
+          $_GET["ruta"] == "tipoAnexo" ||
           $_GET["ruta"] == "tipoAntecedenteMedico" ||
           $_GET["ruta"] == "tipoEstudio" ||
           $_GET["ruta"] == "tipoTerminoContrato" ||
-          $_GET["ruta"] == "contactoParentesco" 
-
+          $_GET["ruta"] == "contactoParentesco"
         ) {
           include "modulos/recursosHumanos/" . $_GET["ruta"] . ".php";
+
         } else {
-          //GENERALES
-          if (
-            $_GET["ruta"] == "usuario" ||
-            $_GET["ruta"] == "centroDeCosto"
+          // ACTIVOS
+          if ($_GET["ruta"] == "docInformeMaquina"
+          
+          
+          
           ) {
-            include "modulos/generales/" . $_GET["ruta"] . ".php";
+            include "modulos/activos/" . $_GET["ruta"] . ".php";
+
           } else {
-            include "modulos/404.php";
+            //GENERALES
+            if (
+              $_GET["ruta"] == "usuario" ||
+              $_GET["ruta"] == "centroDeCosto"
+            ) {
+              include "modulos/generales/" . $_GET["ruta"] . ".php";
+            } else {
+              include "modulos/404.php";
+            }
           }
         }
       }
@@ -190,10 +194,6 @@ CUERPO DOCUMENTO
 
   <script src="vistas/js/plantilla.js"></script>
   <script src="vistas/js/login.js"></script>
-
-
-
-
 
   <style type="text/css">
     .cajatexto {
@@ -224,7 +224,6 @@ CUERPO DOCUMENTO
 
     .camposCheck {
       margin-bottom: 10px;
-
     }
   </style>
 </body>

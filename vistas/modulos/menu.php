@@ -52,13 +52,13 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="cargoOrganizacional"><i class="fa fa-cog"></i>Cargo Organizacional</a></li>
-								<li><a href="mantenedorAreaNegocio"><i class="fa fa-cog"></i>Mantenedor Área de Negocio</a></li>
+								<li><a href="mantenedorAreaNegocio"><i class="fa fa-cog"></i>Mantenedor Área <br>de Negocio</a></li>
 							</ul>
 						</li>
 
 						<li class="treeview">
 							<a href="#">
-								<i class="fa fa-wrench"></i>
+								<i class="fa fa-search"></i>
 								<span>Consulta</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i>
@@ -101,6 +101,20 @@
 					</ul>
 				</li>
 			<?php } ?>
+
+            <li class="treeview">
+				<a href="#">
+					<i class="fa fa-diamond"></i>
+					<span>Activos</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="docInformeMaquina"><i class="fa fa-key"></i>Informe de documento<br> Maquina</a></li>
+					
+				</ul>
+			</li>
 
 			<li class="treeview">
 				<a href="#">

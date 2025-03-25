@@ -66,9 +66,6 @@ function cargarDatosTabla() {
                         '<button title="Ver mas" class="btn btn-info btnverMas" id="' +
                         response[i].idcontratacion +
                         '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
-                        '<button title="Modificar" class="btn btn-warning btnModificar" id="' +
-                        response[i].idcontratacion +
-                        '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
                         "</div>" +
                         "</center>" +
                         "</td>" +
@@ -93,10 +90,6 @@ function cargarDatosTabla() {
                         "</tr>"
                 }
                 $("#tabla tbody").append(fila)
-
-                $(".btnModificar").click(function () {
-                    obtenerDatosParaModificar(this.id)
-                })
 
                 $(".btnverMas").click(function () {
                     obtenerDatosParaVerMasPreprueba(this.id)
@@ -267,7 +260,7 @@ function obtenerDatosParaVerMasPreprueba(valor) {
 
 
                 $('#motivoVer option[value="' + response[i].motivo + '"]').attr("selected", true); //listo
-                $('#divisionVer option[value="' + response[i].division + '"]').attr("selected", true);//verificar
+                $('#divisionVer option[value="' + response[i].division + '"]').attr("selected", true); //verificar
                 $("#cantidadVer").val(response[i].cantidad_solicitada);
                 $("#fecharequeridaVer").val(response[i].fecha_requerida);
                 $("#fechaterminoVerMas").val(response[i].fecha_termino);
