@@ -102,7 +102,7 @@
 				</li>
 			<?php } ?>
 
-            <li class="treeview">
+			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-diamond"></i>
 					<span>Activos</span>
@@ -111,8 +111,34 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="docInformeMaquina"><i class="fa fa-key"></i>Informe de documento<br> Maquina</a></li>
-					
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-search"></i>
+							<span>Consulta</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu ">
+							<li><a href="docInformeMaquina"><i class="fa fa-key"></i>Informe de documento<br> Maquina</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+							<a href="#">
+								<i class="fa fa-search"></i>
+								<span>Mantenedor</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="deMaquina"><i class="fa fa-cog"></i>De Maquina</a></li>
+							</ul>
+						</li>
+
+
+
 				</ul>
 			</li>
 

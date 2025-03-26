@@ -165,8 +165,9 @@ CUERPO DOCUMENTO
 
         } else {
           // ACTIVOS
-          if ($_GET["ruta"] == "docInformeMaquina"
-          
+          if (
+            $_GET["ruta"] == "docInformeMaquina" ||
+             $_GET["ruta"] == "deMaquina"
           
           
           ) {
