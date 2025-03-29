@@ -94,6 +94,7 @@
 								<li><a href="tipoEstudio"><i class="fa fa-cog"></i>Tipo de Estudio</a></li>
 								<li><a href="tipoTerminoContrato"><i class="fa fa-cog"></i>Tipo Termino de Contrato</a></li>
 								<li><a href="contactoParentesco"><i class="fa fa-cog"></i>Contacto Parentesco</a></li>
+								<li><a href="requisitosSeleccion"><i class="fa fa-cog"></i>Requisitos de Selccion</a></li>
 							</ul>
 						</li>
 
