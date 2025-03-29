@@ -170,7 +170,7 @@
     </div>
   </section>
 
-<!--=====================================
+  <!--=====================================
 MODAL AGREGAR TAREA
 ======================================-->
 
@@ -187,19 +187,15 @@ MODAL AGREGAR TAREA
         ======================================-->
 
           <div class="modal-header" style="background:#A9A9A9; color:white">
-
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-            <h4 class="modal-title">Modificacion de la Ficha Contrato</h4>
-
+            <h4 class="modal-title">Modificación de la Ficha Contrato</h4>
           </div>
 
           <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
+CUERPO DEL MODAL
+======================================-->
 
           <div class="modal-body">
-
             <div class="box-body">
               <section class="content">
                 <div class="box">
@@ -213,8 +209,8 @@ MODAL AGREGAR TAREA
                         </h4>
                       </div>
 
-                      <div class="modal-body">
-                        <div class="box-body">
+                      <div id="panelFicha_content" class="panel-collapse collapse in">
+                        <div class="panel-body">
                           <div class="form-group col-sm-3 col-xs-12">
                             <label for="numeroFichaSelec">N° de Ficha</label>
                             <input class="form-control input-md cajatexto solo-ruc" name="numeroFichaSelec" id="numeroFichaSelec" disabled>
@@ -264,191 +260,113 @@ MODAL AGREGAR TAREA
                             <label for="sueldoLiquidoSelec">Sueldo Líquido:</label>
                             <input class="form-control input-md cajatexto" id="sueldoLiquidoSelec" name="sueldoLiquidoSelec">
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                        </div> <!-- Cierre correcto de panel-body -->
+                      </div> <!-- Cierre correcto de panel-collapse -->
+                    </div> <!-- Cierre correcto de panel-default -->
+                  </div> <!-- Cierre correcto de panel-group -->
                 </div>
               </section>
+            </div>
+          </div>
 
-              <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"> </div>
-              <section class="content">
-                <div class="box">
-                  <div class="panel-group" id="panelDatos">
+
+          <section class="content">
+            <div class="box">
+              <div class="panel-group" id="panelDatos">
+                <div class="panel panel-default">
+                  <div class="panel-body ">
+                    <div class="box-body">
+                      <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
+                        <label for="rutAgregar" class="text-center mb-2">Rut</label>
+                        <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
+                      </div>
+
+                      <div class="form-group col-sm-5 col-xs-12">
+                        <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
+                          <i class="fa fa-search" aria-hidden="true"></i> Buscar
+                        </button>
+                      </div>
+
+                      <div class="form-group col-sm-5 col-xs-12">
+                        <label for="nomSelec">Nombre</label>
+                        <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec" disabled>
+                      </div>
+
+                      <div class="form-group col-sm-5 col-xs-12">
+                        <label for="telSelec">Teléfono Propio</label>
+                        <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec" disabled>
+                      </div>
+                    </div>
+                  </div> <!-- Cierre correcto de panel-body -->
+                </div> <!-- Cierre correcto de panel-default -->
+              </div> <!-- Cierre correcto de panel-group -->
+            </div>
+          </section>
+
+          <section class="content">
+            <div class="box">
+              <!-- Navegación por pestañas -->
+              <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                <li class="nav-item active">
+                  <a class="nav-link active" id="requisitos-tab" data-toggle="tab" href="#requisitos-content" role="tab">
+                    Requisitos solicitados
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos-content" role="tab">
+                    Datos contractuales
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Contenido de las pestañas -->
+              <div class="tab-content" id="myTabContent">
+                <!-- Pestaña de Requisitos Solicitados -->
+                <div class="tab-pane fade in active" id="requisitos-content" role="tabpanel">
+                  <div class="panel-group" id="panelRequisitos">
                     <div class="panel panel-default">
-                      <div class="modal-body">
+                      <div class="panel-body">
                         <div class="box-body">
-                          <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
-                            <label for="rutAgregar" class="text-center mb-2">Rut</label>
-                            <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
-                          </div>
-
-                          <div class="form-group col-sm-5 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
-                              <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                            </button>
-                          </div>
-                          <div class="form-group col-sm-5 col-xs-12">
-                            <label for="nomSelec">Nombre</label>
-                            <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec" disabled>
-                          </div>
-
-                          <div class="form-group col-sm-5 col-xs-12">
-                            <label for="telSelec">Teléfono Propio</label>
-                            <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec" disabled>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"> </div>
-              <section class="content">
-                <div class="box">
-                  <!-- Navegación por pestañas -->
-                  <ul class="nav nav-tabs" id="myTabs" role="tablist">
-                    <li class="nav-item active">
-                      <a class="nav-link active" id="requisitos-tab" data-toggle="tab" href="#requisitos-content" role="tab">
-                        Requisitos solicitados
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos-content" role="tab">
-                        Datos constractuales
-                      </a>
-                    </li>
-                  </ul>
-
-                  <!-- Contenido de las pestañas -->
-                  <div class="tab-content" id="myTabContent">
-                    <!-- Pestaña de Requisitos Solicitados -->
-                    <div class="tab-pane fade in active" id="requisitos-content" role="tabpanel">
-                      <div class="panel-group" id="panelRequisitos">
-                        <div class="panel panel-default">
-                          <div class="modal-body">
-                            <div class="box-body">
-                              <div class="row">
-                                <div class="form-group col-sm-3 col-xs-12">
-                                  <label for="requiSelec">Requisito de Selección</label>
-                                  <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
-                                </div>
-
-                                <div class="form-group col-sm-3 col-xs-12">
-                                  <label for="comentarioRequisito">Comentario:</label><span></span>
-                                  <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
-                                </div>
-
-                                <div class="form-group col-sm-3 col-xs-12">
-                                  <label for="btnSeleccionar">Seleccionar Archivo</label>
-                                  <div>
-                                    <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
-                                      <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                                    </button>
-                                    <input type="file" id="inputArchivo" style="display: none;" accept=".docx, .pdf, .jpg">
-                                  </div>
-                                  <p id="nombreArchivo" style="margin-top: 5px;"></p> <!-- Para mostrar el nombre del archivo seleccionado -->
-                                </div>
-
-                                <div class="table-container">
-                                  <div class="table-responsive">
-                                    <table class="table table-bordes" id="tablaRequisitos">
-                                      <thead class="thead-dark">
-                                        <tr>
-                                          <th>Id Tipo Requisito</th>
-                                          <th>Documento</th>
-                                          <th>Eliminar</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                    <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                      Mostrando registros del 0 al 0 de un total de 0 registros
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                          <div class="row">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="requiSelec">Requisito de Selección</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <!-- Pestaña de Datos constractuales -->
-                    <div class="tab-pane fade" id="datos-content" role="tabpanel">
-                      <div class="panel panel-default">
-                        <div class="modal-body">
-                          <div class="box-body">
-                            <div class="panel panel-default">
-                              <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
-                                <h4 class="panel-title">Contrato de trabajo</h4>
-                              </div>
-                              <div class="panel-body" style="padding: 15px;">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="comentarioRequisito">Comentario:</label><span></span>
+                              <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="btnSeleccionar">Seleccionar Archivo</label>
+                              <div>
                                 <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
                                   <i class="fa fa-plus" aria-hidden="true"></i> Selección
                                 </button>
+                                <input type="file" id="inputArchivo" style="display: none;" accept=".docx, .pdf, .jpg">
                               </div>
+                              <p id="nombreArchivo" style="margin-top: 5px;"></p> <!-- Para mostrar el nombre del archivo seleccionado -->
                             </div>
-                            <div class="panel panel-default">
-                              <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
-                                <h4 class="panel-title">Anexos</h4>
-                              </div>
-                              <div class="panel-body" style="padding: 15px;">
-                                <div class="row">
-                                  <div class="form-group col-sm-3 col-xs-12">
-                                    <label for="idAnexo">Id anexo</label>
-                                    <input type="text" class="form-control input-md cajatexto" id="idAnexo" name="idAnexo">
-                                  </div>
 
-                                  <div class="form-group col-sm-3 col-xs-12">
-                                    <label for="tipoAnexo">Tipo Anexo</label>
-                                    <select class="form-control input-md cajatexto" id="tipoAnexo" name="tipoAnexo">
-                                      <option value="">Seleccione...</option>
-                                    </select>
-                                  </div>
-
-                                  <div class="form-group col-sm-3 col-xs-12">
-                                    <label for="fechaAnexo">Fecha Anexo</label>
-                                    <input type="date" class="form-control input-md cajatexto" id="fechaAnexo" name="fechaAnexo">
-                                  </div>
-
-                                  <div class="form-group col-sm-3 col-xs-12">
-                                    <label for="btnSeleccionarAnexo">Documento Anexo</label>
-                                    <div>
-                                      <button type="button" class="btn btn-primary" id="btnSeleccionarAnexo">
-                                        <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="table-container2">
-                                  <div class="table-responsive2">
-                                    <table class="table table-bordes2" id="tablaAnexo">
-                                      <thead class="thead-dark">
-                                        <tr>
-                                          <th>Id Anexo</th>
-                                          <th>Tipo Anexo</th>
-                                          <th>Fecha</th>
-                                          <th>Documento</th>
-                                          <th>Eliminar</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                    <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                      Mostrando registros del 0 al 0 de un total de 0 registros
-                                    </div>
-                                  </div>
+                            <div class="table-requisitos">
+                              <div class="table-responsive1">
+                                <table class="table table-bordes" id="tablaRequisitos">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Id Tipo Requisito</th>
+                                      <th>Documento</th>
+                                      <th>Eliminar</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
                                 </div>
                               </div>
                             </div>
@@ -457,196 +375,305 @@ MODAL AGREGAR TAREA
                       </div>
                     </div>
                   </div>
-              </section>
+                </div>
 
-              <div class="modal-body" style="margin: -25px; background: #f4f4f4; padding: 5px;"> </div>
-              <section class="content">
-                <div class="box">
-                  <div class="panel-group" id="panelDatos">
-                    <div class="panel panel-default">
-                      <div class="modal-body">
-                        <div class="button-container">
-                          <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                            <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                          </button>
+                <!-- Pestaña de Datos contractuales -->
+                <div class="tab-pane fade" id="datos-content" role="tabpanel">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
+                        <h4 class="panel-title">Contrato de trabajo</h4>
+                      </div>
+                      <div class="panel-body" style="padding: 15px;">
+                        <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
+                          <i class="fa fa-plus" aria-hidden="true"></i> Selección
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-                          <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
-                            <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
-                          </button>
-
-                          <button type="button" class="btn btn-primary" id="btnListadoFicha">
-                            <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
-                          </button>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
+                      <h4 class="panel-title">Anexos</h4>
+                    </div>
+                    <div class="panel-body" style="padding: 15px;">
+                      <div class="row">
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="idAnexo">Id anexo</label>
+                          <input type="text" class="form-control input-md cajatexto" id="idAnexo" name="idAnexo">
                         </div>
 
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="tipoAnexo">Tipo Anexo</label>
+                          <select class="form-control input-md cajatexto" id="tipoAnexo" name="tipoAnexo">
+                            <option value="">Seleccione...</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="fechaAnexo">Fecha Anexo</label>
+                          <input type="date" class="form-control input-md cajatexto" id="fechaAnexo" name="fechaAnexo">
+                        </div>
+
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="btnSeleccionarAnexo">Documento Anexo</label>
+                          <div>
+                            <button type="button" class="btn btn-primary" id="btnSeleccionarAnexo">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Selección
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="table-container2">
+                        <div class="table-responsive2">
+                          <table class="table table-bordes2" id="tablaAnexo">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th>Id Anexo</th>
+                                <th>Tipo Anexo</th>
+                                <th>Fecha</th>
+                                <th>Documento</th>
+                                <th>Eliminar</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                            Mostrando registros del 0 al 0 de un total de 0 registros
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
 
-        </form>
+              <!-- Botones de acción -->
+              <div class="button-container">
+                <button type="button" class="btn btn-primary" id="btnGrabarFicha">
+                  <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
+                </button>
+
+                <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
+                  <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
+                </button>
+
+                <button type="button" class="btn btn-primary" id="btnListadoFicha">
+                  <i class="fa fa-search" aria-hidden="true"></i> Listado Ficha
+                </button>
+              </div>
+            </div>
+          </section>
+
+
+          <script>
+            document.getElementById("btnSeleccionContrato").addEventListener("click", function() {
+              document.getElementById("inputArchivo").click();
+            });
+
+            document.getElementById("inputArchivo").addEventListener("change", function() {
+              if (this.files.length > 0) {
+                alert("Archivo seleccionado: " + this.files[0].name);
+              }
+            });
+          </script>
+
+          <script>
+            $(document).ready(function() {
+              $('#btnSeleccionContrato').click(function() {
+                $('#inputArchivo').click();
+              });
+
+              $('#inputArchivo').on('change', function() {
+                var file = this.files[0];
+
+                if (file) {
+                  var ext = file.name.split('.').pop().toLowerCase();
+
+                  if ($.inArray(ext, ['docx', 'pdf', 'jpg']) === -1) {
+                    alert('Solo se permiten archivos DOCX, PDF o JPG.');
+                    $(this).val('');
+                    $('#nombreArchivo').text(''); // Limpiar el texto mostrado
+                  }
+                }
+              });
+            });
+          </script>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
+              document.getElementById('btnGrabarFicha').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+              document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
+              document.getElementById('btnListadoSolicitud').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+              document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
+              document.getElementById('btnListadoFicha').style = 'background-color: #3c8dbc; border-color: #3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+              const buttons = document.querySelectorAll('.btn');
+              buttons.forEach(button => {
+                button.addEventListener('mouseover', function() {
+                  if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+                  if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+                  if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
+                  this.style.transform = 'translateY(-2px)';
+                  this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+                });
+
+                button.addEventListener('mouseout', function() {
+                  if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+                  if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+                  if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
+                  this.style.transform = '';
+                  this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                });
+              });
+            });
+          </script>
+
+          <script>
+            document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
+              window.location.href = "fichaContrato?view=listaSolicitudes";
+            });
+          </script>
+
+          <script>
+            document.getElementById("btnListadoFicha").addEventListener("click", function() {
+              window.location.href = "fichaContrato";
+            });
+          </script>
+
+          <script>
+            button.addEventListener('mouseout', function() {
+              if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
+              if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
+              if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
+              this.style.transform = '';
+              this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            });
+          </script>
+
+          <script>
+            document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
+              window.location.href = "fichaContrato?view=listaSolicitudes";
+            });
+          </script>
+
+          <script>
+            document.getElementById("btnListadoFicha").addEventListener("click", function() {
+              window.location.href = "fichaContrato";
+            });
+          </script>
 
       </div>
 
     </div>
 
-    <script>
-      document.getElementById("btnSeleccionContrato").addEventListener("click", function() {
-        document.getElementById("inputArchivo").click();
-      });
+    <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
-      document.getElementById("inputArchivo").addEventListener("change", function() {
-        if (this.files.length > 0) {
-          alert("Archivo seleccionado: " + this.files[0].name);
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btnListaFichaContrato = document.getElementById("btnListaFichaContrato");
+        const btnListaSolicitudes = document.getElementById("btnListaSolicitudes");
+        const panelFichaContrato = document.getElementById("panelFichaContrato");
+        const panelListaSolicitudActivas = document.getElementById("panelListaSolicitudActivas");
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const view = urlParams.get("view");
+
+        if (view === "listaSolicitudes") {
+          panelFichaContrato.style.display = "none";
+          panelListaSolicitudActivas.style.display = "block";
+        } else {
+          panelFichaContrato.style.display = "block";
+          panelListaSolicitudActivas.style.display = "none";
         }
-      });
-    </script>
 
-    <script>
-      $(document).ready(function() {
-        $('#btnSeleccionContrato').click(function() {
-          $('#inputArchivo').click();
+        btnListaFichaContrato.addEventListener("click", () => {
+          panelFichaContrato.style.display = "block";
+          panelListaSolicitudActivas.style.display = "none";
         });
 
-        $('#inputArchivo').on('change', function() {
-          var file = this.files[0];
-
-          if (file) {
-            var ext = file.name.split('.').pop().toLowerCase();
-
-            if ($.inArray(ext, ['docx', 'pdf', 'jpg']) === -1) {
-              alert('Solo se permiten archivos DOCX, PDF o JPG.');
-              $(this).val('');
-              $('#nombreArchivo').text(''); // Limpiar el texto mostrado
-            }
-          }
+        btnListaSolicitudes.addEventListener("click", () => {
+          panelListaSolicitudActivas.style.display = "block";
+          panelFichaContrato.style.display = "none";
         });
       });
     </script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
-        document.getElementById('btnGrabarFicha').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+    <style>
+      .table-requisitos {
+        position: relative;
+        padding-top: 10px;
 
-        document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
-        document.getElementById('btnListadoSolicitud').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+      }
 
-        document.getElementById('btnListadoFicha').querySelector('i').className = 'fa fa-file-text';
-        document.getElementById('btnListadoFicha').style = 'background-color: #3c8dbc; border-color: #3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+      .table-responsive1 {
+        top: 50px;
+      }
 
-        const buttons = document.querySelectorAll('.btn');
-        buttons.forEach(button => {
-          button.addEventListener('mouseover', function() {
-            if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
-            if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
-            if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
-            this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-          });
+      /* Ajustar modal a sus contenedores */
+      .modal-dialog {
+        width: auto !important;
+        max-width: 70% !important;
+        margin: 10px auto !important;
+      }
 
-          button.addEventListener('mouseout', function() {
-            if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
-            if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
-            if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
-            this.style.transform = '';
-            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-          });
-        });
-      });
-    </script>
+      .modal-content {
+        width: 100% !important;
+      }
 
-    <script>
-      document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
-        window.location.href = "fichaContrato?view=listaSolicitudes";
-      });
-    </script>
+      .modal-body {
+        padding: 5px !important;
+        overflow-x: hidden !important;
+      }
 
-    <script>
-      document.getElementById("btnListadoFicha").addEventListener("click", function() {
-        window.location.href = "fichaContrato";
-      });
-    </script>
+      .modal-body .content {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
 
-    <script>
-      button.addEventListener('mouseout', function() {
-        if (this.id === 'btnGrabarFicha') this.style.backgroundColor = '#3c8dbc';
-        if (this.id === 'btnListadoSolicitud') this.style.backgroundColor = '#FF6600';
-        if (this.id === 'btnListadoFicha') this.style.backgroundColor = '#3c8dbc';
-        this.style.transform = '';
-        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-      });
-    </script>
+      .modal-body .box {
+        margin-bottom: 10px !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
 
-    <script>
-      document.getElementById("btnListadoSolicitud").addEventListener("click", function() {
-        window.location.href = "fichaContrato?view=listaSolicitudes";
-      });
-    </script>
+      .modal-body .panel-group {
+        margin-bottom: 5px !important;
+      }
 
-    <script>
-      document.getElementById("btnListadoFicha").addEventListener("click", function() {
-        window.location.href = "fichaContrato";
-      });
-    </script>
+      .modal-body .panel-body {
+        padding: 5px !important;
+      }
 
-  </div>
+      .modal-body .form-group {
+        margin-bottom: 5px !important;
+      }
 
-  <style>
-    #lista table {
-      font-size: 10px;
-    }
+      /* Ajustar contenido dentro del modal */
+      .modal-body section.content {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
 
-    #lista th {
-      font-size: 13px;
-    }
+      /* Separar los botones de acción */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin: 10px ;
+        padding: 10px;
+      }
 
-    #lista td {
-      font-size: 15px;
-    }
-
-    .panel-listaSolicitudActivas-link:focus,
-    .panel-listaSolicitudActivas-link:active {
-      text-decoration: underline;
-    }
-
-    .panel-opcion-link:focus,
-    .panel-opcion-link:active {
-      text-decoration: underline;
-    }
-  </style>
-
-</div>
-
-<script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnListaFichaContrato = document.getElementById("btnListaFichaContrato");
-    const btnListaSolicitudes = document.getElementById("btnListaSolicitudes");
-    const panelFichaContrato = document.getElementById("panelFichaContrato");
-    const panelListaSolicitudActivas = document.getElementById("panelListaSolicitudActivas");
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const view = urlParams.get("view");
-
-    if (view === "listaSolicitudes") {
-      panelFichaContrato.style.display = "none";
-      panelListaSolicitudActivas.style.display = "block";
-    } else {
-      panelFichaContrato.style.display = "block";
-      panelListaSolicitudActivas.style.display = "none";
-    }
-
-    btnListaFichaContrato.addEventListener("click", () => {
-      panelFichaContrato.style.display = "block";
-      panelListaSolicitudActivas.style.display = "none";
-    });
-
-    btnListaSolicitudes.addEventListener("click", () => {
-      panelListaSolicitudActivas.style.display = "block";
-      panelFichaContrato.style.display = "none";
-    });
-  });
-</script>
+      .button-container .btn {
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+    </style>
