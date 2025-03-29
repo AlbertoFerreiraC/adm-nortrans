@@ -1,3 +1,4 @@
+var contF = 0;
 $(document).ready(function () {
 
     cargarDatosTabla();
@@ -10,10 +11,12 @@ $(document).ready(function () {
         CentroDeCostoAgregar();
         ApruebaAgregar();
         PreapruebaAgregar();
+        cargarrequisitos();
     });
 
     $('#empresaAgregar').change(function () {
         CentroDeCostoAgregar();
+        
     });
 
     $('#empresaModificar').change(function () {
@@ -98,6 +101,42 @@ $(document).ready(function () {
 
     });
 
+
+    
+
+    $('#btnAgregarRequisitosAgregar').click(function () {
+        if ($("#requisitosAgregar").val() != "-") {
+            agregarRequisitoEnLista();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+
+    $('#btnAgregarRequisitosModificar').click(function () {
+        if ($("#requisitosModificar").val() != "-") {
+            var descripcionConcepto = $('select[name="requisitosModificar"] option:selected').text();      
+            if(controlCargaModificacion(descripcionConcepto) == true){
+                agregarDetalleRequisito();
+            }else{
+                mensajeError("No puede agregar el mismo requisito mas de una vez.");
+            }                
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+
+    
+
 });
 
 function cargarDatosTabla() {
@@ -176,26 +215,32 @@ function cargarDatosTabla() {
 }
 
 function agregarDatos() {
-    var datos = new FormData();
-    datos.append("motivo", $("#motivoAgregar").val());
-    datos.append("division", $("#divisionAgregar").val());
-    datos.append("cargo", $("#cargoAgregar").val());
-    datos.append("empresa", $("#empresaAgregar").val());
-    datos.append("centroDeCosto", $("#centroDecostoAgregar").val());
-    datos.append("cantidadSolicitada", $("#cantidadAgregar").val());
-    datos.append("tipoBus", $("#equipoAgregar").val());
-    datos.append("licenciaDeConducir", $("#licenciaAgregar").val());
-    datos.append("turnosLaborales", $("#tipoturnoAgregar").val());
-    datos.append("tipo_contrato", $("#tipocontratoAgregar").val());
-    datos.append("fechaRequerida", $("#fecharequeridaAgregar").val());
-    datos.append("fechaTermino", $("#fechaterminoAgregar").val());
-    datos.append("remuneracion", $("#remuneracionAgregar").val());
-    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboral").val());
-    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnica").val());
-    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccion").val());
-    datos.append("comentarioGeneral", $("#comentarioAgregar").val());
-    datos.append("preAprueba", $("#preapruebaAgregar").val());
-    datos.append("aprueba", $("#apruebaAgregar").val());
+    var datos = '{"motivo":"'+$("#motivoAgregar").val()+
+    '","division":"'+$("#divisionAgregar").val()+
+    '","usuario":"'+$("#idUsuario").val()+
+    '","cargo":"'+$("#cargoAgregar").val()+
+    '","empresa":"'+$("#empresaAgregar").val()+
+    '","centroDeCosto":"'+$("#centroDecostoAgregar").val()+
+    '","cantidadSolicitada":"'+$("#cantidadAgregar").val()+
+    '","tipoBus":"'+$("#equipoAgregar").val()+
+    '","licenciaDeConducir":"'+$("#licenciaAgregar").val()+
+    '","turnosLaborales":"'+$("#tipoturnoAgregar").val()+
+    '","tipo_contrato":"'+$("#tipocontratoAgregar").val()+
+    '","fechaRequerida":"'+$("#fecharequeridaAgregar").val()+
+    '","fechaTermino":"'+$("#fechaterminoAgregar").val()+
+    '","remuneracion":"'+$("#remuneracionAgregar").val()+
+    '","comentario_general":"'+$("#comentarioAgregar").val()+
+    '","preAprueba":"'+$("#preapruebaAgregar").val()+
+    '","aprueba":"'+$("#apruebaAgregar").val()+'",';
+    var datos_tabla = '"tabla":[';
+    $('#tablaRequisitoAgregar tbody tr').each(function(){ 
+      datos_tabla = datos_tabla + '{"requisito":"'+$(this).find("td").eq(1).html()+
+                                    '","observacion":"'+$(this).find("td").eq(2).html()+'"},';
+    });
+    datos_tabla = datos_tabla.substr(0,datos_tabla.length-1);  
+    datos_tabla = datos_tabla + ']';  
+//************************************************************************
+    datos = datos + datos_tabla + "}";
 
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funAgregar.php",
@@ -288,6 +333,8 @@ function obtenerDatosParaModificar(valor) {
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
 
+                cargarrequisitosModificar();
+                cargarTablaModificarDetalleRequisitos(valor);
             }
 
         }
@@ -298,6 +345,87 @@ function obtenerDatosParaModificar(valor) {
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
+    });
+
+}
+
+function cargarTablaModificarDetalleRequisitos(valor) {
+    $("#tablaRequisitoModificar tbody").empty();
+    var params = {
+        "id": valor
+    };
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funListarDetalleRequisito.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<tr>' +
+                    '<td>' + response[i].requisito + '</td>' +
+                    '<td>' + response[i].observacion + '</td>' + // si podes formateale la fecha en dia/mes/año
+                    '<td>' +
+                        '<center>' +
+                            '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
+                                '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarDetalle" id="' + response[i].idDetalle + '"><i class="fa fa-times"></i></button>' +
+                            '</div>' +
+                        '</center>' +
+                    '</td>'+
+                '</tr>';
+            }
+            $('#tablaRequisitoModificar').append(fila);
+
+            $('.btnEliminarDetalle').click(function () {
+                var id_registro = this.id;
+                swal({
+                    title: '¿Está seguro de anular el registro?',
+                    text: "¡Si no lo está puede cancelar la accíón!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, anular registro!'
+                }).then(function (result) {
+                    if (result.value) {
+                        eliminarDetalleRequisito(id_registro);
+                    }
+                });
+            });
+
+        }
+    });
+
+}
+
+function cargarTablaModificarDetalleRequisitosVista(valor) {
+    $("#tablaRequisitoVista tbody").empty();
+    var params = {
+        "id": valor
+    };
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funListarDetalleRequisito.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<tr>' +
+                    '<td>' + response[i].requisito + '</td>' +
+                    '<td>' + response[i].observacion + '</td>' + // si podes formateale la fecha en dia/mes/año
+                '</tr>';
+            }
+            $('#tablaRequisitoVista').append(fila);
+
+        }
     });
 
 }
@@ -344,6 +472,7 @@ function obtenerDatosParaVerMas(valor) {
                 $('#licenciaVer option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoVer option[value="' + response[i].tipo_documento + '"]').attr("selected", true);
 
+                cargarTablaModificarDetalleRequisitosVista(valor);
 
             }
 
@@ -969,3 +1098,205 @@ function CentroDeCostoVerMas(id) {
     });
 }
 // FIN CARGA SELECT "VER"
+
+function cargarrequisitos(){
+    $('#requisitosAgregar').empty();
+    $('#tablaRequisitoAgregar tbody').empty();
+    $('#observacionRequisitoAgregar').val('');
+    $('#requisitosAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var filaCliente = "";
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funListarRequisitoContratacion.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){                  
+            filaCliente = filaCliente + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                      
+            }
+            $('#requisitosAgregar').append(filaCliente);
+        }        
+    });
+  
+  }
+
+  function cargarrequisitosModificar(){
+    $('#requisitosModificar').empty();
+    $('#observacionRequisitoModificar').val('');
+    var filaCliente = "";
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funListarRequisitoContratacion.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){                  
+            filaCliente = filaCliente + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                      
+            }
+            $('#requisitosModificar').append(filaCliente);
+        }        
+    });
+  
+  }
+
+  function agregarRequisitoEnLista(){
+    var idConcepto = $("#requisitosAgregar").val();
+    var descripcionConcepto = $('select[name="requisitosAgregar"] option:selected').text();         
+    var observacion = $("#observacionRequisitoAgregar").val();
+    if(controlCarga(descripcionConcepto) == true){
+         contF++;
+         //---------------------------------------
+         var fila = '<tr id= "fil_'+contF+'">'+
+                     '<td>'+descripcionConcepto+'</td>'+
+                     '<td style="visibility:collapse; display:none;">'+idConcepto+'</td>'+
+                     '<td>'+observacion+'</td>'+
+                     '<td>'+
+                           '<div style ="align-items: center; justify-content: center; display:flex;">'+ 
+                             '<div class="btn-group" style="margin-left: 3px;">'+      
+                                   '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="'+contF+'"><i class="fa fa-times"></i></button>'+  
+                           '</div>'+  
+                       '</td>'+
+                 '</tr>'; 
+
+                 $('#tablaRequisitoAgregar').append(fila);     
+
+                 $('.btnEliminar').click(function() {
+                   var id_registro = this.id;
+                   swal({
+                     title: '¿Está seguro de eliminar el registro?',
+                     text: "¡Si no lo está puede cancelar la accíón!",
+                     type: 'warning',
+                     showCancelButton: true,
+                     confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       cancelButtonText: 'Cancelar',
+                       confirmButtonText: 'Si, eliminar registro!'
+                   }).then(function(result){
+                       if(result.value){
+                         $("#fil_"+id_registro).remove();
+                       }                        
+                   }); 
+               });               
+           $("#observacionRequisitoAgregar").val('');
+    }else{
+     mensajeError("No puede agregar el mismo requisito mas de una vez.");
+    }         
+}
+
+function controlCarga(descripcion){
+    var respuesta = true; 
+    $('#tablaRequisitoAgregar tr').each(function(){ 
+       descripcionTabla = $(this).find("td").eq(0).html();
+        if(descripcion == descripcionTabla){
+            respuesta = false;
+        }
+    });
+    return respuesta;
+  }
+
+  function controlCargaModificacion(descripcion){
+    var respuesta = true; 
+    $('#tablaRequisitoModificar tr').each(function(){ 
+       descripcionTabla = $(this).find("td").eq(0).html();
+        if(descripcion == descripcionTabla){
+            respuesta = false;
+        }
+    });
+    return respuesta;
+  }
+
+  function mensajeError(mensaje){
+    swal({
+      type: "error",
+      title: mensaje,
+      showConfirmButton: true,
+      confirmButtonText: "Aceptar"
+    });
+  }
+
+  function agregarDetalleRequisito() {
+    var datos = new FormData();
+    datos.append("id", $("#idModificar").val());
+    datos.append("requisito", $("#requisitosModificar").val());
+    datos.append("observacion", $("#observacionRequisitoModificar").val());
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funAgregarDetalleRequisito.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro insertado con éxito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    cargarTablaModificarDetalleRequisitos($("#idModificar").val());
+                });
+            } else if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la inserción",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la inserción",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+}
+
+function eliminarDetalleRequisito(id) {
+    var datos = new FormData();
+    datos.append("id", id);
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funEliminarDetalleRequisito.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro eliminado con éxito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    cargarTablaModificarDetalleRequisitos($("#idModificar").val());
+                });
+            } else if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la eliminación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+}
+

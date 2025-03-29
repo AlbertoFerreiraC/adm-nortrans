@@ -35,11 +35,76 @@ $(document).ready(function () {
         }
     });
 
+    $("#btnPreRechazar").click(function () {
+        var id_registro = $(this).data("id")
+
+        swal({
+            title: "¿Está seguro de anular el registro?",
+            text: "¡Si no lo está puede cancelar la accíón!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Si, anular registro!",
+        }).then((result) => {
+            if (result.value) {
+                eliminarDatos(id_registro)
+            }
+        })
+    })
+
 });
 
+function eliminarDatos(valor) {
+    var params = {
+        "id": valor
+    };
+    alert(id);
+    $.ajax({
+        url: "../api_adm_nortrans/preaprueba/funRechazar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro rechazado",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });
+            }
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la eliminación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
+
 function cargarDatosTabla() {
-    $("#tabla tbody").empty()
-    var fila = ""
+    $("#tabla tbody").empty();
+    var fila = "";
     var idUsuario = $("#idUsuario").val();
     var params = {
         "id": idUsuario
@@ -62,10 +127,10 @@ function cargarDatosTabla() {
                         "</td>" +
                         "<td>" +
                         "<center>" +
-                        '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                        '<button title="Ver mas" class="btn btn-info btnverMas" id="' +
+                        '<div class="btn-group" style="align-items: center; justify-content: center; display:flex;">' +
+                        '<button title="Seleccionar" class="btn btn-primary btnSeleccionar" id="' +
                         response[i].idcontratacion +
-                        '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
+                        '" data-toggle="modal" data-target="#modalVermas">Seleccionar</button>' +
                         "</div>" +
                         "</center>" +
                         "</td>" +
@@ -87,21 +152,22 @@ function cargarDatosTabla() {
                         "<td>" +
                         response[i].pre_aprueba +
                         "</td>" +
-                        "</tr>"
+                        "</tr>";
                 }
-                $("#tabla tbody").append(fila)
+                $("#tabla tbody").append(fila);
 
-                $(".btnverMas").click(function () {
-                    obtenerDatosParaVerMasPreprueba(this.id)
-                })
+                $(".btnSeleccionar").click(function () {
+                    obtenerDatosParaVerMasPreprueba(this.id);
+                });
             } else {
                 $("#tabla tbody").append(
-                    '<tr><td colspan="7" class="text-center">No hay solicitudes pendientes por pre-aprobar</td></tr>',
-                )
+                    '<tr><td colspan="7" class="text-center">No hay solicitudes pendientes por pre-aprobar</td></tr>'
+                );
             }
         },
-    })
+    });
 }
+
 
 function obtenerDatosParaModificar(valor) {
 
@@ -179,18 +245,14 @@ function modificarDatos() {
     datos.append("fechaRequerida", $("#fecharequeridaModificar").val());
     datos.append("fechaTermino", $("#fechaterminoModificar").val());
     datos.append("remuneracion", $("#remuneracionModificar").val());
-    datos.append("comentarioGeneral", $("#comentarioModificar").val());
     datos.append("motivo", $("#motivoModificar").val());
     datos.append("tipo_contrato", $("#tipocontratoModificar").val());
-    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
-    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
-    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
     datos.append("observacion_pre_aprobacion", $("#preapruebaComentarioMod").val());
     datos.append("fecha_pre_aperobacion", $("#fechaPreaprobacion").val());
 
 
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funModificar.php",
+        url: "../api_adm_nortrans/preaprueba/funModificar.php",
         method: "POST",
         cache: false,
         data: datos,

@@ -1,3 +1,4 @@
+<input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
 <div class="content-wrapper">
 
   <section class="content-header">
@@ -192,20 +193,47 @@ MODAL AGREGAR TAREA
               <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar">
             </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaPsicolaboral">Entrevista Psicolaboral:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
-            </div>
+            <div class="col-md-12 col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Requisitos de Selección</h3> 
+                </div>                                             
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group col-sm-4 col-xs-12">                 
+                      <label for="requisitosAgregar">Requisitos:</label>
+                      <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosAgregar" name="requisitosAgregar"></select>
+                    </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaTecnica">Entrevista Tecnica:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnica" id="observacionEntrevistaTecnica" rows="1"></textarea>
-            </div>
+                    <div class="form-group col-sm-7 col-xs-12">
+                      <label for="observacionRequisitoAgregar">Observación:</label>
+                      <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoAgregar" id="observacionRequisitoAgregar">
+                    </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionPruebaConduccion">Prueba de Conduccion:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccion" id="observacionPruebaConduccion" rows="1"></textarea>
-            </div>
+                    <div class="form-group col-sm-1 col-xs-12">                 
+                      <label for="btnEliminarCliente"></label>
+                      <div style ="align-items: center; justify-content: center; display:flex;"> 
+                        <div class="btn-group">                        
+                          <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosAgregar"><i class="fa fa-plus"></i></button>
+                        </div>
+                      </div>  
+                    </div>
+
+                    <div class="form-group col-sm-12 col-xs-12">                 
+                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoAgregar" width="100%">                        
+                        <thead>            
+                            <tr>              
+                              <th><center> Concepto</center></th>
+                              <th><center> Observación</center></th>
+                              <th><center>Acciones</center></th>
+                            </tr> 
+                        </thead>
+                        <tbody></tbody>
+                      </table>  
+                    </div>
+                </div>
+              </div><!-- /.box -->
+            </div> 
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -364,20 +392,47 @@ MODAL EDITAR TAREA
               <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar">
             </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaPsicolaboralMod">Entrevista Psicolaboral:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboralMod" id="observacionEntrevistaPsicolaboralMod" rows="1"></textarea>
-            </div>
+            <div class="col-md-12 col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Requisitos de Selección</h3> 
+                </div>                                             
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group col-sm-4 col-xs-12">                 
+                      <label for="requisitosModificar">Requisitos:</label>
+                      <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosModificar" name="requisitosModificar"></select>
+                    </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaTecnicaMod">Entrevista Tecnica:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaMod" id="observacionEntrevistaTecnicaMod" rows="1"></textarea>
-            </div>
+                    <div class="form-group col-sm-7 col-xs-12">
+                      <label for="observacionRequisitoModificar">Observación:</label>
+                      <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoModificar" id="observacionRequisitoModificar">
+                    </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionPruebaConduccionMod">Prueba de Conduccion:</label>
-              <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionMod" id="observacionPruebaConduccionMod" rows="1"></textarea>
-            </div>
+                    <div class="form-group col-sm-1 col-xs-12">                 
+                      <label for="btnAgregarRequisitosModificar"></label>
+                      <div style ="align-items: center; justify-content: center; display:flex;"> 
+                        <div class="btn-group">                        
+                          <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosModificar"><i class="fa fa-plus"></i></button>
+                        </div>
+                      </div>  
+                    </div>
+
+                    <div class="form-group col-sm-12 col-xs-12">                 
+                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoModificar" width="100%">                        
+                        <thead>            
+                            <tr>              
+                              <th><center> Concepto</center></th>
+                              <th><center> Observación</center></th>
+                              <th><center>Acciones</center></th>
+                            </tr> 
+                        </thead>
+                        <tbody></tbody>
+                      </table>  
+                    </div>
+                </div>
+              </div><!-- /.box -->
+            </div> 
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -526,21 +581,27 @@ MODAL VER MAS
             <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer" disabled>
           </div>
 
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="observacionEntrevistaPsicolaboral">Entrevista Psicolaboral:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboralVer" rows="1" disabled></textarea>
-          </div>
-
-
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="observacionEntrevistaTecnicaVer">Entrevista Tecnica:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaVer" id="observacionEntrevistaTecnicaVer" rows="1" disabled></textarea>
-          </div>
-
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="observacionPruebaConduccionVer">Prueba de Conduccion:</label>
-            <textarea class="form-control input-md cajatexto" name="observacionPruebaConduccionVer" id="observacionPruebaConduccionVer" rows="1" disabled></textarea>
-          </div>
+          <div class="col-md-12 col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Requisitos de Selección</h3> 
+                </div>                                             
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group col-sm-12 col-xs-12">                 
+                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoVista" width="100%">                        
+                        <thead>            
+                            <tr>              
+                              <th><center> Concepto</center></th>
+                              <th><center> Observación</center></th>
+                            </tr> 
+                        </thead>
+                        <tbody></tbody>
+                      </table>  
+                    </div>
+                </div>
+              </div><!-- /.box -->
+            </div> 
 
           <div class="col-md-12 col-xs-12">
             <div class="box box-success">

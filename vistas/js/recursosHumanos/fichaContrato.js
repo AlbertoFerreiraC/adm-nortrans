@@ -4,6 +4,29 @@ $(document).ready(() => {
     cargarFichaContrato()
 
     empresaAgregar()
+
+    $('#btnEditar').click(function () {
+        if ($("#numeroFichaSelec").val() != "" &&
+            $("#idSolicitudSelec").val() != "" &&
+            $("#EmpresaSelec").val() != "" &&
+            $("#divisionSelec").val() != "" &&
+            $("#CargoSelec").val() != "-" &&
+            $("#tipocontratoSelec").val() != "-" &&
+            $("#tipoTurnoSelec").val() != "" &&
+            $("#empresaModSelec").val() != "-" &&
+            $("#fechainicioSelec").val() != "-" &&
+            $("#sueldoLiquidoSelec").val() != "-") {
+            modificarDatos();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+
 })
 
 function modificarDatos() {
@@ -258,7 +281,7 @@ function configurarEventoTerminar(id) {
 }
 
 function inactivarContrato(idcontratacion) {
-   
+
     var datos = {
         idcontratacion: idcontratacion,
     }
@@ -270,7 +293,7 @@ function inactivarContrato(idcontratacion) {
         contentType: "application/json",
         dataType: "json",
         success: (response) => {
-           
+
             if (response.status === "success") {
                 swal({
                     type: "success",
