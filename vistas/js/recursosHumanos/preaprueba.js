@@ -2,37 +2,39 @@ $(document).ready(function () {
     //preapruebaSelect();
     cargarDatosTabla();
 
-    $('#btnPreAprobar').click(function () {
-        if ($("#motivoModificar").val() != "" &&
-            $("#divisionModificar").val() != "" &&
-            $("#cargoModificar").val() != "" &&
-            $("#razonModificar").val() != "" &&
-            $("#centrocostoModificar").val() != "-" &&
-            $("#cantidadModificar").val() != "-" &&
-            $("#equipoModificar").val() != "" &&
-            $("#licenciaModificar").val() != "-" &&
-            $("#tipoturnoModificar").val() != "-" &&
-            $("#tipocontratoModificar").val() != "-" &&
-            $("#fecharequeridaModificar").val() != "-" &&
-            $("#remuneracionModificar").val() != "-" &&
-            $("#requisitoseleccionModificar").val() != "-" &&
-            $("#observacionModificar").val() != "-" &&
-            $("#preapruebaModificar").val() != "-" &&
-            $("#apruebaModificar").val() != "-" &&
-            $("#comentarioModificar").val() != "-" &&
-            $("#preapruebaComentarioMod").val() != "-") {
+    $(document).ready(function () {
+        $('#btnPreAprobar').click(function () {
+            if ($("#motivoModificar").val() != "" &&
+                $("#divisionModificar").val() != "" &&
+                $("#cargoModificar").val() != "" &&
+                $("#razonModificar").val() != "" &&
+                $("#centrocostoModificar").val() != "-" &&
+                $("#cantidadModificar").val() != "-" &&
+                $("#equipoModificar").val() != "" &&
+                $("#licenciaModificar").val() != "-" &&
+                $("#tipoturnoModificar").val() != "-" &&
+                $("#tipocontratoModificar").val() != "-" &&
+                $("#fecharequeridaModificar").val() != "-" &&
+                $("#remuneracionModificar").val() != "-" &&
+                $("#requisitoseleccionModificar").val() != "-" &&
+                $("#observacionModificar").val() != "-" &&
+                $("#preapruebaModificar").val() != "-" &&
+                $("#apruebaModificar").val() != "-" &&
+                $("#comentarioModificar").val() != "-" &&
+                $("#preapruebaComentarioMod").val() != "-") {
 
-            $("#fechaPreaprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' ')); //fecha actual del sistema
+                $("#fechaPreaprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' ')); // Fecha actual del sistema
 
-            modificarDatos();
-        } else {
-            swal({
-                type: "error",
-                title: "Favor completar debidamente los campos requeridos.",
-                showConfirmButton: true,
-                confirmButtonText: "Aceptar"
-            });
-        }
+                modificarDatos();
+            } else {
+                swal({
+                    type: "error",
+                    title: "Favor completar debidamente los campos requeridos.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        });
     });
 
     $("#btnPreRechazar").click(function () {
@@ -127,11 +129,11 @@ function cargarDatosTabla() {
                         "</td>" +
                         "<td>" +
                         "<center>" +
+
                         '<div class="btn-group" style="align-items: center; justify-content: center; display:flex;">' +
-                        '<button title="Seleccionar" class="btn btn-primary btnSeleccionar" id="' +
-                        response[i].idcontratacion +
-                        '" data-toggle="modal" data-target="#modalVermas">Seleccionar</button>' +
+                        '<button title="Seleccionar" class="btn btn-primary btnSeleccionar" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalVermas">Seleccionar</button>' +
                         "</div>" +
+
                         "</center>" +
                         "</td>" +
                         "<td>" +
@@ -230,29 +232,25 @@ function obtenerDatosParaModificar(valor) {
 }
 
 function modificarDatos() {
-    var datos = new FormData();
-    datos.append("idcontratacion", $("#idModificar").val());
-    datos.append("cargo", $("#cargoModificar").val());
-    datos.append("empresa", $("#empresaModificar").val());
-    datos.append("centroDeCosto", $("#centroDecostoModificar").val());
-    datos.append("turnosLaborales", $("#tipoturnoModificar").val());
-    datos.append("tipoBus", $("#equipoModificar").val());
-    datos.append("preAprueba", $("#preapruebaModificar").val());
-    datos.append("aprueba", $("#apruebaModificar").val());
-    datos.append("division", $("#divisionModificar").val());
-    datos.append("cantidadSolicitada", $("#cantidadModificar").val());
-    datos.append("licenciaDeConducir", $("#licenciaModificar").val());
-    datos.append("fechaRequerida", $("#fecharequeridaModificar").val());
-    datos.append("fechaTermino", $("#fechaterminoModificar").val());
-    datos.append("remuneracion", $("#remuneracionModificar").val());
-    datos.append("motivo", $("#motivoModificar").val());
-    datos.append("tipo_contrato", $("#tipocontratoModificar").val());
-    datos.append("observacion_pre_aprobacion", $("#preapruebaComentarioMod").val());
-    datos.append("fecha_pre_aperobacion", $("#fechaPreaprobacion").val());
+    var idContratacion = $("#idModificar").val();
 
+    if (!idContratacion) {
+        swal({
+            type: "error",
+            title: "Error: ID de contratación no encontrado",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
+    var datos = new FormData();
+    datos.append("idcontratacion", idContratacion);
+    datos.append("observacion_pre_aprobacion", $("#comentarioPreapruebaVer").val());
+    datos.append("fecha_pre_aperobacion", $("#fechaPreAprobacion").val());
 
     $.ajax({
-        url: "../api_adm_nortrans/preaprueba/funModificar.php",
+        url: "../api_adm_nortrans/preaprueba/funAprobar.php",
         method: "POST",
         cache: false,
         data: datos,

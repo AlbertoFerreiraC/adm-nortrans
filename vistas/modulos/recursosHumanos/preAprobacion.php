@@ -89,6 +89,8 @@ MODAL VER MAS
 
                 <div class="box-body">
 
+                    <input type="hidden" name="idModificar" id="idModificar" required>
+
                     <div class="form-group col-sm-4 col-xs-12">
                         <label for="motivoVer">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                         <select class="form-control input-md cajatexto solo-ruc" name="motivoVer" id="motivoVer" disabled>
@@ -163,7 +165,6 @@ MODAL VER MAS
                         <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer" disabled>
                     </div>
 
-                    
 
                     <div class="col-md-12 col-xs-12">
                         <div class="box box-success">
@@ -174,12 +175,26 @@ MODAL VER MAS
                                     <textarea class="form-control input-md cajatexto" name="comentarioPreapruebaVer" id="comentarioPreapruebaVer" rows="3"></textarea>
                                 </div>
 
-                                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px" id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
-                                
-                                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px" id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
+                                <input type='hidden' id="fechaPreAprobacion" name="fechaPreAprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fecha preaprobacion-->
 
-                                <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 60px; margin-right: 12px; float: right; width: 90px;" id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
-                                 
+                                <button type="button" class="btn btn-primary"
+                                    style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px"
+                                    id="btnPreRechazar">
+                                    <i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar
+                                </button>
+
+                                <button type="button" class="btn btn-primary"
+                                    style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px"
+                                    id="btnPreAprobar">
+                                    <i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar
+                                </button>
+
+                                <button type="button" class="btn btn-primary"
+                                    style="background-color: #adaf9c; border-color: #f46717; margin-top: 60px; margin-right: 12px; float: right; width: 90px;"
+                                    id="btnModificar">
+                                    <i class="fa fa-hdd-o" aria-hidden="true"></i>Salir
+                                </button>
+
 
                             </div>
                         </div>

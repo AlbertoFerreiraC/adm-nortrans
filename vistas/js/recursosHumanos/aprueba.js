@@ -63,9 +63,6 @@ function cargarDatosTabla() {
                         "<td>" +
                         "<center>" +
                         '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                        '<button title="Ver mas" class="btn btn-info btnverMas" id="' +
-                        response[i].idcontratacion +
-                        '" data-toggle="modal" data-target="#modalVermas"><i class="fa fa-eye"></i></button>' +
                         '<button title="Modificar" class="btn btn-warning btnModificar" id="' +
                         response[i].idcontratacion +
                         '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
