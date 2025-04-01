@@ -179,7 +179,7 @@ MODAL EDITAR TAREA
                 <div class="box-body">
                   <div class="form-group col-sm-4 col-xs-12">
                     <label for="preapruebaComentarioMod">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                    <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="3" disabled></textarea>
+                    <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="3"></textarea>
                   </div>
 
                   <input type='hidden' id="fechaAprobacion" name="fechaAprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fecha aprobacion-->

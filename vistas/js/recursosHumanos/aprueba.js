@@ -34,27 +34,25 @@ $(document).ready(function () {
     });
 
     $('#btnRechazar').click(function () {
+        valor = $("#idModificar").val();
+
         if ($("#motivoModificar").val() != "" &&
             $("#divisionModificar").val() != "" &&
             $("#cargoModificar").val() != "" &&
-            $("#razonModificar").val() != "" &&
-            $("#centrocostoModificar").val() != "-" &&
-            $("#cantidadModificar").val() != "-" &&
+            $("#empresaModificar").val() != "" &&
+            $("#centroDecostoModificar").val() != "-" &&
+            $("#cantidadModificar").val() != "" &&
             $("#equipoModificar").val() != "" &&
             $("#licenciaModificar").val() != "-" &&
             $("#tipoturnoModificar").val() != "-" &&
             $("#tipocontratoModificar").val() != "-" &&
-            $("#fecharequeridaModificar").val() != "-" &&
-            $("#remuneracionModificar").val() != "-" &&
-            $("#requisitoseleccionModificar").val() != "-" &&
-            $("#observacionModificar").val() != "-" &&
-            $("#preapruebaModificar").val() != "-" &&
-            $("#apruebaModificar").val() != "-" &&
-            $("#comentarioModificar").val() != "-" &&
-            $("#preapruebaComentarioMod").val() != "-" &&
-            $("#fechaPreaprobacion").val() != "-") {
+            $("#fecharequeridaModificar").val() != "" &&
+            $("#remuneracionModificar").val() != "" &&
+            $("#preapruebaComentarioMod").val() != "" &&
+            $("#apruebaComentarioMod").val() != "") {
 
-            $("#fechaAprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' ')); //fecha actual del sistema
+            // Establecer la fecha actual de aprobación
+            $("#fechaAprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' '));
 
             rechazar();
         } else {
@@ -258,23 +256,34 @@ function aprobar() {
 }
 
 function rechazar() {
+    if (!valor) {
+        console.error("Error: ID de solicitud no definido");
+        swal({
+            type: "error",
+            title: "Error al procesar la solicitud. ID no definido.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
 
     var params = {
         "id": valor
     };
+
     $.ajax({
         url: "../api_adm_nortrans/aprueba/funRechazar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
-        contentType: false,
+        contentType: "application/json",
         processData: false,
         dataType: "json",
         success: function (response) {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro rechazado con exito",
+                    title: "Registro rechazado con éxito",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
@@ -290,19 +299,18 @@ function rechazar() {
                     confirmButtonText: "Aceptar"
                 });
             }
-
         }
-    }).fail(function () {
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error AJAX:", textStatus, errorThrown);
         swal({
             type: "error",
             title: "Ha ocurrido un error al procesar el rechazo",
+            text: "Detalles: " + textStatus,
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
     });
-
 }
-
 
 // INCIO CARGA SELECT "MODIFICAR"
 function cargoModificar(id) {
