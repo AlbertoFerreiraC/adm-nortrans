@@ -196,9 +196,20 @@ MODAL EDITAR TAREA
 
                   <div class="form-group col-sm-4 col-xs-12">
                     <div class="botones-container">
-                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 5px; " id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
-                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 10px; " id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
-                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 20px; float: right; width: 90px;" id="btnSalir" data-dismiss="modal"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
+                      <button type="button" class="btn btn-primary"
+                        style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 5px; "
+                        id="btnRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar
+                      </button>
+
+                      <button type="button" class="btn btn-primary"
+                        style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 10px; "
+                        id="btnAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar
+                      </button>
+
+                      <button type="button" class="btn btn-primary"
+                        style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 20px; float: right; width: 90px;"
+                        id="btnSalir" data-dismiss="modal"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir
+                      </button>
                     </div>
                   </div>
                 </div>

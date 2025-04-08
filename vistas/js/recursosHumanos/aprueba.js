@@ -163,7 +163,7 @@ function obtenerDatosParaModificar(valor) {
                 $('#requisitoseleccionModificar option[value="' + response[i].requisito_seleccion + '"]').attr("selected", true);
                 $('#divisionModificar option[value="' + response[i].division + '"]').attr("selected", true);
                 $("#cantidadModificar").val(response[i].cantidad_solicitada);
-                
+
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
 
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
@@ -184,7 +184,7 @@ function obtenerDatosParaModificar(valor) {
                 $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
                 $("#fechaPreaprobacion").val(response[i].fecha_pre_aperobacion);
                 $("#apruebaComentarioMod").val(response[i].observacion_aprobacion);
-                
+
 
             }
 
@@ -201,6 +201,7 @@ function obtenerDatosParaModificar(valor) {
 }
 
 function aprobar() {
+    alert("ENTRA")
     if (!valor) {
         console.error("Error: ID de solicitud no definido");
         swal({
