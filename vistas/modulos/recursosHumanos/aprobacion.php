@@ -174,21 +174,6 @@ MODAL EDITAR TAREA
               <input type="number" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar" disabled>
             </div>
 
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaPsicolaboralMod">Entrevista Psicolaboral:</label>
-              <textarea disabled class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboralMod" id="observacionEntrevistaPsicolaboralMod" rows="1"></textarea>
-            </div>
-
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionEntrevistaTecnicaMod">Entrevista Tecnica:</label>
-              <textarea disabled class="form-control input-md cajatexto" name="observacionEntrevistaTecnicaMod" id="observacionEntrevistaTecnicaMod" rows="1"></textarea>
-            </div>
-
-            <div class="form-group col-sm-4 col-xs-12">
-              <label for="observacionPruebaConduccionMod">Prueba de Conduccion:</label>
-              <textarea disabled class="form-control input-md cajatexto" name="observacionPruebaConduccionMod" id="observacionPruebaConduccionMod" rows="1"></textarea>
-            </div>
-
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
                 <div class="box-body">
@@ -198,6 +183,11 @@ MODAL EDITAR TAREA
                   </div>
 
                   <input type='hidden' id="fechaAprobacion" name="fechaAprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fecha aprobacion-->
+
+                  <input type='hidden' id="fechaPreaprobacion" name="fechaPreaprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fechaPreaprobacion-->
+
+                  <input type='hidden' id="fechaInicio" name="fechaInicio" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fechaPreaprobacion-->
+
 
                   <div class="form-group col-sm-4 col-xs-12">
                     <label for="apruebaComentarioMod">Comentario Aprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
