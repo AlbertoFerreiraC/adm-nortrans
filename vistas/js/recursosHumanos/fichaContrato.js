@@ -29,62 +29,6 @@ $(document).ready(() => {
 
 })
 
-function modificarDatos() {
-    var datos = new FormData()
-    datos.append("idficha_contrato", $("#numeroFichaSelec").val())
-    datos.append("contratacion", $("#idSolicitudSelec").val())
-    datos.append("empresa", $("#EmpresaSelec").val())
-    datos.append("division", $("#divisionSelec").val())
-    datos.append("cargo", $("#CargoSelec").val())
-    datos.append("tipo_contrato", $("#tipocontratoSelec").val())
-    datos.append("turnos_laborales", $("#tipoTurnoSelec").val())
-    datos.append("fecha_inicio", $("#fechainicioSelec").val())
-    datos.append("sueldo_liquido", $("#sueldoLiquidoSelec").val())
-
-    $.ajax({
-        url: "../api_adm_nortrans/fichaContrato/funModificar.php",
-        method: "POST",
-        cache: false,
-        data: datos,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: (response) => {
-            if (response["mensaje"] === "ok") {
-                swal({
-                    type: "success",
-                    title: "Registro modificado con éxito",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar",
-                }).then((value) => {
-                    location.reload()
-                })
-            } else if (response["mensaje"] === "nok") {
-                swal({
-                    type: "error",
-                    title: "Ha ocurrido un error al procesar la modificación",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar",
-                })
-            } else if (response["mensaje"] === "repetido") {
-                swal({
-                    type: "error",
-                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar",
-                })
-            }
-        },
-    }).fail(() => {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la modificación",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar",
-        })
-    })
-}
-
 function cargarDatosSolicitudes() {
     $("#listaSolicitud tbody").empty()
     var fila = ""
@@ -156,6 +100,104 @@ function cargarDatosSolicitudes() {
         })
     })
 }
+
+
+function modificarDatos() {
+    var datos = new FormData()
+    datos.append("idficha_contrato", $("#numeroFichaSelec").val())
+    datos.append("contratacion", $("#idSolicitudSelec").val())
+    datos.append("empresa", $("#EmpresaSelec").val())
+    datos.append("division", $("#divisionSelec").val())
+    datos.append("cargo", $("#CargoSelec").val())
+    datos.append("tipo_contrato", $("#tipocontratoSelec").val())
+    datos.append("turnos_laborales", $("#tipoTurnoSelec").val())
+    datos.append("fecha_inicio", $("#fechainicioSelec").val())
+    datos.append("sueldo_liquido", $("#sueldoLiquidoSelec").val())
+
+    $.ajax({
+        url: "../api_adm_nortrans/fichaContrato/funModificar.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: (response) => {
+            if (response["mensaje"] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro modificado con éxito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar",
+                }).then((value) => {
+                    location.reload()
+                })
+            } else if (response["mensaje"] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la modificación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar",
+                })
+            } else if (response["mensaje"] === "repetido") {
+                swal({
+                    type: "error",
+                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar",
+                })
+            }
+        },
+    }).fail(() => {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la modificación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar",
+        })
+    })
+}
+
+function obtenerDatosParaModificar(valor) {
+    var params = {
+        "id": valor
+    }
+    $.ajax({
+        url: "../api_adm_nortrans/fichaContrato/funDatosParaModificar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: (response) => {
+            for (var i in response) {
+                $("#idModificar").val(response[i].idcontratacion)
+                empresaModificar(response[i].empresa)
+
+                $("#numeroFichaSelec").val(response[i].idficha_contrato)
+                $("#idSolicitudSelec").val(response[i].contratacion)
+                $('#EmpresaSelec option[value="' + response[i].empresa + '"]').attr("selected", true)
+                $('#divisionSelec option[value="' + response[i].division + '"]').attr("selected", true)
+                $('#CargoSelec option[value="' + response[i].cargo + '"]').attr("selected", true)
+                $('#tipocontratoSelec option[value="' + response[i].tipo_contrato + '"]').attr("selected", true)
+                $('#tipoTurnoSelec option[value="' + response[i].turnos_laborales + '"]').attr("selected", true)
+                $("#fechainicioSelec").val(response[i].fecha_inicio)
+                $("#sueldoLiquidoSelec").val(response[i].sueldo_liquido)
+            }
+
+            $("#modalEditar").modal("show")
+        },
+    }).fail(() => {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al traer los datos solicitados",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar",
+        })
+    })
+}
+
 
 function funcionImprimir(id) {
     var contenido = ""
@@ -229,8 +271,8 @@ function cargarFichaContrato() {
                     "</td>" +
                     "</td>" +
                     "<td>" +
-                    '<button title="Editar" class="btn btn-warning btnEditar" id="' +
-                    response[i].contrato +
+                    '<button type="button" title="Editar" class="btn btn-warning btnEditar" data-toggle="modal" data-target="#modalEditar" id="' +
+                    response[i].idcontratacion +
                     '"> Editar</button>' +
                     "</td>" +
                     "<td>" +
@@ -321,46 +363,6 @@ function inactivarContrato(idcontratacion) {
             type: "error",
             title: "Error de conexión",
             text: "No se pudo conectar con el servidor",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar",
-        })
-    })
-}
-
-function obtenerDatosParaModificar(valor) {
-    var params = {
-        id: valor,
-    }
-    $.ajax({
-        url: "../api_adm_nortrans/fichaContrato/funDatosParaModificar.php",
-        method: "POST",
-        cache: false,
-        data: JSON.stringify(params),
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: (response) => {
-            for (var i in response) {
-                $("#idModificar").val(response[i].idcontratacion)
-                empresaModificar(response[i].empresa)
-
-                $("#numeroFichaSelec").val(response[i].idficha_contrato)
-                $("#idSolicitudSelec").val(response[i].contratacion)
-                $('#EmpresaSelec option[value="' + response[i].empresa + '"]').attr("selected", true)
-                $('#divisionSelec option[value="' + response[i].division + '"]').attr("selected", true)
-                $('#CargoSelec option[value="' + response[i].cargo + '"]').attr("selected", true)
-                $('#tipocontratoSelec option[value="' + response[i].tipo_contrato + '"]').attr("selected", true)
-                $('#tipoTurnoSelec option[value="' + response[i].turnos_laborales + '"]').attr("selected", true)
-                $("#fechainicioSelec").val(response[i].fecha_inicio)
-                $("#sueldoLiquidoSelec").val(response[i].sueldo_liquido)
-            }
-
-            $("#modalEditar").modal("show")
-        },
-    }).fail(() => {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al traer los datos solicitados",
             showConfirmButton: true,
             confirmButtonText: "Aceptar",
         })

@@ -51,7 +51,6 @@ $(document).ready(function () {
             $("#preapruebaComentarioMod").val() != "" &&
             $("#apruebaComentarioMod").val() != "") {
 
-            // Establecer la fecha actual de aprobación
             $("#fechaAprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' '));
 
             rechazar();
@@ -92,10 +91,11 @@ function cargarDatosTabla() {
                         "</td>" +
                         "<td>" +
                         "<center>" +
+
                         '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                        '<button title="Modificar" class="btn btn-warning btnModificar" id="' +
+                        '<button title="Seleccionar" class="btn btn-primary btnModificar" id="' +
                         response[i].idcontratacion +
-                        '" data-toggle="modal" data-target="#modalModificar"><i class="fa fa-pencil"></i></button>' +
+                        '" data-toggle="modal" data-target="#modalModificar">Seleccionar</i></button>' +
                         "</div>" +
                         "</center>" +
                         "</td>" +
@@ -139,7 +139,7 @@ function obtenerDatosParaModificar(valor) {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
+        url: "../api_adm_nortrans/aprueba/funDatosParaModificar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -163,7 +163,9 @@ function obtenerDatosParaModificar(valor) {
                 $('#requisitoseleccionModificar option[value="' + response[i].requisito_seleccion + '"]').attr("selected", true);
                 $('#divisionModificar option[value="' + response[i].division + '"]').attr("selected", true);
                 $("#cantidadModificar").val(response[i].cantidad_solicitada);
+                
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
+
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
                 $("#remuneracionModificar").val(response[i].remuneracion);
                 $("#comentarioModificar").val(response[i].comentario_general);
@@ -181,8 +183,8 @@ function obtenerDatosParaModificar(valor) {
 
                 $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
                 $("#fechaPreaprobacion").val(response[i].fecha_pre_aperobacion);
-
                 $("#apruebaComentarioMod").val(response[i].observacion_aprobacion);
+                
 
             }
 

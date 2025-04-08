@@ -40,42 +40,67 @@ $(document).ready(function () {
     $("#btnPreRechazar").click(function () {
         var id_registro = $(this).data("id")
 
-        swal({
-            title: "¿Está seguro de anular el registro?",
-            text: "¡Si no lo está puede cancelar la accíón!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            cancelButtonText: "Cancelar",
-            confirmButtonText: "Si, anular registro!",
-        }).then((result) => {
-            if (result.value) {
-                eliminarDatos(id_registro)
-            }
-        })
+        valor = $("#idModificar").val();
+
+        if ($("#motivoModificar").val() != "" &&
+            $("#divisionModificar").val() != "" &&
+            $("#cargoModificar").val() != "" &&
+            $("#empresaModificar").val() != "" &&
+            $("#centroDecostoModificar").val() != "-" &&
+            $("#cantidadModificar").val() != "" &&
+            $("#equipoModificar").val() != "" &&
+            $("#licenciaModificar").val() != "-" &&
+            $("#tipoturnoModificar").val() != "-" &&
+            $("#tipocontratoModificar").val() != "-" &&
+            $("#fecharequeridaModificar").val() != "" &&
+            $("#remuneracionModificar").val() != "" &&
+            $("#preapruebaComentarioMod").val() != "" &&
+            $("#apruebaComentarioMod").val() != "") {
+
+            $("#fechaAprobacion").val(new Date().toISOString().slice(0, 19).replace('T', ' '));
+
+            rechazar();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
     })
 
 });
 
-function eliminarDatos(valor) {
+function rechazar() {
+    if (!valor) {
+        console.error("Error: ID de solicitud no definido");
+        swal({
+            type: "error",
+            title: "Error al procesar la solicitud. ID no definido.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
     var params = {
         "id": valor
     };
-    alert(id);
+
     $.ajax({
         url: "../api_adm_nortrans/preaprueba/funRechazar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
-        contentType: false,
+        contentType: "application/json",
         processData: false,
         dataType: "json",
         success: function (response) {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro rechazado",
+                    title: "Registro rechazado con éxito",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
@@ -86,22 +111,22 @@ function eliminarDatos(valor) {
             if (response['mensaje'] === "nok") {
                 swal({
                     type: "error",
-                    title: "Ha ocurrido un error al procesar la eliminación",
+                    title: "Ha ocurrido un error al procesar el rechazo",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
             }
-
         }
-    }).fail(function () {
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error AJAX:", textStatus, errorThrown);
         swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la eliminación",
+            title: "Ha ocurrido un error al procesar el rechazo",
+            text: "Detalles: " + textStatus,
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
     });
-
 }
 
 function cargarDatosTabla() {
@@ -244,16 +269,17 @@ function modificarDatos() {
         return;
     }
 
-    var datos = new FormData();
-    datos.append("idcontratacion", idContratacion);
-    datos.append("observacion_pre_aprobacion", $("#comentarioPreapruebaVer").val());
-    datos.append("fecha_pre_aperobacion", $("#fechaPreAprobacion").val());
+    var params = {
+        "idcontratacion": idContratacion,
+        "observacion_pre_aprobacion": $("#comentarioPreapruebaVer").val(),
+        "fecha_pre_aperobacion": $("#fechaPreAprobacion").val(),
+    };
 
     $.ajax({
         url: "../api_adm_nortrans/preaprueba/funAprobar.php",
         method: "POST",
         cache: false,
-        data: datos,
+        data: JSON.stringify(params),
         contentType: false,
         processData: false,
         dataType: "json",
@@ -308,6 +334,7 @@ function obtenerDatosParaVerMasPreprueba(valor) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
+                $("#idModificar").val(valor);
                 $("#divisionVer").val(response[i].division);
                 cargoVerMas(response[i].cargo); //listo
                 empresaVerMas(response[i].empresa); //listo
