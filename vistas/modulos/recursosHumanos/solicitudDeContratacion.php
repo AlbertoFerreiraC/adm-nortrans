@@ -72,77 +72,22 @@
                         <div class="table-container">
                             <div class="table-responsive">
                                 <div class="box-body">
-                                    <div id="lista">
-                                        <table class="table table-bordered table-striped dt-responsive" width="100%" style="text-align: center;">
+                                    <div id="lista"><table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%;">
                                             <thead>
                                                 <tr>
-                                                    <th style="width:120px">
-                                                        <center>N° Solicitud</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Fecha solicitud</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Empresa</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Cargo</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Centro costo</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Solicitante</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Pre aprobado</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Aprobadoo</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Tipo contrato</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Estado actual</center>
-                                                    </th>
-                                                    <th>
-                                                        <center>Impresión</center>
-                                                    </th>
-                                                </tr>
-                                                <!-- Fila de filtros -->
-                                                <tr class="filters">
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                    <th>
-                                                        <input type="text" class="form-control filter-input" placeholder="">
-                                                    </th>
-                                                </tr>
+                                                    
+                                                    <th onclick="sortTable(0, this)"<center>N° Solicitud</center></th>
+                                                    <th onclick="sortTable(1, this)"<center>Fecha solicitud</center></th>                                                  
+                                                    <th onclick="sortTable(2, this)"<center>Empresa</center></th>                                                                                                       
+                                                    <th onclick="sortTable(3, this)"<center>Cargo</center> </th>                                                                                               
+                                                    <th onclick="sortTable(4, this)"<center>Centro costo</center> </th>                                        
+                                                    <th onclick="sortTable(5, this)" <center>Solicitante</center></th>                                                                                                    
+                                                    <th onclick="sortTable(6, this)" <center>Pre aprobado</center></th>                                                                                                     
+                                                    <th onclick="sortTable(7, this)"<center>Aprobadoo</center></th>                                          
+                                                    <th onclick="sortTable(8, this)" <center>Tipo contrato</center></th>                                                                                                     
+                                                    <th onclick="sortTable(9, this)"<center>Estado actual</center> </th>
+                                                    <th onclick="sortTable(10, this)"><center>Impresión</center></th>
+                                                </tr>                                  
                                             </thead>
                                             <tbody>
                                             </tbody>
@@ -159,18 +104,46 @@
 </section>
 
 <style>
-    #lista table {
+      #lista table {
         font-size: 10px;
         border-collapse: separate !important;
         border-spacing: 0;
+        text-align: center;
     }
 
     #lista th {
         font-size: 13px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd !important;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        padding-right: 20px; /* Espacio para la flecha */
+    }
+
+    #lista th.asc::after {
+        content: "▲";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
+    }
+
+    #lista th.desc::after {
+        content: "▼";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
     }
 
     #lista td {
         font-size: 15px;
+        border: 1px solid #ddd !important;
     }
 
     .panel-opcion-link:focus,
@@ -179,7 +152,7 @@
     }
 
     .table-container {
-        margin: 15px;
+        margin: 5px;
     }
 
     .table-responsive {
@@ -190,123 +163,53 @@
         margin-bottom: 0;
     }
 
-    .table>thead>tr>th {
-        background-color: #f4f4f4;
-        border-bottom: 2px solid #ddd;
-        border: 1px solid #ddd !important;
+    .table-striped>tbody>tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
     }
 
     .table-bordered {
         border: 1px solid #ddd !important;
     }
-
-    .table-bordered>thead>tr>th,
-    .table-bordered>tbody>tr>td {
-        border: 1px solid #ddd !important;
-    }
-
-    .table-striped>tbody>tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-    }
-
-    .filters th {
-        padding: 4px !important;
-        background-color: #f8f9fa !important;
-    }
-
-    .filter-input {
-        width: 100%;
-        padding: 4px 8px;
-        font-size: 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background-color: #fff;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 8px center;
-        background-size: 12px;
-        padding-right: 28px;
-    }
-
-    .filter-input:focus {
-        outline: none;
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
-    }
-
-    #panelFiltros .panel-heading {
-        background-color: #e9ecef;
-        border-bottom: 1px solid #dee2e6;
-    }
-
-    #panelFiltros .panel-body {
-        padding: 15px;
-        background-color: #fff;
-    }
-
-    #panelFiltros .form-control {
-        height: 34px;
-        padding: 6px 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-
-    #panelFiltros .input-group-addon {
-        background-color: #f8f9fa;
-        border: 1px solid #ddd;
-        border-left: none;
-    }
-
-    #panelFiltros .btn-primary {
-        background-color: #337ab7;
-        border-color: #2e6da4;
-        padding: 6px 12px;
-    }
-
-    #panelFiltros .btn-primary:hover {
-        background-color: #286090;
-        border-color: #204d74;
-    }
-
-    .panel-group {
-        margin-bottom: 15px;
-    }
 </style>
-
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Asegurarse de que el panel esté abierto por defecto
-        const panel = document.getElementById('frm_j_idt110_content');
-        if (panel) {
-            panel.classList.add('in');
+        let sortDirection = [];
+
+        function sortTable(columnIndex, thElement) {
+            const table = document.getElementById("tablaDocumentos");
+            const rows = Array.from(table.tBodies[0].rows);
+            const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
+            sortDirection[columnIndex] = dir;
+
+            // Limpiar clases de flechas en todos los th
+            const headers = table.querySelectorAll("th");
+            headers.forEach((th, i) => {
+                th.classList.remove("asc", "desc");
+                if (i === columnIndex) th.classList.add(dir);
+            });
+
+            rows.sort((a, b) => {
+                let aText = a.cells[columnIndex].innerText.trim();
+                let bText = b.cells[columnIndex].innerText.trim();
+
+                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                const isDate = datePattern.test(aText) && datePattern.test(bText);
+
+                if (isDate) {
+                    return dir === "asc"
+                        ? new Date(aText) - new Date(bText)
+                        : new Date(bText) - new Date(aText);
+                }
+
+                return dir === "asc"
+                    ? aText.localeCompare(bText, 'es', { numeric: true })
+                    : bText.localeCompare(aText, 'es', { numeric: true });
+            });
+
+            const tbody = table.tBodies[0];
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
         }
-        const filterInputs = document.querySelectorAll('.filter-input');
-        filterInputs.forEach((input, index) => {
-            input.addEventListener('input', function() {
-                const searchText = this.value.toLowerCase();
-                const table = document.querySelector('.table');
-                const rows = table.querySelectorAll('tbody tr');
-
-                rows.forEach(row => {
-                    const cell = row.cells[index];
-                    if (cell) {
-                        const text = cell.textContent.toLowerCase();
-                        row.style.display = text.includes(searchText) ? '' : 'none';
-                    }
-                });
-            });
-        });
+    </script>
 
 
-        exampleData.forEach(row => {
-            const tr = document.createElement('tr');
-            row.forEach(cell => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-                tr.appendChild(td);
-            });
-            tbody.appendChild(tr);
-        });
-    });
-</script>
 </div>

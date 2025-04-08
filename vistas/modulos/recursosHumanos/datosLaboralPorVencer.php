@@ -21,35 +21,31 @@
                                 <div class="table-responsive">
                                     <div class="box-body">
                                         <div id="lista">
-                                            <table class="table table-bordered table-striped dt-responsive" width="100%" style="text-align: center;">
+                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width:120px">
-                                                            <center>Rut</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Personal</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Id Centro Costo</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Tipo de Documento</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Fecha Expiración</center>
-                                                        </th>
-                                                    </tr>
-                                                    <!-- Fila de filtros -->
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
-                                                        <th><input type="text" class="form-control filter-input" placeholder=""></th>
+                                                        <th onclick="sortTable(0, this)">Rut</th>
+                                                        <th onclick="sortTable(1, this)">Personal</th>
+                                                        <th onclick="sortTable(2, this)">Id Centro Costo</th>
+                                                        <th onclick="sortTable(3, this)">Tipo de Documento</th>
+                                                        <th onclick="sortTable(4, this)">Fecha Expiración</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td>12345678-9</td>
+                                                        <td>Juan Pérez</td>
+                                                        <td>101</td>
+                                                        <td>Contrato</td>
+                                                        <td>2025-04-10</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>87654321-0</td>
+                                                        <td>María López</td>
+                                                        <td>102</td>
+                                                        <td>Licencia</td>
+                                                        <td>2025-04-15</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -64,119 +60,111 @@
     </section>
 
     <style>
-        #lista table {
-            font-size: 10px;
-            border-collapse: separate !important;
-            border-spacing: 0;
-        }
+           #lista table {
+        font-size: 10px;
+        border-collapse: separate !important;
+        border-spacing: 0;
+        text-align: center;
+    }
 
-        #lista th {
-            font-size: 13px;
-        }
+    #lista th {
+        font-size: 13px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd !important;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        padding-right: 20px; /* Espacio para la flecha */
+    }
 
-        #lista td {
-            font-size: 15px;
-        }
+    #lista th.asc::after {
+        content: "▲";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
+    }
 
-        .panel-opcion-link:focus,
-        .panel-opcion-link:active {
-            text-decoration: underline;
-        }
+    #lista th.desc::after {
+        content: "▼";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
+    }
 
-        .table-container {
-            margin: 15px;
-        }
+    #lista td {
+        font-size: 15px;
+        border: 1px solid #ddd !important;
+    }
 
-        .table-responsive {
-            overflow-x: auto;
-        }
+    .panel-opcion-link:focus,
+    .panel-opcion-link:active {
+        text-decoration: underline;
+    }
 
-        .table {
-            margin-bottom: 0;
-        }
+    .table-container {
+        margin: 15px;
+    }
 
-        .table > thead > tr > th {
-            background-color: #f4f4f4;
-            border-bottom: 2px solid #ddd;
-            border: 1px solid #ddd !important;
-        }
+    .table-responsive {
+        overflow-x: auto;
+    }
 
-        .table-bordered {
-            border: 1px solid #ddd !important;
-        }
+    .table {
+        margin-bottom: 0;
+    }
 
-        .table-bordered > thead > tr > th,
-        .table-bordered > tbody > tr > td {
-            border: 1px solid #ddd !important;
-        }
+    .table-striped>tbody>tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
 
-        .table-striped > tbody > tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .filters th {
-            padding: 4px !important;
-            background-color: #f8f9fa !important;
-        }
-
-        .filter-input {
-            width: 100%;
-            padding: 4px 8px;
-            font-size: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #fff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'%3E%3C/polygon%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            background-size: 12px;
-            padding-right: 28px;
-        }
-
-        .filter-input:focus {
-            outline: none;
-            border-color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-        }
+    .table-bordered {
+        border: 1px solid #ddd !important;
+    }
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Asegurarse de que el panel esté abierto por defecto
-            const panel = document.getElementById('frm_j_idt110_content');
-            if (panel) {
-                panel.classList.add('in');
-            }
+        let sortDirection = [];
 
-            // Implementar la funcionalidad de filtrado
-            const filterInputs = document.querySelectorAll('.filter-input');
-            filterInputs.forEach((input, index) => {
-                input.addEventListener('input', function() {
-                    const searchText = this.value.toLowerCase();
-                    const table = document.querySelector('.table');
-                    const rows = table.querySelectorAll('tbody tr');
+        function sortTable(columnIndex, thElement) {
+            const table = document.getElementById("tablaDocumentos");
+            const rows = Array.from(table.tBodies[0].rows);
+            const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
+            sortDirection[columnIndex] = dir;
 
-                    rows.forEach(row => {
-                        const cell = row.cells[index];
-                        if (cell) {
-                            const text = cell.textContent.toLowerCase();
-                            row.style.display = text.includes(searchText) ? '' : 'none';
-                        }
-                    });
-                });
+            // Limpiar clases de flechas en todos los th
+            const headers = table.querySelectorAll("th");
+            headers.forEach((th, i) => {
+                th.classList.remove("asc", "desc");
+                if (i === columnIndex) th.classList.add(dir);
             });
 
+            rows.sort((a, b) => {
+                let aText = a.cells[columnIndex].innerText.trim();
+                let bText = b.cells[columnIndex].innerText.trim();
 
-            exampleData.forEach(row => {
-                const tr = document.createElement('tr');
-                row.forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell;
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
+                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                const isDate = datePattern.test(aText) && datePattern.test(bText);
+
+                if (isDate) {
+                    return dir === "asc"
+                        ? new Date(aText) - new Date(bText)
+                        : new Date(bText) - new Date(aText);
+                }
+
+                return dir === "asc"
+                    ? aText.localeCompare(bText, 'es', { numeric: true })
+                    : bText.localeCompare(aText, 'es', { numeric: true });
             });
-        });
+
+            const tbody = table.tBodies[0];
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
+        }
     </script>
 </div>
-

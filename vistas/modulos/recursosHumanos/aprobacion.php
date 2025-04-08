@@ -204,12 +204,13 @@ MODAL EDITAR TAREA
                     <textarea class="form-control input-md cajatexto" id="apruebaComentarioMod" name="apruebaComentarioMod" rows="3"></textarea>
                   </div>
 
-                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
-
-                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 20px" id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
-
-                  <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 25px; margin-right: 12px; float: right; width: 90px;" id="btnModificar" data-dismiss="modal"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
-
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <div class="botones-container">
+                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 5px; " id="btnPreRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar</button>
+                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 10px; " id="btnPreAprobar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Aprobar</button>
+                      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 20px; float: right; width: 90px;" id="btnSalir" data-dismiss="modal"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,5 +223,13 @@ MODAL EDITAR TAREA
   </div>
 
 </div>
+
+<style>
+  .botones-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+  }
+</style>
 
 <script src="vistas/js/recursosHumanos/aprueba.js"></script>
