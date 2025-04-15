@@ -135,6 +135,9 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="deMaquina"><i class="fa fa-cog"></i>De Maquina</a></li>
+								<li><a href="parametrosEstandar"><i class="fa fa-key"></i> Parametros Estandar </a></li>
+								<li><a href="claseMaquina"><i class="fa fa-key"></i> Clase Maquina </a></li>
+								<li><a href="tipoBus"><i class="fa fa-key"></i> Tipo Bus </a></li>
 							</ul>
 						</li>
 

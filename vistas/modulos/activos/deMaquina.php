@@ -36,11 +36,9 @@
                     </div>
 
                     <div class="box-body">
-
-
                         <div class="d-flex align-items-center botones-container"">
-                            <button type="button" class="btn btn-primary "data-toggle="modal" data-target="#modalEditar" id="btnverActivos">
-                                <i class="fa fa-search" aria-hidden="true"></i> Ver Activos
+                            <button type=" button" class="btn btn-primary " data-toggle="modal" data-target="#modalEditar" id="btnverActivos">
+                            <i class="fa fa-search" aria-hidden="true"></i> Ver Activos
                             </button>
 
                             <button type="button" class="btn btn-primary " id="btnverTodos">
@@ -54,16 +52,23 @@
                     </div>
 
                     <!-- Controles de tabla -->
-                    <div class="form-row justify-content-start">
-                        <div class="records-control" style="margin-left: 30px;">
-                            <span>Mostrar</span>
-                            <select id="recordsPerPage" style="width: 70px;">
-                                <option value="10" selected>10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                            <span>registros</span>
+                    <div class="table-controls">
+                        <div class="control-left">
+                            <label for="entriesSelect">Mostrar
+                                <select id="entriesSelect" onchange="updateVisibleRows()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> registros
+                            </label>
+                        </div>
+
+                        <div class="control-right">
+                            <label for="searchInput">Buscar:
+                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                            </label>
                         </div>
                     </div>
 
@@ -164,9 +169,11 @@
 
 <style>
     .botones-container {
-    display: flex;
-    gap: 80px; /* Aquí defines el espacio entre los botones */
-}
+        display: flex;
+        gap: 80px;
+        /* Aquí defines el espacio entre los botones */
+    }
+
     #lista table {
         font-size: 10px;
         border-collapse: separate !important;
@@ -229,17 +236,45 @@
         margin-bottom: 15px;
     }
 
-    #btnGrabarFicha {
-        margin-top: 22px !important;
-        position: relative;
-        left: 20px;
-    }
+  
+    .table-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 20px;
+        }
 
-    #btnMostarListado {
-        margin-top: 22px !important;
-        position: relative;
-        left: 30px;
-    }
+        .control-left,
+        .control-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        /* Inputs y selects responsive */
+        .control-left select,
+        .control-right input {
+            padding: 4px 6px;
+            font-size: 14px;
+            max-width: 400px;
+        }
+
+        /* Comportamiento en pantallas pequeñas */
+        @media (max-width: 600px) {
+            .table-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .control-left,
+            .control-right {
+                width: 80%;
+                justify-content: space-between;
+            }
+        }
 </style>
 
 <script>
@@ -296,7 +331,7 @@
 </script>
 
 <script>
-      document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('btnverActivos').querySelector('i').className = 'fa fa-save';
         document.getElementById('btnverActivos').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
@@ -308,24 +343,24 @@
 
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
-          button.addEventListener('mouseover', function() {
-            if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
-            if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
-            if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
-            this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-          });
+            button.addEventListener('mouseover', function() {
+                if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
+                if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
+                if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+            });
 
-          button.addEventListener('mouseout', function() {
-            if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
-            if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
-            if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
-            this.style.transform = '';
-            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-          });
+            button.addEventListener('mouseout', function() {
+                if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
+                if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
+                if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
+                this.style.transform = '';
+                this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            });
         });
-      });
-    </script>
+    });
+</script>
 
 
 

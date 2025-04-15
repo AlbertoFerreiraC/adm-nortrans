@@ -168,7 +168,10 @@ CUERPO DOCUMENTO
           // ACTIVOS
           if (
             $_GET["ruta"] == "docInformeMaquina" ||
-             $_GET["ruta"] == "deMaquina"
+             $_GET["ruta"] == "deMaquina"||
+             $_GET["ruta"] == "parametrosEstandar"||
+             $_GET["ruta"] == "claseMaquina"||
+               $_GET["ruta"] == "tipoBus"
           
           
           ) {
