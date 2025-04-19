@@ -101,9 +101,6 @@ $(document).ready(function () {
 
     });
 
-
-    
-
     $('#btnAgregarRequisitosAgregar').click(function () {
         if ($("#requisitosAgregar").val() != "-") {
             agregarRequisitoEnLista();
@@ -134,8 +131,6 @@ $(document).ready(function () {
             });
         }
     });
-
-    
 
 });
 

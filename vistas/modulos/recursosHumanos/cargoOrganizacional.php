@@ -64,9 +64,9 @@
                             <span>registros</span>
                         </div>
                     </div>
-                         
+
                     <div class="form-row justify-content-start" style="margin-top: -50px;">
-                        <div class="form-group text-right" style="margin-bottom: 20px;  margin-left:-150 px;">     
+                        <div class="form-group text-right" style="margin-bottom: 20px;  margin-left:-150 px;">
                             <input type="text" id="busquedaCargo" class="form-control" placeholder="Buscar cargo..." style=" width: 200px;">
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                                                             <center>Estado</center>
                                                         </th>
                                                         <th>
-                                                            <center>Editar</center>
+                                                            <center>Accion</center>
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -108,7 +108,9 @@
         </div>
     </section>
 
-    <!--aca debe ir el modal de agregar-->
+    <!--=====================================
+        MODAL AGREGAR
+    ======================================-->
 
     <div id="modalAgregar" class="modal fade" role="dialog">
 
@@ -137,15 +139,15 @@
                     <div class="modal-body">
 
                         <div class="box-body">
-
                             <div class="form-group col-sm-4 col-xs-12">
-                                <label for="observacionEntrevistaPsicolaboral">Nombre:</label>
-                                <textarea class="form-control input-md cajatexto" name="observacionEntrevistaPsicolaboral" id="observacionEntrevistaPsicolaboral" rows="1"></textarea>
+                                <label for="nuevoNombre">Nombre:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <input type="text" class="form-control input-md cajatexto" name="nuevoNombre" id="nuevoNombre">
                             </div>
 
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label for="divisionModificar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <select class="form-control input-md cajatexto solo-ruc" name="divisionModificar" id="divisionModificar">
+                                    <option value="" selected>Seleccionar...</option>
                                     <option value="Industrial">Industrial</option>
                                     <option value="Interurbano">Interurbano</option>
                                 </select>
@@ -153,33 +155,19 @@
 
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label for="areaNegocio">Area de Negocio:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                <select class="form-control input-md cajatexto solo-ruc" name="areaNegocio" id="areaNegocio">
-                                    <option value=""> </option>
-                                    <option value=""> </option>
-                                </select>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaNegocio" id="areaNegocio"></select>
                             </div>
 
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label for="areaDependencia">Area Dependecia:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                <select class="form-control input-md cajatexto solo-ruc" name="areaDependenciar" id="areaDependencia">
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-sm-4 col-xs-12">
-                                <label for="cargoDependecia">Cargo Dependencia:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                <select class="form-control input-md cajatexto solo-ruc" name="cargoDependecia" id="cargoDependecia">
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaDependencia" id="areaDependencia"></select>
                             </div>
 
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label for="SolicitudPersonal">¿Solicita Personal?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <select class="form-control input-md cajatexto solo-ruc" name="SolicitudPersonal" id="SolicitudPersonal">
                                     <option value="Si">Si</option>
-                                    <option value="No">No</option>
+                                    <option value="No" selected>No</option>
                                 </select>
                             </div>
 
@@ -187,14 +175,14 @@
                                 <label for="autorizaSolicitudMs">¿Autoriza Solicitud MS?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <select class="form-control input-md cajatexto solo-ruc" name="autorizaSolicitudMs" id="autorizaSolicitudMs">
                                     <option value="Si">Si</option>
-                                    <option value="No">No</option>
+                                    <option value="No" selected>No</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label for="autorizaOc">¿Autoriza OC?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaOc"" id=" autorizaOc"">
+                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaOc" id="autorizaOc">
                                     <option value="Si">Si</option>
-                                    <option value="No">No</option>
+                                    <option value="No" selected>No</option>
                                 </select>
                             </div>
 
@@ -202,7 +190,7 @@
                                 <label for="aprobarSoliPersonal">¿Aprobar Solicitud personal?:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <select class="form-control input-md cajatexto solo-ruc" name="aprobarSoliPersonal" id="aprobarSoliPersonal">
                                     <option value="Si">Si</option>
-                                    <option value="Si">No</option>
+                                    <option value="Si" selected>No</option>
                                 </select>
                             </div>
 
@@ -222,12 +210,110 @@
         </div>
     </div>
 
+    <!--=====================================
+        MODAL EDITAR
+    ======================================-->
 
-</div>
+    <div id="modalEditar" class="modal fade" role="dialog">
 
-</div>
+        <div class="modal-dialog modal-lg">
 
-</div>
+            <div class="modal-content">
+
+                <form role="form" method="post" id="formulario_para_editar">
+
+                    <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+                    <div class="modal-header" style="background:#A9A9A9; color:white">
+
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        <h4 class="modal-title">Cargo</h4>
+
+                    </div>
+
+                    <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+                    <div class="modal-body">
+
+                        <div class="box-body">
+
+                            <input type="hidden" name="idcargo_organizacional" id="idcargo_organizacional" required>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="nuevoNombreMod">Nombre:</label>
+                                <input type="text" class="form-control input-md cajatexto" name="nuevoNombreMod" id="nuevoNombreMod">
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="divisionModificarMod">División:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="divisionModificarMod" id="divisionModificarMod">
+                                    <option value="" selected>Seleccionar...</option>
+                                    <option value="Industrial">Industrial</option>
+                                    <option value="Interurbano">Interurbano</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="areaNegocioMod">Area de Negocio:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaNegocioMod" id="areaNegocioMod"></select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="areaDependenciaMod">Area Dependecia:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="areaDependenciaMod" id="areaDependenciaMod"></select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="SolicitudPersonalMod">¿Solicita Personal?:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="SolicitudPersonalMod" id="SolicitudPersonalMod">
+                                    <option value="Si">Si</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="autorizaSolicitudMsMod">¿Autoriza Solicitud MS?:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaSolicitudMsMod" id="autorizaSolicitudMsMod">
+                                    <option value="Si">Si</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="autorizaOcMod">¿Autoriza OC?:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="autorizaOcMod" id="autorizaOcMod">
+                                    <option value="Si">Si</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                                <label for="aprobarSoliPersonalMod">¿Aprobar Solicitud personal?:</label>
+                                <select class="form-control input-md cajatexto solo-ruc" name="aprobarSoliPersonalMod" id="aprobarSoliPersonalMod">
+                                    <option value="Si">Si</option>
+                                    <option value="Si" selected>No</option>
+                                </select>
+                            </div>
+
+                            <div class="button-container">
+                                <button type="button" class="btn btn-primary" id="btnModificarFicha">
+                                    <i class="fa fa-save" aria-hidden="true"></i> Modificar Ficha
+                                </button>
+
+                                <button type="button" class="btn btn-primary" id="btnMostarListado"" style=" background-color: #FF6600;">
+                                    <i class="fa fa-file" aria-hidden="true"></i> Mostrar Listado
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -307,14 +393,32 @@
     }
 </style>
 
+<!--CIERRO EL MODAL Y MUESTRO EL LISTADO-->
 <script>
-        const btnGrabarFicha = document.getElementById('btnGrabarFicha');
-        if (btnGrabarFicha) {
-            const icon = btnGrabarFicha.querySelector('i');
-            if (icon) {
-                icon.className = 'fa fa-save';
+    $(document).ready(function() {
+        $("#btnMostarListado").on("click", function() {
+            $("#modalAgregar").modal("hide");
+
+            const panelLista = $("#frm_j_idt110_content");
+            if (!panelLista.hasClass("in")) {
+                panelLista.collapse("show");
             }
-            btnGrabarFicha.style.cssText = `
+
+            $('html, body').animate({
+                scrollTop: $("#lista").offset().top - 100
+            }, 500);
+        });
+    });
+</script>
+
+<script>
+    const btnGrabarFicha = document.getElementById('btnGrabarFicha');
+    if (btnGrabarFicha) {
+        const icon = btnGrabarFicha.querySelector('i');
+        if (icon) {
+            icon.className = 'fa fa-save';
+        }
+        btnGrabarFicha.style.cssText = `
                 background-color: #3c8dbc;
                 border-color: #3c8dbc;
                 padding: 8px 16px;
@@ -322,15 +426,15 @@
                 transition: all 0.3s ease;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             `;
-            btnGrabarFicha.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-            });
-            btnGrabarFicha.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-            });
-        }
+        btnGrabarFicha.addEventListener('mouseover', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+        });
+        btnGrabarFicha.addEventListener('mouseout', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+        });
+    }
 </script>
 
 <script>
