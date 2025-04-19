@@ -81,9 +81,8 @@
                                                     <th onclick="sortTable(2, this)"<center>Empresa</center></th>                                                                                                       
                                                     <th onclick="sortTable(3, this)"<center>Cargo</center> </th>                                                                                               
                                                     <th onclick="sortTable(4, this)"<center>Centro costo</center> </th>                                        
-                                                    <th onclick="sortTable(5, this)" <center>Solicitante</center></th>                                                                                                    
                                                     <th onclick="sortTable(6, this)" <center>Pre aprobado</center></th>                                                                                                     
-                                                    <th onclick="sortTable(7, this)"<center>Aprobadoo</center></th>                                          
+                                                    <th onclick="sortTable(7, this)"<center>Aprobado</center></th>                                          
                                                     <th onclick="sortTable(8, this)" <center>Tipo contrato</center></th>                                                                                                     
                                                     <th onclick="sortTable(9, this)"<center>Estado actual</center> </th>
                                                     <th onclick="sortTable(10, this)"><center>Impresión</center></th>
@@ -102,6 +101,8 @@
         </div>
 </div>
 </section>
+
+<script src="vistas/js/recursosHumanos/solicitudDeContratacion.js"></script>
 
 <style>
       #lista table {

@@ -35,31 +35,23 @@
                         </div>
                     </div>
 
-
-
                     <div id="frm_j_idt110_content" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="table-container">
                                 <div class="table-responsive">
                                     <div class="box-body">
                                         <div id="lista">
-                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%;">
+                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th onclick="sortTable(0, this)">
                                                             <center>N° Solicitud</center>
-                                                        </th>
-                                                        <th onclick="sortTable(1, this)">
-                                                            <center>Rut Empresa</center>
                                                         </th>
                                                         <th onclick="sortTable(2, this)">
                                                             <center>Empresa</center>
                                                         </th>
                                                         <th onclick="sortTable(3, this)">
                                                             <center>Fecha Solicitud</center>
-                                                        </th>
-                                                        <th onclick="sortTable(4, this)">
-                                                            <center>Solicitante</center>
                                                         </th>
                                                         <th onclick="sortTable(5, this)">
                                                             <center>División</center>
@@ -82,32 +74,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>87654321-0</td>
-                                                        <td>María López</td>
-                                                        <td>Empresa A</td>
-                                                        <td>2025-04-15</td>
-                                                        <td>Juan Pérez</td>
-                                                        <td>RRHH</td>
-                                                        <td>Analista</td>
-                                                        <td>2</td>
-                                                        <td>Pendiente</td>
-                                                        <td>Jefe A</td>
-                                                        <td>Gerente B</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>12345678-9</td>
-                                                        <td>Carlos Ruiz</td>
-                                                        <td>Empresa B</td>
-                                                        <td>2025-03-12</td>
-                                                        <td>Ana Gómez</td>
-                                                        <td>Finanzas</td>
-                                                        <td>Contador</td>
-                                                        <td>1</td>
-                                                        <td>Pendiente</td>
-                                                        <td>Jefe B</td>
-                                                        <td>Gerente C</td>
-                                                    </tr>
+                                                    <!-- Aquí se agregarán dinámicamente las filas -->
                                                 </tbody>
                                             </table>
                                         </div>
@@ -121,8 +88,9 @@
         </div>
     </section>
 
+    <script src="vistas/js/recursosHumanos/solicitudContrPendiente.js"></script>
+
     <style>
-    
         #lista table {
             font-size: 10px;
             border-collapse: separate !important;
