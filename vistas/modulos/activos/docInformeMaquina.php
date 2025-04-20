@@ -284,3 +284,5 @@
     });
 </script>
 </div>
+
+<script src="vistas/js/activos/"></script>

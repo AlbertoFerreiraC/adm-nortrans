@@ -201,29 +201,478 @@ MODAL AGREGAR TAREA
             </div>
           </div>
 
-          <div class="col-md-12 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">Datos Laborales</h3>
-              </div>
-              <div class="box-body">
-                <div class="form-group col-sm-4 col-xs-12">
-                  <label for="empresaAgregar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="empresaAgregar" name="empresaAgregar"></select>
+
+          <section class="content">
+            <div class="box">
+              <!-- Navegación por pestañas -->
+              <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                <li class="nav-item active">
+                  <a class="nav-link active" id="datosLaborales" data-toggle="tab" href="#datosLaborales-content" role="tab">
+                    Datos Laborales
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="asignacionLaboral" data-toggle="tab" href="#asignacionLaboral-content" role="tab">
+                    Asignacion Laboral
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="documentoLaboral" data-toggle="tab" href="#documentoLaboral-content" role="tab">
+                    Documentos Laboral
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="datosEstudios" data-toggle="tab" href="#datosEstudios-content" role="tab">
+                    Datos Estudios
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="medidasEpp" data-toggle="tab" href="#medidasEpp-content" role="tab">
+                    Medidas de EPP
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contactoEmergencia" data-toggle="tab" href="#contactoEmergencia-content" role="tab">
+                    Contacto de Emergencia
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="antecedenteMedicos" data-toggle="tab" href="#antecedenteMedicos-content" role="tab">
+                    Antecedente Medicos
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="fotos" data-toggle="tab" href="#fotos-content" role="tab">
+                    Fotos
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Contenido de las pestañas -->
+              <div class="tab-content" id="myTabContent">
+                <!-- Pestaña de Datos Laborales-->
+                <div class="tab-pane fade in active" id="datosLaborales-content" role="tabpanel">
+                  <div class="panel-group" id="iddatosLaborales">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="empresaAgregar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                              <select class="form-control input-md cajatexto" id="empresaAgregar" name="empresaAgregar"></select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="centroAgregar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                              <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="turnoAgregar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                              <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-group col-sm-4 col-xs-12">
-                  <label for="centroAgregar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+
+                <!-- Pestaña de Asignacion Laboral -->
+                <div class="tab-pane fade" id="asignacionLaboral-content" role="tabpanel">
+                  <div class="panel-group" id="idasignacionLaboral">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="asignacionDivision">Division</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivision" id="asignacionDivision"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="asignacionEmpresa">Empresa</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionEmpresa" id="asignacionEmpresa"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="asignacionCcosto">Centro Costo</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCcosto" id="asignacionCcosto"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnAgregar" style="margin-right: 10px; margin-bottom: 10px;">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i> Agregar
+                              </button>
+
+                              <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i> Todos Los Centros Costo
+                              </button>
+                            </div>
+
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaAsignacion">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Id Division</th>
+                                      <th>Division</th>
+                                      <th>Empresa</th>
+                                      <th>Id Centro Costo</th>
+                                      <th>Centro Costo</th>
+                                      <th>Eliminar </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-group col-sm-4 col-xs-12">
-                  <label for="turnoAgregar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                  <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
+                <!-- Pestaña de Documentos Laborales -->
+                <div class="tab-pane fade" id="documentoLaboral-content" role="tabpanel">
+                  <div class="panel-group" id="iddocumentoLaboral">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="documenLaboral">Documento Laboral</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="documenLaboral" id="documenLaboral"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="nombreDocuemto">Id Documento</label>
+                              <input type="text" class="form-control input-md cajatexto" name="nombreDocuemto" id="nombreDocuemto">
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="asignacionCcosto">Centro Costo</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCcosto" id="asignacionCcosto"></select>
+                            </div>
+
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <label>Fecha Expiracion</label>
+                                <div class="input-group">
+                                  <input type="date" class="form-control" value="2025-03-11">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnSeleccion" style="margin-right: 10px; margin-bottom: 10px;">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i> Seleccion
+                              </button>
+                            </div>
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaLaboral">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Id Documento</th>
+                                      <th>Id Tipo Documento</th>
+                                      <th>Fecha Expiracion</th>
+                                      <th>Documento</th>
+                                      <th>Eliminar </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Pestaña de Datos de Estudio-->
+                <div class="tab-pane fade" id="datosEstudios-content" role="tabpanel">
+                  <div class="panel-group" id="iddatosEstudios">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="tipoEstudio">Tipo Estudio</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEstudio" id="tipoEstudio"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="estadoEstudio">Estado Estudio</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudio" id="estadoEstudio"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnSeleccion"
+                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
+                              </button>
+                            </div>
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaLaboral">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Tipo Estudio</th>
+                                      <th>Estado Estudio</th>
+                                      <th>Documento</th>
+                                      <th>Eliminar </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pestaña de Medidas de EPP-->
+                <div class="tab-pane fade" id="medidasEpp-content" role="tabpanel">
+                  <div class="panel-group" id="idmedidasEpp">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="tipoEpp">Tipo EPP</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEpp" id="tipoEpp"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="numTalla">N° Talla</label>
+                              <input type="text" class="form-control input-md cajatexto" name="numTalla" id="numTalla">
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnAgregar"
+                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                            </div>
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaLaboral">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Tipo Equipo</th>
+                                      <th>Talla</th>
+                                      <th>Eliminar</th>
+                                      <th>Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pestaña de Contacto de Emergencia-->
+                <div class="tab-pane fade" id="contactoEmergencia-content" role="tabpanel">
+                  <div class="panel-group" id="idcontactoEmergencia">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="nombreEmergencia">Nombre</label>
+                              <input type="text" class="form-control input-md cajatexto" name="nombreEmergencia" id="nombreEmergencia">
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="parentescoEmergencia">Parentesco</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergencia" id="parentescoEmergencia"></select>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="fonoEmergencia">Fono</label>
+                              <input type="number" class="form-control input-md cajatexto" name="fonoEmergencia" id="fonoEmergencia" min="0">
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="direccionEmergencia">Direccion</label>
+                              <input type="text" class="form-control input-md cajatexto" name="direccionEmergencia" id="direccionEmergencia">
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnAgregar"
+                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                            </div>
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaLaboral">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Parentesco</th>
+                                      <th>Nombre</th>
+                                      <th>Fono</th>
+                                      <th>Direccion</th>
+                                      <th>Eliminar</th>
+                                      <th>Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pestaña de Antecedente Medico-->
+                <div class="tab-pane fade" id="antecedenteMedicos-content" role="tabpanel">
+                  <div class="panel-group" id="idantecedenteMedicos">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="tipoAntecedente">Tipo Antecedente</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoAntecedente" id="tipoAntecedente"></select>
+                            </div>
+
+                            <div class="form-group col-sm-4 col-xs-12">
+                              <label for="detalleAntecedente">Detalle Antecedente:</label>
+                              <textarea class="form-control input-md cajatexto" name="detalleAntecedente" id="detalleAntecedente" rows="1" ></textarea>
+                            </div>
+
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnAgregar"
+                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                            </div>
+
+                            <div class="table-container2">
+                              <div class="table-responsive2">
+                                <table class="table table-bordes2" id="tablaLaboral">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th>Tipo Antecedente</th>
+                                      <th>Detalle</th>
+                                      <th>Eliminar</th>
+                                      <th>Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                  Mostrando registros del 0 al 0 de un total de 0 registros
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pestaña de Foto-->
+                <div class="tab-pane fade" id="fotos-content" role="tabpanel">
+                  <div class="panel-group" id="idfotos">
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        <div class="box-body">
+                          <div class="row">
+                          <div class="form-group col-sm-3 col-xs-12">
+                              <button type="button" class="btn btn-primary" id="btnSeleccion"
+                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
+                              </button>
+                            </div>                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Cerrás otras pestañas acá si tenés más -->
               </div>
             </div>
-          </div>
+          </section>
+
 
 
         </div>
@@ -382,47 +831,47 @@ MODAL EDITAR TAREA
           </div>
         </div>
 
-    <div class="col-md-12 col-xs-12">
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">Datos Laborales</h3>
-        </div>
-        <div class="box-body">
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="empresaModificar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <select class="form-control input-md cajatexto" id="empresaModificar" name="empresaModificar"></select>
-          </div>
+        <div class="col-md-12 col-xs-12">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Datos Laborales</h3>
+            </div>
+            <div class="box-body">
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="empresaModificar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="empresaModificar" name="empresaModificar"></select>
+              </div>
 
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="centroModificar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <select class="form-control input-md cajatexto" id="centroModificar" name="centroModificar"></select>
-          </div>
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="centroModificar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="centroModificar" name="centroModificar"></select>
+              </div>
 
-          <div class="form-group col-sm-4 col-xs-12">
-            <label for="turnoModificar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-            <select class="form-control input-md cajatexto" id="turnoModificar" name="turnoModificar"></select>
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="turnoModificar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="turnoModificar" name="turnoModificar"></select>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
     </div>
 
-  </div>
-
-  <!--=====================================
+    <!--=====================================
         PIE DEL MODAL
         ======================================-->
 
-  <div class="modal-footer">
+    <div class="modal-footer">
 
-    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-    <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Modificar Registro</button>
+      <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Modificar Registro</button>
+
+    </div>
+
+    </form>
 
   </div>
-
-  </form>
-
-</div>
 
 </div>
 
@@ -592,8 +1041,6 @@ MODAL EDITAR TAREA
 
 </div>
 
-<script src="vistas/js/recursosHumanos/fichaEmpleado.js"></script>
-
 
 <style>
   #div1 {
@@ -606,3 +1053,11 @@ MODAL EDITAR TAREA
     background-color: lightgray;
   }
 </style>
+
+<script>
+
+</script>
+
+
+
+<script src="vistas/js/recursosHumanos/fichaEmpleado.js"></script>

@@ -39,11 +39,11 @@
                 </div>
 
                 <div class="form-group col-sm-3 col-xs-12">
-                  <label for="asientoPisoUno">Asiento Piso 1:</label>
-                  <input type="number" class="form-control input-md cajatexto solo-ruc" name="asientoPisoUno" id="asientoPisoUno" placeholder=" ">
+                    <label for="asientoPisoUno">Asiento Piso 1:</label>
+                    <input type="number" class="form-control input-md cajatexto solo-ruc" name="asientoPisoUno" id="asientoPisoUno" placeholder=" ">
                 </div>
 
-                <div class="form-group col-sm-4 col-xs-12">
+                <div class="form-group col-sm-4 col-xs-12 piso_dos">
                     <label for="Estado">Clase Piso 2:</label><span </span>
                         <select class="form-control input-md cajatexto solo-ruc" name="idClasePisoDos" id="idClasePisoDos">
                             <option value=""></option>
@@ -58,18 +58,19 @@
                         </select>
                 </div>
 
-                <div class="form-group col-sm-4 col-xs-12">
-                  <label for="asientoPisoDos">Asiento Piso 2:</label>
-                  <input type="number" class="form-control input-md cajatexto solo-ruc" name="asientoPisoDos" id="asientoPisoDos" placeholder=" ">
+                <div class="form-group col-sm-4 col-xs-12 piso_dos">
+                    <label for="asientoPisoDos">Asiento Piso 2:</label>
+                    <input type="number" class="form-control input-md cajatexto solo-ruc" name="asientoPisoDos" id="asientoPisoDos" placeholder=" ">
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                    <label for="Estado">Estado:</label><span</span>
-                    <select class="form-control input-md cajatexto solo-ruc" name="IdEstado" id="IdEstado">
-                        <option value=""></option>
-                        <option value="Activo">Activo</option>
-                        <option value="Bloqueo">Bloqueo</option>
-                    </select>
+                    <label for="Estado">Estado:</label>
+                    <span< /span>
+                        <select class="form-control input-md cajatexto solo-ruc" name="IdEstado" id="IdEstado">
+                            <option value=""></option>
+                            <option value="Activo">Activo</option>
+                            <option value="Bloqueo">Bloqueo</option>
+                        </select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
@@ -286,6 +287,10 @@
                         justify-content: space-between;
                     }
                 }
+
+                .piso_dos {
+                    display: none;
+                }
             </style>
 
             <script>
@@ -364,3 +369,27 @@
                     updateVisibleRows();
                 });
             </script>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const selectPisos = document.getElementById("idNumPisos");
+                    const camposPisoDos = document.querySelectorAll(".piso_dos");
+
+                    function toggleCamposPisoDos() {
+                        if (selectPisos.value === "2") {
+                            camposPisoDos.forEach(campo => campo.style.display = "block");
+                        } else {
+                            camposPisoDos.forEach(campo => campo.style.display = "none");
+                        }
+                    }
+
+                    selectPisos.addEventListener("change", toggleCamposPisoDos);
+
+                    // Asegurarse de ocultarlo al cargar la página
+                    toggleCamposPisoDos();
+                });
+            </script>
+
+
+
+            <script src="vistas/js/activos/"></script>

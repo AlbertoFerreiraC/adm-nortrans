@@ -178,3 +178,5 @@
         }
     }
 </style>
+
+<script src="vistas/js/activos/"></script>

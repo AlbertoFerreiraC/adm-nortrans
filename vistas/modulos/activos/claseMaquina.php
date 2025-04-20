@@ -98,7 +98,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>87654321-0</td>
-                                                       <td>Empresa A</td>
+                                                        <td>María López</td>                                                        <td>Empresa A</td>
                                                     </tr>
                                                     <tr>
                                                         <td>12345678-9</td>
@@ -275,6 +275,7 @@
             rows.forEach(row => tbody.appendChild(row));
         }
     </script>
+
     <script>
         function filterTable() {
             const input = document.getElementById("searchInput").value.toLowerCase();
@@ -308,3 +309,5 @@
             updateVisibleRows();
         });
     </script>
+
+<script src="vistas/js/activos/"></script>
