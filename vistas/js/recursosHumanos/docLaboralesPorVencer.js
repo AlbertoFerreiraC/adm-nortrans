@@ -28,7 +28,7 @@ function cargarDatosTablaSoliPendientes() {
         }
     }).fail(function () {
         swal({
-            icon: "error",
+            type: "error",
             title: "Ha ocurrido un error al cargar la lista",
             showConfirmButton: true,
             confirmButtonText: "Aceptar"
