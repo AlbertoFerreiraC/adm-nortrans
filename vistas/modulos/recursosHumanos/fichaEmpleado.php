@@ -302,7 +302,7 @@ MODAL AGREGAR TAREA
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <button type="button" class="btn btn-primary" id="btnAgregar" style="margin-right: 10px; margin-bottom: 10px;">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i> Agregar
+                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                               </button>
 
                               <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
@@ -817,42 +817,42 @@ MODAL EDITAR TAREA
             <!-- Navegación por pestañas -->
             <ul class="nav nav-tabs" id="myTabs" role="tablist">
               <li class="nav-item active">
-                <a class="nav-link active" id="datosLaborales" data-toggle="tab" href="#datosLaborales-content" role="tab">
+                <a class="nav-link active" id="datosLaboralesModificar" data-toggle="tab" href="#datosLaboralesModificar-content" role="tab">
                   Datos Laborales
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="asignacionLaboral" data-toggle="tab" href="#asignacionLaboral-content" role="tab">
+                <a class="nav-link" id="asignacionLaboralModificar" data-toggle="tab" href="#asignacionLaboralModificar-content" role="tab">
                   Asignacion Laboral
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="documentoLaboral" data-toggle="tab" href="#documentoLaboral-content" role="tab">
+                <a class="nav-link" id="documentoLaboralModificar" data-toggle="tab" href="#documentoLaboralModificar-content" role="tab">
                   Documentos Laboral
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="datosEstudios" data-toggle="tab" href="#datosEstudios-content" role="tab">
+                <a class="nav-link" id="datosEstudiosModificar" data-toggle="tab" href="#datosEstudiosModificar-content" role="tab">
                   Datos Estudios
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="medidasEpp" data-toggle="tab" href="#medidasEpp-content" role="tab">
+                <a class="nav-link" id="medidasEppModificar" data-toggle="tab" href="#medidasEppModificar-content" role="tab">
                   Medidas de EPP
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="contactoEmergencia" data-toggle="tab" href="#contactoEmergencia-content" role="tab">
+                <a class="nav-link" id="contactoEmergenciaModificar" data-toggle="tab" href="#contactoEmergenciaModificar-content" role="tab">
                   Contacto de Emergencia
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="antecedenteMedicos" data-toggle="tab" href="#antecedenteMedicos-content" role="tab">
+                <a class="nav-link" id="antecedenteMedicosModificar" data-toggle="tab" href="#antecedenteMedicosModificar-content" role="tab">
                   Antecedente Medicos
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="fotos" data-toggle="tab" href="#fotos-content" role="tab">
+                <a class="nav-link" id="fotosModificar" data-toggle="tab" href="#fotosModificar-content" role="tab">
                   Fotos
                 </a>
               </li>
@@ -861,8 +861,8 @@ MODAL EDITAR TAREA
             <!-- Contenido de las pestañas -->
             <div class="tab-content" id="myTabContent">
               <!-- Pestaña de Datos Laborales-->
-              <div class="tab-pane fade in active" id="datosLaborales-content" role="tabpanel">
-                <div class="panel-group" id="iddatosLaborales">
+              <div class="tab-pane fade in active" id="datosLaboralesModificar-content" role="tabpanel">
+                <div class="panel-group" id="iddatosLaboralesModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -889,8 +889,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Asignacion Laboral -->
-              <div class="tab-pane fade" id="asignacionLaboral-content" role="tabpanel">
-                <div class="panel-group" id="idasignacionLaboral">
+              <div class="tab-pane fade" id="asignacionLaboralModificar-content" role="tabpanel">
+                <div class="panel-group" id="idasignacionLaboralModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -912,7 +912,7 @@ MODAL EDITAR TAREA
 
                           <div class="form-group col-sm-3 col-xs-12">
                             <button type="button" class="btn btn-primary" id="btnModificar" style="margin-right: 10px; margin-bottom: 10px;">
-                              <i class="fa fa-check-circle" aria-hidden="true"></i> Modificar
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                             </button>
 
                             <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
@@ -954,8 +954,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Documentos Laborales -->
-              <div class="tab-pane fade" id="documentoLaboral-content" role="tabpanel">
-                <div class="panel-group" id="iddocumentoLaboral">
+              <div class="tab-pane fade" id="documentoLaboralModificar-content" role="tabpanel">
+                <div class="panel-group" id="iddocumentoLaboralModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -973,7 +973,7 @@ MODAL EDITAR TAREA
                           <div class="form-group col-sm-3 col-xs-12">
                             <label for="asignacionCostoModificar">Centro Costo</label>
                             <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoModificar" id="asignacionCostoModificar"></select>
-                          </div>
+                          </div>  
 
                           <div class="col-md-3">
                             <div class="form-group">
@@ -1024,8 +1024,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Datos de Estudio-->
-              <div class="tab-pane fade" id="datosEstudios-content" role="tabpanel">
-                <div class="panel-group" id="iddatosEstudios">
+              <div class="tab-pane fade" id="datosEstudiosModificar-content" role="tabpanel">
+                <div class="panel-group" id="iddatosEstudiosModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -1077,8 +1077,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Medidas de EPP-->
-              <div class="tab-pane fade" id="medidasEpp-content" role="tabpanel">
-                <div class="panel-group" id="idmedidasEpp">
+              <div class="tab-pane fade" id="medidasEppModificar-content" role="tabpanel">
+                <div class="panel-group" id="idmedidasEppModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -1096,7 +1096,7 @@ MODAL EDITAR TAREA
                           <div class="form-group col-sm-3 col-xs-12">
                             <button type="button" class="btn btn-primary" id="btnModificar"
                               style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Modificar
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                           </div>
 
                           <div class="table-container2">
@@ -1129,8 +1129,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Contacto de Emergencia-->
-              <div class="tab-pane fade" id="contactoEmergencia-content" role="tabpanel">
-                <div class="panel-group" id="idcontactoEmergencia">
+              <div class="tab-pane fade" id="contactoEmergenciaModificar-content" role="tabpanel">
+                <div class="panel-group" id="idcontactoEmergenciaModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -1158,7 +1158,7 @@ MODAL EDITAR TAREA
                           <div class="form-group col-sm-3 col-xs-12">
                             <button type="button" class="btn btn-primary" id="btnModificar"
                               style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Modificar
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                           </div>
 
                           <div class="table-container2">
@@ -1193,8 +1193,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Antecedente Medico-->
-              <div class="tab-pane fade" id="antecedenteMedicos-content" role="tabpanel">
-                <div class="panel-group" id="idantecedenteMedicos">
+              <div class="tab-pane fade" id="antecedenteMedicosModificar-content" role="tabpanel">
+                <div class="panel-group" id="idantecedenteMedicosModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -1212,7 +1212,7 @@ MODAL EDITAR TAREA
                           <div class="form-group col-sm-3 col-xs-12">
                             <button type="button" class="btn btn-primary" id="btnModificar"
                               style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Modificar
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
                           </div>
 
                           <div class="table-container2">
@@ -1245,8 +1245,8 @@ MODAL EDITAR TAREA
               </div>
 
               <!-- Pestaña de Foto-->
-              <div class="tab-pane fade" id="fotos-content" role="tabpanel">
-                <div class="panel-group" id="idfotos">
+              <div class="tab-pane fade" id="fotosModificar-content" role="tabpanel">
+                <div class="panel-group" id="idfotosModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
@@ -1421,42 +1421,42 @@ MODAL VER MAS TAREA
               <!-- Navegación por pestañas -->
               <ul class="nav nav-tabs" id="myTabs" role="tablist">
                 <li class="nav-item active">
-                  <a class="nav-link active" id="datosLaborales" data-toggle="tab" href="#datosLaborales-content" role="tab">
+                  <a class="nav-link active" id="datosLaboralesVer" data-toggle="tab" href="#datosLaboralesVer-content" role="tab">
                     Datos Laborales
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="asignacionLaboral" data-toggle="tab" href="#asignacionLaboral-content" role="tab">
+                  <a class="nav-link" id="asignacionLaboralVer" data-toggle="tab" href="#asignacionLaboralVer-content" role="tab">
                     Asignacion Laboral
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="documentoLaboral" data-toggle="tab" href="#documentoLaboral-content" role="tab">
+                  <a class="nav-link" id="documentoLaboralVer" data-toggle="tab" href="#documentoLaboralVer-content" role="tab">
                     Documentos Laboral
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="datosEstudios" data-toggle="tab" href="#datosEstudios-content" role="tab">
+                  <a class="nav-link" id="datosEstudiosVer" data-toggle="tab" href="#datosEstudiosVer-content" role="tab">
                     Datos Estudios
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="medidasEpp" data-toggle="tab" href="#medidasEpp-content" role="tab">
+                  <a class="nav-link" id="medidasEppVer" data-toggle="tab" href="#medidasEppVer-content" role="tab">
                     Medidas de EPP
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="contactoEmergencia" data-toggle="tab" href="#contactoEmergencia-content" role="tab">
+                  <a class="nav-link" id="contactoEmergenciaVer" data-toggle="tab" href="#contactoEmergenciaVer-content" role="tab">
                     Contacto de Emergencia
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="antecedenteMedicos" data-toggle="tab" href="#antecedenteMedicos-content" role="tab">
+                  <a class="nav-link" id="antecedenteMedicosVer" data-toggle="tab" href="#antecedenteMedicosVer-content" role="tab">
                     Antecedente Medicos
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="fotos" data-toggle="tab" href="#fotos-content" role="tab">
+                  <a class="nav-link" id="fotosVer" data-toggle="tab" href="#fotosVer-content" role="tab">
                     Fotos
                   </a>
                 </li>
@@ -1465,8 +1465,8 @@ MODAL VER MAS TAREA
               <!-- Contenido de las pestañas -->
               <div class="tab-content" id="myTabContent">
                 <!-- Pestaña de Datos Laborales-->
-                <div class="tab-pane fade in active" id="datosLaborales-content" role="tabpanel">
-                  <div class="panel-group" id="iddatosLaborales">
+                <div class="tab-pane fade in active" id="datosLaboralesVer-content" role="tabpanel">
+                  <div class="panel-group" id="iddatosLaboralesVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1493,8 +1493,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Asignacion Laboral -->
-                <div class="tab-pane fade" id="asignacionLaboral-content" role="tabpanel">
-                  <div class="panel-group" id="idasignacionLaboral">
+                <div class="tab-pane fade" id="asignacionLaboralVer-content" role="tabpanel">
+                  <div class="panel-group" id="idasignacionLaboralVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1515,8 +1515,8 @@ MODAL VER MAS TAREA
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnModificar" style="margin-right: 10px; margin-bottom: 10px;">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i> Modificar
+                              <button type="button" class="btn btn-primary" id="btnVer" style="margin-right: 10px; margin-bottom: 10px;">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i> Agregar
                               </button>
 
                               <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
@@ -1558,8 +1558,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Documentos Laborales -->
-                <div class="tab-pane fade" id="documentoLaboral-content" role="tabpanel">
-                  <div class="panel-group" id="iddocumentoLaboral">
+                <div class="tab-pane fade" id="documentoLaboralVer-content" role="tabpanel">
+                  <div class="panel-group" id="iddocumentoLaboralVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1628,8 +1628,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Datos de Estudio-->
-                <div class="tab-pane fade" id="datosEstudios-content" role="tabpanel">
-                  <div class="panel-group" id="iddatosEstudios">
+                <div class="tab-pane fade" id="datosEstudiosVer-content" role="tabpanel">
+                  <div class="panel-group" id="iddatosEstudiosVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1681,8 +1681,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Medidas de EPP-->
-                <div class="tab-pane fade" id="medidasEpp-content" role="tabpanel">
-                  <div class="panel-group" id="idmedidasEpp">
+                <div class="tab-pane fade" id="medidasEppVer-content" role="tabpanel">
+                  <div class="panel-group" id="idmedidasEppVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1727,8 +1727,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Contacto de Emergencia-->
-                <div class="tab-pane fade" id="contactoEmergencia-content" role="tabpanel">
-                  <div class="panel-group" id="idcontactoEmergencia">
+                <div class="tab-pane fade" id="contactoEmergenciaVer-content" role="tabpanel">
+                  <div class="panel-group" id="idcontactoEmergenciaVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1785,8 +1785,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Antecedente Medico-->
-                <div class="tab-pane fade" id="antecedenteMedicos-content" role="tabpanel">
-                  <div class="panel-group" id="idantecedenteMedicos">
+                <div class="tab-pane fade" id="antecedenteMedicosVer-content" role="tabpanel">
+                  <div class="panel-group" id="idantecedenteMedicosVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
@@ -1831,8 +1831,8 @@ MODAL VER MAS TAREA
                 </div>
 
                 <!-- Pestaña de Foto-->
-                <div class="tab-pane fade" id="fotos-content" role="tabpanel">
-                  <div class="panel-group" id="idfotos">
+                <div class="tab-pane fade" id="fotosVer-content" role="tabpanel">
+                  <div class="panel-group" id="idfotosVer">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <div class="box-body">
