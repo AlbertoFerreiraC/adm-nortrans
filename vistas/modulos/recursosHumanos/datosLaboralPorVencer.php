@@ -31,22 +31,7 @@
                                                         <th onclick="sortTable(4, this)">Fecha Expiración</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>12345678-9</td>
-                                                        <td>Juan Pérez</td>
-                                                        <td>101</td>
-                                                        <td>Contrato</td>
-                                                        <td>2025-04-10</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>87654321-0</td>
-                                                        <td>María López</td>
-                                                        <td>102</td>
-                                                        <td>Licencia</td>
-                                                        <td>2025-04-15</td>
-                                                    </tr>
-                                                </tbody>
+                                                <tbody></tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -59,73 +44,76 @@
         </div>
     </section>
 
+    <script src="vistas/js/recursosHumanos/docLaboralesPorVencer.js"></script>
+
     <style>
-           #lista table {
-        font-size: 10px;
-        border-collapse: separate !important;
-        border-spacing: 0;
-        text-align: center;
-    }
+        #lista table {
+            font-size: 10px;
+            border-collapse: separate !important;
+            border-spacing: 0;
+            text-align: center;
+        }
 
-    #lista th {
-        font-size: 13px;
-        background-color: #f4f4f4;
-        border: 1px solid #ddd !important;
-        cursor: pointer;
-        position: relative;
-        user-select: none;
-        padding-right: 20px; /* Espacio para la flecha */
-    }
+        #lista th {
+            font-size: 13px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd !important;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            padding-right: 20px;
+            /* Espacio para la flecha */
+        }
 
-    #lista th.asc::after {
-        content: "▲";
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 12px;
-        color: #555;
-    }
+        #lista th.asc::after {
+            content: "▲";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #555;
+        }
 
-    #lista th.desc::after {
-        content: "▼";
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 12px;
-        color: #555;
-    }
+        #lista th.desc::after {
+            content: "▼";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #555;
+        }
 
-    #lista td {
-        font-size: 15px;
-        border: 1px solid #ddd !important;
-    }
+        #lista td {
+            font-size: 15px;
+            border: 1px solid #ddd !important;
+        }
 
-    .panel-opcion-link:focus,
-    .panel-opcion-link:active {
-        text-decoration: underline;
-    }
+        .panel-opcion-link:focus,
+        .panel-opcion-link:active {
+            text-decoration: underline;
+        }
 
-    .table-container {
-        margin: 15px;
-    }
+        .table-container {
+            margin: 15px;
+        }
 
-    .table-responsive {
-        overflow-x: auto;
-    }
+        .table-responsive {
+            overflow-x: auto;
+        }
 
-    .table {
-        margin-bottom: 0;
-    }
+        .table {
+            margin-bottom: 0;
+        }
 
-    .table-striped>tbody>tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-    }
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
 
-    .table-bordered {
-        border: 1px solid #ddd !important;
-    }
+        .table-bordered {
+            border: 1px solid #ddd !important;
+        }
     </style>
 
     <script>
@@ -152,14 +140,18 @@
                 const isDate = datePattern.test(aText) && datePattern.test(bText);
 
                 if (isDate) {
-                    return dir === "asc"
-                        ? new Date(aText) - new Date(bText)
-                        : new Date(bText) - new Date(aText);
+                    return dir === "asc" ?
+                        new Date(aText) - new Date(bText) :
+                        new Date(bText) - new Date(aText);
                 }
 
-                return dir === "asc"
-                    ? aText.localeCompare(bText, 'es', { numeric: true })
-                    : bText.localeCompare(aText, 'es', { numeric: true });
+                return dir === "asc" ?
+                    aText.localeCompare(bText, 'es', {
+                        numeric: true
+                    }) :
+                    bText.localeCompare(aText, 'es', {
+                        numeric: true
+                    });
             });
 
             const tbody = table.tBodies[0];
