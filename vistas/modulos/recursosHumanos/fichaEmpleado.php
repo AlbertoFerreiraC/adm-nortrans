@@ -654,29 +654,11 @@ MODAL AGREGAR TAREA
                     </div>
                   </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <!-- Cerrás otras pestañas acá si tenés más -->
               </div>
             </div>
           </section>
-
-
-
         </div>
-
 
 
         <!--=====================================
