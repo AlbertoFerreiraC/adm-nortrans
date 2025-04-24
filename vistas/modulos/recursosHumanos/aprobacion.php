@@ -178,8 +178,8 @@ MODAL EDITAR TAREA
               <div class="box box-success">
                 <div class="box-body">
                   <div class="form-group col-sm-4 col-xs-12">
-                    <label for="preapruebaComentarioMod">Comentario Preaprueba:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                    <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="3"></textarea>
+                    <label for="preapruebaComentarioMod">Comentario Preaprueba:</label>
+                    <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="3" disabled></textarea>
                   </div>
 
                   <input type='hidden' id="fechaAprobacion" name="fechaAprobacion" value="<?php echo date('Y-m-d H:i:s'); ?>"> <!--fecha aprobacion-->
@@ -198,7 +198,7 @@ MODAL EDITAR TAREA
                     <div class="botones-container">
                       <button type="button" class="btn btn-primary"
                         style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 5px; "
-                        id="btnRechazar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar
+                        id="btnRechazar"><i class="fa fa-times" aria-hidden="true"></i> Rechazar
                       </button>
 
                       <button type="button" class="btn btn-primary"
@@ -208,7 +208,7 @@ MODAL EDITAR TAREA
 
                       <button type="button" class="btn btn-primary"
                         style="background-color: #adaf9c; border-color: #f46717; margin-top: 10px; margin-right: 20px; float: right; width: 90px;"
-                        id="btnSalir" data-dismiss="modal"><i class="fa fa-hdd-o" aria-hidden="true"></i>Salir
+                        id="btnSalir" data-dismiss="modal"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir
                       </button>
                     </div>
                   </div>

@@ -200,463 +200,24 @@ MODAL AGREGAR TAREA
               <input type="file" class="form-control input-md cajatexto" name="imagenAgregar" id="imagenAgregar" accept="*" data-show-upload="false" data-show-caption="false">
             </div>
           </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="empresaAgregar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="empresaAgregar" name="empresaAgregar"></select>
+              </div>
 
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="centroAgregar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
+              </div>
 
-          <section class="content">
-            <div class="box">
-              <!-- Navegación por pestañas -->
-              <ul class="nav nav-tabs" id="myTabs" role="tablist">
-                <li class="nav-item active">
-                  <a class="nav-link active" id="datosLaborales" data-toggle="tab" href="#datosLaborales-content" role="tab">
-                    Datos Laborales
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="asignacionLaboral" data-toggle="tab" href="#asignacionLaboral-content" role="tab">
-                    Asignacion Laboral
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="documentoLaboral" data-toggle="tab" href="#documentoLaboral-content" role="tab">
-                    Documentos Laboral
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="datosEstudios" data-toggle="tab" href="#datosEstudios-content" role="tab">
-                    Datos Estudios
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="medidasEpp" data-toggle="tab" href="#medidasEpp-content" role="tab">
-                    Medidas de EPP
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="contactoEmergencia" data-toggle="tab" href="#contactoEmergencia-content" role="tab">
-                    Contacto de Emergencia
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="antecedenteMedicos" data-toggle="tab" href="#antecedenteMedicos-content" role="tab">
-                    Antecedente Medicos
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="fotos" data-toggle="tab" href="#fotos-content" role="tab">
-                    Fotos
-                  </a>
-                </li>
-              </ul>
-
-              <!-- Contenido de las pestañas -->
-              <div class="tab-content" id="myTabContent">
-                <!-- Pestaña de Datos Laborales-->
-                <div class="tab-pane fade in active" id="datosLaborales-content" role="tabpanel">
-                  <div class="panel-group" id="iddatosLaborales">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="empresaAgregar">Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                              <select class="form-control input-md cajatexto" id="empresaAgregar" name="empresaAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="centroAgregar">Centro de Costo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                              <select class="form-control input-md cajatexto" id="centroAgregar" name="centroAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="turnoAgregar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                              <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Asignacion Laboral -->
-                <div class="tab-pane fade" id="asignacionLaboral-content" role="tabpanel">
-                  <div class="panel-group" id="idasignacionLaboral">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="asignacionDivisionAgregar">Division</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivisionAgregar" id="asignacionDivisionAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="asignacionEmpresaAgregar">Empresa</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionEmpresaAgregar" id="asignacionEmpresaAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="asignacionCcostoAgregar">Centro Costo</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCcostoAgregar" id="asignacionCcostoAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnAgregar" style="margin-right: 10px; margin-bottom: 10px;">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                              </button>
-
-                              <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
-                                <i class="fa fa-list-alt" aria-hidden="true"></i> Todos Los Centros Costo
-                              </button>
-                            </div>
-
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaAsignacion">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Id Division</th>
-                                      <th>Division</th>
-                                      <th>Empresa</th>
-                                      <th>Id Centro Costo</th>
-                                      <th>Centro Costo</th>
-                                      <th>Eliminar </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Documentos Laborales -->
-                <div class="tab-pane fade" id="documentoLaboral-content" role="tabpanel">
-                  <div class="panel-group" id="iddocumentoLaboral">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="documenLaboralAgregar">Documento Laboral</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="documenLaboralAgregar" id="documenLaboralAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="nombreDocuemtoAgregar">Id Documento</label>
-                              <input type="text" class="form-control input-md cajatexto" name="nombreDocuemtoAgregar" id="nombreDocuemtoAgregar">
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="asignacionCcostoAgregar">Centro Costo</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCcostoAgregar" id="asignacionCcostoAgregar"></select>
-                            </div>
-
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label>Fecha Expiracion</label>
-                                <div class="input-group">
-                                  <input type="date" class="form-control" value="2025-03-11">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnSeleccion" style="margin-right: 10px; margin-bottom: 10px;">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i> Seleccion
-                              </button>
-                            </div>
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaLaboral">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Id Documento</th>
-                                      <th>Id Tipo Documento</th>
-                                      <th>Fecha Expiracion</th>
-                                      <th>Documento</th>
-                                      <th>Eliminar </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Datos de Estudio-->
-                <div class="tab-pane fade" id="datosEstudios-content" role="tabpanel">
-                  <div class="panel-group" id="iddatosEstudios">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="tipoEstudioAgregar">Tipo Estudio</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEstudioAgregar" id="tipoEstudioAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="estadoEstudioAgregar">Estado Estudio</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudioAgregar" id="estadoEstudioAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnSeleccion"
-                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
-                              </button>
-                            </div>
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaLaboral">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Tipo Estudio</th>
-                                      <th>Estado Estudio</th>
-                                      <th>Documento</th>
-                                      <th>Eliminar </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Medidas de EPP-->
-                <div class="tab-pane fade" id="medidasEpp-content" role="tabpanel">
-                  <div class="panel-group" id="idmedidasEpp">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="tipoEppAgregar">Tipo EPP</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEppAgregar" id="tipoEppAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="numTallaAgregar">N° Talla</label>
-                              <input type="text" class="form-control input-md cajatexto" name="numTallaAgregar" id="numTallaAgregar">
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnAgregar"
-                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                            </div>
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaLaboral">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Tipo Equipo</th>
-                                      <th>Talla</th>
-                                      <th>Eliminar</th>
-                                      <th>Estado</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Contacto de Emergencia-->
-                <div class="tab-pane fade" id="contactoEmergencia-content" role="tabpanel">
-                  <div class="panel-group" id="idcontactoEmergencia">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="nombreEmergenciaAgregar">Nombre</label>
-                              <input type="text" class="form-control input-md cajatexto" name="nombreEmergenciaAgregar" id="nombreEmergenciaAgregar">
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="parentescoEmergenciaAgregar">Parentesco</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergenciaAgregar" id="parentescoEmergenciaAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="fonoEmergenciaAgregar">Fono</label>
-                              <input type="number" class="form-control input-md cajatexto" name="fonoEmergenciaAgregar" id="fonoEmergenciaAgregar" min="0">
-                            </div>
-
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="direccionEmergenciaAgregar">Direccion</label>
-                              <input type="text" class="form-control input-md cajatexto" name="direccionEmergenciaAgregar" id="direccionEmergenciaAgregar">
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnAgregar"
-                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                            </div>
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaLaboral">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Parentesco</th>
-                                      <th>Nombre</th>
-                                      <th>Fono</th>
-                                      <th>Direccion</th>
-                                      <th>Eliminar</th>
-                                      <th>Estado</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Antecedente Medico-->
-                <div class="tab-pane fade" id="antecedenteMedicos-content" role="tabpanel">
-                  <div class="panel-group" id="idantecedenteMedicos">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="tipoAntecedenteAgregar">Tipo Antecedente</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoAntecedenteAgregar" id="tipoAntecedenteAgregar"></select>
-                            </div>
-
-                            <div class="form-group col-sm-4 col-xs-12">
-                              <label for="detalleAntecedenteAgregar">Detalle Antecedente:</label>
-                              <textarea class="form-control input-md cajatexto" name="detalleAntecedenteAgregar" id="detalleAntecedenteAgregar" rows="1"></textarea>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnAgregar"
-                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                            </div>
-
-                            <div class="table-container2">
-                              <div class="table-responsive2">
-                                <table class="table table-bordes2" id="tablaLaboral">
-                                  <thead class="thead-dark">
-                                    <tr>
-                                      <th>Tipo Antecedente</th>
-                                      <th>Detalle</th>
-                                      <th>Eliminar</th>
-                                      <th>Estado</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Pestaña de Foto-->
-                <div class="tab-pane fade" id="fotos-content" role="tabpanel">
-                  <div class="panel-group" id="idfotos">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="box-body">
-                          <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <button type="button" class="btn btn-primary" id="btnSeleccion"
-                                style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Cerrás otras pestañas acá si tenés más -->
+              <div class="form-group col-sm-4 col-xs-12">
+                <label for="turnoAgregar">Turno o Jornada:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                <select class="form-control input-md cajatexto" id="turnoAgregar" name="turnoAgregar"></select>
               </div>
             </div>
-          </section>
+          </div>
         </div>
 
 
@@ -852,8 +413,8 @@ MODAL EDITAR TAREA
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="fotosModificar" data-toggle="tab" href="#fotosModificar-content" role="tab">
-                  Fotos
+                <a class="nav-link" id="solicitudContratacionModificar" data-toggle="tab" href="#solicitudDeContratacionModificar-content" role="tab">
+                  Solicitud Asociada
                 </a>
               </li>
             </ul>
@@ -895,56 +456,52 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
+
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="asignacionDivisionModificar">Division</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivisionModificar" id="asignacionDivisionModificar"></select>
+                            <label for="asignacionDivisionModificar">Division:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivisionModificar" id="asignacionDivisionModificar">
+                              <option value="-">Seleccionar...</option>
+                              <option value="Industrial">Industrial</option>
+                              <option value="Interurbano">Interurbano</option>
+                            </select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="asignacionEmpresaModificar">Empresa</label>
+                            <label for="asignacionEmpresaModificar">Empresa:</label>
                             <select class="form-control input-md cajatexto solo-ruc" name="asignacionEmpresaModificar" id="asignacionEmpresaModificar"></select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="asignacionCcostoModificar">Centro Costo</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="asignacionCcostoModificar" id="asignacionCcostoModificar"></select>
+                            <label for="asignacionCostoModificar">Centro Costo:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoModificar" id="asignacionCostoModificar"></select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnModificar" style="margin-right: 10px; margin-bottom: 10px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                            </button>
-
-                            <button type="button" class="btn btn-primary" id="btnVerCcosto" style="margin-bottom: 10px;">
-                              <i class="fa fa-list-alt" aria-hidden="true"></i> Todos Los Centros Costo
+                            <label for="btnAgregarAsignacion"></label>
+                            <button type="button" class="btn btn-block btn-primary" id="btnAgregarAsignacion">
+                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar Asignación
                             </button>
                           </div>
 
-
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaAsignacion">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Id Division</th>
-                                    <th>Division</th>
-                                    <th>Empresa</th>
-                                    <th>Id Centro Costo</th>
-                                    <th>Centro Costo</th>
-                                    <th>Eliminar </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
+                          <table class="table table-bordes" id="tablaAsignacionesLaborales">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>División</th>
+                                </center>
+                                <center>
+                                  <th>Empresa</th>
+                                </center>
+                                <center>
+                                  <th>Centro de Costo</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
 
                         </div>
                       </div>
@@ -960,62 +517,55 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <label for="documenLaboralModificar">Documento Laboral</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="documenLaboralModificar" id="documenLaboralModificar"></select>
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="tipoDocumentoLaboralAsignacionModificar">Documento Laboral:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="tipoDocumentoLaboralAsignacionModificar" id="tipoDocumentoLaboralAsignacionModificar"></select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="nombreDocuemtoModificar">Id Documento</label>
-                            <input type="text" class="form-control input-md cajatexto" name="nombreDocuemtoModificar" id="nombreDocuemtoModificar">
+                            <label for="idDocumentoAsignacionModificar">Id Documento:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="idDocumentoAsignacionModificar" id="idDocumentoAsignacionModificar">
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="asignacionCostoModificar">Centro Costo</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoModificar" id="asignacionCostoModificar"></select>
-                          </div>  
+                            <label for="fechaExpiracionAsignacionModificar">Fecha Expiración:</label>
+                            <input type="date" class="form-control input-md cajatexto" name="fechaExpiracionAsignacionModificar" id="fechaExpiracionAsignacionModificar">
+                          </div>
 
-                          <div class="col-md-3">
-                            <div class="form-group">
-                              <label>Fecha Expiracion</label>
-                              <div class="input-group">
-                                <input type="date" class="form-control" value="2025-03-11">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-                            </div>
+                          <div class="form-group col-sm-9 col-xs-12">
+                            <label for="documentoAsignacionModificar">Adjunto:</label><span style="font-size: 11px; color: #DC3139;"> (Admitido: jpeg, png, txt, xls, xlsx, csv, pdf, doc, docx)</span>
+                            <input type="file" class="form-control input-md cajatexto" name="documentoAsignacionModificar" id="documentoAsignacionModificar" accept="*" data-show-upload="false" data-show-caption="false">
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnSeleccion" style="margin-right: 10px; margin-bottom: 10px;">
-                              <i class="fa fa-check-circle" aria-hidden="true"></i> Seleccion
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnAsinacionDocumentolaboral">
+                              <i class="fa fa-upload" aria-hidden="true"></i> Cargar Documento
                             </button>
                           </div>
 
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaLaboral">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Id Documento</th>
-                                    <th>Id Tipo Documento</th>
-                                    <th>Fecha Expiracion</th>
-                                    <th>Documento</th>
-                                    <th>Eliminar </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
+                          <table class="table table-bordes" id="tablaDocumentolaboral">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>Tipo</th>
+                                </center>
+                                <center>
+                                  <th>Fecha Expiración</th>
+                                </center>
+                                <center>
+                                  <th>ID Documento</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
+
+
+
                         </div>
                       </div>
                     </div>
@@ -1030,45 +580,51 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <label for="tipoEstudioModificar">Tipo Estudio</label>
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="tipoEstudioModificar">Tipo Estudio:</label>
                             <select class="form-control input-md cajatexto solo-ruc" name="tipoEstudioModificar" id="tipoEstudioModificar"></select>
                           </div>
 
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <label for="estadoEstudioModificar">Estado Estudio</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudioModificar" id="estadoEstudioModificar"></select>
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="estadoEstudioModificar">Estado Estudio:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudioModificar" id="estadoEstudioModificar">
+                              <option value="-">Seleccionar...</option>
+                              <option value="Completos">Completos</option>
+                              <option value="Cursando">Cursando</option>
+                              <option value="Imcompletos">Imcompletos</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group col-sm-9 col-xs-12">
+                            <label for="documentoEstudioModificar">Adjunto:</label><span style="font-size: 11px; color: #DC3139;"> (Admitido: jpeg, png, txt, xls, xlsx, csv, pdf, doc, docx)</span>
+                            <input type="file" class="form-control input-md cajatexto" name="documentoEstudioModificar" id="documentoEstudioModificar" accept="*" data-show-upload="false" data-show-caption="false">
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnSeleccion"
-                              style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnCargarEstudio">
+                              <i class="fa fa-upload" aria-hidden="true"></i> Cargar Estudio
                             </button>
                           </div>
 
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaLaboral">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Tipo Estudio</th>
-                                    <th>Estado Estudio</th>
-                                    <th>Documento</th>
-                                    <th>Eliminar </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
+                          <table class="table table-bordes" id="tablaEstudios">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>Tipo</th>
+                                </center>
+                                <center>
+                                  <th>Estado</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
+
+
                         </div>
                       </div>
                     </div>
@@ -1083,44 +639,39 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <label for="tipoEppModificar">Tipo EPP</label>
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="tipoEppModificar">Tipo EPP:</label>
                             <select class="form-control input-md cajatexto solo-ruc" name="tipoEppModificar" id="tipoEppModificar"></select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="numTallaModificar">N° Talla</label>
+                            <label for="numTallaModificar">N° Talla:</label>
                             <input type="text" class="form-control input-md cajatexto" name="numTallaModificar" id="numTallaModificar">
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnModificar"
-                              style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnCargarTalla">
+                              <i class="fa fa-upload" aria-hidden="true"></i> Cargar Talla
+                            </button>
                           </div>
 
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaLaboral">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Tipo Equipo</th>
-                                    <th>Talla</th>
-                                    <th>Eliminar</th>
-                                    <th>Estado</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
+                          <table class="table table-bordes" id="tablaTalla">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>Tipo</th>
+                                </center>
+                                <center>
+                                  <th>Estado</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
@@ -1135,56 +686,53 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col-sm-4 col-xs-12">
-                            <label for="nombreEmergenciaModificar">Nombre</label>
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="nombreEmergenciaModificar">Nombre:</label>
                             <input type="text" class="form-control input-md cajatexto" name="nombreEmergenciaModificar" id="nombreEmergenciaModificar">
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="parentescoEmergenciaModificar">Parentesco</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergenciaModificar" id="parentescoEmergenciaModificar"></select>
+                            <label for="parentescoEmergenciaModificar">Parentesco:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergenciaModificar" id="parentescoEmergenciaModificar">
+                              <option value="-">Seleccionar...</option>
+                              <option value="Esposo/a">Esposo/a</option>
+                              <option value="Padre/Madre">Padre/Madre</option>
+                              <option value="Hermano/a">Hermano/a</option>
+                            </select>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="fonoEmergenciaModificar">Fono</label>
-                            <input type="number" class="form-control input-md cajatexto" name="fonoEmergenciaModificar" id="fonoEmergenciaModificar" min="0">
+                            <label for="fonoEmergenciaModificar">Contacto:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="fonoEmergenciaModificar" id="fonoEmergenciaModificar">
                           </div>
 
-                          <div class="form-group col-sm-4 col-xs-12">
-                            <label for="direccionEmergenciaModificar">Direccion</label>
-                            <input type="text" class="form-control input-md cajatexto" name="direccionEmergenciaModificar" id="direccionEmergenciaModificar">
+                          <div class="form-group col-sm-12 col-xs-12">
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnCargarContactoEmergencia">
+                              <i class="fa fa-upload" aria-hidden="true"></i> Cargar Contacto
+                            </button>
                           </div>
 
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnModificar"
-                              style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
-                          </div>
+                          <table class="table table-bordes" id="tablaContactoEmergencia">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>Nombre</th>
+                                </center>
+                                <center>
+                                  <th>Parentezco</th>
+                                </center>
+                                <center>
+                                  <th>Contacto</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
 
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaLaboral">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Parentesco</th>
-                                    <th>Nombre</th>
-                                    <th>Fono</th>
-                                    <th>Direccion</th>
-                                    <th>Eliminar</th>
-                                    <th>Estado</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -1199,44 +747,40 @@ MODAL EDITAR TAREA
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col-sm-4 col-xs-12">
+                          <div class="form-group col-sm-6 col-xs-12">
                             <label for="tipoAntecedenteModificar">Tipo Antecedente</label>
                             <select class="form-control input-md cajatexto solo-ruc" name="tipoAntecedenteModificar" id="tipoAntecedenteModificar"></select>
                           </div>
 
-                          <div class="form-group col-sm-4 col-xs-12">
+                          <div class="form-group col-sm-6 col-xs-12">
                             <label for="detalleAntecedenteModificar">Detalle Antecedente:</label>
                             <textarea class="form-control input-md cajatexto" name="detalleAntecedenteModificar" id="detalleAntecedenteModificar" rows="1"></textarea>
                           </div>
 
-                          <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnModificar"
-                              style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                          <div class="form-group col-sm-12 col-xs-12">
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnCargarAntecedente">
+                              <i class="fa fa-upload" aria-hidden="true"></i> Cargar Antecedente Médico
+                            </button>
                           </div>
 
-                          <div class="table-container2">
-                            <div class="table-responsive2">
-                              <table class="table table-bordes2" id="tablaLaboral">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>Tipo Antecedente</th>
-                                    <th>Detalle</th>
-                                    <th>Eliminar</th>
-                                    <th>Estado</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                Mostrando registros del 0 al 0 de un total de 0 registros
-                              </div>
-                            </div>
-                          </div>
+                          <table class="table table-bordes" id="tablaAntecedentesMedicos">
+                            <thead class="thead-dark">
+                              <tr>
+                                <center>
+                                  <th>Tipo de Antecedente</th>
+                                </center>
+                                <center>
+                                  <th>Descripción</th>
+                                </center>
+                                <center>
+                                  <th>Acciones</th>
+                                </center>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
+
                         </div>
                       </div>
                     </div>
@@ -1244,25 +788,31 @@ MODAL EDITAR TAREA
                 </div>
               </div>
 
-              <!-- Pestaña de Foto-->
-              <div class="tab-pane fade" id="fotosModificar-content" role="tabpanel">
-                <div class="panel-group" id="idfotosModificar">
+              <div class="tab-pane fade in active" id="solicitudDeContratacionModificar-content" role="tabpanel">
+                <div class="panel-group" id="solicitudContratacionModificar">
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="box-body">
                         <div class="row">
+                          <div class="form-group col-sm-9 col-xs-12">
+                            <label for="solicitudContratacion">Solicitud De Contratación Asociada:</label>
+                            <select class="form-control input-md cajatexto" id="solicitudContratacion" name="solicitudContratacion"></select>
+                          </div>
+
                           <div class="form-group col-sm-3 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="btnSeleccion"
-                              style="margin-right: 10px; margin-bottom: 10px; margin-top: 23px;">
-                              <i class="fa fa-check-circle" aria-hidden="true"></i> Selección
+                            <label for="nuevoNombre"></label>
+                            <button type="button" class="btn btn-primary btn-block" id="btnVicularSolicitudDeContratacion">
+                              <i class="fa fa-retweet" aria-hidden="true"></i> Vicular Solicitud
                             </button>
                           </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
               <!-- Cerrás otras pestañas acá si tenés más -->
             </div>
           </div>
@@ -1501,17 +1051,17 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="asignacionDivisionVerr">Division</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivisionVerr" id="asignacionDivisionVerr"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionDivisionVerr" id="asignacionDivisionVerr" disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="asignacionEmpresaVer">Empresa</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionEmpresaVer" id="asignacionEmpresaVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionEmpresaVer" id="asignacionEmpresaVer" disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="asignacionCostoVer">Centro Costo</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoVer" id="asignacionCostoVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoVer" id="asignacionCostoVer" disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
@@ -1566,24 +1116,24 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="documenLaboralVer">Documento Laboral</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="documenLaboralVer" id="documenLaboralVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="documenLaboralVer" id="documenLaboralVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="nombreDocuemtoVer">Id Documento</label>
-                              <input type="text" class="form-control input-md cajatexto" name="nombreDocuemtoVer" id="nombreDocuemtoVer">
+                              <input type="text" class="form-control input-md cajatexto" name="nombreDocuemtoVer" id="nombreDocuemtoVer"disabled>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="asignacionCostoVer">Centro Costo</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoVer" id="asignacionCostoVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="asignacionCostoVer" id="asignacionCostoVer"disabled></select>
                             </div>
 
                             <div class="col-md-3">
                               <div class="form-group">
                                 <label>Fecha Expiracion</label>
                                 <div class="input-group">
-                                  <input type="date" class="form-control" value="2025-03-11">
+                                  <input type="date" class="form-control" disabled>
                                   <span class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                   </span>
@@ -1636,12 +1186,12 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="tipoEstudioVer">Tipo Estudio</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEstudioVer" id="tipoEstudioVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEstudioVer" id="tipoEstudioVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="estadoEstudioVer">Estado Estudio</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudioVer" id="estadoEstudioVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="estadoEstudioVer" id="estadoEstudioVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
@@ -1689,12 +1239,12 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="tipoEppVer">Tipo EPP</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEppVer" id="tipoEppVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoEppVer" id="tipoEppVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="numTallaVer">N° Talla</label>
-                              <input type="text" class="form-control input-md cajatexto" name="numTallaVer" id="numTallaVer">
+                              <input type="text" class="form-control input-md cajatexto" name="numTallaVer" id="numTallaVer"disabled>
                             </div>
 
                             <div class="table-container2">
@@ -1735,22 +1285,22 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-4 col-xs-12">
                               <label for="nombreEmergenciaVer">Nombre</label>
-                              <input type="text" class="form-control input-md cajatexto" name="nombreEmergenciaVer" id="nombreEmergenciaVer">
+                              <input type="text" class="form-control input-md cajatexto" name="nombreEmergenciaVer" id="nombreEmergenciaVer"disabled>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="parentescoEmergenciaVer">Parentesco</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergenciaVer" id="parentescoEmergenciaVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="parentescoEmergenciaVer" id="parentescoEmergenciaVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                               <label for="fonoEmergenciaVer">Fono</label>
-                              <input type="number" class="form-control input-md cajatexto" name="fonoEmergenciaVer" id="fonoEmergenciaVer" min="0">
+                              <input type="number" class="form-control input-md cajatexto" name="fonoEmergenciaVer" id="fonoEmergenciaVer"disabled>
                             </div>
 
                             <div class="form-group col-sm-4 col-xs-12">
                               <label for="direccionEmergenciaVer">Direccion</label>
-                              <input type="text" class="form-control input-md cajatexto" name="direccionEmergenciaVer" id="direccionEmergenciaVer">
+                              <input type="text" class="form-control input-md cajatexto" name="direccionEmergenciaVer" id="direccionEmergenciaVer"disabled>
                             </div>
 
                             <div class="table-container2">
@@ -1793,12 +1343,12 @@ MODAL VER MAS TAREA
                           <div class="row">
                             <div class="form-group col-sm-4 col-xs-12">
                               <label for="tipoAntecedenteVer">Tipo Antecedente</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="tipoAntecedenteVer" id="tipoAntecedenteVer"></select>
+                              <select class="form-control input-md cajatexto solo-ruc" name="tipoAntecedenteVer" id="tipoAntecedenteVer"disabled></select>
                             </div>
 
                             <div class="form-group col-sm-4 col-xs-12">
                               <label for="detalleAntecedenteVer">Detalle Antecedente:</label>
-                              <textarea class="form-control input-md cajatexto" name="detalleAntecedenteVer" id="detalleAntecedenteVer" rows="1"></textarea>
+                              <textarea class="form-control input-md cajatexto" name="detalleAntecedenteVer" id="detalleAntecedenteVer" rows="1" disabled></textarea>
                             </div>
 
                             <div class="table-container2">

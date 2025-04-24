@@ -18,25 +18,6 @@
 
           <div id="frm_j_idt110_content" class="panel-collapse collapse in">
             <div class="panel-body">
-              <div class="d-flex align-items-center gap-3 flex-wrap">
-                <div class="form-group col-sm-3">
-                  <label for="empresaAgregar">Empresa:</label>
-                  <select class="form-control input-md" name="empresaAgregar" id="empresaAgregar"></select>
-                </div>
-
-                <div class="form-group col-sm-3">
-                  <label for="numeroFicha">N° Ficha:</label>
-                  <input type="number" class="form-control input-md" name="numeroFicha" id="numeroFicha" placeholder=" ">
-                </div>
-              </div>
-
-              <div style="margin-top: 25px;"></div>
-
-              <div class="d-flex gap-3 align-items-center">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" id="btnBuscar">
-                  <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                </button>
-
                 <button type="button" class="btn btn-primary" id="btnListaFichaContrato">
                   <i class="fa fa-list" aria-hidden="true"></i> Lista de Ficha Contrato
                 </button>
@@ -65,6 +46,9 @@
                 <div class="table-responsive">
                   <div class="box-body">
                     <div id="lista">
+                    <div class="form-group col-sm-12 col-xs-12 ">
+                        <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoSolicitudesActivas" id="filtradoDinamicoSolicitudesActivas" autocomplete="off" placeholder="Filtrado General ...">
+                    </div>
                       <table class="table table-bordered table-striped dt-responsive" id="listaSolicitud" width="100%" style="text-align: center;">
                         <thead>
                           <tr>
@@ -126,6 +110,9 @@
                 <div class="table-responsive">
                   <div class="box-body">
                     <div id="ficha">
+                    <div class="form-group col-sm-12 col-xs-12 ">
+                        <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoContratos" id="filtradoDinamicoContratos" autocomplete="off" placeholder="Filtrado General ...">
+                    </div>
                       <table class="table table-bordered table-striped dt-responsive" id="fichaContrato" width="100%" style="text-align: center;">
                         <thead>
                           <tr>
@@ -171,6 +158,134 @@
   </section>
 
   <!--=====================================
+      MODAL EDITAR TAREA
+      ======================================-->
+
+      <div id="modalVerMas" class="modal fade" role="dialog">
+
+<div class="modal-dialog modal-lg">
+
+  <div class="modal-content">
+      <!--=====================================
+      CABEZA DEL MODAL
+      ======================================-->
+
+      <div class="modal-header" style="background:#A9A9A9; color:white">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title">Registro de solicitud</h4>
+
+      </div>
+
+      <!--=====================================
+      CUERPO DEL MODAL
+      ======================================-->
+
+      <div class="modal-body">
+
+        <div class="box-body">
+
+
+          <div class="form-group col-sm-4 col-xs-12">
+            <label for="motivoModificar">Motivo:</label>
+            <input type="text" class="form-control input-md cajatexto" name="motivoModificar" id="motivoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-4 col-xs-12">
+            <label for="divisionModificar">División:</label>
+            <input type="text" class="form-control input-md cajatexto" name="divisionModificar" id="divisionModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-4 col-xs-12">
+            <label for="cargoModificar">Cargo solicitado:</label>
+            <input type="text" class="form-control input-md cajatexto" name="cargoModificar" id="cargoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-6 col-xs-12">
+            <label for="empresaModificar">Razon social:</label>
+            <input type="text" class="form-control input-md cajatexto" name="empresaModificar" id="empresaModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-6 col-xs-12">
+            <label for="centroDecostoModificar">Centro costo:</label>
+            <input type="text" class="form-control input-md cajatexto" name="centroDecostoModificar" id="centroDecostoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="cantidadModificar">Cantidad solicitada:</label>
+            <input type="text" class="form-control input-md cajatexto" name="cantidadModificar" id="cantidadModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="equipoModificar">Tipo equipo (opcional):</label>
+            <input type="text" class="form-control input-md cajatexto" name="equipoModificar" id="equipoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="licenciaModificar">Licencia conducir:</label>
+            <input type="text" class="form-control input-md cajatexto" name="licenciaModificar" id="licenciaModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="tipoturnoModificar">Tipo Turno:</label>
+            <input type="text" class="form-control input-md cajatexto" name="tipoturnoModificar" id="tipoturnoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12" id="fechaTerminoDiv">
+            <label for="estadoContratacion">Estado Contratación:</label>
+            <input type="text" class="form-control input-md cajatexto" name="estadoContratacion" id="estadoContratacion" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="tipocontratoModificar">Tipo contrato:</label>
+            <input type="text" class="form-control input-md cajatexto" name="tipocontratoModificar" id="tipocontratoModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="fecharequeridaModificar">Fecha requerida:</label>
+            <input type="text" class="form-control input-md cajatexto" name="fecharequeridaModificar" id="fecharequeridaModificar" disabled>
+          </div>
+
+          <div class="form-group col-sm-3 col-xs-12" id="fechaTerminoDiv">
+            <label for="fechaterminoModificar">Fecha Término:</label>
+            <input type="text" class="form-control input-md cajatexto" name="fechaterminoModificar" id="fechaterminoModificar" disabled>
+          </div>          
+
+          <div class="form-group col-sm-3 col-xs-12">
+            <label for="remuneracionModificar">Remuneración líquida:</label>
+            <input type="text" class="form-control input-md cajatexto" name="remuneracionModificar" id="remuneracionModificar" disabled>
+          </div>
+
+
+          <div class="col-md-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-body">
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="preapruebaComentarioMod">Comentario Preaprueba:</label>
+                  <textarea class="form-control input-md cajatexto" id="preapruebaComentarioMod" name="preapruebaComentarioMod" rows="3" disabled></textarea>
+                </div>
+
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="apruebaComentarioMod">Comentario Aprueba:</label>
+                  <textarea class="form-control input-md cajatexto" id="apruebaComentarioMod" name="apruebaComentarioMod" rows="3" disabled></textarea>
+                </div>
+
+                <div class="form-group col-sm-4 col-xs-12">
+                  <label for="comentarioGeneral">Comentario General:</label>
+                  <textarea class="form-control input-md cajatexto" id="comentarioGeneral" name="comentarioGeneral" rows="3" disabled></textarea>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+  <!--=====================================
 MODAL AGREGAR TAREA
 ======================================-->
 
@@ -192,8 +307,8 @@ MODAL AGREGAR TAREA
           </div>
 
           <!--=====================================
-CUERPO DEL MODAL
-======================================-->
+          CUERPO DEL MODAL
+          ======================================-->
 
           <div class="modal-body">
             <div class="box-body">
@@ -211,18 +326,34 @@ CUERPO DEL MODAL
 
                       <div id="panelFicha_content" class="panel-collapse collapse in">
                         <div class="panel-body">
+                          
+                          <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
+                            <label for="rutAgregar" class="text-center mb-2">Rut</label>
+                            <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar" disabled>
+                          </div>
+
+                          <div class="form-group col-sm-6 col-xs-12">
+                            <label for="nomSelec">Nombre:</label>
+                            <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec" disabled>
+                          </div>
+
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="numeroFichaSelec">N° de Ficha</label>
+                            <label for="telSelec">Teléfono:</label>
+                            <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec" disabled>
+                          </div>
+
+                          <div class="form-group col-sm-3 col-xs-12">
+                            <label for="numeroFichaSelec">N° de Ficha:</label>
                             <input class="form-control input-md cajatexto solo-ruc" name="numeroFichaSelec" id="numeroFichaSelec" disabled>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="idSolicitudSelec">Id Solicitud</label>
+                            <label for="idSolicitudSelec">Id Solicitud:</label>
                             <input class="form-control input-md cajatexto solo-ruc" name="idSolicitudSelec" id="idSolicitudSelec" disabled>
                           </div>
 
                           <div class="form-group col-sm-3 col-xs-12">
-                            <label for="EmpresaSelec">Empresa</label>
+                            <label for="EmpresaSelec">Empresa: (Definida)</label>
                             <input class="form-control input-md cajatexto solo-ruc" name="EmpresaSelec" id="EmpresaSelec" disabled>
                           </div>
 
@@ -258,8 +389,15 @@ CUERPO DEL MODAL
 
                           <div class="form-group col-sm-3 col-xs-12">
                             <label for="sueldoLiquidoSelec">Sueldo Líquido:</label>
-                            <input class="form-control input-md cajatexto" id="sueldoLiquidoSelec" name="sueldoLiquidoSelec">
+                            <input class="form-control input-md cajatexto puntos_de_mil" id="sueldoLiquidoSelec" name="sueldoLiquidoSelec">
                           </div>
+
+                          <div class="form-group col-sm-3 col-xs-12">
+                            <label for="sueldoLiquidoSelec"></label>
+                            <button type="button" class=" form-control btn btn-primary" id="btnGrabarFicha">
+                              <i class="fa fa-search" aria-hidden="true"></i> Actualizar Ficha
+                            </button>
+                          </div>                          
                         </div> <!-- Cierre correcto de panel-body -->
                       </div> <!-- Cierre correcto de panel-collapse -->
                     </div> <!-- Cierre correcto de panel-default -->
@@ -268,40 +406,6 @@ CUERPO DEL MODAL
               </section>
             </div>
           </div>
-
-
-          <section class="content">
-            <div class="box">
-              <div class="panel-group" id="panelDatos">
-                <div class="panel panel-default">
-                  <div class="panel-body ">
-                    <div class="box-body">
-                      <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
-                        <label for="rutAgregar" class="text-center mb-2">Rut</label>
-                        <input class="form-control input-md cajatexto solo-ruc" name="rutAgregar" id="rutAgregar">
-                      </div>
-
-                      <div class="form-group col-sm-5 col-xs-12">
-                        <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
-                          <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                        </button>
-                      </div>
-
-                      <div class="form-group col-sm-5 col-xs-12">
-                        <label for="nomSelec">Nombre</label>
-                        <input class="form-control input-md cajatexto solo-ruc" name="nomSelec" id="nomSelec" disabled>
-                      </div>
-
-                      <div class="form-group col-sm-5 col-xs-12">
-                        <label for="telSelec">Teléfono Propio</label>
-                        <input class="form-control input-md cajatexto solo-ruc" name="telSelec" id="telSelec" disabled>
-                      </div>
-                    </div>
-                  </div> <!-- Cierre correcto de panel-body -->
-                </div> <!-- Cierre correcto de panel-default -->
-              </div> <!-- Cierre correcto de panel-group -->
-            </div>
-          </section>
 
           <section class="content">
             <div class="box">
@@ -328,48 +432,37 @@ CUERPO DEL MODAL
                       <div class="panel-body">
                         <div class="box-body">
                           <div class="row">
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="requiSelec">Requisito de Selección</label>
-                              <select class="form-control input-md cajatexto solo-ruc" name="requiSelec" id="requiSelec"></select>
+                            <div class="form-group col-sm-6 col-xs-12">
+                              <label for="seleccionRequisito">Requisito de Selección</label>
+                              <select class="form-control input-md cajatexto solo-ruc" name="seleccionRequisito" id="seleccionRequisito"></select>
                             </div>
 
-                            <div class="form-group col-sm-3 col-xs-12">
+                            <div class="form-group col-sm-6 col-xs-12">
                               <label for="comentarioRequisito">Comentario:</label><span></span>
                               <textarea class="form-control input-md cajatexto" name="comentarioRequisito" id="comentarioRequisito" rows="1"></textarea>
                             </div>
 
-                            <div class="form-group col-sm-3 col-xs-12">
-                              <label for="btnSeleccionar">Seleccionar Archivo</label>
-                              <div>
-                                <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
-                                  <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                                </button>
-                                <input type="file" id="inputArchivo" style="display: none;" accept=".docx, .pdf, .jpg">
-                              </div>
-                              <p id="nombreArchivo" style="margin-top: 5px;"></p> <!-- Para mostrar el nombre del archivo seleccionado -->
+                            <div class="form-group col-sm-9 col-xs-12">
+                              <label for="documentoRequisito">Adjunto:</label><span style="font-size: 11px; color: #DC3139;"> (Admitido: jpeg, png, txt, xls, xlsx, csv, pdf, doc, docx)</span>
+                              <input type="file" class="form-control input-md cajatexto" name="documentoRequisito" id="documentoRequisito" accept="*" data-show-upload="false" data-show-caption="false">
                             </div>
 
-                            <div class="table-requisitos">
-                              <div class="table-responsive1">
+                            <div class="form-group col-sm-3 col-xs-12">
+                              <label for="nuevoNombre"></label>
+                              <button type="button" class="btn btn-primary btn-block" id="btnCargarRequisito">
+                                <i class="fa fa-upload" aria-hidden="true"></i> Cargar Requisito
+                              </button>
+                            </div>
                                 <table class="table table-bordes" id="tablaRequisitos">
                                   <thead class="thead-dark">
                                     <tr>
-                                      <th>Id Tipo Requisito</th>
-                                      <th>Documento</th>
-                                      <th>Eliminar</th>
+                                      <center><th>Requisito</th></center>
+                                      <center><th>Comentario</th></center>
+                                      <center><th>Acciones</th></center>
                                     </tr>
                                   </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                                    </tr>
-                                  </tbody>
+                                  <tbody></tbody>
                                 </table>
-                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                                  Mostrando registros del 0 al 0 de un total de 0 registros
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -382,12 +475,28 @@ CUERPO DEL MODAL
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="panel-heading" style="background-color: #f5f5f5; padding: 10px;">
-                        <h4 class="panel-title">Contrato de trabajo</h4>
+                        <h4 class="panel-title">Contrato de Trabajo</h4>
                       </div>
                       <div class="panel-body" style="padding: 15px;">
-                        <button type="button" class="btn btn-primary" id="btnSeleccionContrato">
-                          <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                        </button>
+                        <div class="form-group col-sm-6 col-xs-12">
+                          <label for="documentoContrato">Contrato:</label><span style="font-size: 11px; color: #DC3139;"> (Admitido: jpeg, png, txt, xls, xlsx, csv, pdf, doc, docx)</span>
+                          <input type="file" class="form-control input-md cajatexto" name="documentoContrato" id="documentoContrato" accept="*" data-show-upload="false" data-show-caption="false">
+                        </div>
+
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="nuevoNombre"></label>
+                          <button type="button" class="btn btn-primary btn-block" id="btnActualizarDocumentoContrato">
+                            <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar Archivo
+                          </button>
+                        </div>
+
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="nuevoNombre"></label>
+                          <a type="button" class="btn btn-success btn-block" href="#" target="_blank" id="bntDescargarArchivo">
+                            <i class="fa fa-download" aria-hidden="true"></i> Descargar Archivo
+                          </a>
+                        </div>
+                        
                       </div>
                     </div>
                   </div>
@@ -397,17 +506,10 @@ CUERPO DEL MODAL
                       <h4 class="panel-title">Anexos</h4>
                     </div>
                     <div class="panel-body" style="padding: 15px;">
-                      <div class="row">
-                        <div class="form-group col-sm-3 col-xs-12">
-                          <label for="idAnexo">Id anexo</label>
-                          <input type="text" class="form-control input-md cajatexto" id="idAnexo" name="idAnexo">
-                        </div>
 
                         <div class="form-group col-sm-3 col-xs-12">
-                          <label for="tipoAnexo">Tipo Anexo</label>
-                          <select class="form-control input-md cajatexto" id="tipoAnexo" name="tipoAnexo">
-                            <option value="">Seleccione...</option>
-                          </select>
+                          <label for="seleccionAnexo">Tipo Anexo:</label>
+                          <select class="form-control input-md cajatexto solo-ruc" name="seleccionAnexo" id="seleccionAnexo"></select>
                         </div>
 
                         <div class="form-group col-sm-3 col-xs-12">
@@ -415,39 +517,36 @@ CUERPO DEL MODAL
                           <input type="date" class="form-control input-md cajatexto" id="fechaAnexo" name="fechaAnexo">
                         </div>
 
-                        <div class="form-group col-sm-3 col-xs-12">
-                          <label for="btnSeleccionarAnexo">Documento Anexo</label>
-                          <div>
-                            <button type="button" class="btn btn-primary" id="btnSeleccionarAnexo">
-                              <i class="fa fa-plus" aria-hidden="true"></i> Selección
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                        <div class="form-group col-sm-6 col-xs-12">
+                          <label for="comentarioAnexo">Comentario:</label><span style="font-size: 11px; color: #DC3139;"> (Opcional)</span>
+                          <textarea class="form-control input-md cajatexto" name="comentarioAnexo" id="comentarioAnexo" rows="1"></textarea>
+                        </div>                        
 
-                      <div class="table-container2">
-                        <div class="table-responsive2">
-                          <table class="table table-bordes2" id="tablaAnexo">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th>Id Anexo</th>
-                                <th>Tipo Anexo</th>
-                                <th>Fecha</th>
-                                <th>Documento</th>
-                                <th>Eliminar</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td colspan="5" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <div style="margin-top: 10px; font-size: 12px; color: #666;">
-                            Mostrando registros del 0 al 0 de un total de 0 registros
-                          </div>
+                        <div class="form-group col-sm-9 col-xs-12">
+                              <label for="documentoAnexo">Adjunto:</label><span style="font-size: 11px; color: #DC3139;"> (Admitido: jpeg, png, txt, xls, xlsx, csv, pdf, doc, docx)</span>
+                              <input type="file" class="form-control input-md cajatexto" name="documentoAnexo" id="documentoAnexo" accept="*" data-show-upload="false" data-show-caption="false">
                         </div>
-                      </div>
+
+                        <div class="form-group col-sm-3 col-xs-12">
+                          <label for="nuevoNombre"></label>
+                          <button type="button" class="btn btn-primary btn-block" id="btnCargarRAnexo">
+                            <i class="fa fa-upload" aria-hidden="true"></i> Cargar Anexo
+                          </button>
+                        </div>
+
+                        <table class="table table-bordes" id="tablaAnexos">
+                          <thead class="thead-dark">
+                            <tr>
+                              <center><th>Tipo</th></center>
+                              <center><th>Fecha</th></center>
+                              <center><th>Comentario</th></center>
+                              <center><th>Acciones</th></center>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+
+
                     </div>
                   </div>
                 </div>
@@ -455,9 +554,7 @@ CUERPO DEL MODAL
 
               <!-- Botones de acción -->
               <div class="button-container">
-                <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                  <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
-                </button>
+                
 
                 <button type="button" class="btn btn-primary" id="btnListadoSolicitud">
                   <i class="fa fa-search" aria-hidden="true"></i> Listado de Solicitudes
@@ -574,6 +671,8 @@ CUERPO DEL MODAL
       </div>
 
     </div>
+
+    
 
     <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 

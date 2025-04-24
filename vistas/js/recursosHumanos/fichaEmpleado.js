@@ -1,3 +1,5 @@
+var ip = "127.0.0.1";
+//var ip = "186.16.32.139";
 $(document).ready(function (){
 
   cargarDatosTabla(); 
@@ -19,8 +21,10 @@ $(document).ready(function (){
     CentroDeCostoModificar();
   });
 
+  $('#asignacionEmpresaModificar').change(function() {
+    cargarCentroDeCostoEnModificacion();
+  });
 
-  
   $('#btnGuardar').click(function() {
       if($("#rutAgregar").val() != "" && $("#rutAgregar").val() != "0" &&
          $("#fechaNacimientoAgregar").val() != "" &&
@@ -92,6 +96,110 @@ $(document).ready(function (){
     }
     busqueda.addEventListener('keyup', buscaTabla);
 
+  });
+
+  //---------------------------Modificaciones Adicionales
+
+  $('#btnAgregarAsignacion').click(function () {
+      if( $("#asignacionDivisionModificar").val() != "-" && 
+          $("#asignacionEmpresaModificar").val() != "-" && 
+          $("#asignacionCostoModificar").val() != ""){
+              cargarAsignacionLaboral();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnAsinacionDocumentolaboral').click(function () {
+      if( $("#tipoDocumentoLaboralAsignacionModificar").val() != "-" && 
+          $("#idDocumentoAsignacionModificar").val() != "" && 
+          $("#fechaExpiracionAsignacionModificar").val() != "" && 
+          $("#documentoAsignacionModificar")[0].files[0] != undefined){
+            cargarDocumentoLaboral();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar y completar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnCargarEstudio').click(function () {
+      if( $("#tipoEstudioModificar").val() != "-" && 
+          $("#estadoEstudioModificar").val() != "-" && 
+          $("#documentoEstudioModificar")[0].files[0] != undefined){
+            cargarEstudiosCursados();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnCargarTalla').click(function () {
+      if( $("#tipoEppModificar").val() != "-" && 
+          $("#numTallaModificar").val() != ""){
+            cargarTalla();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnCargarContactoEmergencia').click(function () {
+      if( $("#parentescoEmergenciaModificar").val() != "-" && 
+          $("#nombreEmergenciaModificar").val() != "" &&
+          $("#fonoEmergenciaModificar").val() != ""){
+            cargarContactoEmergencia();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar y completar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnCargarAntecedente').click(function () {
+      if( $("#tipoAntecedenteModificar").val() != "-" && 
+          $("#detalleAntecedenteModificar").val() != ""){
+            cargarAntecedentes();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar y completar todos los campos requeridos.",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
+  });
+
+  $('#btnVicularSolicitudDeContratacion').click(function () {
+      if( $("#solicitudContratacion").val() != "-"){
+          actualizarSolicitudDeContratacion();
+        }else{
+          swal({
+              type: "error",
+              title: "Debe seleccionar una solicitud de contratación válida",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+          });
+        }
   });
   
 
@@ -280,6 +388,33 @@ function obtenerDatosParaModificar(valor){
                   $("#emailPersonalModificar").val(response[i].email);
 
                   $("#nuevaImagenModificar").html('<img class="img-thumbnail" src="'+response[i].imagen+'"  >');
+
+                  // para asignación laboral
+                   cargarEmpresaEnAsignacionLaboral();
+                   cargarCentroDeCostoEnModificacion();
+                   listarAsignacioneslaborales(response[i].id);
+
+                   //Para documento laboral
+                   cargarTipoDocumentoLaboral();
+                   listarDatosTablaDocumentoslaborales(response[i].id);
+
+                   // para tipo estudio
+                   cargarTipoEstudio();
+                   listarEstudiosCursados(response[i].id);
+
+                   // para tipo EPP
+                   cargarTipoEpp();
+                   listarTallas(response[i].id);
+
+                   // Contactos de Emergencia
+                   listarContactosDeEmergencia(response[i].id);
+
+                   // Antecedentes Medicos
+                   cargarAntecedenteMedico();
+                   listarAntecedentesMedicos(response[i].id);
+
+                   // Viculación Solicitud
+                   cargarSolicitudes(response[i].id_contratacion);
                   
               }  
 
@@ -932,3 +1067,1020 @@ function CentroDeCostoVerMas(id,empresa){
  
  }
 // FIN CARGA SELECT "VER"
+
+
+//Cargas en Asignación Laboral
+
+function cargarEmpresaEnAsignacionLaboral() {
+  $('#asignacionEmpresaModificar').empty();
+  $('#asignacionEmpresaModificar').append('<option value ="-">Seleccionar...</opction>');
+  var listaEmpresa = "";
+  $.ajax({
+      url: "../api_adm_nortrans/empresa/funListar.php",
+      method: "GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function (response) {
+          for (var i in response) {
+              listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+          }
+          $('#asignacionEmpresaModificar').append(listaEmpresa);
+      }
+  });
+}
+
+function cargarCentroDeCostoEnModificacion() {
+  $('#asignacionCostoModificar').empty();
+  var params = {
+      "empresa": $("#asignacionEmpresaModificar").val()
+  };
+  var listaCentroCosto = "";
+  $.ajax({
+      url: "../api_adm_nortrans/centroDeCosto/funCentrosDeCostosPorEmpresa.php",
+      method: "POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function (response) {
+          for (var i in response) {
+              listaCentroCosto = listaCentroCosto + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+          }
+          $('#asignacionCostoModificar').append(listaCentroCosto);
+      }
+  });
+}
+
+function cargarAsignacionLaboral(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("division", $("#asignacionDivisionModificar").val());
+  datos.append("empresa", $("#asignacionEmpresaModificar").val());
+  datos.append("centroDeCosto", $("#asignacionCostoModificar").val());
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funCargarAsignacionLaboral.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+         type: "success",
+         title: "Requisito Cargado con éxito.",
+         showConfirmButton: true,
+         confirmButtonText: "Aceptar"
+        }).then((value) => {
+          listarAsignacioneslaborales($("#idModificar").val());
+          $("#centroDeCosto").val('');
+          cargarEmpresaEnAsignacionLaboral();
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la carga.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+  }        
+});
+
+}
+
+function listarAsignacioneslaborales(valor){
+  $("#tablaAsignacionesLaborales tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarAsignacionesLaborales.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].division+'</td>'+
+                '<td>'+response[i].empresa+'</td>'+
+                '<td>'+response[i].centro_de_costo+'</td>'+
+                '<td>'+
+                            '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarAsignaciones" id="'+response[i].idasignacion_laboral+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaAsignacionesLaborales').append(fila);
+
+          $('.btnEliminarAsignaciones').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarAsignacioneslaborales(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarAsignacioneslaborales(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarAsignacionLaboral.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarAsignacioneslaborales($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+// Carga en Documentos Laborales
+
+function cargarTipoDocumentoLaboral(){
+  $('#tipoDocumentoLaboralAsignacionModificar').empty();
+  $('#tipoDocumentoLaboralAsignacionModificar').append('<option value ="-">Seleccionar...</opction>');
+  var listaEmpresa = "";
+  $.ajax({
+      url:"../api_adm_nortrans/documento/funListar.php",
+      method:"GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){        
+          listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+          }
+          $('#tipoDocumentoLaboralAsignacionModificar').append(listaEmpresa);
+      }        
+  });
+}
+
+function cargarDocumentoLaboral(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("documentoLaboral", $("#tipoDocumentoLaboralAsignacionModificar").val());
+  datos.append("idDocumento", $("#idDocumentoAsignacionModificar").val());
+  datos.append("fechaExpiracion", $("#fechaExpiracionAsignacionModificar").val());
+  datos.append("documento", $("#documentoAsignacionModificar")[0].files[0] );  
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funCargarDocumentoLaboral.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+         type: "success",
+         title: "Registro Cargado con éxito.",
+         showConfirmButton: true,
+         confirmButtonText: "Aceptar"
+        }).then((value) => {
+          listarDatosTablaDocumentoslaborales($("#idModificar").val());
+          $("#idDocumento").val('');
+          $("#fechaExpiracion").val('');
+          cargarTipoDocumentoLaboral();
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la carga.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+      if(response['mensaje'] === "vacio"){
+          swal({
+            type: "error",
+            title: "No hay documento para procesar.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+          });
+      }
+
+      if(response['mensaje'] === "invalido"){
+          swal({
+            type: "error",
+            title: "El archivo seleccionado no es posible cargar al sistema.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+          });
+      }
+
+  }        
+});
+
+}
+
+function listarDatosTablaDocumentoslaborales(valor){
+  $("#tablaDocumentolaboral tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarDocumentosLaborales.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].descripcion_documento+'</td>'+
+                '<td>'+response[i].fecha_vencimiento+'</td>'+
+                '<td>'+response[i].id_docu+'</td>'+
+                '<td>'+
+                            '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://'+ip+'/nortrans-apps/adm-nortrans/vistas/img/documentoLaboral/'+response[i].id_personal+'_'+response[i].id_documento+'_documentoLaboral'+response[i].tipo_adjunto+'" ><i class="fa fa-download"></i></a>'+
+
+                            '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarDocumentoLaboral" id="'+response[i].iddocumentos_laborales+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaDocumentolaboral').append(fila);
+
+          $('.btnEliminarDocumentoLaboral').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarDocumentoLaboral(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarDocumentoLaboral(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarDocumentosLaborales.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarDatosTablaDocumentoslaborales($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+//Cargar estudios cursados
+
+function cargarTipoEstudio(){
+  $('#tipoEstudioModificar').empty();
+  $('#tipoEstudioModificar').append('<option value ="-">Seleccionar...</opction>');
+  var listaEmpresa = "";
+  $.ajax({
+      url:"../api_adm_nortrans/tipoEstudio/funListar.php",
+      method:"GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){        
+          listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+          }
+          $('#tipoEstudioModificar').append(listaEmpresa);
+      }        
+  });
+}
+
+function cargarEstudiosCursados(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("tipoEstudio", $("#tipoEstudioModificar").val());
+  datos.append("estadoEstudio", $("#estadoEstudioModificar").val());
+  datos.append("documento", $("#documentoEstudioModificar")[0].files[0]);  
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funCargarEstudiosCursados.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+         type: "success",
+         title: "Registro Cargado con éxito.",
+         showConfirmButton: true,
+         confirmButtonText: "Aceptar"
+        }).then((value) => {
+          listarEstudiosCursados($("#idModificar").val());
+          cargarTipoEstudio();
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la carga.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+      if(response['mensaje'] === "vacio"){
+          swal({
+            type: "error",
+            title: "No hay documento para procesar.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+          });
+      }
+
+      if(response['mensaje'] === "invalido"){
+          swal({
+            type: "error",
+            title: "El archivo seleccionado no es posible cargar al sistema.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+          });
+      }
+
+  }        
+});
+
+}
+
+function listarEstudiosCursados(valor){
+  $("#tablaEstudios tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarEstudiosCursados.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].descripcion_tipo_estudio+'</td>'+
+                '<td>'+response[i].estado_estudio+'</td>'+
+                '<td>'+
+                            '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://'+ip+'/nortrans-apps/adm-nortrans/vistas/img/estudiosCursados/'+response[i].id_personal+'_'+response[i].id_tipo_estudio+'_estudioCursado'+response[i].tipo_adjunto+'" ><i class="fa fa-download"></i></a>'+
+
+                             '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarEstu" id="'+response[i].idestudios+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaEstudios').append(fila);
+
+          $('.btnEliminarEstu').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarEstudiosCursados(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarEstudiosCursados(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarEstudiosCursados.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarEstudiosCursados($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+// Carga Talla
+
+function cargarTipoEpp(){
+  $('#tipoEppModificar').empty();
+  $('#tipoEppModificar').append('<option value ="-">Seleccionar...</opction>');
+  var listaEmpresa = "";
+  $.ajax({
+      url:"../api_adm_nortrans/tipoEpp/funListar.php",
+      method:"GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){        
+          listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+          }
+          $('#tipoEppModificar').append(listaEmpresa);
+      }        
+  });
+}
+
+function cargarTalla(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("tipoEpp", $("#tipoEppModificar").val());
+  datos.append("nroTalla", $("#numTallaModificar").val());
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funCargarTalla.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+         type: "success",
+         title: "Registro Cargado con éxito.",
+         showConfirmButton: true,
+         confirmButtonText: "Aceptar"
+        }).then((value) => {
+          listarTallas($("#idModificar").val());
+          cargarTipoEpp();
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la carga.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+  }        
+});
+
+}
+
+function listarTallas(valor){
+  $("#tablaTalla tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarTallas.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].tipo_epp+'</td>'+
+                '<td>'+response[i].nro_talla+'</td>'+
+                '<td>'+
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarTalla" id="'+response[i].idmedidas+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaTalla').append(fila);
+
+          $('.btnEliminarTalla').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarTalla(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarTalla(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarTalla.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarTallas($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+//cargar Contacto de Emergencia
+
+function cargarContactoEmergencia(){
+    var datos = new FormData();
+    datos.append("idEmpleado", $("#idModificar").val());
+    datos.append("nombre", $("#nombreEmergenciaModificar").val());
+    datos.append("parentesco", $("#parentescoEmergenciaModificar").val());
+    datos.append("telefono", $("#fonoEmergenciaModificar").val());
+  $.ajax({
+    url:"../api_adm_nortrans/fichaEmpleado/funCargarContactoDeEmergencia.php",
+    method:"POST",
+    cache: false,
+    data: datos,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(response) {
+        if(response['mensaje'] === "ok"){
+          swal({
+          type: "success",
+          title: "Registro Cargado con éxito.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+          }).then((value) => {
+            listarContactosDeEmergencia($("#idModificar").val());
+            $("#nombreEmergenciaModificar").val('');
+            $("#fonoEmergenciaModificar").val('');
+          });
+        }
+
+        if(response['mensaje'] === "nok"){
+          swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la carga.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+          });
+        }
+
+    }        
+  });
+
+}
+
+function listarContactosDeEmergencia(valor){
+  $("#tablaContactoEmergencia tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarContactosDeEmergencia.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].nombre+'</td>'+
+                '<td>'+response[i].parentezco+'</td>'+
+                '<td>'+response[i].telefono+'</td>'+
+                '<td>'+
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarTablaContacto" id="'+response[i].idcontacto_emergencia+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaContactoEmergencia').append(fila);
+
+          $('.btnEliminarTablaContacto').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarContactoDeEmergencia(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarContactoDeEmergencia(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarContactoDeEmergencia.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarContactosDeEmergencia($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+//Antecedente Médico
+
+function cargarAntecedenteMedico(){
+  $('#tipoAntecedenteModificar').empty();
+  $('#tipoAntecedenteModificar').append('<option value ="-">Seleccionar...</opction>');
+  var listaEmpresa = "";
+  $.ajax({
+      url:"../api_adm_nortrans/antecedentesMedicos/funListar.php",
+      method:"GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){        
+          listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+          }
+          $('#tipoAntecedenteModificar').append(listaEmpresa);
+      }        
+  });
+}
+
+function cargarAntecedentes(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("antecedente", $("#tipoAntecedenteModificar").val());
+  datos.append("descripcion", $("#detalleAntecedenteModificar").val());
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funcargarAntecedentesMedicos.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+        type: "success",
+        title: "Registro Cargado con éxito.",
+        showConfirmButton: true,
+        confirmButtonText: "Aceptar"
+        }).then((value) => {
+          listarAntecedentesMedicos($("#idModificar").val());
+          cargarAntecedenteMedico();
+          $("#detalleAntecedenteModificar").val('');
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la carga.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+  }        
+});
+
+}
+
+function listarAntecedentesMedicos(valor){
+  $("#tablaAntecedentesMedicos tbody").empty();
+  var params = {
+      "id": valor
+  };
+  var fila = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarAntecedentes.php",
+      method:"POST",
+      data: JSON.stringify(params),
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+         for (var i in response){
+              fila = fila + '<tr>'+
+                '<td>'+response[i].descripcion+'</td>'+
+                '<td>'+response[i].detalle+'</td>'+
+                '<td>'+
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarTablaAntecedentesMe" id="'+response[i].idantecedentes+'"><i class="fa fa-times"></i></button>'+                      
+                '</td>'+
+              +'</tr>';             
+          }
+          $('#tablaAntecedentesMedicos').append(fila);
+
+          $('.btnEliminarTablaAntecedentesMe').click(function() {
+              var id_registro = this.id;
+              swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: 'Si, eliminar registro!'
+              }).then(function(result){
+                  if(result.value){
+                    eliminarAntecedentesMedicos(id_registro);                        
+                  }                        
+              });                    
+          });
+
+      }        
+  });
+
+}
+
+function eliminarAntecedentesMedicos(valor){
+  var params = {
+                    "id": valor
+               };
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funEliminarContactoDeEmergencia.php",
+      method:"POST",
+      cache: false,
+      data: JSON.stringify(params),
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {
+          if(response['mensaje'] === "ok"){
+            swal({
+             type: "success",
+             title: "Registro eliminado con exito!!!",
+             showConfirmButton: true,
+             confirmButtonText: "Aceptar"
+            }).then((value) => {
+              listarAntecedentesMedicos($("#idModificar").val());
+            });
+          }
+
+          if(response['mensaje'] === "nok"){
+            swal({
+              type: "error",
+              title: "Ha ocurrido un error al procesar la eliminación!!!",
+              showConfirmButton: true,
+              confirmButtonText: "Aceptar"
+            });
+          }
+
+      }        
+  });
+
+}
+
+// Viculación
+
+function cargarSolicitudes(valor){
+  $('#solicitudContratacion').empty();
+  if(valor == ""){
+    $('#solicitudContratacion').append('<option value ="-">Seleccionar...</opction>');
+  }  
+  var listaEmpresa = "";
+  $.ajax({
+      url:"../api_adm_nortrans/fichaEmpleado/funListarSolicitudesDeContrato.php",
+      method:"GET",
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(response) {        
+         for (var i in response){        
+          listaEmpresa = listaEmpresa + '<option value = "'+response[i].idcontratacion+'">'+"Nro: "+response[i].idcontratacion+" / Cargo: "+response[i].cargo+" / Centro de C.: "+response[i].centro+" / Requerido: "+response[i].requerido+'</option>';                
+          }
+          $('#solicitudContratacion').append(listaEmpresa);
+          if(valor != ""){
+            $("#solicitudContratacion option[value='"+ valor +"']").attr("selected",true);
+          }
+          
+      }        
+  });
+}
+
+function actualizarSolicitudDeContratacion(){
+  var datos = new FormData();
+  datos.append("idEmpleado", $("#idModificar").val());
+  datos.append("idContratacion", $("#solicitudContratacion").val());
+$.ajax({
+  url:"../api_adm_nortrans/fichaEmpleado/funActualizarContrato.php",
+  method:"POST",
+  cache: false,
+  data: datos,
+  contentType: false,
+  processData: false,
+  dataType: "json",
+  success: function(response) {
+      if(response['mensaje'] === "ok"){
+        swal({
+        type: "success",
+        title: "Solicitud de contrato Actualizada",
+        showConfirmButton: true,
+        confirmButtonText: "Aceptar"
+        }).then((value) => {
+          location.reload();
+        });
+      }
+
+      if(response['mensaje'] === "nok"){
+        swal({
+          type: "error",
+          title: "Ha ocurrido un error al procesar la actualización.",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar"
+        });
+      }
+
+  }        
+});
+
+}

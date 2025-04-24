@@ -180,8 +180,9 @@ MODAL VER MAS
                                 <button type="button" class="btn btn-primary"
                                     style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px"
                                     id="btnPreRechazar">
-                                    <i class="fa fa-hdd-o" aria-hidden="true"></i> Rechazar
+                                    <i class="fa fa-times" aria-hidden="true"></i> Rechazar
                                 </button>
+
 
                                 <button type="button" class="btn btn-primary"
                                     style="background-color: #adaf9c; border-color: #f46717; margin-top: 50px; margin-right: 20px"
@@ -191,11 +192,10 @@ MODAL VER MAS
 
                                 <button type="button" class="btn btn-primary"
                                     style="background-color: #adaf9c; border-color: #f46717; margin-top: 60px; margin-right: 12px; float: right; width: 90px;"
-                                    id="btnModificar">
-                                    <i class="fa fa-hdd-o" aria-hidden="true"></i>Salir
+                                    id="btnSalir"
+                                    data-dismiss="modal">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                                 </button>
-
-
                             </div>
                         </div>
                     </div>

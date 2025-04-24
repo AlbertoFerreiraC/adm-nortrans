@@ -11,7 +11,7 @@
                         <div class="box-body">
                             <div class="form-group col-sm-5 col-xs-12">
                                 <button type="button" class="btn btn-primary" id="btncrearCargo" data-toggle="modal" data-target="#modalAgregar">
-                                    <i class="fa fa-list" aria-hidden="true"></i> Crear Cargo
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Crear Cargo
                                 </button>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                 </button>
 
                                 <button type="button" class="btn btn-primary" id="btnMostarListado"" style=" background-color: #FF6600;">
-                                    <i class="fa fa-file" aria-hidden="true"></i> Mostrar Listado
+                                    <i class="fa fa-bars" aria-hidden="true"></i> Mostrar Listado
                                 </button>
                             </div>
 
@@ -304,8 +304,8 @@
                                     <i class="fa fa-save" aria-hidden="true"></i> Modificar Ficha
                                 </button>
 
-                                <button type="button" class="btn btn-primary" id="btnMostarListado"" style=" background-color: #FF6600;">
-                                    <i class="fa fa-file" aria-hidden="true"></i> Mostrar Listado
+                                <button type="button" class="btn btn-primary" id="btnMostarListado" style="background-color: #FF6600;">
+                                    <i class="fa fa-bars" aria-hidden="true"></i> Mostrar Listado
                                 </button>
                             </div>
 
