@@ -257,7 +257,7 @@ function obtenerDatosParaModificar(valor) {
         success: (response) => {
             for (var i in response) {
                 $("#rutAgregar").val(response[i].rut);
-                $("#nomSelec").val(response[i].nombre_persona);
+                $("#nomSelec").val(response[i].nombre_completo);
                 $("#telSelec").val(response[i].telefono_propio);
 
                 $("#numeroFichaSelec").val(response[i].idficha_contrato);
@@ -268,7 +268,7 @@ function obtenerDatosParaModificar(valor) {
                 $("#tipocontratoSelec").val(response[i].tipo_contrato);
                 $("#tipoTurnoSelec").val(response[i].turno);
 
-                empresaModificar(response[i].idempresa);
+                empresaModificar(response[i].id_empresa);
                 $("#fechainicioSelec").val(response[i].fecha_inicio);
                 $("#sueldoLiquidoSelec").val(number_format(response[i].sueldo_liquido,0));
                 if(response[i].documento_contrato != "vacio"){
@@ -283,14 +283,7 @@ function obtenerDatosParaModificar(valor) {
 
             $("#modalEditar").modal("show")
         },
-    }).fail(() => {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al traer los datos solicitados",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar",
-        })
-    })
+    });
 }
 
 function funcionImprimir(id) {
@@ -365,7 +358,7 @@ function cargarFichaContrato() {
                     "</td>" +
                     "<td>" +
                     '<button type="button" title="Editar" class="btn btn-warning btnEditar" data-toggle="modal" data-target="#modalEditar" id="' +
-                    response[i].idcontratacion +
+                    response[i].idficha_contrato +
                     '"> Editar</button>' +
                     "</td>" +
                     "<td>" +
@@ -482,7 +475,7 @@ function obtenerdatosparaVerMas(valor) {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/fichaContrato/funListarDatosDeContratosPorConfirmar.php",
+        url: "../api_adm_nortrans/solicitudContratacion/funListarDatosDeContratosPorConfirmar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),

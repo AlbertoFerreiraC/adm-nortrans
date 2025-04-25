@@ -229,7 +229,7 @@ function obtenerDatosParaModificar(valor) {
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
                 $("#remuneracionModificar").val(response[i].remuneracion);
-                $("#comentarioModificar").val(response[i].comentario_general);
+                $("#comentarioPreapruebaVer").val(response[i].observacion_pre_aprobacion);
 
                 $("#observacionEntrevistaPsicolaboralMod").val(response[i].observacionEntrevistaPsicolaboral);
                 $("#observacionEntrevistaTecnicaMod").val(response[i].observacionEntrevistaTecnica);

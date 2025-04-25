@@ -74,7 +74,7 @@
                               <center>Cantidad Solicitada</center>
                             </th>
                             <th>
-                              <center>Cantidad Contratada</center>
+                              <center>Cantidad a Contratar</center>
                             </th>
                             <th>
                               <center>Seleccionar</center>

@@ -163,6 +163,7 @@ function obtenerDatosParaModificar(valor) {
                 $('#requisitoseleccionModificar option[value="' + response[i].requisito_seleccion + '"]').attr("selected", true);
                 $('#divisionModificar option[value="' + response[i].division + '"]').attr("selected", true);
                 $("#cantidadModificar").val(response[i].cantidad_solicitada);
+                $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
 
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
 
@@ -170,18 +171,10 @@ function obtenerDatosParaModificar(valor) {
                 $("#remuneracionModificar").val(response[i].remuneracion);
                 $("#comentarioModificar").val(response[i].comentario_general);
 
-                $("#observacionEntrevistaPsicolaboralMod").val(response[i].observacionEntrevistaPsicolaboral);
-                $("#observacionEntrevistaTecnicaMod").val(response[i].observacionEntrevistaTecnica);
-                $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
-
                 //--------------------------
                 $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
                 $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
 
-
-                $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
-
-                $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
                 $("#fechaPreaprobacion").val(response[i].fecha_pre_aperobacion);
                 $("#apruebaComentarioMod").val(response[i].observacion_aprobacion);
 

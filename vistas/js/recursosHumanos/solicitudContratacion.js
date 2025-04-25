@@ -507,9 +507,6 @@ function modificarDatos() {
     datos.append("comentarioGeneral", $("#comentarioModificar").val());
     datos.append("motivo", $("#motivoModificar").val());
     datos.append("tipo_contrato", $("#tipocontratoModificar").val());
-    datos.append("observacionEntrevistaPsicolaboral", $("#observacionEntrevistaPsicolaboralMod").val());
-    datos.append("observacionEntrevistaTecnica", $("#observacionEntrevistaTecnicaMod").val());
-    datos.append("observacionPruebaConduccion", $("#observacionPruebaConduccionMod").val());
 
 
     $.ajax({
