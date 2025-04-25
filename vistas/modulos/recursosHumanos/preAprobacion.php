@@ -20,7 +20,11 @@
 
                     <div class="box-body">
                         <div id="div1" class="table-responsive">
-                            <table class="table table-bordered table-striped dt-responsive" id="tabla" width="100%" style="text-align: center;">
+                            <table class="table table-bordered table-striped dt-responsive"
+                                id="tabla" width="100%" style="text-align: center;">
+                                <div class="form-group col-sm-12 col-xs-12 ">
+                                    <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoPreAprueba" id="filtradoDinamicoPreAprueba" autocomplete="off" placeholder="Filtrado General ...">
+                                </div>
                                 <thead>
                                     <tr>
                                         <th style="width:10px">
