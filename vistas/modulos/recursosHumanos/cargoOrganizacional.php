@@ -35,27 +35,10 @@
                         </h4>
                     </div>
 
-                    <div class="box-body">
-                        <div class="form-group col-sm-3 col-xs-12">
-                            <label for="divisionModificar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                            <select class="form-control input-md cajatexto solo-ruc" name="divisionModificar" id="divisionModificar">
-                                <option value="Industrial">Industrial</option>
-                                <option value="Interurbano">Interurbano</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-sm-5 col-xs-12">
-                            <button type="button" class="btn btn-primary" id="selecBuscar" style="margin-top: 25px;">
-                                <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Controles de tabla -->
-                    <div class="form-row justify-content-start">
-                        <div class="records-control" style="margin-left: 30px;">
+                    <div class="form-row justify-content-center align-items-center" style="display: flex; width: 100%; padding: 20px;">
+                        <div class="records-control" style="margin-right: 500px;">
                             <span>Mostrar</span>
-                            <select id="recordsPerPage" style="width: 70px;">
+                            <select id="recordsPerPage" style="max-width: 70px; width: 100%;">
                                 <option value="10" selected>10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
@@ -63,11 +46,9 @@
                             </select>
                             <span>registros</span>
                         </div>
-                    </div>
 
-                    <div class="form-row justify-content-start" style="margin-top: -50px;">
-                        <div class="form-group text-right" style="margin-bottom: 20px;  margin-left:-150 px;">
-                            <input type="text" id="busquedaCargo" class="form-control" placeholder="Buscar cargo..." style=" width: 200px;">
+                        <div class="form-group col-16 text-right">
+                            <input type="text" id="busquedaCargo" class="form-control" placeholder="Buscar cargo...">
                         </div>
                     </div>
 
