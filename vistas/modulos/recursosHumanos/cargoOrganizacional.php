@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="form-row justify-content-center align-items-center" style="display: flex; width: 100%; padding: 20px;">
-                        <div class="records-control" style="margin-right: 500px;">
+                        <div class="records-control" style="margin-right: 500px; font-size: 16px;"">
                             <span>Mostrar</span>
                             <select id="recordsPerPage" style="max-width: 70px; width: 100%;">
                                 <option value="10" selected>10</option>
@@ -47,8 +47,8 @@
                             <span>registros</span>
                         </div>
 
-                        <div class="form-group col-16 text-right">
-                            <input type="text" id="busquedaCargo" class="form-control" placeholder="Buscar cargo...">
+                        <div class="form-group col-sm-6 col-xs-12 ">
+                            <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm" name="filtradoDinamico" id="filtradoDinamico" autocomplete="off" placeholder="Filtrado General ...">
                         </div>
                     </div>
 

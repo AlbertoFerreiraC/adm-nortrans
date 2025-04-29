@@ -189,7 +189,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="capasidadEstanque">Capacidad Estanque</label><span></span>
+                                <label for="capasidadEstanque">Capacidad Estanque</label>
                                 <div class="input-group">
                                     <input type="number" class="form-control input-md cajatexto" id="capasidadEstanque" name="capasidadEstanque" min="0" max="2100" />
                                     <span class="input-group-addon">lt</span>
@@ -262,7 +262,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="equipaProveedores" data-toggle="tab" href="#equipaProveedores-content" role="tab">
+                                    <a class="nav-link" id="equipoProveedores" data-toggle="tab" href="#equipoProveedores-content" role="tab">
                                         Equipamientos Proveedores
                                     </a>
                                 </li>
@@ -400,9 +400,170 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="table-container2">
+                                                            <div class="table-responsive2">
+                                                                <table class="table table-bordes2" id="tablaLaboral">
+                                                                    <thead class="thead-dark">
+                                                                        <tr>
+                                                                            <th>Tipo de Documento</th>
+                                                                            <th>N" Documento</th>
+                                                                            <th>Fecha desde</th>
+                                                                            <th>Fecha hasta</th>
+                                                                            <th>Documento </th>
+                                                                            <th>Eliminar </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td colspan="6" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                                    Mostrando registros del 0 al 0 de un total de 0 registros
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <!-- Pestaña de Datos Compras -->
+                                <div class="tab-pane fade " id="compras-content" role="tabpanel">
+                                    <div class="panel-group" id="idDatosCompras">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="tipoCompra">Tipo Compra</label>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoCompra" id="tipoCompra"></select>
+                                                        </div>
 
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="propietarioCompra">Propietario</label>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="propietarioCompra" id="propietarioCompra"></select>
+                                                        </div>
 
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="proveedorCompra">Proveedor</label>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="proveedorCompra" id="proveedorCompra"></select>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="numOperacion">N° Operacion:</label><span></span>
+                                                            <input type="text" class="form-control input-md cajatexto" name="numOperacion" id="numOperacion" maxlength="17" pattern="^[A-HJ-NPR-Z0-9]{17}$" title="Debe tener 17 caracteres alfanuméricos, sin I, O ni Q" required />
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <label>Fecha Inicio</label>
+                                                                <div class="input-group">
+                                                                    <input type="date" class="form-control" value="2025-02-09">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="numCuota">N° Cuota</label>
+                                                            <input type="number" class="form-control input-md cajatexto solo-ruc " id="numCuota" name="numCuota" min="0" max="2100" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pestaña de Equipamiento Proveedores -->
+                                <div class="tab-pane fade" id="equipoProveedores-content" role="tabpanel">
+                                    <div class="panel-group" id="idEquipoProveedores">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <button type="button" class="btn btn-primary btn-block" id="nuevoEquipo">
+                                                                <i class="fa fa" aria-hidden="true"></i> Nuevo Equipo
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="table-container2">
+                                                            <div class="table-responsive2">
+                                                                <table class="table table-bordes2" id="tablaLaboral">
+                                                                    <thead class="thead-dark">
+                                                                        <tr>
+                                                                            <th>Rut Proveedor</th>
+                                                                            <th>Tipo Equipo</th>
+                                                                            <th>Id Equipo</th>
+                                                                            <th>Fecha de Instalacion</th>
+                                                                            <th>Eliminar </th>
+                                                                            <th>Estado </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td colspan="6" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                                    Mostrando registros del 0 al 0 de un total de 0 registros
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pestaña de Seguros -->
+                                <div class="tab-pane fade" id="seguros-content" role="tabpanel">
+                                    <div class="panel-group" id="idSeguros">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <button type="button" class="btn btn-primary btn-block" id="nuevoSeguro">
+                                                                <i class="fa fa" aria-hidden="true"></i> Nuevo Seguro
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="table-container2">
+                                                            <div class="table-responsive2">
+                                                                <table class="table table-bordes2" id="tablaLaboral">
+                                                                    <thead class="thead-dark">
+                                                                        <tr>
+                                                                            <th>Rut Proveedor</th>
+                                                                            <th>Proveedor</th>
+                                                                            <th>Poliza</th>
+                                                                            <th>N° Poliza</th>
+                                                                            <th>Fecha Vencimiento </th>
+                                                                            <th>Documento</th>
+                                                                            <th>Eliminar </th>
+                                                                            <th>Estado </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td colspan="8" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                                    Mostrando registros del 0 al 0 de un total de 0 registros
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,8 +574,6 @@
                             </div>
                         </div>
                     </section>
-
-
                     <!--=====================================
                            PIE DEL MODAL
                             ======================================-->
@@ -434,12 +593,17 @@
             </section>
 
             <style>
-                .botones-container {
+                .button-container {
                     display: flex;
-                    gap: 80px;
-                    /* Aquí defines el espacio entre los botones */
+                    justify-content: space-between;
+                    margin: 20px 0;
+                    padding: 10px 15px;
                 }
-
+                @media (max-width: 576px) {
+                    .button-container {
+                        flex-direction: column;
+                    }                
+                }
 
                 #lista table {
                     font-size: 10px;
@@ -548,8 +712,6 @@
                     margin-left: 350px;
                     margin-top: 20px;
                 }
-
-              
             </style>
 
             <script>
