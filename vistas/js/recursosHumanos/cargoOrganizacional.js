@@ -276,7 +276,10 @@ function obtenerDatosParaModificarCargo(valor) {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
+               // No le cargaste luego al ID
                 $("#idModificar").val(response[i].idcargo_organizacional);
+                $("#idcargo_organizacional").val(response[i].idcargo_organizacional);
+
                 areaDependenciaModificar(response[i].cargo);
                 areaNegocioModificar(response[i].cargo);
 

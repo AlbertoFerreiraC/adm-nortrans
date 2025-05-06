@@ -19,27 +19,21 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Centro Costo</label>
-                                    <select class="form-control">
-                                        <option></option>
-                                    </select>
+                                    <select class="form-control" id="centroCostoBuscar" name="centroCostoBuscar"></select>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Tipo de Documento</label>
-                                    <select class="form-control">
-                                        <option></option>
-                                    </select>
+                                    <select class="form-control" id="tipoDocumentoBuscar" name="tipoDocumentoBuscar"></select>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Maquina</label>
-                                    <select class="form-control">
-                                        <option></option>
-                                    </select>
+                                    <select class="form-control" id="maquinaBuscar" name="maquinaBuscar"></select>
                                 </div>
                             </div>
 
@@ -94,7 +88,7 @@
                                             <thead>
                                                 <tr>
                                                     <th style="width:120px">
-                                                        <center>Patente</center>
+                                                        <center>ID</center>
                                                     </th>
                                                     <th>
                                                         <center>Patente</center>
@@ -120,8 +114,10 @@
                 </div>
             </div>
         </div>
+    </section>
 </div>
-</section>
+
+<script src="vistas/js/activos/docInformeMaquina.js"></script>
 
 <style>
     body {
@@ -284,5 +280,3 @@
     });
 </script>
 </div>
-
-<script src="vistas/js/activos/"></script>

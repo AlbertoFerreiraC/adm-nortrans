@@ -10,7 +10,7 @@
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-group col-sm-5 col-xs-12">
-                                <button type="button" class="btn btn-primary" id="btncrearCargo" data-toggle="modal" data-target="#modalAgregar">
+                                <button type="button" class="btn btn-primary" id="btnNuevo" data-toggle="modal" data-target="#modalAgregar">
                                     <i class="fa fa-list" aria-hidden="true"></i> Crear Maquina
                                 </button>
                             </div>
@@ -152,9 +152,9 @@
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="tipoPatente">Tipo de Patente:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="tipoPatente">Tipo de Patente:</label>
                                 <select class="form-control input-md cajatexto" id="tipoPatente" name="tipoPatente">
-                                    <option value=""></option>
+                                    <option value="">Seleccionar...</option>
                                     <option value="Permanente">Permanente</option>
                                     <option value="Provisoria">Provisoria</option>
                                 </select>
@@ -162,63 +162,54 @@
 
                             <div class="form-group col-sm-3 col-xs-12">
                                 <label for="idpatente">Patente:</label>
-                                <span< /span>
-                                    <input type="text" class="form-control input-md cajatexto" name="idpatente" id="idpatente">
+                                <input type="text" class="form-control input-md cajatexto" name="idpatente" id="idpatente">
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                                 <label for="numInterno">Numero Interno:</label>
-                                <span< /span>
-                                    <input type="text" class="form-control input-md cajatexto" name="numInterno" id="numInterno">
+                                <input type="text" class="form-control input-md cajatexto" name="numInterno" id="numInterno">
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
                                 <label for="tipoMaquina">Tipo Maquina:</label>
-                                <span< /span>
-                                    <select class="form-control input-md cajatexto" id="tipoMaquina" name="tipoMaquina">
-                                        <option value=""></option>
-                                        <option value="Bus">Bus</option>
-                                        <option value="MiniBus">Mini Bus</option>
-                                        <option value="van">van</option>
-                                    </select>
+                                <select class="form-control input-md cajatexto" id="tipoMaquina" name="tipoMaquina"> </select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="añoMaquina">Año:</label><span></span>
-                                <input type="number" class="form-control input-md cajatexto" id="añoMaquina" name="añoMaquina" min="1900" max="2100" />
+                                <label for="añoMaquina">Año:</label>
+                                <input type="number" class="form-control input-md cajatexto" id="añoMaquina" name="añoMaquina" />
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="capasidadEstanque">Capacidad Estanque</label>
+                                <label for="capacidadTanque">Capacidad Estanque</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <div class="input-group">
-                                    <input type="number" class="form-control input-md cajatexto" id="capasidadEstanque" name="capasidadEstanque" min="0" max="2100" />
+                                    <input type="number" class="form-control input-md cajatexto" id="capacidadTanque" name="capacidadTanque" min="0" max="2100" />
                                     <span class="input-group-addon">lt</span>
                                 </div>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="secuenciaMantencion">Secuencia Mantencion</label>
-                                <span< /span>
-                                    <select class="form-control input-md cajatexto" id="secuenciaMantencion" name="secuenciaMantencion">
-                                        <option value=""></option>
-                                        <option value="kilometroFijo">kilometro Fijo</option>
-                                        <option value="horaFija">Hora Fija</option>
-                                    </select>
+                                <label for="secuenciaMantencion">Secuencia Mantencion</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto" id="secuenciaMantencion" name="secuenciaMantencion">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="kilometroFijo">Kilometro Fijo</option>
+                                    <option value="horaFija">Hora Fija</option>
+                                </select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="asientosmaquina">Asientos</label>
-                                <span< /span>
-                                    <select class="form-control input-md cajatexto" id="asientosmaquina" name="asientosmaquina">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                <label for="asientosmaquina">Asientos</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto" id="asientosmaquina" name="asientosmaquina">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="numPuertas">N° Puertas</label>
+                                <label for="numPuertas">N° Puertas</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <select class="form-control input-md cajatexto" id="numPuertas" name="numPuertas">
+                                    <option value="">Seleccionar...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -228,15 +219,12 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="costoCentro">Costo Centro</label>
-                                <select class="form-control input-md cajatexto" id="costoCentro" name="costoCentro">
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <label for="centroCosto">Costo Centro</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <select class="form-control input-md cajatexto" id="centroCosto" name="centroCosto"></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="idPatron">Padron</label>
+                                <label for="idPatron">Padron</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
                                 <input type="text" class="form-control input-md cajatexto" name="idPatron" id="idPatron">
                             </div>
                         </div>
@@ -587,167 +575,171 @@
                             <i class="fa fa-search" aria-hidden="true"></i> Ver Listado
                         </button>
                     </div>
-
-
+                    </section>
+                </form>
             </div>
-            </section>
+        </div>
+    </div>
 
-            <style>
-                .button-container {
-                    display: flex;
-                    justify-content: space-between;
-                    margin: 20px 0;
-                    padding: 10px 15px;
-                }
-                @media (max-width: 576px) {
-                    .button-container {
-                        flex-direction: column;
-                    }                
-                }
+    <script src="vistas/js/activos/deMaquina.js"></script>
 
-                #lista table {
-                    font-size: 10px;
-                    border-collapse: separate !important;
-                    border-spacing: 0;
-                }
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 10px 15px;
+        }
 
-                #lista th {
-                    font-size: 13px;
-                }
+        @media (max-width: 576px) {
+            .button-container {
+                flex-direction: column;
+            }
+        }
 
-                #lista td {
-                    font-size: 15px;
-                }
+        #lista table {
+            font-size: 10px;
+            border-collapse: separate !important;
+            border-spacing: 0;
+        }
 
-                .panel-opcion-link:focus,
-                .panel-opcion-link:active {
-                    text-decoration: underline;
-                }
+        #lista th {
+            font-size: 13px;
+        }
 
-                .table-container {
-                    position: relative;
-                    top: -40px;
-                    margin: 10px;
-                }
+        #lista td {
+            font-size: 15px;
+        }
 
-                .table-responsive {
-                    overflow-x: auto;
-                }
+        .panel-opcion-link:focus,
+        .panel-opcion-link:active {
+            text-decoration: underline;
+        }
 
-                .table {
-                    margin-bottom: 0;
-                }
+        .table-container {
+            position: relative;
+            top: -40px;
+            margin: 10px;
+        }
 
-                .table>thead>tr>th {
-                    background-color: #f4f4f4;
-                    border-bottom: 2px solid #ddd;
-                    border: 1px solid #ddd !important;
-                }
+        .table-responsive {
+            overflow-x: auto;
+        }
 
-                .table-bordered {
-                    border: 1px solid #ddd !important;
-                }
+        .table {
+            margin-bottom: 0;
+        }
 
-                .table-bordered>thead>tr>th,
-                .table-bordered>tbody>tr>td {
-                    border: 1px solid #ddd !important;
-                }
+        .table>thead>tr>th {
+            background-color: #f4f4f4;
+            border-bottom: 2px solid #ddd;
+            border: 1px solid #ddd !important;
+        }
 
-                .table-striped>tbody>tr:nth-of-type(odd) {
-                    background-color: #f9f9f9;
-                }
+        .table-bordered {
+            border: 1px solid #ddd !important;
+        }
 
+        .table-bordered>thead>tr>th,
+        .table-bordered>tbody>tr>td {
+            border: 1px solid #ddd !important;
+        }
 
-                .records-control {
-                    top: 80px;
-                    right: 100px;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    margin-bottom: 15px;
-                }
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
 
 
-                .table-controls {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 20px;
-                    margin: 20px;
-                }
-
-                .control-left,
-                .control-right {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    font-size: 14px;
-                }
-
-                /* Inputs y selects responsive */
-                .control-left select,
-                .control-right input {
-                    padding: 4px 6px;
-                    font-size: 14px;
-                    max-width: 400px;
-                }
-
-                /* Comportamiento en pantallas pequeñas */
-                @media (max-width: 600px) {
-                    .table-controls {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-
-                    .control-left,
-                    .control-right {
-                        width: 80%;
-                        justify-content: space-between;
-                    }
-                }
-
-                .buttonAggArchivo {
-                    display: flex;
-                    margin-left: 350px;
-                    margin-top: 20px;
-                }
-            </style>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Asegurarse de que el panel esté abierto por defecto
-                    const panel = document.getElementById('frm_j_idt110_content');
-                    if (panel) {
-                        panel.classList.add('in');
-                    }
-
-                    // Implementar la funcionalidad de filtrado
-                    const filterInputs = document.querySelectorAll('.filter-input');
-                    filterInputs.forEach((input, index) => {
-                        input.addEventListener('input', function() {
-                            const searchText = this.value.toLowerCase();
-                            const table = document.querySelector('.table');
-                            const rows = table.querySelectorAll('tbody tr');
-
-                            rows.forEach(row => {
-                                const cell = row.cells[index];
-                                if (cell) {
-                                    const text = cell.textContent.toLowerCase();
-                                    row.style.display = text.includes(searchText) ? '' : 'none';
-                                }
-                            });
-                        });
-                    });
+        .records-control {
+            top: 80px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
 
 
-                    const btnGrabarFicha = document.getElementById('btnGrabarFicha');
-                    if (btnGrabarFicha) {
-                        const icon = btnGrabarFicha.querySelector('i');
-                        if (icon) {
-                            icon.className = 'fa fa-save';
+        .table-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .control-left,
+        .control-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        /* Inputs y selects responsive */
+        .control-left select,
+        .control-right input {
+            padding: 4px 6px;
+            font-size: 14px;
+            max-width: 400px;
+        }
+
+        /* Comportamiento en pantallas pequeñas */
+        @media (max-width: 600px) {
+            .table-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .control-left,
+            .control-right {
+                width: 80%;
+                justify-content: space-between;
+            }
+        }
+
+        .buttonAggArchivo {
+            display: flex;
+            margin-left: 350px;
+            margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Asegurarse de que el panel esté abierto por defecto
+            const panel = document.getElementById('frm_j_idt110_content');
+            if (panel) {
+                panel.classList.add('in');
+            }
+
+            // Implementar la funcionalidad de filtrado
+            const filterInputs = document.querySelectorAll('.filter-input');
+            filterInputs.forEach((input, index) => {
+                input.addEventListener('input', function() {
+                    const searchText = this.value.toLowerCase();
+                    const table = document.querySelector('.table');
+                    const rows = table.querySelectorAll('tbody tr');
+
+                    rows.forEach(row => {
+                        const cell = row.cells[index];
+                        if (cell) {
+                            const text = cell.textContent.toLowerCase();
+                            row.style.display = text.includes(searchText) ? '' : 'none';
                         }
-                        btnGrabarFicha.style.cssText = `
+                    });
+                });
+            });
+
+
+            const btnGrabarFicha = document.getElementById('btnGrabarFicha');
+            if (btnGrabarFicha) {
+                const icon = btnGrabarFicha.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa fa-save';
+                }
+                btnGrabarFicha.style.cssText = `
                 background-color: #3c8dbc;
                 border-color: #3c8dbc;
                 padding: 8px 16px;
@@ -755,50 +747,46 @@
                 transition: all 0.3s ease;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             `;
-                        btnGrabarFicha.addEventListener('mouseover', function() {
-                            this.style.transform = 'translateY(-2px)';
-                            this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-                        });
-                        btnGrabarFicha.addEventListener('mouseout', function() {
-                            this.style.transform = 'translateY(0)';
-                            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                        });
-                    }
+                btnGrabarFicha.addEventListener('mouseover', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
                 });
-            </script>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('btnverActivos').querySelector('i').className = 'fa fa-save';
-                    document.getElementById('btnverActivos').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
-
-                    document.getElementById('btnverTodos').querySelector('i').className = 'fa fa-list-alt';
-                    document.getElementById('btnverTodos').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
-
-                    document.getElementById('btnverBloqueados').querySelector('i').className = 'fa fa-file-text';
-                    document.getElementById('btnverBloqueados').style = 'background-color: #3c8dbc; border-color: #3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
-
-                    const buttons = document.querySelectorAll('.btn');
-                    buttons.forEach(button => {
-                        button.addEventListener('mouseover', function() {
-                            if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
-                            if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
-                            if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
-                            this.style.transform = 'translateY(-2px)';
-                            this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
-                        });
-
-                        button.addEventListener('mouseout', function() {
-                            if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
-                            if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
-                            if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
-                            this.style.transform = '';
-                            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                        });
-                    });
+                btnGrabarFicha.addEventListener('mouseout', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                 });
-            </script>
+            }
+        });
+    </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('btnverActivos').querySelector('i').className = 'fa fa-save';
+            document.getElementById('btnverActivos').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
+            document.getElementById('btnverTodos').querySelector('i').className = 'fa fa-list-alt';
+            document.getElementById('btnverTodos').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
-            <script src="vistas/js/activos/"></script>
+            document.getElementById('btnverBloqueados').querySelector('i').className = 'fa fa-file-text';
+            document.getElementById('btnverBloqueados').style = 'background-color: #3c8dbc; border-color: #3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', function() {
+                    if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
+                    if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
+                    if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.15)';
+                });
+
+                button.addEventListener('mouseout', function() {
+                    if (this.id === 'btnverActivos') this.style.backgroundColor = '#3c8dbc';
+                    if (this.id === 'btnverTodos') this.style.backgroundColor = '#FF6600';
+                    if (this.id === 'btnverBloqueados') this.style.backgroundColor = '#3c8dbc';
+                    this.style.transform = '';
+                    this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                });
+            });
+        });
+    </script>

@@ -176,20 +176,10 @@ function cargarDatosSolicitudes() {
                     response[i].idcontratacion +
                     '" data-toggle="modal" data-target="#modalVerMas"> Ver Mas...</button>' +
                     "</td>" +
-                    "<td>" +
-                    '<button title="Imprimir" class="btn btn-info btnImprimir" data-id="' +
-                    response[i].idcontratacion +
-                    '">' +
-                    '<i class="fa fa-print"></i></button>' +
-                    "</td>" +
                     "</tr>"
             }
             $("#listaSolicitud tbody").append(fila)
 
-            $(".btnImprimir").click(function () {
-                var id = $(this).data("id");
-                var tab = window.open('extensiones/tcpdf/pdf/solicitudDeContratacion.php?id='+id,'_blank');
-            })
 
             $(".btnVerMas").click(function () {
                 obtenerdatosparaVerMas(this.id)
@@ -366,6 +356,12 @@ function cargarFichaContrato() {
                     response[i].idficha_contrato +
                     '">Terminar</button>' +
                     "</td>" +
+                    "<td>" +
+                    '<button title="Imprimir" class="btn btn-info btnImprimir" data-id="' +
+                    response[i].idcontratacion +
+                    '">' +
+                    '<i class="fa fa-print"></i></button>' +
+                    "</td>" +
                     "</tr>"
             }
             $("#fichaContrato tbody").append(fila)
@@ -378,6 +374,11 @@ function cargarFichaContrato() {
                 obtenerDatosParaModificar(this.id);
                 requisitosDeSeleccion();
                 anexosDeSeleccion();
+            });
+
+            $(".btnImprimir").click(function () {
+                var id = $(this).data("id");
+                var tab = window.open('https://nortrans-go.com/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/solicitudDeContratacion.php?id='+id,'_blank');
             })
         },
     });
