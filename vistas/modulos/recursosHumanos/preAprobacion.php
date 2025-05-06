@@ -22,8 +22,10 @@
                         <div id="div1" class="table-responsive">
                             <table class="table table-bordered table-striped dt-responsive"
                                 id="tabla" width="100%" style="text-align: center;">
-                                <div class="form-group col-sm-12 col-xs-12 ">
-                                    <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoPreAprueba" id="filtradoDinamicoPreAprueba" autocomplete="off" placeholder="Filtrado General ...">
+                                <div class="control-right">
+                                    <label for="searchInput">Buscar:
+                                        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                                    </label>
                                 </div>
                                 <thead>
                                     <tr>
@@ -208,5 +210,67 @@ MODAL VER MAS
         </div>
     </div>
 </div>
+
+<style>
+    records-control {
+        top: 80px;
+        right: 100px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+    }
+
+    .control-left,
+    .control-right {
+        margin: 5px;
+    }
+
+    .control-right input {
+        max-width: 200px;
+    }
+</style>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.querySelector("#lista table");
+        const rows = table.tBodies[0].rows;
+
+        Array.from(rows).forEach(row => {
+            const cells = Array.from(row.cells);
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+            row.style.display = match ? "" : "none";
+        });
+    }
+
+    function updateVisibleRows() {
+        const limit = parseInt(document.getElementById("entriesSelect").value);
+        const table = document.querySelector("#lista table");
+        const rows = Array.from(table.tBodies[0].rows);
+
+        let visibleCount = 0;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                visibleCount++;
+                row.style.display = visibleCount <= limit ? "" : "none";
+            }
+        });
+    }
+
+    // Vincular búsqueda con límite dinámicamente
+    document.getElementById("searchInput").addEventListener("input", () => {
+        filterTable();
+        updateVisibleRows();
+    });
+</script>
 
 <script src="vistas/js/recursosHumanos/preaprueba.js"></script>

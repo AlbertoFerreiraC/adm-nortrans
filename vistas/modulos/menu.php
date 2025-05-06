@@ -127,7 +127,7 @@
 
 					<li class="treeview">
 							<a href="#">
-								<i class="fa fa-search"></i>
+								<i class="fa fa-wrench"></i>
 								<span>Mantenedor</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i>
@@ -135,13 +135,15 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="deMaquina"><i class="fa fa-cog"></i>De Maquina</a></li>
-								<li><a href="parametrosEstandar"><i class="fa fa-key"></i> Parametros Estandar </a></li>
-								<li><a href="claseMaquina"><i class="fa fa-key"></i> Clase Maquina </a></li>
-								<li><a href="tipoBus"><i class="fa fa-key"></i> Tipo Bus </a></li>
+								<li><a href="parametrosEstandar"><i class="fa fa-cog"></i> Parametros Estandar </a></li>
+								<li><a href="claseMaquina"><i class="fa fa-cog"></i> Clase Maquina </a></li>
+								<li><a href="tipoBus"><i class="fa fa-cog"></i> Tipo Bus </a></li>
+								<li><a href="tipoMaquina"><i class="fa fa-cog"></i> Tipo Maquina </a></li>
+								<li><a href="tipoDocumentoMaquina"><i class="fa fa-cog"></i> Tipo <br>Documento Maquina </a></li>
+								<li><a href="tipoEquipoMaquina"><i class="fa fa-cog"></i> Tipo <br>Equipamiento Maquina </a></li>
+								<li><a href="tipoPolizaSeguro"><i class="fa fa-cog"></i> Tipo <br>Poliza de Seguro </a></li>
 							</ul>
 						</li>
-
-
 
 				</ul>
 			</li>

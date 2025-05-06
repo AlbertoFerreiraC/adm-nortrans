@@ -35,20 +35,23 @@
                         </h4>
                     </div>
 
-                    <div class="form-row justify-content-center align-items-center" style="display: flex; width: 100%; padding: 20px;">
-                        <div class="records-control" style="margin-right: 500px; font-size: 16px;"">
-                            <span>Mostrar</span>
-                            <select id="recordsPerPage" style="max-width: 70px; width: 100%;">
-                                <option value="10" selected>10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                            <span>registros</span>
+                    <div class="table-controls">
+                        <div class="control-left">
+                            <label for="entriesSelect">Mostrar
+                                <select id="entriesSelect" onchange="updateVisibleRows()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> registros
+                            </label>
                         </div>
 
-                        <div class="form-group col-sm-6 col-xs-12 ">
-                            <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm" name="filtradoDinamico" id="filtradoDinamico" autocomplete="off" placeholder="Filtrado General ...">
+                        <div class="control-right">
+                            <label for="searchInput">Buscar:
+                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                            </label>
                         </div>
                     </div>
 
@@ -361,6 +364,23 @@
         margin-bottom: 15px;
     }
 
+    .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+    }
+
+    .control-left,
+    .control-right {
+        margin: 5px;
+    }
+
+    .control-right input {
+        max-width: 200px;
+    }
+
     #btnGrabarFicha {
         margin-top: 22px !important;
         position: relative;
@@ -416,6 +436,41 @@
             this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
         });
     }
+</script>
+
+<!--FILTRO DINAMICO-->
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.querySelector("#lista table");
+        const rows = table.tBodies[0].rows;
+
+        Array.from(rows).forEach(row => {
+            const cells = Array.from(row.cells);
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+            row.style.display = match ? "" : "none";
+        });
+    }
+
+    function updateVisibleRows() {
+        const limit = parseInt(document.getElementById("entriesSelect").value);
+        const table = document.querySelector("#lista table");
+        const rows = Array.from(table.tBodies[0].rows);
+
+        let visibleCount = 0;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                visibleCount++;
+                row.style.display = visibleCount <= limit ? "" : "none";
+            }
+        });
+    }
+
+    // Vincular búsqueda con límite dinámicamente
+    document.getElementById("searchInput").addEventListener("input", () => {
+        filterTable();
+        updateVisibleRows();
+    });
 </script>
 
 <script>

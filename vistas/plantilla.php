@@ -171,8 +171,12 @@ CUERPO DOCUMENTO
              $_GET["ruta"] == "deMaquina"||
              $_GET["ruta"] == "parametrosEstandar"||
              $_GET["ruta"] == "claseMaquina"||
-               $_GET["ruta"] == "tipoBus"
-          
+             $_GET["ruta"] == "tipoBus"||
+             $_GET["ruta"] == "tipoMaquina" ||
+             $_GET["ruta"] == "tipoDocumentoMaquina"||
+             $_GET["ruta"] == "tipoEquipoMaquina"||
+             $_GET["ruta"] == "tipoPolizaSeguro"
+                        
           
           ) {
             include "modulos/activos/" . $_GET["ruta"] . ".php";

@@ -63,24 +63,6 @@ $(document).ready(function () {
             });
         }
     });
-
-    $('#filtradoDinamicoAprueba').keyup(function () {
-
-        var busqueda = document.getElementById('filtradoDinamicoAprueba');
-        var table = document.getElementById("tabla").tBodies[0];
-        buscaTabla = function () {
-            texto = busqueda.value.toLowerCase();
-            var r = 0;
-            while (row = table.rows[r++]) {
-                if (row.innerText.toLowerCase().indexOf(texto) !== -1)
-                    row.style.display = null;
-                else
-                    row.style.display = 'none';
-            }
-        }
-        busqueda.addEventListener('keyup', buscaTabla);
-
-    });
 });
 
 function cargarDatosTabla() {
