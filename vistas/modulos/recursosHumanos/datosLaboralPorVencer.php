@@ -15,6 +15,26 @@
                         </h4>
                     </div>
 
+                    <div class="table-controls">
+                        <div class="control-left">
+                            <label for="entriesSelect">Mostrar
+                                <select id="entriesSelect" onchange="updateVisibleRows()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> registros
+                            </label>
+                        </div>
+
+                        <div class="control-right">
+                            <label for="searchInput">Buscar:
+                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                            </label>
+                        </div>
+                    </div>
+
                     <div id="frm_j_idt110_content" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="table-container">
@@ -42,9 +62,9 @@
                 </div>
             </div>
         </div>
+
     </section>
 
-    <script src="vistas/js/recursosHumanos/docLaboralesPorVencer.js"></script>
 
     <style>
         #lista table {
@@ -96,8 +116,10 @@
         }
 
         .table-container {
-            margin: 15px;
+            margin: 0 15px 15px 15px;
+            /* sin margen superior */
         }
+
 
         .table-responsive {
             overflow-x: auto;
@@ -113,6 +135,40 @@
 
         .table-bordered {
             border: 1px solid #ddd !important;
+        }
+
+        .records-control {
+            top: 80px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 15px 5px 15px;
+            /* menos espacio debajo */
+            flex-wrap: wrap;
+        }
+
+
+        .control-left,
+        .control-right {
+            margin: 5px;
+        }
+
+        .control-right input {
+            max-width: 200px;
+        }
+
+        #btnMostarListado {
+            margin-top: 22px !important;
+            position: relative;
+            left: 30px;
         }
     </style>
 
@@ -158,5 +214,39 @@
             tbody.innerHTML = "";
             rows.forEach(row => tbody.appendChild(row));
         }
+
+    
+        function filterTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.querySelector("#lista table");
+            const rows = table.tBodies[0].rows;
+
+            Array.from(rows).forEach(row => {
+                const cells = Array.from(row.cells);
+                const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+                row.style.display = match ? "" : "none";
+            });
+        }
+
+        function updateVisibleRows() {
+            const limit = parseInt(document.getElementById("entriesSelect").value);
+            const table = document.querySelector("#lista table");
+            const rows = Array.from(table.tBodies[0].rows);
+
+            let visibleCount = 0;
+            rows.forEach(row => {
+                if (row.style.display !== "none") {
+                    visibleCount++;
+                    row.style.display = visibleCount <= limit ? "" : "none";
+                }
+            });
+        }
+
+        // Vincular búsqueda con límite dinámicamente
+        document.getElementById("searchInput").addEventListener("input", () => {
+            filterTable();
+            updateVisibleRows();
+        });
     </script>
+    <script src="vistas/js/recursosHumanos/docLaboralesPorVencer.js"></script>
 </div>

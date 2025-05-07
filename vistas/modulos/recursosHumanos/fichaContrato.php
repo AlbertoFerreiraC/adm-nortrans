@@ -46,9 +46,26 @@
                 <div class="table-responsive">
                   <div class="box-body">
                     <div id="lista">
-                    <div class="form-group col-sm-12 col-xs-12 ">
-                        <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoSolicitudesActivas" id="filtradoDinamicoSolicitudesActivas" autocomplete="off" placeholder="Filtrado General ...">
+                    <div class="table-controls">
+                        <div class="control-left">
+                            <label for="entriesSelect">Mostrar
+                                <select id="entriesSelect" onchange="updateVisibleRows()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> registros
+                            </label>
+                        </div>
+
+                        <div class="control-right">
+                            <label for="searchInput">Buscar:
+                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                            </label>
+                        </div>
                     </div>
+
                       <table class="table table-bordered table-striped dt-responsive" id="listaSolicitud" width="100%" style="text-align: center;">
                         <thead>
                           <tr>
@@ -110,9 +127,26 @@
                 <div class="table-responsive">
                   <div class="box-body">
                     <div id="ficha">
-                    <div class="form-group col-sm-12 col-xs-12 ">
-                        <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoContratos" id="filtradoDinamicoContratos" autocomplete="off" placeholder="Filtrado General ...">
+                    <div class="table-controls">
+                        <div class="control-left">
+                            <label for="entriesSelect">Mostrar
+                                <select id="entriesSelect" onchange="updateVisibleRows()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> registros
+                            </label>
+                        </div>
+
+                        <div class="control-right">
+                            <label for="searchInput">Buscar:
+                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                            </label>
+                        </div>
                     </div>
+
                       <table class="table table-bordered table-striped dt-responsive" id="fichaContrato" width="100%" style="text-align: center;">
                         <thead>
                           <tr>
@@ -602,6 +636,103 @@ MODAL AGREGAR TAREA
             });
           </script>
 
+<style>
+      .table-requisitos {
+        position: relative;
+        padding-top: 10px;
+
+      }
+
+      .table-responsive1 {
+        top: 50px;
+      }
+
+      /* Ajustar modal a sus contenedores */
+      .modal-dialog {
+        width: auto !important;
+        max-width: 70% !important;
+        margin: 10px auto !important;
+      }
+
+      .modal-content {
+        width: 100% !important;
+      }
+
+      .modal-body {
+        padding: 5px !important;
+        overflow-x: hidden !important;
+      }
+
+      .modal-body .content {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .modal-body .box {
+        margin-bottom: 10px !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .modal-body .panel-group {
+        margin-bottom: 5px !important;
+      }
+
+      .modal-body .panel-body {
+        padding: 5px !important;
+      }
+
+      .modal-body .form-group {
+        margin-bottom: 5px !important;
+      }
+
+      /* Ajustar contenido dentro del modal */
+      .modal-body section.content {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Separar los botones de acción */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin: 10px ;
+        padding: 10px;
+      }
+
+      .button-container .btn {
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+      .records-control {
+        top: 80px;
+        right: 100px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+    }
+
+    .control-left,
+    .control-right {
+        margin: 5px;
+    }
+
+    .control-right input {
+        max-width: 200px;
+    }
+
+    </style>
+
           <script>
             document.addEventListener('DOMContentLoaded', function() {
               document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
@@ -672,9 +803,6 @@ MODAL AGREGAR TAREA
 
     </div>
 
-    
-
-    <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -704,75 +832,44 @@ MODAL AGREGAR TAREA
           panelFichaContrato.style.display = "none";
         });
       });
+       
+         //FILTRO DINAMICO
+      function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.querySelector("#lista table");
+        const rows = table.tBodies[0].rows;
+
+        Array.from(rows).forEach(row => {
+            const cells = Array.from(row.cells);
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+            row.style.display = match ? "" : "none";
+        });
+    }
+
+    function updateVisibleRows() {
+        const limit = parseInt(document.getElementById("entriesSelect").value);
+        const table = document.querySelector("#lista table");
+        const rows = Array.from(table.tBodies[0].rows);
+
+        let visibleCount = 0;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                visibleCount++;
+                row.style.display = visibleCount <= limit ? "" : "none";
+            }
+        });
+    }
+
+    // Vincular búsqueda con límite dinámicamente
+    document.getElementById("searchInput").addEventListener("input", () => {
+        filterTable();
+        updateVisibleRows();
+    });
     </script>
 
-    <style>
-      .table-requisitos {
-        position: relative;
-        padding-top: 10px;
+  <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
-      }
+    
 
-      .table-responsive1 {
-        top: 50px;
-      }
 
-      /* Ajustar modal a sus contenedores */
-      .modal-dialog {
-        width: auto !important;
-        max-width: 70% !important;
-        margin: 10px auto !important;
-      }
-
-      .modal-content {
-        width: 100% !important;
-      }
-
-      .modal-body {
-        padding: 5px !important;
-        overflow-x: hidden !important;
-      }
-
-      .modal-body .content {
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-
-      .modal-body .box {
-        margin-bottom: 10px !important;
-        padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-      }
-
-      .modal-body .panel-group {
-        margin-bottom: 5px !important;
-      }
-
-      .modal-body .panel-body {
-        padding: 5px !important;
-      }
-
-      .modal-body .form-group {
-        margin-bottom: 5px !important;
-      }
-
-      /* Ajustar contenido dentro del modal */
-      .modal-body section.content {
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-
-      /* Separar los botones de acción */
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin: 10px ;
-        padding: 10px;
-      }
-
-      .button-container .btn {
-        margin-right: 25px;
-        margin-left: 25px;
-      }
-    </style>
+  
