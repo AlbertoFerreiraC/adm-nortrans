@@ -40,69 +40,68 @@
           </h4>
         </div>
 
-          <div id="listaSolicitudActivas_content" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="table-container">
-                <div class="table-responsive">
-                  <div class="box-body">
-                    <div id="lista">
+        <div id="listaSolicitudActivas_content" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="table-container">
+              <div class="table-responsive">
+                <div class="box-body">
+                  <div id="lista">
                     <div class="table-controls">
-                        <div class="control-left">
-                            <label for="entriesSelect">Mostrar
-                                <select id="entriesSelect" onchange="updateVisibleRows()">
-                                    <option value="5">5</option>
-                                    <option value="10" selected>10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> registros
-                            </label>
-                        </div>
+                      <div class="control-left">
+                        <label for="entriesSelect">Mostrar
+                          <select id="entriesSelect" onchange="updateVisibleRows()">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select> registros
+                        </label>
+                      </div>
 
-                        <div class="control-right">
-                            <label for="searchInput">Buscar:
-                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
-                            </label>
-                        </div>
+                      <div class="control-right">
+                        <label for="searchInput">Buscar:
+                          <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                        </label>
+                      </div>
                     </div>
-                      <table class="table table-bordered table-striped dt-responsive" id="listaSolicitud" width="100%" style="text-align: center;">
-                        <thead>
-                          <tr>
-                            <th style="width:120px">
-                              <center>Id Solicitud</center>
-                            </th>
-                            <th>
-                              <center>Empresa</center>
-                            </th>
-                            <th>
-                              <center>Fecha Solicitud</center>
-                            </th>
-                            <th>
-                              <center>Solicitante</center>
-                            </th>
-                            <th>
-                              <center>Division</center>
-                            </th>
-                            <th>
-                              <center>Cargo</center>
-                            </th>
-                            <th>
-                              <center>Cantidad Solicitada</center>
-                            </th>
-                            <th>
-                              <center>Cantidad a Contratar</center>
-                            </th>
-                            <th>
-                              <center>Seleccionar</center>
-                            </th>
-                            <th>
-                              <center>Impresión</center>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody></tbody>
-                      </table>
-                    </div>
+                    <table class="table table-bordered table-striped dt-responsive" id="listaSolicitud" width="100%" style="text-align: center;">
+                      <thead>
+                        <tr>
+                          <th style="width:120px">
+                            <center>Id Solicitud</center>
+                          </th>
+                          <th>
+                            <center>Empresa</center>
+                          </th>
+                          <th>
+                            <center>Fecha Solicitud</center>
+                          </th>
+                          <th>
+                            <center>Solicitante</center>
+                          </th>
+                          <th>
+                            <center>Division</center>
+                          </th>
+                          <th>
+                            <center>Cargo</center>
+                          </th>
+                          <th>
+                            <center>Cantidad Solicitada</center>
+                          </th>
+                          <th>
+                            <center>Cantidad a Contratar</center>
+                          </th>
+                          <th>
+                            <center>Seleccionar</center>
+                          </th>
+                          <th>
+                            <center>Impresión</center>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -110,6 +109,7 @@
           </div>
         </div>
       </div>
+    </div>
 
     <div class="panel-group" id="panelFichaContrato">
       <div class="panel panel-default">
@@ -120,42 +120,58 @@
           </h4>
         </div>
 
-          <div id="fichaContrato_content" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="table-container">
-                <div class="table-responsive">
-                  <div class="box-body">
-                    <div id="ficha">
-                    <div class="form-group col-sm-12 col-xs-12 ">
-                        <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm cajatexto" name="filtradoDinamicoContratos" id="filtradoDinamicoContratos" autocomplete="off" placeholder="Filtrado General ...">
+        <div id="fichaContrato_content" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="table-container">
+              <div class="table-responsive">
+                <div class="box-body">
+                  <div id="ficha">
+                    <div class="table-controls">
+                      <div class="control-left">
+                        <label for="entriesSelect">Mostrar
+                          <select id="entriesSelect" onchange="updateVisibleRows()">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select> registros
+                        </label>
+                      </div>
+
+                      <div class="control-right">
+                        <label for="searchInput">Buscar:
+                          <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
+                        </label>
+                      </div>
                     </div>
-                      <table class="table table-bordered table-striped dt-responsive" id="fichaContrato" width="100%" style="text-align: center;">
-                        <thead>
-                          <tr>
-                            <th style="width:120px">
-                              <center>N° Ficha</center>
-                            </th>
-                            <th>
-                              <center>Empresa</center>
-                            </th>
-                            <th>
-                              <center>Nombre</center>
-                            </th>
-                            <th>
-                              <center>Fecha Contratación</center>
-                            </th>
-                            <th>
-                              <center>Tipo Contrato</center>
-                            </th>
-                            <th>
-                              <center>Tipo Turno</center>
-                            </th>
-                            <th>
-                              <center>Editar</center>
-                            </th>
-                            <th>
-                              <center>Terminar</center>
-                            </th>
+                    <table class="table table-bordered table-striped dt-responsive" id="fichaContrato" width="100%" style="text-align: center;">
+                      <thead>
+                        <tr>
+                          <th style="width:120px">
+                            <center>N° Ficha</center>
+                          </th>
+                          <th>
+                            <center>Empresa</center>
+                          </th>
+                          <th>
+                            <center>Nombre</center>
+                          </th>
+                          <th>
+                            <center>Fecha Contratación</center>
+                          </th>
+                          <th>
+                            <center>Tipo Contrato</center>
+                          </th>
+                          <th>
+                            <center>Tipo Turno</center>
+                          </th>
+                          <th>
+                            <center>Editar</center>
+                          </th>
+                          <th>
+                            <center>Terminar</center>
+                          </th>
 
                         </tr>
                       </thead>
@@ -632,10 +648,10 @@ MODAL AGREGAR TAREA
           });
         </script>
 
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
-              document.getElementById('btnGrabarFicha').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('btnGrabarFicha').querySelector('i').className = 'fa fa-save';
+            document.getElementById('btnGrabarFicha').style = 'background-color:#3c8dbc; border-color:#3c8dbc; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
 
             document.getElementById('btnListadoSolicitud').querySelector('i').className = 'fa fa-list-alt';
             document.getElementById('btnListadoSolicitud').style = 'background-color: #FF6600; border-color: #FF6600; padding: 8px 16px; border-radius: 6px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
@@ -702,9 +718,9 @@ MODAL AGREGAR TAREA
 
   </div>
 
-    
 
-    <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
+
+  <script src="vistas/js/recursosHumanos/fichaContrato.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -729,80 +745,138 @@ MODAL AGREGAR TAREA
         panelListaSolicitudActivas.style.display = "none";
       });
 
-        btnListaSolicitudes.addEventListener("click", () => {
-          panelListaSolicitudActivas.style.display = "block";
-          panelFichaContrato.style.display = "none";
-        });
+      btnListaSolicitudes.addEventListener("click", () => {
+        panelListaSolicitudActivas.style.display = "block";
+        panelFichaContrato.style.display = "none";
       });
-    </script>
+    });
 
-    <style>
-      .table-requisitos {
-        position: relative;
-        padding-top: 10px;
+    //FILTRO DINAMICO
+    function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.querySelector("#lista table");
+        const rows = table.tBodies[0].rows;
 
-      }
+        Array.from(rows).forEach(row => {
+            const cells = Array.from(row.cells);
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+            row.style.display = match ? "" : "none";
+        });
+    }
 
-      .table-responsive1 {
-        top: 50px;
-      }
+    function updateVisibleRows() {
+        const limit = parseInt(document.getElementById("entriesSelect").value);
+        const table = document.querySelector("#lista table");
+        const rows = Array.from(table.tBodies[0].rows);
 
-      /* Ajustar modal a sus contenedores */
-      .modal-dialog {
-        width: auto !important;
-        max-width: 70% !important;
-        margin: 10px auto !important;
-      }
+        let visibleCount = 0;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                visibleCount++;
+                row.style.display = visibleCount <= limit ? "" : "none";
+            }
+        });
+    }
 
-      .modal-content {
-        width: 100% !important;
-      }
+    // Vincular búsqueda con límite dinámicamente
+    document.getElementById("searchInput").addEventListener("input", () => {
+        filterTable();
+        updateVisibleRows();
+    });
+  </script>
 
-      .modal-body {
-        padding: 5px !important;
-        overflow-x: hidden !important;
-      }
+  <style>
+    .table-requisitos {
+      position: relative;
+      padding-top: 10px;
 
-      .modal-body .content {
-        padding: 0 !important;
-        margin: 0 !important;
-      }
+    }
 
-      .modal-body .box {
-        margin-bottom: 10px !important;
-        padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-      }
+    .table-responsive1 {
+      top: 50px;
+    }
 
-      .modal-body .panel-group {
-        margin-bottom: 5px !important;
-      }
+    /* Ajustar modal a sus contenedores */
+    .modal-dialog {
+      width: auto !important;
+      max-width: 70% !important;
+      margin: 10px auto !important;
+    }
 
-      .modal-body .panel-body {
-        padding: 5px !important;
-      }
+    .modal-content {
+      width: 100% !important;
+    }
 
-      .modal-body .form-group {
-        margin-bottom: 5px !important;
-      }
+    .modal-body {
+      padding: 5px !important;
+      overflow-x: hidden !important;
+    }
 
-      /* Ajustar contenido dentro del modal */
-      .modal-body section.content {
-        padding: 0 !important;
-        margin: 0 !important;
-      }
+    .modal-body .content {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
 
-      /* Separar los botones de acción */
-      .button-container {
+    .modal-body .box {
+      margin-bottom: 10px !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .modal-body .panel-group {
+      margin-bottom: 5px !important;
+    }
+
+    .modal-body .panel-body {
+      padding: 5px !important;
+    }
+
+    .modal-body .form-group {
+      margin-bottom: 5px !important;
+    }
+
+    /* Ajustar contenido dentro del modal */
+    .modal-body section.content {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* Separar los botones de acción */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .button-container .btn {
+      margin-right: 25px;
+      margin-left: 25px;
+    }
+    .records-control {
+        top: 80px;
+        right: 100px;
         display: flex;
-        justify-content: center;
-        margin: 10px ;
-        padding: 10px;
-      }
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
 
-      .button-container .btn {
-        margin-right: 25px;
-        margin-left: 25px;
-      }
-    </style>
+    .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+    }
+
+    .control-left,
+    .control-right {
+        margin: 5px;
+    }
+
+    .control-right input {
+        max-width: 200px;
+    }
+  </style>
