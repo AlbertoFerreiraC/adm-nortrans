@@ -1,313 +1,208 @@
 <div class="content-wrapper">
 
-    <section class="content-header" style="background-color: black; padding: 20px; text-align: center;">
-        <h1 style="color: white; font-weight: bold;">Mantenedor: Mantenedor Clase</h1>
+    <section class="content-header">
+
+        <h1>
+
+            Administrar Clases de Maquina
+
+        </h1>
+
+        <ol class="breadcrumb">
+
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Activos</a></li>
+
+            <li class="active">Administrar Clases de Maquina</li>
+
+        </ol>
+
     </section>
 
     <section class="content">
+
         <div class="box">
 
+            <div class="box-header with-border">
+
+                <div class="form-group col-sm-3 col-xs-12 ">
+                    <button class="btn btn btn-block btn-success" data-toggle="modal" data-target="#modalAgregar">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Agregar Registro
+                    </button>
+                </div>
+
+                <div class="form-group col-sm-9 col-xs-12 ">
+                    <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm" name="filtradoDinamico" id="filtradoDinamico" autocomplete="off" placeholder="Filtrado General ...">
+                </div>
+
+
+            </div>
 
             <div class="box-body">
-                <div class="form-group col-sm-4 col-xs-12 d-flex flex-column align-items-center justify-content-center">
-                    <label for="idClase" class="text-center mb-2">Id Clase</label>
-                    <input class="form-control input-md cajatexto solo-ruc" name="idClase" id="idClase">
+
+                <div id="div1">
+                    <table class="table table-bordered table-striped dt-responsive" id="tabla" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="width:10px">
+                                    <center>#</center>
+                                </th>
+                                <th>
+                                    <center> Descripción</center>
+                                </th>
+                                <th>
+                                    <center>Acciones</center>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
                 </div>
 
-                <div class="form-group col-sm-5 col-xs-12">
-                    <label for="Descripcion">Descripcion:</label><span style="font-size: 11px; color: #DC3139; padding-left: 15px;"> (Obligatorio)</span>
-                    <textarea class="form-control input-md cajatexto" name="idDescripcion" id="idDescripcion" rows="1"></textarea>
-                </div>
-
-                <div class="form-group col-sm-4 col-xs-12">
-                    <label for="Estado">Estado:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-                    <select class="form-control input-md cajatexto solo-ruc" name="IdEstado" id="IdEstado">
-                        <option value=""></option>
-                        <option value="Activo">Activo</option>
-                        <option value="Bloqueo">Bloqueo</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-sm-4 col-xs-12">
-                    <div class="button-container">
-                        <button type="button" class="btn btn-primary" id="btnGrabarFicha">
-                            <i class="fa fa-save" aria-hidden="true"></i> Grabar
-                        </button>
-                    </div>
-                </div>
             </div>
 
-
-            <section class="content">
-        <div class="box">
-            <div class="panel-group" id="frm:j_idt110">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 1px;">
-                        <h4 class="panel-opcion">
-                            <a data-toggle="collapse" href="#frm_j_idt110_content" class="panel-opcion-link" aria-expanded="true">
-                                Lista
-                            </a>
-                        </h4>
-                    </div>
-
-                    <div class="table-controls">
-                        <div class="control-left">
-                            <label for="entriesSelect">Mostrar
-                                <select id="entriesSelect" onchange="updateVisibleRows()">
-                                    <option value="5">5</option>
-                                    <option value="10" selected>10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> registros
-                            </label>
-                        </div>
-
-                        <div class="control-right">
-                            <label for="searchInput">Buscar:
-                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
-                            </label>
-                        </div>
-                    </div>
-
-
-
-                    <div id="frm_j_idt110_content" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <div class="table-container">
-                                <div class="table-responsive">
-                                    <div class="box-body">
-                                        <div id="lista">
-                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%;">
-                                                <thead>
-                                                    <tr>
-                                                        <th onclick="sortTable(0, this)">
-                                                            <center>Id Clase</center>
-                                                        </th>
-                                                        <th onclick="sortTable(1, this)">
-                                                            <center>Descripcion</center>
-                                                        </th>
-                                                        <th onclick="sortTable(2, this)">
-                                                            <center>Estado</center>
-                                                        </th>
-                                                        <th onclick="sortTable(3, this)">
-                                                            <center>Editar</center>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>87654321-0</td>
-                                                        <td>María López</td>                                                        <td>Empresa A</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>12345678-9</td>
-                                                        <td>Carlos Ruiz</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </section>
 
-    <style>
-         .button-container {
+</div>
+
+<!--=====================================
+MODAL AGREGAR TAREA
+======================================-->
+
+<div id="modalAgregar" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <form role="form" method="post" id="formulario_para_agregar">
+
+                <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+                <div class="modal-header" style="background:#A9A9A9; color:white">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h4 class="modal-title">Agregar Registro</h4>
+
+                </div>
+
+                <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+                <div class="modal-body">
+
+                    <div class="box-body">
+
+                        <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
+
+                        <div class="form-group">
+                            <label for="nuevoNombre">Descripción:</label>
+                            <input type="text" class="form-control input-md" name="descripcionAgregar" id="descripcionAgregar" placeholder="Ingresar Descripción" required>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+                    <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnGuardar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Guardar</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--=====================================
+MODAL EDITAR TAREA
+======================================-->
+
+<div id="modalModificar" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <form role="form" method="post">
+
+                <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+                <div class="modal-header" style="background:#A9A9A9; color:white">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h4 class="modal-title">Editar Registro</h4>
+
+                </div>
+
+                <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+                <div class="modal-body">
+
+                    <div class="box-body">
+                        <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="nuevoNombre">Descripción:</label>
+                            <input type="text" class="form-control input-md" name="descripcionModificar" id="descripcionModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+                    <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Modificar Registro</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="vistas/js/activos/claseMaquina.js"></script>
+
+
+<style>
+    #div1 {
+        overflow: scroll;
         width: 100%;
-        padding: 5px;
-        margin-top: 20px;
-        font-size: 16px;
     }
-    
-        #lista table {
-            font-size: 10px;
-            border-collapse: separate !important;
-            border-spacing: 0;
-            text-align: center;
-        }
 
-        #lista th {
-            font-size: 13px;
-            background-color: #f4f4f4;
-            border: 1px solid #ddd !important;
-            cursor: pointer;
-            position: relative;
-            user-select: none;
-            padding-right: 20px;
-        }
-
-        #lista th.asc::after {
-            content: "▲";
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #555;
-        }
-
-        #lista th.desc::after {
-            content: "▼";
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #555;
-        }
-
-        #lista td {
-            font-size: 15px;
-            border: 1px solid #ddd !important;
-        }
-
-        .panel-opcion-link:focus,
-        .panel-opcion-link:active {
-            text-decoration: underline;
-        }
-
-        .table-container {
-            margin-top: -25px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .table {
-            margin-bottom: 0;
-        }
-
-        .table-striped>tbody>tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .table-bordered {
-            border: 1px solid #ddd !important;
-        }
-
-        .table-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            margin: 20px;
-        }
-
-        .control-left,
-        .control-right {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-        }
-
-        /* Inputs y selects responsive */
-        .control-left select,
-        .control-right input {
-            padding: 4px 6px;
-            font-size: 14px;
-            max-width: 400px;
-        }
-
-        /* Comportamiento en pantallas pequeñas */
-        @media (max-width: 600px) {
-            .table-controls {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .control-left,
-            .control-right {
-                width: 80%;
-                justify-content: space-between;
-            }
-        }
-    </style>
-
-    <script>
-        let sortDirection = [];
-
-        function sortTable(columnIndex, thElement) {
-            const table = document.getElementById("tablaDocumentos");
-            const rows = Array.from(table.tBodies[0].rows);
-            const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
-            sortDirection[columnIndex] = dir;
-
-            // Limpiar clases de flechas en todos los th
-            const headers = table.querySelectorAll("th");
-            headers.forEach((th, i) => {
-                th.classList.remove("asc", "desc");
-                if (i === columnIndex) th.classList.add(dir);
-            });
-
-            rows.sort((a, b) => {
-                let aText = a.cells[columnIndex].innerText.trim();
-                let bText = b.cells[columnIndex].innerText.trim();
-
-                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-                const isDate = datePattern.test(aText) && datePattern.test(bText);
-
-                if (isDate) {
-                    return dir === "asc" ?
-                        new Date(aText) - new Date(bText) :
-                        new Date(bText) - new Date(aText);
-                }
-
-                return dir === "asc" ?
-                    aText.localeCompare(bText, 'es', {
-                        numeric: true
-                    }) :
-                    bText.localeCompare(aText, 'es', {
-                        numeric: true
-                    });
-            });
-
-            const tbody = table.tBodies[0];
-            tbody.innerHTML = "";
-            rows.forEach(row => tbody.appendChild(row));
-        }
-    </script>
-
-    <script>
-        function filterTable() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const table = document.querySelector("#lista table");
-            const rows = table.tBodies[0].rows;
-
-            Array.from(rows).forEach(row => {
-                const cells = Array.from(row.cells);
-                const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
-                row.style.display = match ? "" : "none";
-            });
-        }
-
-        function updateVisibleRows() {
-            const limit = parseInt(document.getElementById("entriesSelect").value);
-            const table = document.querySelector("#lista table");
-            const rows = Array.from(table.tBodies[0].rows);
-
-            let visibleCount = 0;
-            rows.forEach(row => {
-                if (row.style.display !== "none") {
-                    visibleCount++;
-                    row.style.display = visibleCount <= limit ? "" : "none";
-                }
-            });
-        }
-
-        // Vincular búsqueda con límite dinámicamente
-        document.getElementById("searchInput").addEventListener("input", () => {
-            filterTable();
-            updateVisibleRows();
-        });
-    </script>
-
-<script src="vistas/js/activos/"></script>
+    #div1 table {
+        width: 100%;
+        background-color: lightgray;
+    }
+</style>

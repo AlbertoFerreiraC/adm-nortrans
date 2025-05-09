@@ -181,7 +181,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="capacidadTanque">Capacidad Estanque</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="capacidadTanque">Capacidad Estanque</label>
                                 <div class="input-group">
                                     <input type="number" class="form-control input-md cajatexto" id="capacidadTanque" name="capacidadTanque" min="0" max="2100" />
                                     <span class="input-group-addon">lt</span>
@@ -189,7 +189,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="secuenciaMantencion">Secuencia Mantencion</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="secuenciaMantencion">Secuencia Mantencion</label>
                                 <select class="form-control input-md cajatexto" id="secuenciaMantencion" name="secuenciaMantencion">
                                     <option value="">Seleccionar...</option>
                                     <option value="kilometroFijo">Kilometro Fijo</option>
@@ -198,7 +198,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="asientosmaquina">Asientos</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="asientosmaquina">Asientos</label>
                                 <select class="form-control input-md cajatexto" id="asientosmaquina" name="asientosmaquina">
                                     <option value=""></option>
                                     <option value=""></option>
@@ -207,7 +207,7 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="numPuertas">N° Puertas</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="numPuertas">N° Puertas</label>
                                 <select class="form-control input-md cajatexto" id="numPuertas" name="numPuertas">
                                     <option value="">Seleccionar...</option>
                                     <option value="1">1</option>
@@ -219,12 +219,12 @@
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="centroCosto">Costo Centro</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="centroCosto">Costo Centro</label>
                                 <select class="form-control input-md cajatexto" id="centroCosto" name="centroCosto"></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="idPatron">Padron</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
+                                <label for="idPatron">Padron</label>
                                 <input type="text" class="form-control input-md cajatexto" name="idPatron" id="idPatron">
                             </div>
                         </div>

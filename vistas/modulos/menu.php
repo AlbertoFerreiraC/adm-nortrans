@@ -90,6 +90,7 @@
 								<li><a href="tipoEpp"><i class="fa fa-cog"></i>Tipo EPP</a></li>
 								<li><a href="antecedentesMedicos"><i class="fa fa-cog"></i>Antecedentes Médicos</a></li>
 								<li><a href="cargo"><i class="fa fa-cog"></i>Cargos</a></li>
+								<li><a href="tipoequipo"><i class="fa fa-cog"></i>Tipo Equipo</a></li>
 								<li><a href="tipoAnexo"><i class="fa fa-cog"></i>Tipo anexo</a></li>
 								<li><a href="tipoEstudio"><i class="fa fa-cog"></i>Tipo de Estudio</a></li>
 								<li><a href="tipoTerminoContrato"><i class="fa fa-cog"></i>Tipo Termino de Contrato</a></li>
@@ -135,7 +136,6 @@
 							</a>
 							<ul class="treeview-menu">
 								<li><a href="deMaquina"><i class="fa fa-cog"></i>De Maquina</a></li>
-								<li><a href="parametrosEstandar"><i class="fa fa-cog"></i> Parametros Estandar </a></li>
 								<li><a href="claseMaquina"><i class="fa fa-cog"></i> Clase Maquina </a></li>
 								<li><a href="tipoBus"><i class="fa fa-cog"></i> Tipo Bus </a></li>
 								<li><a href="tipoMaquina"><i class="fa fa-cog"></i> Tipo Maquina </a></li>

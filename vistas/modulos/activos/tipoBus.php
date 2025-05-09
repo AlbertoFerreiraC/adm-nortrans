@@ -9,33 +9,18 @@
 
 
             <div class="box-body">
-                <div class="form-group col-sm-3 col-xs-12 d-flex flex-column align-items-center justify-content-center">
-                    <label for="idTipoBus" class="text-center mb-2">Id tipo Bus</label>
-                    <input class="form-control input-md cajatexto solo-ruc" name="idTipoBus" id="idTipoBus">
-                </div>
-
                 <div class="form-group col-sm-4 col-xs-12">
-                    <label for="Estado">N° Pisos:</label><span </span>
-                        <select class="form-control input-md cajatexto solo-ruc" name="idNumPisos" id="idNumPisos">
-                            <option value=""></option>
+                    <label for="numeroPiso">N° Pisos:</label>
+                        <select class="form-control input-md cajatexto solo-ruc" name="numeroPiso" id="numeroPiso">
+                            <option value="">Seleccionar...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
-                    <label for="Estado">Clase Piso 1:</label><span </span>
-                        <select class="form-control input-md cajatexto solo-ruc" name="idClasePisoUno" id="idClasePisoUno">
-                            <option value=""></option>
-                            <option value="semiCama">Semi Cama</option>
-                            <option value="salonCama">Salon Cama</option>
-                            <option value="sprinter315CDI">Sprinter 315 CDI</option>
-                            <option value="maxus">Maxus</option>
-                            <option value="sprinter416CDi16+">Sprinter 416 CDI 16+</option>
-                            <option value="sprinter5164x219+">Sprinter 516 4x2 19+</option>
-                            <option value="sprinter5164x419+">Sprinter 516 4x4 19+</option>
-                            <option value="grandCarnivallx29">Grand Carnival Lx2 9</option>
-                        </select>
+                    <label for="clasePiso1">Clase Piso 1:</label>
+                        <select class="form-control input-md cajatexto solo-ruc" name="clasePiso1" id="clasePiso1"></select>
                 </div>
 
                 <div class="form-group col-sm-3 col-xs-12">
@@ -44,33 +29,13 @@
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12 piso_dos">
-                    <label for="Estado">Clase Piso 2:</label><span </span>
-                        <select class="form-control input-md cajatexto solo-ruc" name="idClasePisoDos" id="idClasePisoDos">
-                            <option value=""></option>
-                            <option value="semiCama">Semi Cama</option>
-                            <option value="salonCama">Salon Cama</option>
-                            <option value="sprinter315CDI">Sprinter 315 CDI</option>
-                            <option value="maxus">Maxus</option>
-                            <option value="sprinter416CDi16+">Sprinter 416 CDI 16+</option>
-                            <option value="sprinter5164x219+">Sprinter 516 4x2 19+</option>
-                            <option value="sprinter5164x419+">Sprinter 516 4x4 19+</option>
-                            <option value="grandCarnivallx29">Grand Carnival Lx2 9</option>
-                        </select>
+                    <label for="clasePiso2">Clase Piso 2:</label>
+                        <select class="form-control input-md cajatexto solo-ruc" name="clasePiso2" id="clasePiso2"> </select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12 piso_dos">
                     <label for="asientoPisoDos">Asiento Piso 2:</label>
                     <input type="number" class="form-control input-md cajatexto solo-ruc" name="asientoPisoDos" id="asientoPisoDos" placeholder=" ">
-                </div>
-
-                <div class="form-group col-sm-4 col-xs-12">
-                    <label for="Estado">Estado:</label>
-                    <span< /span>
-                        <select class="form-control input-md cajatexto solo-ruc" name="IdEstado" id="IdEstado">
-                            <option value=""></option>
-                            <option value="Activo">Activo</option>
-                            <option value="Bloqueo">Bloqueo</option>
-                        </select>
                 </div>
 
                 <div class="form-group col-sm-4 col-xs-12">
@@ -152,16 +117,7 @@
                                                                 </th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>87654321-0</td>
-                                                                <td>Empresa A</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>12345678-9</td>
-                                                                <td>Carlos Ruiz</td>
-                                                            </tr>
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -173,223 +129,226 @@
                     </div>
                 </div>
             </section>
+        </div>
+    </section>
+</div>
 
-            <style>
-                .button-container {
-                    width: 100%;
-                    padding: 5px;
-                    margin-top: 20px;
-                    font-size: 16px;
-                }
+<style>
+    .button-container {
+        width: 100%;
+        padding: 5px;
+        margin-top: 20px;
+        font-size: 16px;
+    }
 
-                #lista table {
-                    font-size: 10px;
-                    border-collapse: separate !important;
-                    border-spacing: 0;
-                    text-align: center;
-                }
+    #lista table {
+        font-size: 10px;
+        border-collapse: separate !important;
+        border-spacing: 0;
+        text-align: center;
+    }
 
-                #lista th {
-                    font-size: 13px;
-                    background-color: #f4f4f4;
-                    border: 1px solid #ddd !important;
-                    cursor: pointer;
-                    position: relative;
-                    user-select: none;
-                    padding-right: 20px;
-                }
+    #lista th {
+        font-size: 13px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd !important;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        padding-right: 20px;
+    }
 
-                #lista th.asc::after {
-                    content: "▲";
-                    position: absolute;
-                    right: 5px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-size: 12px;
-                    color: #555;
-                }
+    #lista th.asc::after {
+        content: "▲";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
+    }
 
-                #lista th.desc::after {
-                    content: "▼";
-                    position: absolute;
-                    right: 5px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-size: 12px;
-                    color: #555;
-                }
+    #lista th.desc::after {
+        content: "▼";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #555;
+    }
 
-                #lista td {
-                    font-size: 15px;
-                    border: 1px solid #ddd !important;
-                }
+    #lista td {
+        font-size: 15px;
+        border: 1px solid #ddd !important;
+    }
 
-                .panel-opcion-link:focus,
-                .panel-opcion-link:active {
-                    text-decoration: underline;
-                }
+    .panel-opcion-link:focus,
+    .panel-opcion-link:active {
+        text-decoration: underline;
+    }
 
-                .table-container {
-                    margin-top: -25px;
-                }
+    .table-container {
+        margin-top: -25px;
+    }
 
-                .table-responsive {
-                    overflow-x: auto;
-                }
+    .table-responsive {
+        overflow-x: auto;
+    }
 
-                .table {
-                    margin-bottom: 0;
-                }
+    .table {
+        margin-bottom: 0;
+    }
 
-                .table-striped>tbody>tr:nth-of-type(odd) {
-                    background-color: #f9f9f9;
-                }
+    .table-striped>tbody>tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
 
-                .table-bordered {
-                    border: 1px solid #ddd !important;
-                }
+    .table-bordered {
+        border: 1px solid #ddd !important;
+    }
 
-                .table-controls {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 20px;
-                    margin: 20px;
-                }
+    .table-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin: 20px;
+    }
 
-                .control-left,
-                .control-right {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    font-size: 14px;
-                }
+    .control-left,
+    .control-right {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+    }
 
-                /* Inputs y selects responsive */
-                .control-left select,
-                .control-right input {
-                    padding: 4px 6px;
-                    font-size: 14px;
-                    max-width: 400px;
-                }
+    /* Inputs y selects responsive */
+    .control-left select,
+    .control-right input {
+        padding: 4px 6px;
+        font-size: 14px;
+        max-width: 400px;
+    }
 
-                /* Comportamiento en pantallas pequeñas */
-                @media (max-width: 600px) {
-                    .table-controls {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
+    /* Comportamiento en pantallas pequeñas */
+    @media (max-width: 600px) {
+        .table-controls {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-                    .control-left,
-                    .control-right {
-                        width: 80%;
-                        justify-content: space-between;
-                    }
-                }
+        .control-left,
+        .control-right {
+            width: 80%;
+            justify-content: space-between;
+        }
+    }
 
-                .piso_dos {
-                    display: none;
-                }
-            </style>
+    .piso_dos {
+        display: none;
+    }
+</style>
 
-            <script>
-                let sortDirection = [];
+<script>
+    let sortDirection = [];
 
-                function sortTable(columnIndex, thElement) {
-                    const table = document.getElementById("tablaDocumentos");
-                    const rows = Array.from(table.tBodies[0].rows);
-                    const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
-                    sortDirection[columnIndex] = dir;
+    function sortTable(columnIndex, thElement) {
+        const table = document.getElementById("tablaDocumentos");
+        const rows = Array.from(table.tBodies[0].rows);
+        const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
+        sortDirection[columnIndex] = dir;
 
-                    // Limpiar clases de flechas en todos los th
-                    const headers = table.querySelectorAll("th");
-                    headers.forEach((th, i) => {
-                        th.classList.remove("asc", "desc");
-                        if (i === columnIndex) th.classList.add(dir);
-                    });
+        // Limpiar clases de flechas en todos los th
+        const headers = table.querySelectorAll("th");
+        headers.forEach((th, i) => {
+            th.classList.remove("asc", "desc");
+            if (i === columnIndex) th.classList.add(dir);
+        });
 
-                    rows.sort((a, b) => {
-                        let aText = a.cells[columnIndex].innerText.trim();
-                        let bText = b.cells[columnIndex].innerText.trim();
+        rows.sort((a, b) => {
+            let aText = a.cells[columnIndex].innerText.trim();
+            let bText = b.cells[columnIndex].innerText.trim();
 
-                        const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-                        const isDate = datePattern.test(aText) && datePattern.test(bText);
+            const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+            const isDate = datePattern.test(aText) && datePattern.test(bText);
 
-                        if (isDate) {
-                            return dir === "asc" ?
-                                new Date(aText) - new Date(bText) :
-                                new Date(bText) - new Date(aText);
-                        }
+            if (isDate) {
+                return dir === "asc" ?
+                    new Date(aText) - new Date(bText) :
+                    new Date(bText) - new Date(aText);
+            }
 
-                        return dir === "asc" ?
-                            aText.localeCompare(bText, 'es', {
-                                numeric: true
-                            }) :
-                            bText.localeCompare(aText, 'es', {
-                                numeric: true
-                            });
-                    });
-
-                    const tbody = table.tBodies[0];
-                    tbody.innerHTML = "";
-                    rows.forEach(row => tbody.appendChild(row));
-                }
-            </script>
-            <script>
-                function filterTable() {
-                    const input = document.getElementById("searchInput").value.toLowerCase();
-                    const table = document.querySelector("#lista table");
-                    const rows = table.tBodies[0].rows;
-
-                    Array.from(rows).forEach(row => {
-                        const cells = Array.from(row.cells);
-                        const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
-                        row.style.display = match ? "" : "none";
-                    });
-                }
-
-                function updateVisibleRows() {
-                    const limit = parseInt(document.getElementById("entriesSelect").value);
-                    const table = document.querySelector("#lista table");
-                    const rows = Array.from(table.tBodies[0].rows);
-
-                    let visibleCount = 0;
-                    rows.forEach(row => {
-                        if (row.style.display !== "none") {
-                            visibleCount++;
-                            row.style.display = visibleCount <= limit ? "" : "none";
-                        }
-                    });
-                }
-
-                // Vincular búsqueda con límite dinámicamente
-                document.getElementById("searchInput").addEventListener("input", () => {
-                    filterTable();
-                    updateVisibleRows();
+            return dir === "asc" ?
+                aText.localeCompare(bText, 'es', {
+                    numeric: true
+                }) :
+                bText.localeCompare(aText, 'es', {
+                    numeric: true
                 });
-            </script>
+        });
 
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const selectPisos = document.getElementById("idNumPisos");
-                    const camposPisoDos = document.querySelectorAll(".piso_dos");
+        const tbody = table.tBodies[0];
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+    }
+</script>
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.querySelector("#lista table");
+        const rows = table.tBodies[0].rows;
 
-                    function toggleCamposPisoDos() {
-                        if (selectPisos.value === "2") {
-                            camposPisoDos.forEach(campo => campo.style.display = "block");
-                        } else {
-                            camposPisoDos.forEach(campo => campo.style.display = "none");
-                        }
-                    }
+        Array.from(rows).forEach(row => {
+            const cells = Array.from(row.cells);
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+            row.style.display = match ? "" : "none";
+        });
+    }
 
-                    selectPisos.addEventListener("change", toggleCamposPisoDos);
+    function updateVisibleRows() {
+        const limit = parseInt(document.getElementById("entriesSelect").value);
+        const table = document.querySelector("#lista table");
+        const rows = Array.from(table.tBodies[0].rows);
 
-                    // Asegurarse de ocultarlo al cargar la página
-                    toggleCamposPisoDos();
-                });
-            </script>
+        let visibleCount = 0;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                visibleCount++;
+                row.style.display = visibleCount <= limit ? "" : "none";
+            }
+        });
+    }
+
+    // Vincular búsqueda con límite dinámicamente
+    document.getElementById("searchInput").addEventListener("input", () => {
+        filterTable();
+        updateVisibleRows();
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectPisos = document.getElementById("numeroPiso");
+        const camposPisoDos = document.querySelectorAll(".piso_dos");
+
+        function toggleCamposPisoDos() {
+            if (selectPisos.value === "2") {
+                camposPisoDos.forEach(campo => campo.style.display = "block");
+            } else {
+                camposPisoDos.forEach(campo => campo.style.display = "none");
+            }
+        }
+
+        selectPisos.addEventListener("change", toggleCamposPisoDos);
+
+        // Asegurarse de ocultarlo al cargar la página
+        toggleCamposPisoDos();
+    });
+</script>
 
 
 
-            <script src="vistas/js/activos/"></script>
+<script src="vistas/js/activos/tipoBus.js"></script>
