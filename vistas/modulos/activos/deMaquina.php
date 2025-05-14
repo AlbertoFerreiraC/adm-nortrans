@@ -152,15 +152,6 @@
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-group col-sm-3 col-xs-12">
-                                <label for="tipoPatente">Tipo de Patente:</label>
-                                <select class="form-control input-md cajatexto" id="tipoPatente" name="tipoPatente">
-                                    <option value="">Seleccionar...</option>
-                                    <option value="Permanente">Permanente</option>
-                                    <option value="Provisoria">Provisoria</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-sm-3 col-xs-12">
                                 <label for="idpatente">Patente:</label>
                                 <input type="text" class="form-control input-md cajatexto" name="idpatente" id="idpatente">
                             </div>
@@ -199,11 +190,7 @@
 
                             <div class="form-group col-sm-3 col-xs-12">
                                 <label for="asientosmaquina">Asientos</label>
-                                <select class="form-control input-md cajatexto" id="asientosmaquina" name="asientosmaquina">
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
+                                <select class="form-control input-md cajatexto" id="asientosmaquina" name="asientosmaquina"></select>
                             </div>
 
                             <div class="form-group col-sm-3 col-xs-12">
@@ -272,53 +259,37 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="numMotor">N° Motor</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="numMotor" id="numMotor"></select>
+                                                            <input type="text" class="form-control input-md cajatexto" name="numMotor" id="numMotor" />
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="numChasis">N° Chasis:</label><span></span>
-                                                            <input type="text" class="form-control input-md cajatexto" name="numChasis" id="numChasis" maxlength="17" pattern="^[A-HJ-NPR-Z0-9]{17}$" title="Debe tener 17 caracteres alfanuméricos, sin I, O ni Q" required />
+                                                            <input type="text" class="form-control input-md cajatexto" name="numChasis" id="numChasis" />
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="marcaChasis">Marca Chasis</label>
-                                                            <span></span>
-                                                            <select class="form-control input-md cajatexto" id="marcaChasis" name="marcaChasis">
-                                                                <option value=""></option>
-                                                                <option value=""></option>
-                                                            </select>
+                                                            <select class="form-control input-md cajatexto" id="marcaChasis" name="marcaChasis"></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="modeloChasis">Modelo Chasis</label>
-                                                            <span></span>
-                                                            <select class="form-control input-md cajatexto" id="modeloChasis" name="modeloChasis">
-                                                                <option value=""></option>
-                                                                <option value=""></option>
-                                                            </select>
+                                                            <select class="form-control input-md cajatexto" id="modeloChasis" name="modeloChasis"></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="marcaCarroceria">Marca Carroceria</label>
-                                                            <span></span>
-                                                            <select class="form-control input-md cajatexto" id="marcaCarroceria" name="marcaCarroceria">
-                                                                <option value=""></option>
-                                                                <option value=""></option>
-                                                            </select>
+                                                            <select class="form-control input-md cajatexto" id="marcaCarroceria" name="marcaCarroceria"> </select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="modeloCarroceria">Modelo Carroceria</label>
-                                                            <span></span>
-                                                            <select class="form-control input-md cajatexto" id="modeloCarroceria" name="modeloCarroceria">
-                                                                <option value=""></option>
-                                                                <option value=""></option>
-                                                            </select>
+                                                            <select class="form-control input-md cajatexto" id="modeloCarroceria" name="modeloCarroceria"></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="numCarroceria">N° Carroceria</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="numCarroceria" id="numCarroceria"></select>
+                                                            <input type="text" class="form-control input-md cajatexto" name="numCarroceria" id="numCarroceria" />
                                                         </div>
                                                     </div>
                                                 </div>

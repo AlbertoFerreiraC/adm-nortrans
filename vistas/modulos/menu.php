@@ -139,9 +139,13 @@
 								<li><a href="claseMaquina"><i class="fa fa-cog"></i> Clase Maquina </a></li>
 								<li><a href="tipoBus"><i class="fa fa-cog"></i> Tipo Bus </a></li>
 								<li><a href="tipoMaquina"><i class="fa fa-cog"></i> Tipo Maquina </a></li>
-								<li><a href="tipoDocumentoMaquina"><i class="fa fa-cog"></i> Tipo <br>Documento Maquina </a></li>
-								<li><a href="tipoEquipoMaquina"><i class="fa fa-cog"></i> Tipo <br>Equipamiento Maquina </a></li>
-								<li><a href="tipoPolizaSeguro"><i class="fa fa-cog"></i> Tipo <br>Poliza de Seguro </a></li>
+								<li><a href="tipoDocumentoMaquina"><i class="fa fa-cog"></i> Tipo Documento Maquina </a></li>
+								<li><a href="tipoEquipoMaquina"><i class="fa fa-cog"></i> Tipo Equipamiento Maquina </a></li>
+								<li><a href="tipoPolizaSeguro"><i class="fa fa-cog"></i> Tipo Poliza de Seguro </a></li>
+								<li><a href="marcaChasis"><i class="fa fa-cog"></i> Marca Chasis </a></li>
+								<li><a href="modeloChasis"><i class="fa fa-cog"></i> Modelo Chasis </a></li>
+								<li><a href="marcaCarroceria"><i class="fa fa-cog"></i> Marca Carroceria </a></li>
+								<li><a href="modeloCarroceria"><i class="fa fa-cog"></i> Modelo Carroceria </a></li>
 							</ul>
 						</li>
 

@@ -5,28 +5,8 @@ $(document).ready(function () {
     $('#btnNuevo').click(function () {
         TipoBus();
         CentroCosto();
+        asientos();
     });
-
-
-
-    /*$('#filtradoDinamico').keyup(function () {
-
-        var busqueda = document.getElementById('filtradoDinamico');
-        var table = document.getElementById("tabla").tBodies[0];
-        buscaTabla = function () {
-            texto = busqueda.value.toLowerCase();
-            var r = 0;
-            while (row = table.rows[r++]) {
-                if (row.innerText.toLowerCase().indexOf(texto) !== -1)
-                    row.style.display = null;
-                else
-                    row.style.display = 'none';
-            }
-        }
-        busqueda.addEventListener('keyup', buscaTabla);
-
-    });*/
-
 });
 
 function TipoBus() {
@@ -66,6 +46,28 @@ function CentroCosto() {
                 fila += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#centroCosto').append(fila);
+        }
+    });
+}
+
+function asientos() {
+    $('#asientosmaquina').empty();
+    $('#asientosmaquina').append('<option value ="-">Seleccionar...</option>');
+    var listarBus = "";
+
+    $.ajax({
+        url: "../api_adm_nortrans/claseMaquina/funListar.php",
+        method: "GET",
+        cache: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listarBus += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#asientosmaquina').append(listarBus);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar tipo de documentos: ", error);
         }
     });
 }

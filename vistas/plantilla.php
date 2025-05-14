@@ -160,26 +160,27 @@ CUERPO DOCUMENTO
           $_GET["ruta"] == "tipoEstudio" ||
           $_GET["ruta"] == "tipoTerminoContrato" ||
           $_GET["ruta"] == "contactoParentesco" ||
-           $_GET["ruta"] == "requisitosSeleccion"
+          $_GET["ruta"] == "requisitosSeleccion"
         ) {
           include "modulos/recursosHumanos/" . $_GET["ruta"] . ".php";
-
         } else {
           // ACTIVOS
           if (
             $_GET["ruta"] == "docInformeMaquina" ||
-             $_GET["ruta"] == "deMaquina"||
-             $_GET["ruta"] == "claseMaquina"||
-             $_GET["ruta"] == "tipoBus"||
-             $_GET["ruta"] == "tipoMaquina" ||
-             $_GET["ruta"] == "tipoDocumentoMaquina"||
-             $_GET["ruta"] == "tipoEquipoMaquina"||
-             $_GET["ruta"] == "tipoPolizaSeguro"
-                        
-          
+            $_GET["ruta"] == "deMaquina" ||
+            $_GET["ruta"] == "claseMaquina" ||
+            $_GET["ruta"] == "tipoBus" ||
+            $_GET["ruta"] == "tipoMaquina" ||
+            $_GET["ruta"] == "tipoDocumentoMaquina" ||
+            $_GET["ruta"] == "tipoEquipoMaquina" ||
+            $_GET["ruta"] == "tipoPolizaSeguro" ||
+            $_GET["ruta"] == "marcaChasis" ||
+            $_GET["ruta"] == "modeloChasis" ||
+            $_GET["ruta"] == "marcaCarroceria" ||
+            $_GET["ruta"] == "modeloCarroceria"
+
           ) {
             include "modulos/activos/" . $_GET["ruta"] . ".php";
-
           } else {
             //GENERALES
             if (
