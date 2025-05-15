@@ -108,7 +108,6 @@
                                                         <th>
                                                             <center>Editar</center>
                                                         </th>
-
                                                     </tr>
 
                                                 </thead>
@@ -452,7 +451,6 @@
                                                                 <i class="fa fa" aria-hidden="true"></i> Nuevo Equipo
                                                             </button>
                                                         </div>
-
                                                         <div class="table-container2">
                                                             <div class="table-responsive2">
                                                                 <table class="table table-bordes2" id="tablaLaboral">
@@ -479,6 +477,42 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pantalla-oculta-proveedor">
+                                        <div class="form-group col-sm-3 col-xs-12">
+                                            <label for="proveedorEquipamiento">Proveedor</label>
+                                            <select class="form-control input-md cajatexto solo-ruc" name="proveedorEquipamiento" id="proveedorEquipamiento"></select>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-xs-12">
+                                            <label for="tipoEquipamiento">Tipo Equipamiento</label>
+                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Fecha instalacion</label>
+                                                <div class="input-group">
+                                                    <input type="date" class="form-control" value="2025-03-11">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor-botones">
+                                            <div class="form-group col-sm-3 col-xs-12 ">
+                                                <button type="button" class="btn btn-primary btn-block" id="agregarEquipo">
+                                                    <i class="fa fa" aria-hidden="true"></i> Agregar Equipo
+                                                </button>
+                                            </div>
+
+                                            <div class="form-group col-sm-3 col-xs-12 ">
+                                                <button type="button" class="btn btn-primary btn-block" id="verListado">
+                                                    <i class="fa fa" aria-hidden="true"></i> Ver Listado
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -553,6 +587,12 @@
     </div>
 
     <script src="vistas/js/activos/deMaquina.js"></script>
+
+    <style>
+        .pantalla-oculta-proveedor {
+            visibility: hidden;
+        }
+    </style>
 
     <style>
         .button-container {
@@ -675,7 +715,32 @@
             margin-left: 350px;
             margin-top: 20px;
         }
+
+        .contenedor-botones {
+        margin-top: 30px; /* mueve ambos botones más abajo */
+    
+        gap: 20px; /* espacio horizontal entre botones */
+      
+    }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener el botón y los elementos que queremos mostrar/ocultar
+            const btnNuevoEquipo = document.getElementById('nuevoEquipo');
+            const pantallaOcultaProveedor = document.querySelector('.pantalla-oculta-proveedor');
+            const idEquipoProveedores = document.getElementById('idEquipoProveedores');
+
+            // Agregar evento de clic al botón
+            btnNuevoEquipo.addEventListener('click', function() {
+                // Mostrar pantalla-oculta-proveedor (cambiar de visibility:hidden a visible)
+                pantallaOcultaProveedor.style.visibility = 'visible';
+
+                // Ocultar idEquipoProveedores
+                idEquipoProveedores.style.display = 'none';
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
