@@ -177,7 +177,8 @@ CUERPO DOCUMENTO
             $_GET["ruta"] == "marcaChasis" ||
             $_GET["ruta"] == "modeloChasis" ||
             $_GET["ruta"] == "marcaCarroceria" ||
-            $_GET["ruta"] == "modeloCarroceria"
+            $_GET["ruta"] == "modeloCarroceria" ||
+            $_GET["ruta"] == "proveedor"
 
           ) {
             include "modulos/activos/" . $_GET["ruta"] . ".php";

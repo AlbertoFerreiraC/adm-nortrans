@@ -307,10 +307,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="tipoDocumento">Tipo Documento</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoDocumento" id="tipoDocumento">
-                                                                <option value=""></option>
-                                                                <option value=""></option>
-                                                            </select>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoDocumento" id="tipoDocumento"></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
@@ -398,29 +395,32 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="tipoCompra">Tipo Compra</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoCompra" id="tipoCompra"></select>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoCompra" id="tipoCompra" disabled>
+                                                                <option value="">Seleccionar...</option>
+                                                                <option value="Leasing" selected>Leasing</option>
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="propietarioCompra">Propietario</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="propietarioCompra" id="propietarioCompra"></select>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="propietarioCompra" id="propietarioCompra" disabled></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="proveedorCompra">Proveedor</label>
-                                                            <select class="form-control input-md cajatexto solo-ruc" name="proveedorCompra" id="proveedorCompra"></select>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="proveedorCompra" id="proveedorCompra" disabled></select>
                                                         </div>
 
                                                         <div class="form-group col-sm-3 col-xs-12">
-                                                            <label for="numOperacion">N° Operacion:</label><span></span>
-                                                            <input type="text" class="form-control input-md cajatexto" name="numOperacion" id="numOperacion" maxlength="17" pattern="^[A-HJ-NPR-Z0-9]{17}$" title="Debe tener 17 caracteres alfanuméricos, sin I, O ni Q" required />
+                                                            <label for="numOperacion">N° Operacion:</label>
+                                                            <input type="text" class="form-control input-md cajatexto" name="numOperacion" id="numOperacion" disabled />
                                                         </div>
 
                                                         <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label>Fecha Inicio</label>
                                                                 <div class="input-group">
-                                                                    <input type="date" class="form-control" value="2025-02-09">
+                                                                    <input type="date" class="form-control" disabled>
                                                                     <span class="input-group-addon">
                                                                         <i class="fa fa-calendar"></i>
                                                                     </span>
@@ -430,7 +430,7 @@
 
                                                         <div class="form-group col-sm-3 col-xs-12">
                                                             <label for="numCuota">N° Cuota</label>
-                                                            <input type="number" class="form-control input-md cajatexto solo-ruc " id="numCuota" name="numCuota" min="0" max="2100" />
+                                                            <input type="number" class="form-control input-md cajatexto solo-ruc " id="numCuota" name="numCuota" min="0" max="2100" value="0" disabled />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -480,6 +480,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Pestaña de Oculta de Proveedores -->
                                     <div class="pantalla-oculta-proveedor">
                                         <div class="form-group col-sm-3 col-xs-12">
                                             <label for="proveedorEquipamiento">Proveedor</label>
@@ -488,7 +490,11 @@
 
                                         <div class="form-group col-sm-3 col-xs-12">
                                             <label for="tipoEquipamiento">Tipo Equipamiento</label>
-                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
+                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento">
+                                                <option value="">Seleccionar...</option>
+                                                <option value="Camara de Seguridad">Camara de Seguridad</option>
+                                                <option value="GPS">GPS</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-md-3">
@@ -717,12 +723,30 @@
         }
 
         .contenedor-botones {
-        margin-top: 30px; /* mueve ambos botones más abajo */
-    
-        gap: 20px; /* espacio horizontal entre botones */
-      
-    }
+            margin-top: 30px;
+            /* mueve ambos botones más abajo */
+
+            gap: 20px;
+            /* espacio horizontal entre botones */
+
+        }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnVerListado = document.getElementById("verListado");
+            const pantallaOculta = document.querySelector(".pantalla-oculta-proveedor");
+            const equipoProveedores = document.getElementById("idEquipoProveedores");
+
+            btnVerListado.addEventListener("click", function() {
+                // Oculta el formulario (por visibilidad)
+                pantallaOculta.style.visibility = "hidden";
+
+                // Asegura que el listado esté visible
+                equipoProveedores.style.display = "block";
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
