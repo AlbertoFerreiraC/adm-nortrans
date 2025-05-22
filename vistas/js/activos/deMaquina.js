@@ -15,6 +15,38 @@ $(document).ready(function () {
 
     $('#nuevoEquipo').click(function () {
         proveedores();
+        tipoEquipamiento();
+    });
+
+    $('#btnGrabarFicha').click(function () {
+        if ($("#motivoAgregar").val() != "" &&
+            $("#divisionAgregar").val() != "" &&
+            $("#cargoAgregar").val() != "" &&
+            $("#razonAgregar").val() != "" &&
+            $("#centroDecostoAgregar").val() != "-" &&
+            $("#cantidadAgregar").val() != "-" &&
+            $("#equipoAgregar").val() != "" &&
+            $("#licenciaAgregar").val() != "-" &&
+            $("#tipoturnoAgregar").val() != "-" &&
+            $("#tipocontratoAgregar").val() != "-" &&
+            $("#fecharequeridaAgregar").val() != "-" &&
+            $("#remuneracionAgregar").val() != "-" &&
+            $("#observacionAgregar").val() != "-" &&
+            $("#preapruebaAgregar").val() != "-" &&
+            $("#apruebaAgregar").val() != "-" &&
+            $("#observacionEntrevistaPsicolaboral").val() != "-" &&
+            $("#observacionEntrevistaTecnica").val() != "-" &&
+            $("#observacionPruebaConduccion").val() != "-" &&
+            $("#comentarioAgregar").val() != "-") {
+            agregarDatos();
+        } else {
+            swal({
+                type: "error",
+                title: "Favor completar debidamente los campos requeridos.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
+        }
     });
 });
 
@@ -210,5 +242,94 @@ function proveedores() {
         error: function (xhr, status, error) {
             console.error("Error al cargar tipo de documentos: ", error);
         }
+    });
+}
+
+function tipoEquipamiento() {
+    $('#tipoEquipamiento').empty();
+    $('#tipoEquipamiento').append('<option value ="-">Seleccionar...</option>');
+    var listarTipoEquipamiento = "";
+
+    $.ajax({
+        url: "../api_adm_nortrans/tipoEquipoMaquina/funListar.php",
+        method: "GET",
+        cache: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listarTipoEquipamiento += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#tipoEquipamiento').append(listarTipoEquipamiento);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar tipo de documentos: ", error);
+        }
+    });
+}
+
+function agregarDatos() {
+    var datos = '{"motivo":"' + $("#motivoAgregar").val() +
+        '","division":"' + $("#divisionAgregar").val() +
+        '","usuario":"' + $("#idUsuario").val() +
+        '","cargo":"' + $("#cargoAgregar").val() +
+        '","empresa":"' + $("#empresaAgregar").val() +
+        '","centroDeCosto":"' + $("#centroDecostoAgregar").val() +
+        '","cantidadSolicitada":"' + $("#cantidadAgregar").val() +
+        '","tipoBus":"' + $("#equipoAgregar").val() +
+        '","licenciaDeConducir":"' + $("#licenciaAgregar").val() +
+        '","turnosLaborales":"' + $("#tipoturnoAgregar").val() +
+        '","tipo_contrato":"' + $("#tipocontratoAgregar").val() +
+        '","fechaRequerida":"' + $("#fecharequeridaAgregar").val() +
+        '","fechaTermino":"' + $("#fechaterminoAgregar").val() +
+        '","remuneracion":"' + $("#remuneracionAgregar").val() +
+        '","comentario_general":"' + $("#comentarioAgregar").val() +
+        '","preAprueba":"' + $("#preapruebaAgregar").val() +
+        '","aprueba":"' + $("#apruebaAgregar").val();
+
+    $.ajax({
+        url: "../api_adm_nortrans/solicitudContratacion/funAgregar.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro cargado con exito",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });
+            }
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+            if (response['mensaje'] === "registro_existente") {
+                swal({
+                    type: "error",
+                    title: "El registro que quiere cargar ya existe en la base de datos",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la carga",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
     });
 }

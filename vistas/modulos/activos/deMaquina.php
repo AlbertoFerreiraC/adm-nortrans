@@ -125,11 +125,10 @@
         </div>
     </section>
 
-    <!--aca debe ir el modal de agregar-->
 
     <!--=====================================
      MODAL AGREGAR TAREA
-         ======================================-->
+    ======================================-->
 
     <div id="modalAgregar" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -137,16 +136,16 @@
                 <form role="form" method="post" id="formulario_para_agregar">
 
                     <!--=====================================
-                       CABEZA DEL MODAL
-                     ======================================-->
+                        CABEZA DEL MODAL
+                        ======================================-->
                     <div class="modal-header" style="background:#A9A9A9; color:white">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Maquina</h4>
                     </div>
 
                     <!--=====================================
-                           CUERPO DEL MODAL
-                          ======================================-->
+                            CUERPO DEL MODAL
+                            ======================================-->
 
                     <div class="modal-body">
                         <div class="box-body">
@@ -490,11 +489,7 @@
 
                                         <div class="form-group col-sm-3 col-xs-12">
                                             <label for="tipoEquipamiento">Tipo Equipamiento</label>
-                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento">
-                                                <option value="">Seleccionar...</option>
-                                                <option value="Camara de Seguridad">Camara de Seguridad</option>
-                                                <option value="GPS">GPS</option>
-                                            </select>
+                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
                                         </div>
 
                                         <div class="col-md-3">
@@ -574,16 +569,16 @@
                         </div>
                     </section>
                     <!--=====================================
-                           PIE DEL MODAL
-                            ======================================-->
+                            PIE DEL MODAL
+                                ======================================-->
                     <!-- Botones de acción -->
                     <div class="button-container">
                         <button type="button" class="btn btn-primary" id="btnGrabarFicha">
                             <i class="fa fa-search" aria-hidden="true"></i> Grabar Ficha
                         </button>
 
-                        <button type="button" class="btn btn-primary" id="btnListadoFicha">
-                            <i class="fa fa-search" aria-hidden="true"></i> Ver Listado
+                        <button type="button" class="btn btn-primary" id="btnListadoFicha" data-dismiss="modal">
+                            <i class="fa fa-bars" aria-hidden="true"></i>  Ver Listado
                         </button>
                     </div>
                     </section>
@@ -847,6 +842,16 @@
                     this.style.transform = '';
                     this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                 });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnListado = document.getElementById('btnListadoFicha');
+
+            btnListado.addEventListener('click', function() {
+                $('#modalAgregar').modal('hide');
             });
         });
     </script>
