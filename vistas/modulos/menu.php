@@ -134,7 +134,7 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu">
+						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href="deMaquina"><i class="fa fa-cog"></i>De Maquina</a></li>
 							<li><a href="claseMaquina"><i class="fa fa-cog"></i> Clase Maquina </a></li>
 							<li><a href="tipoBus"><i class="fa fa-cog"></i> Tipo Bus </a></li>
@@ -147,6 +147,8 @@
 							<li><a href="marcaCarroceria"><i class="fa fa-cog"></i> Marca Carroceria </a></li>
 							<li><a href="modeloCarroceria"><i class="fa fa-cog"></i> Modelo Carroceria </a></li>
 							<li><a href="proveedor"><i class="fa fa-cog"></i>Proveedores</a></li>
+							<li><a href="aseguradora"><i class="fa fa-cog"></i>Aseguradora</a></li>
+
 						</ul>
 					</li>
 
