@@ -482,38 +482,40 @@
 
                                     <!-- Pestaña de Oculta de Proveedores -->
                                     <div class="pantalla-oculta-proveedor">
-                                        <div class="form-group col-sm-3 col-xs-12">
-                                            <label for="proveedorEquipamiento">Proveedor</label>
-                                            <select class="form-control input-md cajatexto solo-ruc" name="proveedorEquipamiento" id="proveedorEquipamiento"></select>
-                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-3 col-xs-12">
+                                                <label for="proveedorEquipamiento">Proveedor</label>
+                                                <select class="form-control input-md cajatexto solo-ruc" name="proveedorEquipamiento" id="proveedorEquipamiento"></select>
+                                            </div>
 
                                         <div class="form-group col-sm-3 col-xs-12">
                                             <label for="tipoEquipamiento">Tipo Equipamiento</label>
                                             <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
                                         </div>
 
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Fecha instalacion</label>
-                                                <div class="input-group">
-                                                    <input type="date" class="form-control" value="2025-03-11">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </span>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Fecha instalacion</label>
+                                                    <div class="input-group">
+                                                        <input type="date" class="form-control" value="2025-03-11">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="contenedor-botones">
-                                            <div class="form-group col-sm-3 col-xs-12 ">
-                                                <button type="button" class="btn btn-primary btn-block" id="agregarEquipo">
-                                                    <i class="fa fa" aria-hidden="true"></i> Agregar Equipo
-                                                </button>
-                                            </div>
+                                            <div class="contenedor-botones">
+                                                <div class="form-group col-sm-3 col-xs-12 ">
+                                                    <button type="button" class="btn btn-primary btn-block" id="agregarEquipo">
+                                                        <i class="fa fa" aria-hidden="true"></i> Agregar Equipo
+                                                    </button>
+                                                </div>
 
-                                            <div class="form-group col-sm-3 col-xs-12 ">
-                                                <button type="button" class="btn btn-primary btn-block" id="verListado">
-                                                    <i class="fa fa" aria-hidden="true"></i> Ver Listado
-                                                </button>
+                                                <div class="form-group col-sm-3 col-xs-12 ">
+                                                    <button type="button" class="btn btn-primary btn-block" id="verListado">
+                                                        <i class="fa fa" aria-hidden="true"></i> Ver Listado
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -563,6 +565,68 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Pestaña de Oculta de Seguros -->
+                                    <div class="pantalla-oculta-seguros">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="seguro">Seguro</label>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="seguro" id="seguro"></select>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="tipoPoliza">Tipo Poliza</label>
+                                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoPoliza" id="tipoPoliza"></select>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="numPoliza">N° Poliza:</label>
+                                                            <input type="text" class="form-control input-md cajatexto" name="numPoliza" id="numPoliza">
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <label>Fecha Vencimiento</label>
+                                                                <div class="input-group">
+                                                                    <input type="date" class="form-control" value="2025-03-11">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="montoAsegurado">Monto Asegurado (UF)1:</label>
+                                                            <input type="text" class="form-control input-md cajatexto" name="montoAsegurado" id="montoAsegurado">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-3 col-xs-12">
+                                                            <label for="seleccionarArchivo">Seleccionar Archivo:</label>
+                                                            <input type="file" class="form-control input-md cajatexto" name="seleccionarArchivo" id="seleccionarArchivo" accept="*" data-show-upload="false" data-show-caption="false">
+                                                        </div>
+
+                                                        <div class="contenedor-botones">
+                                                            <div class="form-group col-sm-3 col-xs-12 ">
+                                                                <button type="button" class="btn btn-primary btn-block" id="agregarSeguro">
+                                                                    <i class="fa fa" aria-hidden="true"></i> Agregar
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-3 col-xs-12 ">
+                                                                <button type="button" class="btn btn-primary btn-block" id="verListadoSeguro">
+                                                                    <i class="fa fa" aria-hidden="true"></i> Ver Listado
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Cerrás otras pestañas acá si tenés más -->
                             </div>
@@ -581,7 +645,6 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>  Ver Listado
                         </button>
                     </div>
-                    </section>
                 </form>
             </div>
         </div>
@@ -591,6 +654,10 @@
 
     <style>
         .pantalla-oculta-proveedor {
+            visibility: hidden;
+        }
+
+        .pantalla-oculta-seguros {
             visibility: hidden;
         }
     </style>
@@ -717,14 +784,7 @@
             margin-top: 20px;
         }
 
-        .contenedor-botones {
-            margin-top: 30px;
-            /* mueve ambos botones más abajo */
-
-            gap: 20px;
-            /* espacio horizontal entre botones */
-
-        }
+    
     </style>
 
     <script>
@@ -759,6 +819,41 @@
                 idEquipoProveedores.style.display = 'none';
             });
         });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Script para el botón "Ver Listado" de seguros
+            const btnVerListadoSeguro = document.getElementById("verListadoSeguro");
+            const pantallaOcultaSeguros = document.querySelector(".pantalla-oculta-seguros");
+            const idSeguros = document.getElementById("idSeguros");
+
+            if (btnVerListadoSeguro) {
+                btnVerListadoSeguro.addEventListener("click", function() {
+                    // Oculta el formulario
+                    pantallaOcultaSeguros.style.visibility = "hidden";
+
+                    // Asegura que el listado esté visible
+                    idSeguros.style.display = "block";
+                });
+            }
+
+            // Script para el botón "Nuevo Seguro"
+            const btnNuevoSeguro = document.getElementById('nuevoSeguro');
+
+            if (btnNuevoSeguro) {
+                btnNuevoSeguro.addEventListener('click', function() {
+                    // Mostrar formulario de seguros
+                    pantallaOcultaSeguros.style.visibility = 'visible';
+
+                    // Ocultar listado de seguros
+                    idSeguros.style.display = 'none';
+                });
+            }
+        });
+    </script>
+
     </script>
 
     <script>
