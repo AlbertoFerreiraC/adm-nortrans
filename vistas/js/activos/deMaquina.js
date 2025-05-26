@@ -11,6 +11,8 @@ $(document).ready(function () {
         marcaChasis();
         marcaCarroceria();
         modeloCarroceria();
+        aseguradora();
+        tipoPoliza();
     });
 
     $('#nuevoEquipo').click(function () {
@@ -19,25 +21,16 @@ $(document).ready(function () {
     });
 
     $('#btnGrabarFicha').click(function () {
-        if ($("#motivoAgregar").val() != "" &&
-            $("#divisionAgregar").val() != "" &&
-            $("#cargoAgregar").val() != "" &&
-            $("#razonAgregar").val() != "" &&
-            $("#centroDecostoAgregar").val() != "-" &&
-            $("#cantidadAgregar").val() != "-" &&
-            $("#equipoAgregar").val() != "" &&
-            $("#licenciaAgregar").val() != "-" &&
-            $("#tipoturnoAgregar").val() != "-" &&
-            $("#tipocontratoAgregar").val() != "-" &&
-            $("#fecharequeridaAgregar").val() != "-" &&
-            $("#remuneracionAgregar").val() != "-" &&
-            $("#observacionAgregar").val() != "-" &&
-            $("#preapruebaAgregar").val() != "-" &&
-            $("#apruebaAgregar").val() != "-" &&
-            $("#observacionEntrevistaPsicolaboral").val() != "-" &&
-            $("#observacionEntrevistaTecnica").val() != "-" &&
-            $("#observacionPruebaConduccion").val() != "-" &&
-            $("#comentarioAgregar").val() != "-") {
+        if ($("#idpatente").val() != "" &&
+            $("#numInterno").val() != "" &&
+            $("#tipoMaquina").val() != "" &&
+            $("#añoMaquina").val() != "" &&
+            $("#capacidadTanque").val() != "-" &&
+            $("#secuenciaMantencion").val() != "-" &&
+            $("#asientosmaquina").val() != "" &&
+            $("#numPuertas").val() != "-" &&
+            $("#centroCosto").val() != "-" &&
+            $("#idPatron").val() != "-") {
             agregarDatos();
         } else {
             swal({
@@ -267,27 +260,64 @@ function tipoEquipamiento() {
     });
 }
 
-function agregarDatos() {
-    var datos = '{"motivo":"' + $("#motivoAgregar").val() +
-        '","division":"' + $("#divisionAgregar").val() +
-        '","usuario":"' + $("#idUsuario").val() +
-        '","cargo":"' + $("#cargoAgregar").val() +
-        '","empresa":"' + $("#empresaAgregar").val() +
-        '","centroDeCosto":"' + $("#centroDecostoAgregar").val() +
-        '","cantidadSolicitada":"' + $("#cantidadAgregar").val() +
-        '","tipoBus":"' + $("#equipoAgregar").val() +
-        '","licenciaDeConducir":"' + $("#licenciaAgregar").val() +
-        '","turnosLaborales":"' + $("#tipoturnoAgregar").val() +
-        '","tipo_contrato":"' + $("#tipocontratoAgregar").val() +
-        '","fechaRequerida":"' + $("#fecharequeridaAgregar").val() +
-        '","fechaTermino":"' + $("#fechaterminoAgregar").val() +
-        '","remuneracion":"' + $("#remuneracionAgregar").val() +
-        '","comentario_general":"' + $("#comentarioAgregar").val() +
-        '","preAprueba":"' + $("#preapruebaAgregar").val() +
-        '","aprueba":"' + $("#apruebaAgregar").val();
+function aseguradora() {
+    $('#seguro').empty();
+    $('#seguro').append('<option value ="-">Seleccionar...</option>');
+    var listarseguro = "";
 
     $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funAgregar.php",
+        url: "../api_adm_nortrans/aseguradora/funListar.php",
+        method: "GET",
+        cache: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listarseguro += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#seguro').append(listarseguro);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar tipo de documentos: ", error);
+        }
+    });
+}
+
+function tipoPoliza() {
+    $('#tipoPoliza').empty();
+    $('#tipoPoliza').append('<option value ="-">Seleccionar...</option>');
+    var listartipoPoliza = "";
+
+    $.ajax({
+        url: "../api_adm_nortrans/tipoPolizaSeguro/funListar.php",
+        method: "GET",
+        cache: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listartipoPoliza += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#tipoPoliza').append(listartipoPoliza);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar tipo de documentos: ", error);
+        }
+    });
+}
+
+function agregarDatos() {
+    var datos = '{"patente":"' + $("#idpatente").val() +
+        '","numero_interno_maquina":"' + $("#numInterno").val() +
+        '","tipo_maquina":"' + $("#tipoMaquina").val() +
+        '","anho_maquina":"' + $("#añoMaquina").val() +
+        '","capacidad_estanque":"' + $("#capacidadTanque").val() +
+        '","secuencia_mantenimiento":"' + $("#secuenciaMantencion").val() +
+        '","numero_asientos":"' + $("#asientosmaquina").val() +
+        '","numero_puertas":"' + $("#numPuertas").val() +
+        '","centro_de_costo":"' + $("#centroCosto").val() +
+        '","padron":"' + $("#idPatron").val();
+
+    $.ajax({
+        url: "../api_adm_nortrans/deMaquina/funAgregar.php",
         method: "POST",
         cache: false,
         data: datos,

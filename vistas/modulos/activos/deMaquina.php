@@ -296,7 +296,6 @@
                                     </div>
                                 </div>
 
-
                                 <!-- Pestaña de Documentos -->
                                 <div class="tab-pane fade" id="documentos-content" role="tabpanel">
                                     <div class="panel-group" id="idDocumentos">
@@ -488,10 +487,10 @@
                                                 <select class="form-control input-md cajatexto solo-ruc" name="proveedorEquipamiento" id="proveedorEquipamiento"></select>
                                             </div>
 
-                                        <div class="form-group col-sm-3 col-xs-12">
-                                            <label for="tipoEquipamiento">Tipo Equipamiento</label>
-                                            <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
-                                        </div>
+                                            <div class="form-group col-sm-3 col-xs-12">
+                                                <label for="tipoEquipamiento">Tipo Equipamiento</label>
+                                                <select class="form-control input-md cajatexto solo-ruc" name="tipoEquipamiento" id="tipoEquipamiento"></select>
+                                            </div>
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -573,7 +572,7 @@
                                                 <div class="box-body">
                                                     <div class="row">
                                                         <div class="form-group col-sm-3 col-xs-12">
-                                                            <label for="seguro">Seguro</label>
+                                                            <label for="seguro">Aseguradora</label>
                                                             <select class="form-control input-md cajatexto solo-ruc" name="seguro" id="seguro"></select>
                                                         </div>
 
@@ -642,7 +641,7 @@
                         </button>
 
                         <button type="button" class="btn btn-primary" id="btnListadoFicha" data-dismiss="modal">
-                            <i class="fa fa-bars" aria-hidden="true"></i>  Ver Listado
+                            <i class="fa fa-bars" aria-hidden="true"></i> Ver Listado
                         </button>
                     </div>
                 </form>
@@ -783,72 +782,86 @@
             margin-left: 350px;
             margin-top: 20px;
         }
-
-    
     </style>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const btnVerListado = document.getElementById("verListado");
-            const pantallaOculta = document.querySelector(".pantalla-oculta-proveedor");
-            const equipoProveedores = document.getElementById("idEquipoProveedores");
-
-            btnVerListado.addEventListener("click", function() {
-                // Oculta el formulario (por visibilidad)
-                pantallaOculta.style.visibility = "hidden";
-
-                // Asegura que el listado esté visible
-                equipoProveedores.style.display = "block";
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obtener el botón y los elementos que queremos mostrar/ocultar
             const btnNuevoEquipo = document.getElementById('nuevoEquipo');
+            const btnVerListado = document.getElementById("verListado");
+
             const pantallaOcultaProveedor = document.querySelector('.pantalla-oculta-proveedor');
             const idEquipoProveedores = document.getElementById('idEquipoProveedores');
 
-            // Agregar evento de clic al botón
-            btnNuevoEquipo.addEventListener('click', function() {
-                // Mostrar pantalla-oculta-proveedor (cambiar de visibility:hidden a visible)
-                pantallaOcultaProveedor.style.visibility = 'visible';
+            // Ocultar el formulario desde el inicio de forma correcta
+            if (pantallaOcultaProveedor) {
+                pantallaOcultaProveedor.style.visibility = "hidden";
+                pantallaOcultaProveedor.style.position = "absolute";
+                pantallaOcultaProveedor.style.height = "0";
+                pantallaOcultaProveedor.style.overflow = "hidden";
+            }
 
-                // Ocultar idEquipoProveedores
-                idEquipoProveedores.style.display = 'none';
-            });
+            // Evento: Mostrar el formulario y ocultar el listado
+            if (btnNuevoEquipo) {
+                btnNuevoEquipo.addEventListener('click', function() {
+                    pantallaOcultaProveedor.style.visibility = "visible";
+                    pantallaOcultaProveedor.style.position = "static";
+                    pantallaOcultaProveedor.style.height = "auto";
+                    pantallaOcultaProveedor.style.overflow = "visible";
+
+                    idEquipoProveedores.style.display = 'none';
+                });
+            }
+
+            // Evento: Mostrar el listado y ocultar el formulario
+            if (btnVerListado) {
+                btnVerListado.addEventListener("click", function() {
+                    pantallaOcultaProveedor.style.visibility = "hidden";
+                    pantallaOcultaProveedor.style.position = "absolute";
+                    pantallaOcultaProveedor.style.height = "0";
+                    pantallaOcultaProveedor.style.overflow = "hidden";
+
+                    idEquipoProveedores.style.display = "block";
+                });
+            }
         });
     </script>
 
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Script para el botón "Ver Listado" de seguros
             const btnVerListadoSeguro = document.getElementById("verListadoSeguro");
             const pantallaOcultaSeguros = document.querySelector(".pantalla-oculta-seguros");
             const idSeguros = document.getElementById("idSeguros");
 
+            // Ocultar formulario desde el inicio sin dejar espacio
+            if (pantallaOcultaSeguros) {
+                pantallaOcultaSeguros.style.visibility = "hidden";
+                pantallaOcultaSeguros.style.position = "absolute";
+                pantallaOcultaSeguros.style.height = "0";
+                pantallaOcultaSeguros.style.overflow = "hidden";
+            }
+
             if (btnVerListadoSeguro) {
                 btnVerListadoSeguro.addEventListener("click", function() {
-                    // Oculta el formulario
                     pantallaOcultaSeguros.style.visibility = "hidden";
+                    pantallaOcultaSeguros.style.position = "absolute";
+                    pantallaOcultaSeguros.style.height = "0";
+                    pantallaOcultaSeguros.style.overflow = "hidden";
 
-                    // Asegura que el listado esté visible
                     idSeguros.style.display = "block";
                 });
             }
 
-            // Script para el botón "Nuevo Seguro"
             const btnNuevoSeguro = document.getElementById('nuevoSeguro');
 
             if (btnNuevoSeguro) {
                 btnNuevoSeguro.addEventListener('click', function() {
-                    // Mostrar formulario de seguros
-                    pantallaOcultaSeguros.style.visibility = 'visible';
+                    pantallaOcultaSeguros.style.visibility = "visible";
+                    pantallaOcultaSeguros.style.position = "static";
+                    pantallaOcultaSeguros.style.height = "auto";
+                    pantallaOcultaSeguros.style.overflow = "visible";
 
-                    // Ocultar listado de seguros
-                    idSeguros.style.display = 'none';
+                    idSeguros.style.display = "none";
                 });
             }
         });
