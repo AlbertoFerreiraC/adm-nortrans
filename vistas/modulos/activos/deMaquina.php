@@ -78,36 +78,17 @@
                                 <div class="table-responsive">
                                     <div class="box-body">
                                         <div id="lista">
-                                            <table class="table table-bordered table-striped dt-responsive" width="100%" style="text-align: center;">
+                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width:120px">
-                                                            <center>Patente</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>N° Interno</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Tipo Maquina</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Tipo Bus</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Marca/<BR>Modelo chasis</center>
-                                                        </th>
-                                                        <th>
-                                                            <center> Tipo Mantencion</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Centro Costo</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Estado </center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Editar</center>
-                                                        </th>
+                                                        <th onclick="sortTable(0, this)">Patente</th>
+                                                        <th onclick="sortTable(1, this)">Interno</th>
+                                                        <th onclick="sortTable(2, this)">Tipo Maquina</th>
+                                                        <th onclick="sortTable(3, this)">Tipo Bus</th>
+                                                        <th onclick="sortTable(4, this)">Modelo chasis</th>
+                                                        <th onclick="sortTable(5, this)">Centro Costo</th>
+                                                        <th onclick="sortTable(6, this)">Estado</th>
+                                                        <th onclick="sortTable(7, this)">Editar</th>
                                                     </tr>
 
                                                 </thead>
@@ -355,28 +336,29 @@
 
                                                         <div class="table-container2">
                                                             <div class="table-responsive2">
-                                                                <table class="table table-bordes2" id="tablaLaboral">
+                                                                <table class="table table-bordered" id="tablaLaboral">
                                                                     <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>Tipo de Documento</th>
-                                                                            <th>N" Documento</th>
+                                                                            <th>N° Documento</th>
                                                                             <th>Fecha desde</th>
                                                                             <th>Fecha hasta</th>
-                                                                            <th>Documento </th>
-                                                                            <th>Eliminar </th>
+                                                                            <th>Documento</th>
+                                                                            <th>Eliminar</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td colspan="6" style="padding: 8px; text-align: center; border: 1px solid #ddd;">Ningún dato disponible en esta tabla</td>
+                                                                            <td colspan="6" class="text-center">Ningún dato disponible en esta tabla</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                                                                <div class="table-footer">
                                                                     Mostrando registros del 0 al 0 de un total de 0 registros
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -451,7 +433,7 @@
                                                         </div>
                                                         <div class="table-container2">
                                                             <div class="table-responsive2">
-                                                                <table class="table table-bordes2" id="tablaLaboral">
+                                                                <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
                                                                     <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>Rut Proveedor</th>
@@ -679,14 +661,43 @@
             font-size: 10px;
             border-collapse: separate !important;
             border-spacing: 0;
+            text-align: center;
         }
 
         #lista th {
             font-size: 13px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd !important;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            padding-right: 20px;
+            /* Espacio para la flecha */
+        }
+
+        #lista th.asc::after {
+            content: "▲";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #555;
+        }
+
+        #lista th.desc::after {
+            content: "▼";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #555;
         }
 
         #lista td {
             font-size: 15px;
+            border: 1px solid #ddd !important;
         }
 
         .panel-opcion-link:focus,
@@ -695,9 +706,7 @@
         }
 
         .table-container {
-            position: relative;
-            top: -40px;
-            margin: 10px;
+            margin: 0 15px 15px 15px;
         }
 
         .table-responsive {
@@ -708,73 +717,35 @@
             margin-bottom: 0;
         }
 
-        .table>thead>tr>th {
-            background-color: #f4f4f4;
-            border-bottom: 2px solid #ddd;
-            border: 1px solid #ddd !important;
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
         }
 
         .table-bordered {
             border: 1px solid #ddd !important;
         }
-
-        .table-bordered>thead>tr>th,
-        .table-bordered>tbody>tr>td {
-            border: 1px solid #ddd !important;
-        }
-
-        .table-striped>tbody>tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-
-
         .records-control {
             top: 80px;
             right: 100px;
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-
-
         .table-controls {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            margin: 20px;
+            margin: 0 15px 5px 15px;
+            /* menos espacio debajo */
+            flex-wrap: wrap;
         }
-
         .control-left,
         .control-right {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
+            margin: 5px;
         }
-
-        /* Inputs y selects responsive */
-        .control-left select,
         .control-right input {
-            padding: 4px 6px;
-            font-size: 14px;
-            max-width: 400px;
-        }
-
-        /* Comportamiento en pantallas pequeñas */
-        @media (max-width: 600px) {
-            .table-controls {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .control-left,
-            .control-right {
-                width: 80%;
-                justify-content: space-between;
-            }
+            max-width: 200px;
         }
 
         .buttonAggArchivo {
@@ -782,7 +753,110 @@
             margin-left: 350px;
             margin-top: 20px;
         }
+
+        .table-responsive2 {
+            width: 100%;
+            overflow-x: auto;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            border: 1px solid #ddd !important;
+            padding: 8px;
+            white-space: nowrap;
+        }
+        .thead-dark th {
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+        .table-footer {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #666;
+            text-align: left;
+         
+        }
     </style>
+
+    <script>
+        let sortDirection = [];
+
+        function sortTable(columnIndex, thElement) {
+            const table = document.getElementById("tablaDocumentos");
+            const rows = Array.from(table.tBodies[0].rows);
+            const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
+            sortDirection[columnIndex] = dir;
+
+            // Limpiar clases de flechas en todos los th
+            const headers = table.querySelectorAll("th");
+            headers.forEach((th, i) => {
+                th.classList.remove("asc", "desc");
+                if (i === columnIndex) th.classList.add(dir);
+            });
+
+            rows.sort((a, b) => {
+                let aText = a.cells[columnIndex].innerText.trim();
+                let bText = b.cells[columnIndex].innerText.trim();
+
+                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                const isDate = datePattern.test(aText) && datePattern.test(bText);
+
+                if (isDate) {
+                    return dir === "asc" ?
+                        new Date(aText) - new Date(bText) :
+                        new Date(bText) - new Date(aText);
+                }
+
+                return dir === "asc" ?
+                    aText.localeCompare(bText, 'es', {
+                        numeric: true
+                    }) :
+                    bText.localeCompare(aText, 'es', {
+                        numeric: true
+                    });
+            });
+
+            const tbody = table.tBodies[0];
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+
+        function filterTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.querySelector("#lista table");
+            const rows = table.tBodies[0].rows;
+
+            Array.from(rows).forEach(row => {
+                const cells = Array.from(row.cells);
+                const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+                row.style.display = match ? "" : "none";
+            });
+        }
+
+        function updateVisibleRows() {
+            const limit = parseInt(document.getElementById("entriesSelect").value);
+            const table = document.querySelector("#lista table");
+            const rows = Array.from(table.tBodies[0].rows);
+
+            let visibleCount = 0;
+            rows.forEach(row => {
+                if (row.style.display !== "none") {
+                    visibleCount++;
+                    row.style.display = visibleCount <= limit ? "" : "none";
+                }
+            });
+        }
+
+        // Vincular búsqueda con límite dinámicamente
+        document.getElementById("searchInput").addEventListener("input", () => {
+            filterTable();
+            updateVisibleRows();
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
