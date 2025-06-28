@@ -157,6 +157,48 @@
 
 			<li class="treeview">
 				<a href="#">
+					<i class="fa fa-calculator"></i>
+					<span>Contabilidad</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-search"></i>
+							<span>Consulta</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu ">
+							<li><a href="docInformeMaquina"><i class="fa fa-key"></i>Caja Chica</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-wrench"></i>
+							<span>Mantenedor</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+							<li><a href="maestroProveedor"><i class="fa fa-cog"></i>Maestro Proveedor</a></li>
+							<li><a href="condiciondepago"><i class="fa fa-cog"></i>Condicion de Pago</a></li>
+							<li><a href="tipoProveedor"><i class="fa fa-cog"></i>Tipo de Proveedor</a></li>
+							<li><a href="comuna"><i class="fa fa-cog"></i>Comuna</a></li>
+
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+
+			<li class="treeview">
+				<a href="#">
 					<i class="fa fa-cog"></i>
 					<span>Configuraciones</span>
 					<span class="pull-right-container">
