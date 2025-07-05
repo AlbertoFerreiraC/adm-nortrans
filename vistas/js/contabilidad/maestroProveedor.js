@@ -1,9 +1,11 @@
 $(document).ready(function () {
 
     cargarDatosTabla();
+    
     comuna();
     condicionDePago();
     tipoProveedor();
+    criticidad();
 
     $('#btnGuardar').click(function () {
         agregarDatos();
@@ -77,12 +79,10 @@ function cargarDatosTabla() {
 
             $('#tabla tbody').append(fila);
 
-            // Botón Modificar
             $('.btnModificar').click(function () {
                 obtenerDatosParaModificar(this.id);
             });
 
-            // Botón Eliminar con SweetAlert
             $('.btnEliminar').click(function () {
                 var id_registro = this.id;
                 swal({
@@ -192,13 +192,13 @@ function obtenerDatosParaModificar(valor) {
                 comunaMod(response[i].comuna);
                 condicionDePagoMod(response[i].condicion_de_pago);
                 tipoProveedorMod(response[i].tipo_de_proveedor);
+                criticidadMod(response[i].criticidad);
 
                 $("#descripcionModificar").val(response[i].descripcion);
                 $("#rutModificar").val(response[i].rut);
                 $("#telefonoModificar").val(response[i].telefono_contacto);
                 $("#correoModificar").val(response[i].correo_contacto);
                 $("#direccionModificar").val(response[i].direccion);
-                $("#criticidadModificar").val(response[i].criticidad);
                 $("#idModificar").val(response[i].id);
             }
 
@@ -383,6 +383,26 @@ function tipoProveedor() {
     });
 }
 
+function criticidad() {
+    $('#criticidadAgregar').empty();
+    $('#criticidadAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url: "../api_adm_nortrans/criticidad/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#criticidadAgregar').append(listaEmpresa);
+        }
+    });
+}
+
 /*AREA PARA Modificar*/
 function comunaMod() {
     $('#comunaModificar').empty();
@@ -440,6 +460,26 @@ function tipoProveedorMod() {
             }
             $('#tipoProveedorModificar').append(fila);
             $("#tipoProveedorModificar option[value='" + id + "']").attr("selected", true);
+        }
+    });
+}
+
+function criticidadMod() {
+    $('#criticidadModificar').empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/criticidad/funListar.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+            }
+            $('#criticidadModificar').append(fila);
+            $("#criticidadModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }

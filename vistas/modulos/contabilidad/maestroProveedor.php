@@ -139,35 +139,34 @@ MODAL AGREGAR TAREA
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label for="criticidadAgregar">Criticidad:</label>
+                            <select class="form-control input-md cajatexto" name="criticidadAgregar" id="criticidadAgregar"></select>
+                        </div>
+
+                        <div class="form-group col-md-6">
                             <label for="nuevoNombre">Descripción:</label>
-                            <input type="text" class="form-control input-md" name="descripcionAgregar" id="descripcionAgregar" placeholder="Ingresar Descripción" required>
+                            <input type="text" class="form-control input-md cajatexto" name="descripcionAgregar" id="descripcionAgregar" placeholder="Ingresar Descripción" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="rutAgregar">RUT:</label>
-                            <input type="text" class="form-control input-md" name="rutAgregar" id="rutAgregar" placeholder="Ingresar Rut" required>
+                            <input type="text" class="form-control input-md cajatexto" name="rutAgregar" id="rutAgregar" placeholder="Ingresar Rut" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="telefonoAgregar">Telefono:</label>
-                            <input type="text" class="form-control input-md" name="telefonoAgregar" id="telefonoAgregar" placeholder="Ingresar Telefono de Contacto" required>
+                            <input type="text" class="form-control input-md cajatexto" name="telefonoAgregar" id="telefonoAgregar" placeholder="Ingresar Telefono de Contacto" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="correoAgregar">Correo:</label>
-                            <input type="text" class="form-control input-md" name="correoAgregar" id="correoAgregar" placeholder="Ingresar Correo de Contacto" required>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="direccionAgregar">Dirección:</label>
-                            <input type="text" class="form-control input-md" name="direccionAgregar" id="direccionAgregar" placeholder="Ingresar Dirección" required>
+                            <input type="text" class="form-control input-md cajatexto" name="correoAgregar" id="correoAgregar" placeholder="Ingresar Correo de Contacto" required>
                         </div>
 
                         <div class="form-group col-sm-12 col-xs-12">
-                            <label for="criticidadAgregar">Criticidad:</label>
-                            <input type="text" class="form-control input-md" name="criticidadAgregar" id="criticidadAgregar" placeholder="Ingresar la Criticidad" required>
+                            <label for="direccionAgregar">Dirección:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="direccionAgregar" id="direccionAgregar" placeholder="Ingresar Dirección" required>
                         </div>
-
 
                     </div>
 
@@ -243,41 +242,40 @@ MODAL EDITAR TAREA
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label for="criticidadModificar">Criticidad:</label>
+                            <select class="form-control input-md cajatexto" name="criticidadModificar" id="criticidadModificar"></select>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
                             <label for="nuevoNombre">Descripción:</label>
-                            <input type="text" class="form-control input-md" name="descripcionModificar" id="descripcionModificar" required>
+                            <input type="text" class="form-control input-md cajatexto" name="descripcionModificar" id="descripcionModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="rutModificar">RUT:</label>
-                            <input type="text" class="form-control input-md" name="rutModificar" id="rutModificar" required>
+                            <input type="text" class="form-control input-md cajatexto" name="rutModificar" id="rutModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="telefonoModificar">Telefono:</label>
-                            <input type="text" class="form-control input-md" name="telefonoModificar" id="telefonoModificar" required>
+                            <input type="text" class="form-control input-md cajatexto" name="telefonoModificar" id="telefonoModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="correoModificar">Correo:</label>
-                            <input type="text" class="form-control input-md" name="correoModificar" id="correoModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="direccionModificar">Dirección:</label>
-                            <input type="text" class="form-control input-md" name="direccionModificar" id="direccionModificar" required>
+                            <input type="text" class="form-control input-md cajatexto" name="correoModificar" id="correoModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-sm-12 col-xs-12">
-                            <label for="criticidadModificar">Criticidad:</label>
-                            <input type="text" class="form-control input-md" name="criticidadModificar" id="criticidadModificar" required>
+                            <label for="direccionModificar">Dirección:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="direccionModificar" id="direccionModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
-
                     </div>
 
                 </div>

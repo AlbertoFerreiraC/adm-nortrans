@@ -173,7 +173,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu ">
-							<li><a href="docInformeMaquina"><i class="fa fa-key"></i>Caja Chica</a></li>
+							<li><a href=""><i class="fa fa-key"></i>Caja Chica</a></li>
 						</ul>
 					</li>
 
@@ -190,6 +190,7 @@
 							<li><a href="condiciondepago"><i class="fa fa-cog"></i>Condicion de Pago</a></li>
 							<li><a href="tipoProveedor"><i class="fa fa-cog"></i>Tipo de Proveedor</a></li>
 							<li><a href="comuna"><i class="fa fa-cog"></i>Comuna</a></li>
+							<li><a href="criticidad"><i class="fa fa-cog"></i>Criticidad</a></li>
 
 						</ul>
 					</li>

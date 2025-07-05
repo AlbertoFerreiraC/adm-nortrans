@@ -128,7 +128,8 @@ session_start();
         "cajaChica",
         "condiciondepago",
         "tipoProveedor",
-        "comuna"
+        "comuna",
+        "criticidad"
       ];
 
       // GENERALES
