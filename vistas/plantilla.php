@@ -129,7 +129,8 @@ session_start();
         "condiciondepago",
         "tipoProveedor",
         "comuna",
-        "criticidad"
+        "criticidad",
+        "cliente"
       ];
 
       // GENERALES

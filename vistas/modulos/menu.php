@@ -191,6 +191,7 @@
 							<li><a href="tipoProveedor"><i class="fa fa-cog"></i>Tipo de Proveedor</a></li>
 							<li><a href="comuna"><i class="fa fa-cog"></i>Comuna</a></li>
 							<li><a href="criticidad"><i class="fa fa-cog"></i>Criticidad</a></li>
+							<li><a href="cliente"><i class="fa fa-cog"></i>Clientes</a></li>
 
 						</ul>
 					</li>
