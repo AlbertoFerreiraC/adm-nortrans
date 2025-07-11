@@ -201,6 +201,99 @@
 
 			<li class="treeview">
 				<a href="#">
+					<i class="fa fa-cubes"></i>
+					<span>Bodegas</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-sign-out"></i>
+							<span>Salidas</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href=""><i class="fa fa-wrench"></i> Entrega repuesto OT</a></li>
+							<li><a href=""><i class="fa fa-archive"></i> Entrega de Productos</a></li>
+							<li><a href=""><i class="fa fa-retweet"></i> Generar traspaso bodega</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Solicitar anulación<br>de entrega SMS</a></li>
+							<li><a href=""><i class="fa fa-check-circle"></i> Aprobar solicitud anulación<br>Entrega SMS</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-sign-in"></i>
+							<span>Entradas</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href=""><i class="fa fa-file-text"></i> Recepción orden compra</a></li>
+							<li><a href=""><i class="fa fa-check-circle"></i> Recepción de traspaso</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-cubes"></i>
+							<span>Inventario</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href=""><i class="fa fa-file-text"></i> Informe de Inventario</a></li>
+							<li><a href=""><i class="fa fa-check-circle"></i> Kardex producto</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Ajuste de inventario</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Stock Bodega - Producto</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Quiebre de Stock</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i>
+							<span>Consulta</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu ">
+							<li><a href=""><i class="fa fa-file-text"></i> Lista SMS Pendiente</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Lista de recepción de OC</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Lista de entrega de SMS</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Consulta Ajuste de inventario</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i> Informe de entrega SMS</a></li>
+							<li><a href=""><i class="fa fa-check-circle"></i> Evaluación de proveedor</a></li>
+						</ul>
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-wrench"></i>
+							<span>Mantenedor</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+							<li><a href="familiaRepuesto"><i class="fa fa-cog"></i>Familia Repuestos</a></li>
+
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+
+			<li class="treeview">
+				<a href="#">
 					<i class="fa fa-cog"></i>
 					<span>Configuraciones</span>
 					<span class="pull-right-container">
