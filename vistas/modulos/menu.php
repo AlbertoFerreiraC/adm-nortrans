@@ -284,10 +284,20 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href="familiaRepuesto"><i class="fa fa-cog"></i>Familia Repuestos</a></li>
-
+							<li><a href="maestroProducto"><i class="fa fa-th"></i> Maestro de producto</a></li>
+							<li><a href="familiaRepuesto"><i class="fa fa-cogs"></i> Familia Repuestos</a></li>
+							<li><a href="subfamiliaRepuesto"><i class="fa fa-sitemap"></i> Sub Familia Repuestos</a></li>
+							<li><a href="demarca"><i class="fa fa-tags"></i> De Marca</a></li>
+							<li><a href="deModelo"><i class="fa fa-car"></i> De Modelo</a></li>
+							<li><a href="sistemaAplicacion"><i class="fa fa-cogs"></i> Sistema de Aplicación</a></li>
+							<li><a href="unidadMedida"><i class="fa fa-balance-scale"></i> Unidad de Medida</a></li>
+							<li><a href="motivoAjuste"><i class="fa fa-warning"></i> Motivo Ajuste Inventario</a></li>
+							<li><a href="tipodocAjusteInventario"><i class="fa fa-file-text"></i> Tipo Documento de Ajuste<br>Inventario</a></li>
+							<li><a href="categoria"><i class="fa fa-th-large"></i> Categoría</a></li>
+							<li><a href="subCategoria"><i class="fa fa-th"></i> Sub Categoría</a></li>
 						</ul>
 					</li>
+
 
 				</ul>
 			</li>

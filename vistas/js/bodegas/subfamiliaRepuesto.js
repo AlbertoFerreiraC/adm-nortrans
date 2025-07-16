@@ -37,7 +37,7 @@ function cargarDatosTabla() {
     $("#tabla tbody").empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/familiaRepuestos/funListar.php",
+        url: "../api_adm_nortrans/subfamiliaRepuestos/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -99,7 +99,7 @@ function agregarDatos() {
         "descripcion": $("#descripcionAgregar").val()
     };
     $.ajax({
-        url: "../api_adm_nortrans/familiaRepuestos/funAgregar.php",
+        url: "../api_adm_nortrans/subfamiliaRepuestos/funAgregar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -152,7 +152,7 @@ function obtenerDatosParaModificar(valor) {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/familiaRepuestos/funDatosParaModificar.php",
+        url: "../api_adm_nortrans/subfamiliaRepuestos/funDatosParaModificar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -183,7 +183,7 @@ function modificarDatos() {
         "id": $("#idModificar").val()
     };
     $.ajax({
-        url: "../api_adm_nortrans/familiaRepuestos/funModificar.php",
+        url: "../api_adm_nortrans/subfamiliaRepuestos/funModificar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -236,7 +236,7 @@ function eliminarDatos(valor) {
         "id": valor
     };
     $.ajax({
-        url: "../api_adm_nortrans/familiaRepuestos/funEliminar.php",
+        url: "../api_adm_nortrans/subfamiliaRepuestos/funEliminar.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),

@@ -135,7 +135,17 @@ session_start();
 
       // Bodegas
       $paginasBodegas = [
-        "familiaRepuesto"
+        "familiaRepuesto",
+        "subfamiliaRepuesto",
+        "demarca",
+        "deModelo",
+        "sistemaAplicacion",
+        "unidadMedida",
+        "motivoAjuste",
+        "categoria",
+        "subCategoria",
+        "tipodocAjusteInventario",
+        "maestroProducto"
       ];
 
       // GENERALES

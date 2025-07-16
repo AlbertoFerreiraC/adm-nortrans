@@ -4,14 +4,14 @@
 
         <h1>
 
-            Administrar Familia Repuestos
+            Administrar Unidades de Medida
 
         </h1>
         <ol class="breadcrumb">
 
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Bodegas</a></li>
 
-            <li class="active">Administrar Familia Repuestos</li>
+            <li class="active">Administrar Unidades de Medida</li>
 
         </ol>
 
@@ -191,7 +191,7 @@ MODAL EDITAR TAREA
 
 </div>
 
-<script src="vistas/js/bodegas/familiaRepuesto.js"></script>
+<script src="vistas/js/bodegas/unidadMedida.js"></script>
 
 
 <style>
