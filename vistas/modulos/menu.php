@@ -266,11 +266,11 @@
 							</span>
 						</a>
 						<ul class="treeview-menu ">
-							<li><a href=""><i class="fa fa-file-text"></i> Lista SMS Pendiente</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Lista de recepción de OC</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Lista de entrega de SMS</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Consulta Ajuste de inventario</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Informe de entrega SMS</a></li>
+							<li><a href="listaSmsPendientes"><i class="fa fa-file-text"></i> Lista SMS Pendiente</a></li>
+							<li><a href="listaRecepcionOC"><i class="fa fa-file-text"></i> Lista de recepción de OC</a></li>
+							<li><a href="listaEntregaSms"><i class="fa fa-file-text"></i> Lista de entrega de SMS</a></li>
+							<li><a href="ajusteInventario"><i class="fa fa-file-text"></i> Consulta Ajuste de inventario</a></li>
+							<li><a href="informeEntregaSms"><i class="fa fa-file-text"></i> Informe de entrega SMS</a></li>
 							<li><a href=""><i class="fa fa-check-circle"></i> Evaluación de proveedor</a></li>
 						</ul>
 					</li>
@@ -284,7 +284,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href="maestroProducto"><i class="fa fa-th"></i> Maestro de producto</a></li>
+							<li><a href="maestroProducto"><i class="fa fa-th"></i> Maestro de Producto</a></li>
+							<li><a href="maestroRepuesto"><i class="fa fa-th"></i> Maestro de Repuesto</a></li>
 							<li><a href="familiaRepuesto"><i class="fa fa-cogs"></i> Familia Repuestos</a></li>
 							<li><a href="subfamiliaRepuesto"><i class="fa fa-sitemap"></i> Sub Familia Repuestos</a></li>
 							<li><a href="demarca"><i class="fa fa-tags"></i> De Marca</a></li>

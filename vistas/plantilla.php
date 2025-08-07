@@ -145,7 +145,13 @@ session_start();
         "categoria",
         "subCategoria",
         "tipodocAjusteInventario",
-        "maestroProducto"
+        "maestroProducto",
+        "maestroRepuesto",
+        "listaSmsPendientes",
+        "listaRecepcionOC",
+        "listaEntregaSms",
+        "ajusteInventario",
+        "informeEntregaSms"
       ];
 
       // GENERALES
