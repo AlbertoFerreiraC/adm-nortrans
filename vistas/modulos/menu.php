@@ -296,6 +296,7 @@
 							<li><a href="tipodocAjusteInventario"><i class="fa fa-file-text"></i> Tipo Documento de Ajuste<br>Inventario</a></li>
 							<li><a href="categoria"><i class="fa fa-th-large"></i> Categoría</a></li>
 							<li><a href="subCategoria"><i class="fa fa-th"></i> Sub Categoría</a></li>
+							<li><a href="deBodega"><i class="fa fa-th"></i>De bodega</a></li>
 						</ul>
 					</li>
 

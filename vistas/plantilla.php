@@ -151,7 +151,8 @@ session_start();
         "listaRecepcionOC",
         "listaEntregaSms",
         "ajusteInventario",
-        "informeEntregaSms"
+        "informeEntregaSms",
+        "deBodega"
       ];
 
       // GENERALES

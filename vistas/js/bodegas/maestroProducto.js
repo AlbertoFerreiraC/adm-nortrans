@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     cargarDatosTabla();
-    
+
     categoria();
     Subcategoria();
     unidadMedida();
@@ -62,6 +62,7 @@ function cargarDatosTabla() {
                     fila += '<td>' + response[i].unidad_de_medida + '</td>';
                     fila += '<td>' + response[i].unidad_medida + '</td>';
                     fila += '<td>' + response[i].estado + '</td>';
+                    fila += '<td>' + response[i].idproducto + '</td>';
                     fila += '<td>';
                     fila += '<center>';
                     fila += '<div class="btn-group">';
@@ -184,17 +185,14 @@ function obtenerDatosParaModificar(valor) {
         success: function (response) {
             for (var i in response) {
 
-                comunaMod(response[i].comuna);
-                condicionDePagoMod(response[i].condicion_de_pago);
-                tipoProveedorMod(response[i].tipo_de_proveedor);
-                criticidadMod(response[i].criticidad);
+                categoriaMod(response[i].categoria);
+                subCategoriaMod(response[i].sub_categoria);
+                unidadMedidaMod(response[i].unidad_de_medida);
 
+                $('#tipoProductoModificar option[value="' + response[i].tipo_producto + '"]').attr("selected", true);
                 $("#descripcionModificar").val(response[i].descripcion);
-                $("#rutModificar").val(response[i].rut);
-                $("#telefonoModificar").val(response[i].telefono_contacto);
-                $("#correoModificar").val(response[i].correo_contacto);
-                $("#direccionModificar").val(response[i].direccion);
-                $("#idModificar").val(response[i].id);
+                $("#porUnidadModificar").val(response[i].unidad_medida);
+                $("#stokMinimoModificar").val(response[i].stock_minimo);
             }
 
         }
@@ -211,16 +209,13 @@ function obtenerDatosParaModificar(valor) {
 
 function modificarDatos() {
     var params = {
-        "comuna": $("#comunaModificar").val(),
-        "condicion_de_pago": $("#condiciondepagoModificar").val(),
-        "tipo_de_proveedor": $("#tipoProveedorModificar").val(),
+        "tipo_producto": $("#tipoProductoModificar").val(),
+        "categoria": $("#categoriaModificar").val(),
+        "sub_categoria": $("#subCategoriaModificar").val(),
+        "unidad_de_medida": $("#unidadMedidaModificar").val(),
         "descripcion": $("#descripcionModificar").val(),
-        "rut": $("#rutModificar").val(),
-        "telefono_contacto": $("#telefonoModificar").val(),
-        "correo_contacto": $("#correoModificar").val(),
-        "direccion": $("#direccionModificar").val(),
-        "criticidad": $("#criticidadModificar").val(),
-        "id": $("#idModificar").val()
+        "unidad_medida": $("#porUnidadModificar").val(),
+        "stock_minimo": $("#stokMinimoModificar").val()
     };
     $.ajax({
         url: "../api_adm_nortrans/maestroProducto/funModificar.php",
@@ -379,11 +374,11 @@ function unidadMedida() {
 }
 
 /*AREA PARA Modificar*/
-function comunaMod() {
-    $('#comunaModificar').empty();
+function categoriaMod(id) {
+    $('#categoriaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/comuna/funListar.php",
+        url: "../api_adm_nortrans/categoria/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -391,19 +386,19 @@ function comunaMod() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                fila += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#comunaModificar').append(fila);
-            $("#comunaModificar option[value='" + id + "']").attr("selected", true);
+            $('#categoriaModificar').append(fila);
+            $("#categoriaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
 
-function condicionDePagoMod() {
-    $('#condiciondepagoModificar').empty();
+function subCategoriaMod(id) {
+    $('#subCategoriaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/condiciondepago/funListar.php",
+        url: "../api_adm_nortrans/subCategoria/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -411,19 +406,19 @@ function condicionDePagoMod() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                fila += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#condiciondepagoModificar').append(fila);
-            $("#condiciondepagoModificar option[value='" + id + "']").attr("selected", true);
+            $('#subCategoriaModificar').append(fila);
+            $("#subCategoriaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
 
-function tipoProveedorMod() {
-    $('#tipoProveedorModificar').empty();
+function unidadMedidaMod(id) {
+    $('#unidadMedidaModificar').empty();
     var fila = "";
     $.ajax({
-        url: "../api_adm_nortrans/tipoProveedor/funListar.php",
+        url: "../api_adm_nortrans/unidadMedida/funListar.php",
         method: "GET",
         cache: false,
         contentType: false,
@@ -431,10 +426,10 @@ function tipoProveedorMod() {
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                fila = fila + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
+                fila += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
-            $('#tipoProveedorModificar').append(fila);
-            $("#tipoProveedorModificar option[value='" + id + "']").attr("selected", true);
+            $('#unidadMedidaModificar').append(fila);
+            $("#unidadMedidaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
