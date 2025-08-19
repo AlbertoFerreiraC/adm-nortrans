@@ -4,7 +4,7 @@
 
         <h1>
 
-            Administrar Clases de Maquina
+            Administrar Tipos de asiento
 
         </h1>
 
@@ -12,7 +12,7 @@
 
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Activos</a></li>
 
-            <li class="active">Administrar Clases de Maquina</li>
+            <li class="active">Administrar Tipos de asiento</li>
 
         </ol>
 

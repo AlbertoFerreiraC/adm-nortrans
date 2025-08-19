@@ -152,7 +152,8 @@ session_start();
         "listaEntregaSms",
         "ajusteInventario",
         "informeEntregaSms",
-        "evaluacionProveedor"
+        "evaluacionProveedor",
+        "deBodega"
       ];
 
       // GENERALES

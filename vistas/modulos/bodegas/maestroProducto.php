@@ -147,11 +147,6 @@ MODAL AGREGAR TAREA
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="descripcionAgregar">Descripción:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="descripcionAgregar" id="descripcionAgregar">
-                        </div>
-
-                        <div class="form-group col-md-6">
                             <label for="porUnidadAgregar"># Por Unidad De Medida:</label>
                             <input type="text" class="form-control input-md cajatexto" name="porUnidadAgregar" id="porUnidadAgregar">
                         </div>
@@ -159,6 +154,11 @@ MODAL AGREGAR TAREA
                         <div class="form-group col-md-6">
                             <label for="stokMinimoAgregar">Stock Minimo:</label>
                             <input type="text" class="form-control input-md cajatexto" name="stokMinimoAgregar" id="stokMinimoAgregar">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="descripcionAgregar">Descripción:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="descripcionAgregar" id="descripcionAgregar">
                         </div>
 
                     </div>
@@ -216,57 +216,51 @@ MODAL EDITAR TAREA
                 <div class="modal-body">
 
                     <div class="box-body">
+
                         <div class="form-group col-md-6">
-                            <label for="comunaModificar">Comuna:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="comunaModificar" id="comunaModificar"></select>
+                            <label for="tipoProductoModificar">Tipo Producto:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="tipoProductoModificar" id="tipoProductoModificar">
+                                <option value="" selected>Seleccionar...</option>
+                                <option value="Insumos">Insumos</option>
+                                <option value="Servicios">Servicios</option>
+                                <option value="EPP">EPP</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="categoriaModificar">Categoria:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="categoriaModificar" id="categoriaModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="condiciondepagoModificar">Condicion de Pago:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="condiciondepagoModificar" id="condiciondepagoModificar"></select>
+                            <label for="subCategoriaModificar">Sub Categoria:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="subCategoriaModificar" id="subCategoriaModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="tipoProveedorModificar">Tipo Proveedor:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="tipoProveedorModificar" id="tipoProveedorModificar"></select>
+                            <label for="unidadMedidaModificar">Unidad de Medida:</label>
+                            <select class="form-control input-md cajatexto" name="unidadMedidaModificar" id="unidadMedidaModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="criticidadModificar">Criticidad:</label>
-                            <select class="form-control input-md cajatexto" name="criticidadModificar" id="criticidadModificar"></select>
+                            <label for="porUnidadModificar"># Por Unidad De Medida:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="porUnidadModificar" id="porUnidadModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="nuevoNombre">Descripción:</label>
+                            <label for="stokMinimoModificar">Stock Minimo:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="stokMinimoModificar" id="stokMinimoModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="descripcionModificar">Descripción:</label>
                             <input type="text" class="form-control input-md cajatexto" name="descripcionModificar" id="descripcionModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="rutModificar">RUT:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="rutModificar" id="rutModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="telefonoModificar">Telefono:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="telefonoModificar" id="telefonoModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="correoModificar">Correo:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="correoModificar" id="correoModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-sm-12 col-xs-12">
-                            <label for="direccionModificar">Dirección:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="direccionModificar" id="direccionModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
                     </div>
