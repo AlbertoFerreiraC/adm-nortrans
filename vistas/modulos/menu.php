@@ -271,7 +271,7 @@
 							<li><a href="listaEntregaSms"><i class="fa fa-file-text"></i> Lista de entrega de SMS</a></li>
 							<li><a href="ajusteInventario"><i class="fa fa-file-text"></i> Consulta Ajuste de inventario</a></li>
 							<li><a href="informeEntregaSms"><i class="fa fa-file-text"></i> Informe de entrega SMS</a></li>
-							<li><a href=""><i class="fa fa-check-circle"></i> Evaluación de proveedor</a></li>
+							<li><a href="evaluacionProveedor"><i class="fa fa-check-circle"></i> Evaluación de proveedor</a></li>
 						</ul>
 					</li>
 
