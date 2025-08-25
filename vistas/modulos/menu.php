@@ -306,6 +306,38 @@
 
 			<li class="treeview">
 				<a href="#">
+					<i class="fa fa-shopping-cart"></i>
+					<span>Compras</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+
+					<!-- Sub módulo mantenedor -->
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-wrench"></i>
+							<span>Mantenedor</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+							<li><a href="plazoOC"><i class="fa fa-clock-o"></i>Plazo Orden de Compra</a></li>
+							<li><a href="pagoOC"><i class="fa fa-credit-card"></i>Forma de pago orden<br>de compra</a></li>
+							<li><a href="entregaOC"><i class="fa fa-truck"></i>Plazo de entrega orden<br>de compra</a></li>
+							<li><a href="solicitudMS"><i class="fa fa-file-text-o"></i>Tipo de solicitud material<br>y servicio</a></li>
+							<li><a href="docProveedor"><i class="fa fa-id-card-o"></i>Tipo Documento Proveedor</a></li>
+							<li><a href="docCajaChica"><i class="fa fa-money"></i>Tipo Documento Caja Chica</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+
+
+			<li class="treeview">
+				<a href="#">
 					<i class="fa fa-cog"></i>
 					<span>Configuraciones</span>
 					<span class="pull-right-container">

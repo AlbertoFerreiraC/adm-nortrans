@@ -155,6 +155,15 @@ session_start();
         "deBodega"
       ];
 
+      $paginasCompras = [
+        "plazoOC",
+        "pagoOC",
+        "entregaOC",
+        "solicitudMS",
+        "docProveedor",
+        "docCajaChica"
+      ];
+
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];
 
@@ -166,8 +175,10 @@ session_start();
         include "modulos/activos/$ruta.php";
       } elseif (in_array($ruta, $paginasContabilidad)) {
         include "modulos/contabilidad/$ruta.php";
-      }  elseif (in_array($ruta, $paginasBodegas)) {
+      } elseif (in_array($ruta, $paginasBodegas)) {
         include "modulos/bodegas/$ruta.php";
+      } elseif (in_array($ruta, $paginasCompras)) {
+        include "modulos/compras/$ruta.php";
       } elseif (in_array($ruta, $paginasModGenerales)) {
         include "modulos/generales/$ruta.php";
       } else {
