@@ -314,6 +314,24 @@
 				</a>
 				<ul class="treeview-menu">
 
+				<li class="treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i>
+							<span>Consulta OC</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu ">
+							<li><a href="consultaOrdenCompra"><i class="fa fa-file-text"></i>Consulta Orden de Compra</a></li>
+							<li><a href="ocPendienteRecepcion"><i class="fa fa-file-text"></i>OC Pendiente Recepccion</a></li>
+							<li><a href="consultaListaOc"><i class="fa fa-file-text"></i>Consulta Lista de OC</a></li>
+							<li><a href=""><i class="fa fa-file-text"></i></a></li>
+							<li><a href=""><i class="fa fa-file-text"></i></a></li>
+							<li><a href=""><i class="fa fa-check-circle"></i></a></li>
+						</ul>
+					</li>
+
 					<!-- Sub módulo mantenedor -->
 					<li class="treeview">
 						<a href="#">

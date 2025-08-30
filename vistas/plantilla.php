@@ -162,7 +162,10 @@ session_start();
         "entregaOC",
         "solicitudMS",
         "docProveedor",
-        "docCajaChica"
+        "docCajaChica",
+        "consultaOrdenCompra",
+        "ocPendienteRecepcion",
+        "consultaListaOc"
       ];
 
       // GENERALES
