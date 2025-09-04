@@ -53,20 +53,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: center;">B02</td>
-                                <td>Bodega DINT</td>
-                                <td style="text-align: center;">central</td>
-                                <td style="text-align: center;">ACT</td>
-                                <td style="text-align: center;">
-                                    <button class="btn btn-warning btnUbicacion" data-toggle="modal" data-target="#modalUbicacion"
-                                        data-id="B02"
-                                        data-nombre="Bodega DINT"
-                                        data-tipo="central">
-                                        Ubicación
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td style="text-align: center;">B03</td>
                                 <td>Bodega Antofagasta</td>
                                 <td style="text-align: center;">central</td>
