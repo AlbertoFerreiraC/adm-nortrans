@@ -55,6 +55,8 @@ session_start();
   <script src="vistas/bower_components/input-file/fileinput.min.js"></script>
   <script src="vistas/bower_components/input-file/sortable.min.js"></script>
   <script src="vistas/bower_components/bootstrap-select/select2.min.js"></script>
+  
+
 </head>
 
 <body class="hold-transition skin-black sidebar-mini fixed" style="background-color: #E2E8E2;">
@@ -165,7 +167,20 @@ session_start();
         "docCajaChica",
         "consultaOrdenCompra",
         "ocPendienteRecepcion",
-        "consultaListaOc"
+        "consultaListaOc",
+        "generarOc",
+        "generarSMS",
+        "listaOc",
+        "listaDetOc",
+        "consultaSMS",
+        "listaSMS",
+        "listaDetSMS",
+        "historialProveedor",
+        "historialRepuesto",
+        "aprobarOC",
+        "preAprobarSMS",
+        "aprobarSMS",
+        "anularSMS"
       ];
 
       // GENERALES

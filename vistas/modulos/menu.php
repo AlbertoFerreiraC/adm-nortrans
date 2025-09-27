@@ -207,7 +207,7 @@
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
-				<ul class="treeview-menu">
+				<ul class="treeview-menu mantenedor-scroll">
 
 					<li class="treeview">
 						<a href="#">
@@ -217,7 +217,7 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu">
+						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href=""><i class="fa fa-wrench"></i> Entrega repuesto OT</a></li>
 							<li><a href=""><i class="fa fa-archive"></i> Entrega de Productos</a></li>
 							<li><a href=""><i class="fa fa-retweet"></i> Generar traspaso bodega</a></li>
@@ -234,7 +234,7 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu">
+						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href=""><i class="fa fa-file-text"></i> Recepción orden compra</a></li>
 							<li><a href=""><i class="fa fa-check-circle"></i> Recepción de traspaso</a></li>
 						</ul>
@@ -248,7 +248,7 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu">
+						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href=""><i class="fa fa-file-text"></i> Informe de Inventario</a></li>
 							<li><a href=""><i class="fa fa-check-circle"></i> Kardex producto</a></li>
 							<li><a href=""><i class="fa fa-file-text"></i> Ajuste de inventario</a></li>
@@ -265,7 +265,7 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu ">
+						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href="listaSmsPendientes"><i class="fa fa-file-text"></i> Lista SMS Pendiente</a></li>
 							<li><a href="listaRecepcionOC"><i class="fa fa-file-text"></i> Lista de recepción de OC</a></li>
 							<li><a href="listaEntregaSms"><i class="fa fa-file-text"></i> Lista de entrega de SMS</a></li>
@@ -312,25 +312,65 @@
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
-				<ul class="treeview-menu">
+				<ul class="treeview-menu mantenedor-scroll">
 
-				<li class="treeview">
+					<li class="treeview">
 						<a href="#">
-							<i class="fa fa-list-alt"></i>
-							<span>Consulta OC</span>
+							<i class="fa fa-cogs"></i>
+							<span>Operaciones</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-						<ul class="treeview-menu ">
-							<li><a href="consultaOrdenCompra"><i class="fa fa-file-text"></i>Consulta Orden de Compra</a></li>
-							<li><a href="ocPendienteRecepcion"><i class="fa fa-file-text"></i>OC Pendiente Recepccion</a></li>
-							<li><a href="consultaListaOc"><i class="fa fa-file-text"></i>Consulta Lista de OC</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i></a></li>
-							<li><a href=""><i class="fa fa-file-text"></i></a></li>
-							<li><a href=""><i class="fa fa-check-circle"></i></a></li>
+						<ul class="treeview-menu mantenedor-scroll">
+
+							<!-- Operación OC -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:5px 10px;">Operación OC</li>
+							<li><a href="generarOc"><i class="fa fa-angle-right"></i> Generar OC</a></li>
+							<li><a href="cajaChicaOC"><i class="fa fa-angle-right"></i> Caja Chica - OC</a></li>
+							<li><a href="aprobarOC"><i class="fa fa-angle-right"></i> Aprobar OC</a></li>
+
+							<!-- Operación SMS -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:10px 10px 5px;">Operación SMS</li>
+							<li><a href="generarSMS"><i class="fa fa-angle-right"></i> Generar SMS</a></li>
+							<li><a href="preAprobarSMS"><i class="fa fa-angle-right"></i> Pre Aprobar SMS</a></li>
+							<li><a href="aprobarSMS"><i class="fa fa-angle-right"></i> Validar SMS servicio</a></li>
+							<li><a href="anularSMS"><i class="fa fa-angle-right"></i> Anular SMS</a></li>
+
 						</ul>
 					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-search"></i>
+							<span>Consultas</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+
+							<!-- Consulta OC -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:5px 10px;">Consulta OC</li>
+							<li><a href="consultaOrdenCompra"><i class="fa fa-angle-right"></i> Consulta Orden de Compra</a></li>
+							<li><a href="ocPendienteRecepcion"><i class="fa fa-angle-right"></i> OC Pendiente de Recepción</a></li>
+							<li><a href="listaOc"><i class="fa fa-angle-right"></i> Consulta Lista OC</a></li>
+							<li><a href="listaDetOc"><i class="fa fa-angle-right"></i> Consulta Lista Detalle OC</a></li>
+
+							<!-- Consulta SMS -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:10px 10px 5px;">Consulta SMS</li>
+							<li><a href="consultaSMS"><i class="fa fa-angle-right"></i> Consulta Solicitud Material<br>y Servicio</a></li>
+							<li><a href="listaSMS"><i class="fa fa-angle-right"></i> Consulta Lista SMS</a></li>
+							<li><a href="listaDetSMS"><i class="fa fa-angle-right"></i> Consulta Lista Detalle SMS</a></li>
+
+							<!-- HISTORIAL -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:10px 10px 5px;">Historial</li>
+							<li><a href="historialProveedor"><i class="fa fa-angle-right"></i> Historial OC-Proveedor</a></li>
+							<li><a href="historialRepuesto"><i class="fa fa-angle-right"></i> Historial OC-Repuesto</a></li>
+
+						</ul>
+					</li>
+
 
 					<!-- Sub módulo mantenedor -->
 					<li class="treeview">
@@ -362,7 +402,7 @@
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
-				<ul class="treeview-menu">
+				<ul class="treeview-menu mantenedor-scroll">
 					<li><a href="actualizacionDatos"><i class="fa fa-key"></i>Actualizar Mis Datos</a></li>
 					<li><a href="usuario"><i class="fa fa-bell-o"></i>Gestión de Usuarios</a></li>
 					<li><a href="centroDeCosto"><i class="fa fa-bell-o"></i>Centro de Costo</a></li>
