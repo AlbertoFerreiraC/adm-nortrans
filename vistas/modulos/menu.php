@@ -13,6 +13,7 @@
 			</div>
 		</div>
 
+		<!--Recursos Humanos-->
 		<ul class="sidebar-menu">
 
 			<?php if ($_SESSION['rol'] == "Administrador") { ?>
@@ -104,6 +105,7 @@
 				</li>
 			<?php } ?>
 
+			<!--Activos-->
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-diamond"></i>
@@ -155,6 +157,7 @@
 				</ul>
 			</li>
 
+			<!--Contabilidad-->
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-calculator"></i>
@@ -167,13 +170,17 @@
 					<li class="treeview">
 						<a href="#">
 							<i class="fa fa-search"></i>
-							<span>Consulta</span>
+							<span>Gestiones</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
 						<ul class="treeview-menu ">
-							<li><a href=""><i class="fa fa-key"></i>Caja Chica</a></li>
+							<li><a href="rendicion"><i class="fa fa-cog"></i>Mis Rendiciones</a></li>
+							<li><a href="gestionRendicion"><i class="fa fa-cog"></i>Gestionar Rendiciones</a></li>
+							<li><a href="asignacionDeFondos"><i class="fa fa-cog"></i>Asignación Fdo. Rendición</a></li>
+							<li><a href="preAprobacionDeFondos"><i class="fa fa-cog"></i>Pre Aprobación Fdo. Rendición</a></li>
+							<li><a href="aprobacionDeFondos"><i class="fa fa-cog"></i>Aprobación Fdo. Rendición</a></li>
 						</ul>
 					</li>
 
@@ -193,12 +200,14 @@
 							<li><a href="criticidad"><i class="fa fa-cog"></i>Criticidad</a></li>
 							<li><a href="cliente"><i class="fa fa-cog"></i>Clientes</a></li>
 
+
 						</ul>
 					</li>
 
 				</ul>
 			</li>
 
+			<!--Bodegas-->
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-cubes"></i>
@@ -304,6 +313,7 @@
 				</ul>
 			</li>
 
+			<!--Compras-->
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-shopping-cart"></i>
@@ -393,7 +403,7 @@
 				</ul>
 			</li>
 
-
+			<!--Configuraciones-->
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-cog"></i>

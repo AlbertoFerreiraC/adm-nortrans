@@ -61,7 +61,7 @@
 
 </div>
 
-<script src="vistas/js/formularios/actualizarMisDatos.js"></script>
+<script src="vistas/js/actualizarMisDatos.js"></script>
 
 <style>
   .ui-autocomplete {

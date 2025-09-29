@@ -55,7 +55,7 @@ session_start();
   <script src="vistas/bower_components/input-file/fileinput.min.js"></script>
   <script src="vistas/bower_components/input-file/sortable.min.js"></script>
   <script src="vistas/bower_components/bootstrap-select/select2.min.js"></script>
-  
+
 
 </head>
 
@@ -132,7 +132,12 @@ session_start();
         "tipoProveedor",
         "comuna",
         "criticidad",
-        "cliente"
+        "cliente",
+        "aprobacionDeFondos",
+        "asignacionDeFondos",
+        "gestionRendicion",
+        "preAprobacionDeFondos",
+        "rendicion"
       ];
 
       // Bodegas
@@ -180,7 +185,8 @@ session_start();
         "aprobarOC",
         "preAprobarSMS",
         "aprobarSMS",
-        "anularSMS"
+        "anularSMS",
+        "generarSMS"
       ];
 
       // GENERALES

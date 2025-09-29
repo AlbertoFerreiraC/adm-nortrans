@@ -1,72 +1,51 @@
 $(document).ready(function () {
+    // cargar la tabla al inicio
+    cargarDatosTabla();
 
-    CentroDeCostoBuscar();
-
-    TipoDocumento();
-
-    TipoBus();
-
+    // Filtro dinámico
+    $('#filtradoDinamico').on('keyup change', function () {
+        const q = (this.value || '').toLowerCase();
+        $('#tablaMaquinas tbody tr').each(function () {
+            const hay = $(this).text().toLowerCase().indexOf(q) > -1;
+            $(this).toggle(hay);
+        });
+    });
 });
 
-function CentroDeCostoBuscar() {
-    $('#centroCostoBuscar').empty();
-    $('#centroCostoBuscar').append('<option value ="-">Seleccionar...</opction>');
-    var fila = "";
+function cargarDatosTabla() {
+    // limpiar cuerpo de tabla
+    const tbody = $("#tablaMaquinas tbody");
+    tbody.empty();
 
     $.ajax({
-        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        url: "../api_adm_nortrans/deMaquina/funListar.php",
         method: "GET",
-        cache: false,
         dataType: "json",
         success: function (response) {
-            for (var i in response) {
-                fila += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
+            if (response && response.length > 0) {
+                response.forEach((r) => {
+                    const fila = `
+                        <tr>
+                            <td>${r.idmaquina ?? ''}</td>
+                            <td>${r.patente ?? ''}</td>
+                            <td>${r.tipo_documento_maquina ?? ''}</td>
+                            <td>${r.fecha_vencimiento ?? ''}</td>
+                        </tr>
+                    `;
+                    tbody.append(fila);
+                });
+            } else {
+                tbody.append('<tr><td colspan="4" class="text-center">No hay resultados</td></tr>');
             }
-            $('#centroCostoBuscar').append(fila);
-        }
-    });
-}
-
-function TipoDocumento() {
-    $('#tipoDocumentoBuscar').empty();
-    $('#tipoDocumentoBuscar').append('<option value ="-">Seleccionar...</option>');
-    var listarDocumento = "";
-
-    $.ajax({
-        url: "../api_adm_nortrans/documento/funListar.php",
-        method: "GET",
-        cache: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                listarDocumento += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#tipoDocumentoBuscar').append(listarDocumento);
         },
         error: function (xhr, status, error) {
-            console.error("Error al cargar tipo de documentos: ", error);
-        }
-    });
-}
-
-function TipoBus() {
-    $('#maquinaBuscar').empty();
-    $('#maquinaBuscar').append('<option value ="-">Seleccionar...</option>');
-    var listarBus = "";
-
-    $.ajax({
-        url: "../api_adm_nortrans/tipoequipo/funListar.php",
-        method: "GET",
-        cache: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                listarBus += '<option value="' + response[i].id + '">' + response[i].descripcion + '</option>';
-            }
-            $('#maquinaBuscar').append(listarBus);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error al cargar tipo de documentos: ", error);
+            console.error("Error al cargar datos:", error);
+            swal({
+                type: "error",
+                title: "Error al cargar la lista",
+                text: error,
+                confirmButtonText: "Aceptar"
+            });
         }
     });
 }
