@@ -1,61 +1,24 @@
 $(document).ready(function () {
     cargarDatosTabla();
 
+    // Filtro dinámico
     $('#filtradoDinamico').on('keyup change', function () {
         const q = (this.value || '').toLowerCase();
-        $('#tabla tbody tr').each(function () {
+        $('#tablaOC tbody tr').each(function () {
             const hay = $(this).text().toLowerCase().indexOf(q) > -1;
             $(this).toggle(hay);
         });
     });
-
-    $('#tabla').on('click', '.btn-aprobar', async function () {
-        const id = $(this).data('id');
-        if (!id) return;
-
-        const { isConfirmed, value: comentario } = await Swal.fire({
-            title: '¿Aprobar OC?',
-            input: 'textarea',
-            inputLabel: 'Comentario (opcional)',
-            inputPlaceholder: 'Escribí un comentario si lo necesitás…',
-            inputAttributes: { 'aria-label': 'Comentario (opcional)' },
-            showCancelButton: true,
-            confirmButtonText: 'Aprobar',
-            cancelButtonText: 'Cancelar'
-        });
-        if (!isConfirmed) return;
-
-        aprobar(id, comentario || '');
-    });
-
-    $('#tabla').on('click', '.btn-rechazar', async function () {
-        const id = $(this).data('id');
-        if (!id) return;
-
-        const { isConfirmed, value: comentario } = await Swal.fire({
-            title: '¿Rechazar OC?',
-            input: 'textarea',
-            inputLabel: 'Motivo / comentario (requerido)',
-            inputPlaceholder: 'Indicá el motivo del rechazo…',
-            inputAttributes: { 'aria-label': 'Motivo / comentario' },
-            inputValidator: (v) => (!v || !v.trim() ? 'El motivo es obligatorio' : undefined),
-            showCancelButton: true,
-            confirmButtonText: 'Rechazar',
-            cancelButtonText: 'Cancelar'
-        });
-        if (!isConfirmed) return;
-
-        rechazar(id, comentario.trim());
-    });
 });
+
 function cargarDatosTabla() {
-    $("#tabla tbody").empty();
+    $("#tablaOC tbody").empty();
 
     const idUsuario = $("#idUsuario").val();
     const params = { id: idUsuario };
 
     $.ajax({
-        url: "../api_adm_nortrans/generaOC/funListar.php",
+        url: "../api_adm_nortrans/generarOC/funListar.php",
         method: "POST",
         data: JSON.stringify(params),
         cache: false,
@@ -64,116 +27,182 @@ function cargarDatosTabla() {
         dataType: "json",
         success: (response) => {
             if (response && response.length > 0) {
-                const filas = response.map((r, i) => {
+                const filas = response.map((r) => {
                     return `
-            <tr>
-              <td>${Number.parseInt(i) + 1}</td>
-              <td>
-                <div class="btn-group" style="display:flex; gap:6px; justify-content:center;">
-                  <button class="btn btn-success btn-xs btn-aprobar"  data-id="${r.idcontratacion}">
-                    <i class="fa fa-check"></i> Aprobar
-                  </button>
-                  <button class="btn btn-danger btn-xs btn-rechazar" data-id="${r.idcontratacion}">
-                    <i class="fa fa-times"></i> Rechazar
-                  </button>
-                </div>
-              </td>
-              <td>${r.idcontratacion}</td>
-              <td>${r.division ?? ''}</td>
-              <td>${r.empresa ?? ''}</td>
-              <td>${r.cargo ?? ''}</td>
-              <td>${r.centro_de_costo ?? ''}</td>
-              <td>${r.aprueba ?? ''}</td>
-            </tr>`;
+                    <tr>
+                      <td>${r.empresa ?? ''}</td>
+                      <td>${r.id ?? ''}</td>
+                      <td>${r.fecha_creacion ?? ''}</td>
+                      <td>${r.doc_proveedor ?? ''}</td>
+                      <td>${r.proveedor ?? ''}</td>
+                      <td>${r.total_general ?? ''}</td>
+                      <td>${r.pre_aprueba ?? ''}</td>
+                      <td>
+                        <center>
+                          <button class="btn btn-primary btn-xs btn-seleccionar" 
+                                  data-id="${r.id}">
+                            SELECCIONAR
+                          </button>
+                        </center>
+                      </td>
+                    </tr>`;
                 }).join('');
-                $("#tabla tbody").append(filas);
+                $("#tablaOC tbody").append(filas);
+
             } else {
-                $("#tabla tbody").append(
+                $("#tablaOC tbody").append(
                     '<tr><td colspan="8" class="text-center">No hay solicitudes pendientes</td></tr>'
                 );
             }
         },
         error: () => {
-            Swal.fire({
-                icon: "error",
+            swal({
+                type: "error",
                 title: "Error al cargar la tabla",
+                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         }
     });
 }
 
-function aprobar(id, comentario) {
+$(document).on("click", ".btn-seleccionar", function () {
+    const id = $(this).data("id");
+    const fila = $(this).closest("tr").children("td");
+
+    $("#ocId").val(id);
+    $("#ocEmpresa").val(fila.eq(0).text());
+    $("#ocNumero").val(fila.eq(1).text());
+    $("#ocFecha").val(fila.eq(2).text());
+    $("#ocProveedor").val(fila.eq(4).text());
+    $("#ocMonto").val(fila.eq(5).text());
+    $("#ocComentario").val("");
+
+    $("#modalSeleccionarOC").modal("show");
+});
+
+
+// Botón Aprobar
+$("#btnAprobarOC").on("click", function (e) {
+    e.preventDefault();
+    const id = $("#ocId").val();
+    const comentario = $("#ocComentario").val();
+
+    if (!comentario.trim()) {
+        swal({
+            type: "warning",
+            title: "Debes escribir un comentario para aprobar",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
+    aprobarOC(id, comentario);
+});
+
+// Botón Rechazar
+$("#btnRechazarOC").on("click", function (e) {
+    e.preventDefault();
+    const id = $("#ocId").val();
+    const comentario = $("#ocComentario").val();
+
+    if (!comentario.trim()) {
+        swal({
+            type: "warning",
+            title: "Debes escribir un motivo para rechazar",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
+    rechazarOC(id, comentario);
+});
+
+// --- APROBAR ---
+function aprobarOC(id, comentario) {
     const params = { id: id, comentario: comentario };
 
     $.ajax({
-        url: "../api_adm_nortrans/generaOC/funAprobar.php",
+        url: "../api_adm_nortrans/generarOC/funAprobar.php",
         method: "POST",
-        cache: false,
         data: JSON.stringify(params),
         contentType: "application/json",
         processData: false,
         dataType: "json"
     })
         .done(function (response) {
+            $("#modalSeleccionarOC").modal("hide");
             if (response && response.mensaje === "ok") {
-                Swal.fire({
-                    icon: "success",
-                    title: "Registro aprobado con éxito",
+                swal({
+                    type: "success",
+                    title: "Aprobación exitosa",
+                    text: "La OC fue aprobada correctamente.",
+                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then(() => cargarDatosTabla());
             } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error al procesar la aprobación",
-                    text: (response && response.detalle) ? response.detalle : '',
+                swal({
+                    type: "error",
+                    title: "Error al aprobar",
+                    text: (response && response.detalle) ? response.detalle : "No se pudo completar la acción.",
+                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
             }
         })
         .fail(function (jqXHR, textStatus) {
-            Swal.fire({
-                icon: "error",
-                title: "Error al procesar la aprobación",
+            $("#modalSeleccionarOC").modal("hide");
+            swal({
+                type: "error",
+                title: "Error de conexión",
                 text: "Detalles: " + textStatus,
+                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         });
 }
 
-function rechazar(id, comentario) {
+// --- RECHAZAR ---
+function rechazarOC(id, comentario) {
     const params = { id: id, comentario: comentario };
 
     $.ajax({
-        url: "../api_adm_nortrans/aprueba/funRechazar.php",
+        url: "../api_adm_nortrans/generarOC/funRechazar.php",
         method: "POST",
-        cache: false,
         data: JSON.stringify(params),
         contentType: "application/json",
         processData: false,
         dataType: "json"
     })
         .done(function (response) {
+            $("#modalSeleccionarOC").modal("hide");
             if (response && response.mensaje === "ok") {
-                Swal.fire({
-                    icon: "success",
-                    title: "Registro rechazado con éxito",
+                swal({
+                    type: "success",
+                    title: "Rechazo exitoso",
+                    text: "La OC fue rechazada correctamente.",
+                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then(() => cargarDatosTabla());
             } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error al procesar el rechazo",
-                    text: (response && response.detalle) ? response.detalle : '',
+                swal({
+                    type: "error",
+                    title: "Error al rechazar",
+                    text: (response && response.detalle) ? response.detalle : "No se pudo completar la acción.",
+                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
             }
         })
         .fail(function (jqXHR, textStatus) {
-            Swal.fire({
-                icon: "error",
-                title: "Error al procesar el rechazo",
+            $("#modalSeleccionarOC").modal("hide");
+            swal({
+                type: "error",
+                title: "Error de conexión",
                 text: "Detalles: " + textStatus,
+                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         });
