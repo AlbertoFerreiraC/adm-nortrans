@@ -227,7 +227,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href=""><i class="fa fa-wrench"></i> Entrega repuesto OT</a></li>
+							<li><a href="entregaOT"><i class="fa fa-wrench"></i> Entrega repuesto OT</a></li>
 							<li><a href=""><i class="fa fa-archive"></i> Entrega de Productos</a></li>
 							<li><a href=""><i class="fa fa-retweet"></i> Generar traspaso bodega</a></li>
 							<li><a href=""><i class="fa fa-file-text"></i> Solicitar anulación<br>de entrega SMS</a></li>

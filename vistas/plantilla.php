@@ -160,7 +160,8 @@ session_start();
         "ajusteInventario",
         "informeEntregaSms",
         "evaluacionProveedor",
-        "deBodega"
+        "deBodega",
+        "entregaOT"
       ];
 
       $paginasCompras = [
