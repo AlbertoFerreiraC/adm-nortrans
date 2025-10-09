@@ -190,6 +190,11 @@ session_start();
         "generarSMS"
       ];
 
+             // MANTECION
+      $paginasMantecion = [
+        "reporteFallaOT",
+        ""
+      ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];
 
@@ -205,6 +210,8 @@ session_start();
         include "modulos/bodegas/$ruta.php";
       } elseif (in_array($ruta, $paginasCompras)) {
         include "modulos/compras/$ruta.php";
+      } elseif (in_array($ruta, $paginasMantecion)) {
+        include "modulos/mantencion/$ruta.php";
       } elseif (in_array($ruta, $paginasModGenerales)) {
         include "modulos/generales/$ruta.php";
       } else {
