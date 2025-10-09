@@ -428,7 +428,7 @@
 							<!-- Creacion de OT -->
 							<li class="header" style="font-weight:bold; color:#fff; margin:2px 10px; font-size:14px!important;">Creacion de OT</li>
 							<li><a href="reporteFallaOT"><i class="fa fa-angle-right"></i>Reporte de Falla OT</a></li>
-							<li><a href="preventivaOt"><i class="fa fa-angle-right"></i>Preventiva OT</a></li>
+							<li><a href="preventivaOT"><i class="fa fa-angle-right"></i>Preventiva OT</a></li>
 							<li><a href="otInterna"><i class="fa fa-angle-right"></i> OT Interna</a></li>
 							<li><a href="servioExternoOt"><i class="fa fa-angle-right"></i> Servicio Externo OT</a></li>
 							<li><a href="pautaInspeccion"><i class="fa fa-angle-right"></i> Pauta Inspeccion</a></li>
