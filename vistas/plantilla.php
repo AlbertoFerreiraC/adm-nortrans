@@ -161,7 +161,15 @@ session_start();
         "informeEntregaSms",
         "evaluacionProveedor",
         "deBodega",
-        "entregaOT"
+        "entregaOT",
+        "entregaProducto",
+        "transpasoBodega",
+        "anulacionSMS",
+        "recepcionOT",
+        "recepcionDeTraspaso",
+        "informeInventario",
+        "kardexProducto",
+        "ajusteInventariado"
       ];
 
       $paginasCompras = [

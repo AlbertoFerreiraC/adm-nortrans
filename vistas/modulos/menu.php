@@ -228,9 +228,9 @@
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href="entregaOT"><i class="fa fa-wrench"></i> Entrega repuesto OT</a></li>
-							<li><a href=""><i class="fa fa-archive"></i> Entrega de Productos</a></li>
-							<li><a href=""><i class="fa fa-retweet"></i> Generar traspaso bodega</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Solicitar anulación<br>de entrega SMS</a></li>
+							<li><a href="entregaProducto"><i class="fa fa-archive"></i> Entrega de Productos</a></li>
+							<li><a href="transpasoBodega"><i class="fa fa-retweet"></i> Generar traspaso bodega</a></li>
+							<li><a href="anulacionSMS"><i class="fa fa-file-text"></i> Solicitar anulación<br>de entrega SMS</a></li>
 							<li><a href=""><i class="fa fa-check-circle"></i> Aprobar solicitud anulación<br>Entrega SMS</a></li>
 						</ul>
 					</li>
@@ -244,8 +244,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href=""><i class="fa fa-file-text"></i> Recepción orden compra</a></li>
-							<li><a href=""><i class="fa fa-check-circle"></i> Recepción de traspaso</a></li>
+							<li><a href="recepcionOT"><i class="fa fa-file-text"></i> Recepción orden compra</a></li>
+							<li><a href="recepcionDeTraspaso"><i class="fa fa-check-circle"></i> Recepción de traspaso</a></li>
 						</ul>
 					</li>
 
@@ -258,9 +258,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href=""><i class="fa fa-file-text"></i> Informe de Inventario</a></li>
-							<li><a href=""><i class="fa fa-check-circle"></i> Kardex producto</a></li>
-							<li><a href=""><i class="fa fa-file-text"></i> Ajuste de inventario</a></li>
+							<li><a href="informeInventario"><i class="fa fa-file-text"></i> Informe de Inventario</a></li>
+							<li><a href="kardexProducto"><i class="fa fa-check-circle"></i> Kardex producto</a></li>
+							<li><a href="ajusteInventariado"><i class="fa fa-file-text"></i> Ajuste de inventario</a></li>
 							<li><a href=""><i class="fa fa-file-text"></i> Stock Bodega - Producto</a></li>
 							<li><a href=""><i class="fa fa-file-text"></i> Quiebre de Stock</a></li>
 						</ul>
