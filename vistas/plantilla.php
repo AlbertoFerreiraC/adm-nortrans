@@ -202,7 +202,9 @@ session_start();
       $paginasMantecion = [
         "reporteFallaOT",
         "preventivaOT",
-        "otInterna"
+        "otInterna",
+        "servicioExternoOt",
+        "pautaInspeccion"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

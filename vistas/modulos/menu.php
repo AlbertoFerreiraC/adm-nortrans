@@ -430,7 +430,7 @@
 							<li><a href="reporteFallaOT"><i class="fa fa-angle-right"></i>Reporte de Falla OT</a></li>
 							<li><a href="preventivaOT"><i class="fa fa-angle-right"></i>Preventiva OT</a></li>
 							<li><a href="otInterna"><i class="fa fa-angle-right"></i> OT Interna</a></li>
-							<li><a href="servioExternoOt"><i class="fa fa-angle-right"></i> Servicio Externo OT</a></li>
+							<li><a href="servicioExternoOt"><i class="fa fa-angle-right"></i> Servicio Externo OT</a></li>
 							<li><a href="pautaInspeccion"><i class="fa fa-angle-right"></i> Pauta Inspeccion</a></li>
 
 							<!-- Acciones de la OT -->
