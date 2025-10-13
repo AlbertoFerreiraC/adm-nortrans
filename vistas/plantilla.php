@@ -204,7 +204,9 @@ session_start();
         "preventivaOT",
         "otInterna",
         "servicioExternoOt",
-        "pautaInspeccion"
+        "pautaInspeccion",
+        "asignarTareasPendientes",
+        "editarOt"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];
