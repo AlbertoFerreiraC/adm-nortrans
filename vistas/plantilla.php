@@ -206,7 +206,10 @@ session_start();
         "servicioExternoOt",
         "pautaInspeccion",
         "asignarTareasPendientes",
-        "editarOt"
+        "editarOt",
+        "autorizarRespuestoOt",
+        "determinarTareaOt",
+        "detencionProgramada"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

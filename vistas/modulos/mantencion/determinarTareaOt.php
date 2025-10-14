@@ -1,10 +1,10 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Servicio OT: Detencion programada
+            Servicio OT: Terminar tarea OT
         </h1>
         <ol class="breadcrumb">
-            <li class="active"> Lista Detencion programada</li>
+            <li class="active"> Lista Tarea por Terminar </li>
         </ol>
     </section>
     
@@ -38,28 +38,37 @@
                         <thead>
                             <tr>
                                 <th style="width:10px; cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(0, this)">
-                                    <center>Nº Dtencion</center>
+                                    <center>Fecha</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(1, this)">
-                                    <center>Patente</center>
+                                    <center>Nº OT</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(2, this)">
-                                    <center>Fecha Detencion</center>
+                                    <center>Detalle OT</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(3, this)">
-                                    <center> Centro Costo  </center>
+                                    <center>Maquina  </center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(4, this)">
-                                    <center>Tipo de Detencion</center>
+                                    <center>Tipo Tarea</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(5, this)">
-                                    <center>Nº OT Origen</center>
+                                    <center>Motivo</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(6, this)">
-                                    <center>Fecha desde Detencion</center>
+                                    <center>Sistema</center>
                                 </th>
                                 <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(7, this)">
-                                    <center>Crear OT(nº OT-nº tarea) </center>
+                                    <center>Sub Sistema </center>
+                                </th>
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(8, this)">
+                                    <center>Tecnico Asignado</center>
+                                </th>
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(9, this)">
+                                    <center>Estado </center>
+                                </th>
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" onclick="sortTable(9, this)">
+                                    <center>Seleccionar </center>
                                 </th>
                             </tr>
                         </thead>
