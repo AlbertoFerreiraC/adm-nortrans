@@ -198,7 +198,7 @@ session_start();
         "generarSMS"
       ];
 
-             // MANTECION
+       // MANTECION
       $paginasMantecion = [
         "reporteFallaOT",
         "preventivaOT",
@@ -209,7 +209,17 @@ session_start();
         "editarOt",
         "autorizarRespuestoOt",
         "determinarTareaOt",
-        "detencionProgramada"
+        "detencionProgramada",
+        "campania",
+        "pauta_mantencion",
+        "sistemaMaquina",
+        "subsistemaMaquina",
+        "tipoTareaMantencion",
+        "nivelCriticidad",
+        "secuenciaPauta",
+        "tipoDetencionProgramada",
+        "modificacionDetencion",
+        "categoriaPautaInspeccion"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

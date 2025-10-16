@@ -454,13 +454,18 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href=""><i class="fa fa-clock-o"></i></a></li>
-							<li><a href=""><i class="fa fa-credit-card"></i></a></li>
-							<li><a href=""><i class="fa fa-truck"></i></a></li>
-							<li><a href=""><i class="fa fa-file-text-o"></i></a></li>
-							<li><a href=""><i class="fa fa-id-card-o"></i></a></li>
-							<li><a href=""><i class="fa fa-money"></i></a></li>
+							<li><a href="campania"><i class="fa fa-bullhorn"></i> Campaña</a></li>
+							<li><a href="pauta_mantencion"><i class="fa fa-wrench"></i> Pauta de Mantención</a></li>
+							<li><a href="sistemaMaquina"><i class="fa fa-cogs"></i> Sistema de la Máquina</a></li>
+							<li><a href="subsistemaMaquina"><i class="fa fa-cog"></i> Subsistema de la Máquina</a></li>
+							<li><a href="tipoTareaMantencion"><i class="fa fa-tasks"></i> Tipo Tarea Mantención</a></li>
+							<li><a href="nivelCriticidad"><i class="fa fa-exclamation-triangle"></i> Nivel de Criticidad</a></li>
+							<li><a href="secuenciaPauta"><i class="fa fa-list-ol"></i> Secuencia de Pauta</a></li>
+							<li><a href="tipoDetencionProgramada"><i class="fa fa-calendar-times-o"></i> Detención Programada</a></li>
+							<li><a href="modificacionDetencion"><i class="fa fa-edit"></i> Modificación de Detención</a></li>
+							<li><a href="categoriaPautaInspeccion"><i class="fa fa-clipboard"></i> Categoría Pauta Inspección</a></li>
 						</ul>
+
 					</li>
 				</ul>
 			</li>
