@@ -480,6 +480,7 @@
 							<li><a href="modificacionDetencion"><i class="fa fa-edit"></i> Modificación de Detención</a></li>
 							<li><a href="categoriaPautaInspeccion"><i class="fa fa-clipboard"></i> Categoría Pauta Inspección</a></li>
 							<li><a href="conductor"><i class="fa fa-clipboard"></i> Conductores</a></li>
+							<li><a href="maquina"><i class="fa fa-clipboard"></i> Maquinas</a></li>
 						</ul>
 
 					</li>

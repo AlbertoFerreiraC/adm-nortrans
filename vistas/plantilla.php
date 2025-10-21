@@ -221,7 +221,8 @@ session_start();
         "modificacionDetencion",
         "categoriaPautaInspeccion",
         "reporteFalla",
-        "conductor"
+        "conductor",
+        "maquina"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

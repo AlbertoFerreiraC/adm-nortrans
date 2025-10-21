@@ -1,3 +1,5 @@
+<input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
+
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -124,14 +126,12 @@ MODAL AGREGAR REPORTE
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="sistema">Sistema:</label>
                             <select class="form-control" id="sistema" name="sistema" required>
-                                <option value="">Seleccionar...</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="subSistema">Sub Sistema:</label>
                             <select class="form-control" id="subSistema" name="subSistema">
-                                <option value="">Seleccionar...</option>
                             </select>
                         </div>
 
@@ -207,17 +207,20 @@ SCRIPTS
 
         btnAgregar.addEventListener("click", () => {
             if (!sistema.value || !observacion.value.trim()) {
-                alert("Complete al menos Sistema y Observación");
                 return;
             }
 
             const fila = document.createElement("tr");
             fila.innerHTML = `
-      <td>${sistema.options[sistema.selectedIndex].text}</td>
-      <td>${subSistema.options[subSistema.selectedIndex]?.text || "-"}</td>
-      <td>${observacion.value}</td>
-      <td><button type="button" class="btn btn-danger btn-sm btnEliminar"><i class="fa fa-trash"></i></button></td>
-    `;
+                <td data-id="${sistema.value}">${sistema.options[sistema.selectedIndex].text}</td>
+                <td data-id="${subSistema.value}">${subSistema.options[subSistema.selectedIndex]?.text || "-"}</td>
+                <td>${observacion.value}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm btnEliminar">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            `;
             tablaBody.appendChild(fila);
 
             fila.querySelector(".btnEliminar").addEventListener("click", () => fila.remove());
@@ -225,9 +228,12 @@ SCRIPTS
             sistema.value = "";
             subSistema.value = "";
             observacion.value = "";
+
+            console.log("✅ Fila agregada correctamente a la tablaDetalle");
         });
     });
 </script>
+
 
 <style>
     #divTabla {
