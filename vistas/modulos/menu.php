@@ -337,7 +337,7 @@
 							<!-- Operación OC -->
 							<li class="header" style="font-weight:bold; color:#fff; margin:5px 10px;">Operación OC</li>
 							<li><a href="generarOc"><i class="fa fa-angle-right"></i> Generar OC</a></li>
-							<li><a href="cajaChicaOC"><i class="fa fa-angle-right"></i> Caja Chica - OC</a></li>
+							<!--<li><a href="cajaChicaOC"><i class="fa fa-angle-right"></i> Caja Chica - OC</a></li>-->
 							<li><a href="aprobarOC"><i class="fa fa-angle-right"></i> Aprobar OC</a></li>
 
 							<!-- Operación SMS -->
@@ -443,6 +443,21 @@
 						</ul>
 					</li>
 
+					<!-- Sub módulo Control -->
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-wrench"></i>
+							<span>Control</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+							<li><a href=""><i class="fa fa-bullhorn"></i> Registro de Km</a></li>
+							<li><a href="reporteFalla"><i class="fa fa-bullhorn"></i> Reporte de Falla</a></li>
+						</ul>
+
+					</li>
 
 					<!-- Sub módulo mantenedor -->
 					<li class="treeview">
@@ -464,6 +479,7 @@
 							<li><a href="tipoDetencionProgramada"><i class="fa fa-calendar-times-o"></i> Detención Programada</a></li>
 							<li><a href="modificacionDetencion"><i class="fa fa-edit"></i> Modificación de Detención</a></li>
 							<li><a href="categoriaPautaInspeccion"><i class="fa fa-clipboard"></i> Categoría Pauta Inspección</a></li>
+							<li><a href="conductor"><i class="fa fa-clipboard"></i> Conductores</a></li>
 						</ul>
 
 					</li>

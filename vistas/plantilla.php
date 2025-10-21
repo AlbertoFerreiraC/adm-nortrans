@@ -219,7 +219,9 @@ session_start();
         "secuenciaPauta",
         "tipoDetencionProgramada",
         "modificacionDetencion",
-        "categoriaPautaInspeccion"
+        "categoriaPautaInspeccion",
+        "reporteFalla",
+        "conductor"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

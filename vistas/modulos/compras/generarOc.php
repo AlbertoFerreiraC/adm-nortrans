@@ -27,15 +27,17 @@
 
             <div class="box-body">
                 <div id="div1">
-                    <table class="table table-bordered table-striped dt-responsive" id="tablaOrdenesCompra" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaOrdenesCompra" width="100%" style="text-align:center;">
                         <thead>
                             <tr>
-                                <th>Nº OC</th>
-                                <th>Proveedor</th>
-                                <th>Fecha Emisión</th>
-                                <th>Monto Total</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th><center>Nº OC</center></th>                                
+                                <th><center>Fecha Emisión</center></th>
+                                <th><center>Proveedor</center></th>
+                                <th><center>Empresa</center></th>
+                                <th><center>Tipo OC</center></th>
+                                <th><center>Plazo de Entrega</center></th>
+                                <th><center>Monto Total</center></th>
+                                <th><center>Acciones</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,7 +81,12 @@
 
                                     <div class="form-group col-sm-4 col-xs-12">
                                         <label for="nuevotipoOC">Tipo OC:</label>
-                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevotipoOC" id="nuevotipoOC"></select>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevotipoOC" id="nuevotipoOC">
+                                            <option value="-">Seleccionar</option>
+                                            <option value="Solicitud Material y Servicio">Solicitud Material y Servicio</option>
+                                            <option value="Repuesto por Tarea">Repuesto por Tarea</option>
+                                            <option value="Repuesto para Stock">Repuesto para Stock</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -135,17 +142,22 @@
                                 <div class="row">
                                     <div class="form-group col-md-3">
                                         <label for="preapruebaAgregar">Pre aprueba:</label>
-                                        <select class="form-control input-md cajatexto solo-ruc" name="preapruebaAgregar" id="preapruebaAgregar"></select>
+                                        <select class="form-control input-md cajatexto" name="preapruebaAgregar" id="preapruebaAgregar"></select>
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label>Nº Solicitud MI</label>
-                                        <input type="text" class="form-control cajatexto" name="nuevaSolicitudMI" id="nuevaSolicitudMI">
+                                        <label for="preaprueba2Agregar">Pre aprueba 2:</label>
+                                        <select class="form-control input-md cajatexto" name="preaprueba2Agregar" id="preaprueba2Agregar"></select>
                                     </div>
 
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
+                                        <label>N° Solicitud MS</label>
+                                        <select class="form-control input-md cajatexto" name="nroSolicitudSms" id="nroSolicitudSms"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
                                         <label>&nbsp;</label>
-                                        <button class="btn btn-primary btn-block" type="button" id="btnAsociarSolicitud">Asociar Solicitud MI</button>
+                                        <button class="btn btn-primary btn-block" type="button" id="btnAsociarSolicitud"><i class="fa fa-plus-square" aria-hidden="true"></i> Asociar Solicitud MS</button>
                                     </div>
 
                                 </div>
@@ -158,75 +170,66 @@
                             </div>
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablaDetalleOC">
+                                    <table class="table table-bordered" id="tablaDetalleOC" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th>Anular</th>
                                                 <th>Nº SMS</th>
                                                 <th>Item SMS</th>
                                                 <th>Aplicación</th>
-                                                <th>Tipo producto</th>
-                                                <th>Id producto</th>
+                                                <th>Tipo Producto</th>
                                                 <th>Glosa</th>
                                                 <th>U.M.</th>
                                                 <th>Cantidad</th>
-                                                <th>Costo unitario</th>
-                                                <th>Tipo de descuento</th>
-                                                <th>Valor descuento</th>
-                                                <th>Sub total</th>
-                                                <th>Selección</th>
+                                                <th>Costo Unitario</th>
+                                                <th>Tipo Descuento</th>
+                                                <th>Valor Descuento</th>
+                                                <th>Sub Total</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="14" class="text-center">No se encontraron registros.</td>
-                                            </tr>
-                                        </tbody>
+                                        <tbody></tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-6">
-                                <button type="button" class="btn btn-primary" id="btnCalcularTotales">Calcular</button>
+                            <div class="form-group col-md-3">
+                                <label>Sub total($):</label>
+                                <input type="text" class="form-control input-md" id="subTotalAgregar" value="0" readonly>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <th style="width:50%">Sub total:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Descuento:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Exento:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Neto:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>IVA:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Retención:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total:</th>
-                                                <td>$0</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Descuento($):</label>
+                                <input type="text" class="form-control input-md" id="descuentoTotalAgregar" value="0" readonly>
                             </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Exento($):</label>
+                                <input type="text" class="form-control input-md" id="exentoAgregar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Neto($):</label>
+                                <input type="text" class="form-control input-md" id="netoAgregar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>IVA($):</label>
+                                <input type="text" class="form-control input-md" id="ivaTotal" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Retención($):</label>
+                                <input type="text" class="form-control input-md" id="retencionAgregar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Total($):</label>
+                                <input type="text" class="form-control input-md" id="totalGeneralAgregar" value="0" readonly>
+                            </div>
+
                         </div>
 
                     </div>
@@ -235,7 +238,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-success" id="btnGenerarOC">
+                    <button type="button" class="btn btn-success" id="btnGenerarOC">
                         <i class="fa fa-check"></i> Generar OC
                     </button>
 
@@ -245,17 +248,112 @@
     </div>
 </div>
 
+
+<div id="modalEditarRegistro" class="modal fade" role="dialog">
+  
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form role="form" method="post">
+
+        <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+        <div class="modal-header" style="background:#00a65a; color:white">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title">Editar Registro</h4>
+
+        </div>
+
+        <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
+             <input type="hidden" id="idDetalleRegistroEditar">
+            
+            <div class="form-group col-md-4">
+                <label for="costoUnitarioEditar">Costo Unitario:</label>
+                <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="costoUnitarioEditar" id="costoUnitarioEditar">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Tipo Descuento</label>
+                <select class="form-control" name="tipoDescuentoEditar" id="tipoDescuentoEditar">
+                    <option value="Sin Descuento">Sin Descuento</option>
+                    <option value="Monto">Monto</option>
+                    <option value="Porcentaje">Porcentaje</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="montoDescuentoEditar">Monto Descuento:</label>
+                <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="montoDescuentoEditar" id="montoDescuentoEditar"  disabled>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cantidadRegistroEditar">Cantidad:</label>
+                <input type="text" class="form-control input-md solo-numero" name="cantidadRegistroEditar" id="cantidadRegistroEditar">
+            </div>
+
+            <div class="form-group col-md-9">
+                <label for="glosaEditar">Aplicación:</label>
+                <input type="text" class="form-control input-md" name="glosaEditar" id="glosaEditar">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Estado</label>
+                <select class="form-control" name="estadoEditar" id="estadoEditar">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="EXCLUIDO">EXCLUIDO</option>
+                </select>
+            </div>
+  
+          </div>
+
+        </div>
+
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+          <button type="button" class="btn btn-info" id="btnEditarTabla"><i class="fa fa-hdd-o" aria-hidden="true"></i> Editar Registro</button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
 <div id="modalModificarOC" class="modal fade" role="dialog">
+    <input type="hidden" class="form-control" name="idOcModificar" id="idOcModificar">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form role="form" method="post" id="formularioModificarOC" enctype="multipart/form-data">
-                <div class="modal-header" style="background:#f39c12; color:white">
+
+                <div class="modal-header" style="background:#00a65a; color:white">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Orden de Compra</h4>
+                    <h4 class="modal-title">Modificar Orden de Compra</h4>
                 </div>
+
                 <div class="modal-body">
                     <div class="box-body">
-                        <input type="hidden" id="idOCModificar" name="idOCModificar">
 
                         <div class="box box-default">
                             <div class="box-header with-border">
@@ -263,97 +361,269 @@
                             </div>
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="form-group col-md-4"><label>Empresa</label><select class="form-control" name="modificarEmpresa" required></select></div>
-                                    <div class="form-group col-md-4"><label>Proveedor</label><select class="form-control" name="modificarProveedor" required></select></div>
-                                    <div class="form-group col-md-4"><label>Tipo OC</label><select class="form-control" name="modificarTipoOC" required></select></div>
+                                    <div class="form-group col-sm-4 col-xs-12">
+                                        <label for="nuevaEmpresaModificar">Empresa:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevaEmpresaModificar" id="nuevaEmpresaModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-sm-4 col-xs-12">
+                                        <label for="nuevoProveedorModificar">Proveedor:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevoProveedorModificar" id="nuevoProveedorModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-sm-4 col-xs-12">
+                                        <label for="nuevotipoOCModificar">Tipo OC:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevotipoOCModificar" id="nuevotipoOCModificar">
+                                            <option value="-">Seleccionar</option>
+                                            <option value="Solicitud Material y Servicio">Solicitud Material y Servicio</option>
+                                            <option value="Repuesto por Tarea">Repuesto por Tarea</option>
+                                            <option value="Repuesto para Stock">Repuesto para Stock</option>
+                                        </select>
+                                    </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="form-group col-md-3"><label>Tipo documento proveedor</label><select class="form-control" name="modificarTipoDocProveedor"></select></div>
-                                    <div class="form-group col-md-3"><label>Nº documento proveedor</label><input type="text" class="form-control" name="modificarNumDocProveedor"></div>
-                                    <div class="form-group col-md-6"><label>Cambiar archivo (opcional)</label><input type="file" class="form-control" name="modificarArchivo"></div>
+                                    <div class="form-group col-md-3">
+                                        <label for="nuevotipoDocProvModificar">Tipo documento proveedor:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevotipoDocProvModificar" id="nuevotipoDocProvModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>Nº documento proveedor: </label>
+                                        <input type="text" class="form-control" name="nuevoNumDocProveedorModificar" id="nuevoNumDocProveedorModificar">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Seleccionar archivo: </label> <small style="color: red;">(Solo para actualizar archivo existente)</small>
+                                        <input type="file" class="form-control" name="nuevoArchivoModificar" id="nuevoArchivoModificar">
+                                    </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="form-group col-md-3"><label>Plazo pago</label><select class="form-control" name="modificarPlazoPago"></select></div>
-                                    <div class="form-group col-md-3"><label>Forma pago</label><select class="form-control" name="modificarFormaPago"></select></div>
-                                    <div class="form-group col-md-3"><label>Plazo entrega</label><select class="form-control" name="modificarPlazoEntrega"></select></div>
-                                    <div class="form-group col-md-3"><label>Tipo documento compra</label><select class="form-control" name="modificarTipoDocCompra"></select></div>
+                                    <div class="form-group col-md-3">
+                                        <label for="nuevoPlazoPagoModificar">Plazo pago:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevoPlazoPagoModificar" id="nuevoPlazoPagoModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="nuevaFormaPagoModificar">Forma pago:</label>
+                                        <select class="form-control input-md cajatexto solo-ruc" name="nuevaFormaPagoModificar" id="nuevaFormaPagoModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>Plazo entrega</label>
+                                        <select class="form-control" name="nuevoPlazoEntregaModificar" id="nuevoPlazoEntregaModificar">
+                                            <option value=" ">Seleccionar...</option>
+                                            <option value="7 DIAS">7 DIAS</option>
+                                            <option value="INMEDIATA">INMEDIATA</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>Tipo documento compra</label>
+                                        <select class="form-control" name="nuevoTipoDocCompraModificar" id="nuevoTipoDocCompraModificar">
+                                            <option value=" ">Seleccionar...</option>
+                                            <option value="Factura Afecta">Factura Afecta</option>
+                                            <option value="Factura Excenta">Factura Excenta</option>
+                                            <option value="Boleta de Honorario">Boleta de Honorario</option>
+                                            <option value="Vale por">Vale por</option>
+                                        </select>
+                                    </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="form-group col-md-3"><label>Pre aprueba</label><select class="form-control" name="modificarPreAprueba"></select></div>
-                                    <div class="form-group col-md-5">
-                                        <label>Nº Solicitud MI</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="modificarSolicitudMI" readonly>
-                                            <span class="input-group-btn"><button class="btn btn-primary" type="button" id="btnAsociarSolicitudModificar">Asociar Solicitud MI</button></span>
-                                        </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="preapruebaModificar">Pre aprueba:</label>
+                                        <select class="form-control input-md cajatexto" name="preapruebaModificar" id="preapruebaModificar"></select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="preaprueba2Modificar">Pre aprueba 2:</label>
+                                        <select class="form-control input-md cajatexto" name="preaprueba2Modificar" id="preaprueba2Modificar"></select>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Detalle orden de compra</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="tablaDetalleOCModificar" style="text-align:center;">
+                                        <thead>
+                                            <tr>
+                                                <th>Nº SMS</th>
+                                                <th>Item SMS</th>
+                                                <th>Aplicación</th>
+                                                <th>Tipo Producto</th>
+                                                <th>Glosa</th>
+                                                <th>U.M.</th>
+                                                <th>Cantidad</th>
+                                                <th>Costo Unitario</th>
+                                                <th>Tipo Descuento</th>
+                                                <th>Valor Descuento</th>
+                                                <th>Sub Total</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label>Sub total($):</label>
+                                <input type="text" class="form-control input-md" name="subTotalModificar" id="subTotalModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Descuento($):</label>
+                                <input type="text" class="form-control input-md" name="descuentoTotalModificar" id="descuentoTotalModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Exento($):</label>
+                                <input type="text" class="form-control input-md" name="exentoModificar" id="exentoModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Neto($):</label>
+                                <input type="text" class="form-control input-md" name="netoModificar" id="netoModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>IVA($):</label>
+                                <input type="text" class="form-control input-md" name="ivaTotalModificar" id="ivaTotalModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Retención($):</label>
+                                <input type="text" class="form-control input-md" name="retencionModificar" id="retencionModificar" value="0" readonly>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label>Total($):</label>
+                                <input type="text" class="form-control input-md" name="totalGeneralModificar" id="totalGeneralModificar" value="0" readonly>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-save"></i> Guardar Cambios</button>
+
+                    <button type="button" class="btn btn-success" id="btnModificarOc" name="btnModificarOc">
+                        <i class="fa fa-check"></i> Mofificar OC
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div id="modalVerMasOC" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="background:#3c8dbc; color:white">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Ver Detalles de Orden de Compra</h4>
-            </div>
-            <div class="modal-body">
-                <div class="box-body">
+<div id="modalEditarRegistroModificar" class="modal fade" role="dialog">
+  
+  <div class="modal-dialog">
 
-                    <div class="box box-default">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Encabezado</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="form-group col-md-4"><label>Empresa</label><input type="text" class="form-control" id="verEmpresa" readonly></div>
-                                <div class="form-group col-md-4"><label>Proveedor</label><input type="text" class="form-control" id="verProveedor" readonly></div>
-                                <div class="form-group col-md-4"><label>Tipo OC</label><input type="text" class="form-control" id="verTipoOC" readonly></div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-3"><label>Tipo documento proveedor</label><input type="text" class="form-control" id="verTipoDocProveedor" readonly></div>
-                                <div class="form-group col-md-3"><label>Nº documento proveedor</label><input type="text" class="form-control" id="verNumDocProveedor" readonly></div>
-                                <div class="form-group col-md-6"><label>Archivo Adjunto</label>
-                                    <p id="verArchivo" class="form-control-static"><a href="#" target="_blank"></a></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-3"><label>Plazo pago</label><input type="text" class="form-control" id="verPlazoPago" readonly></div>
-                                <div class="form-group col-md-3"><label>Forma pago</label><input type="text" class="form-control" id="verFormaPago" readonly></div>
-                                <div class="form-group col-md-3"><label>Plazo entrega</label><input type="text" class="form-control" id="verPlazoEntrega" readonly></div>
-                                <div class="form-group col-md-3"><label>Tipo documento compra</label><input type="text" class="form-control" id="verTipoDocCompra" readonly></div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-3"><label>Pre aprueba</label><input type="text" class="form-control" id="verPreAprueba" readonly></div>
-                                <div class="form-group col-md-5"><label>Nº Solicitud MI</label><input type="text" class="form-control" id="verSolicitudMI" readonly></div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal-content">
 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Cerrar</button>
-            </div>
+      <form role="form" method="post">
+
+        <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+        <div class="modal-header" style="background:#00a65a; color:white">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title">Editar Registro</h4>
+
         </div>
+
+        <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
+             <input type="hidden" id="idDetalleRegistroEditarParaModificacion">
+            
+            <div class="form-group col-md-4">
+                <label for="costoUnitarioEditar">Costo Unitario:</label>
+                <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="costoUnitarioEditarParaModificacion" id="costoUnitarioEditarParaModificacion">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Tipo Descuento</label>
+                <select class="form-control" name="tipoDescuentoEditarParaModificacion" id="tipoDescuentoEditarParaModificacion">
+                    <option value="Sin Descuento">Sin Descuento</option>
+                    <option value="Monto">Monto</option>
+                    <option value="Porcentaje">Porcentaje</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="montoDescuentoEditarParaModificacion">Monto Descuento:</label>
+                <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="montoDescuentoEditarParaModificacion" id="montoDescuentoEditarParaModificacion"  disabled>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cantidadRegistroEditarParaModificacion">Cantidad:</label>
+                <input type="text" class="form-control input-md solo-numero" name="cantidadRegistroEditarParaModificacion" id="cantidadRegistroEditarParaModificacion">
+            </div>
+
+            <div class="form-group col-md-9">
+                <label for="glosaEditarParaModificacion">Aplicación:</label>
+                <input type="text" class="form-control input-md" name="glosaEditarParaModificacion" id="glosaEditarParaModificacion">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="glosaEditarParaModificacion">Estado</label>
+                <select class="form-control" name="estadoEditarParaModificacion" id="estadoEditarParaModificacion">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="EXCLUIDO">EXCLUIDO</option>
+                </select>
+            </div>
+  
+          </div>
+
+        </div>
+
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+          <button type="button" class="btn btn-info" id="btnEditarTablaParaModificacion"><i class="fa fa-hdd-o" aria-hidden="true"></i> Editar Registro</button>
+
+        </div>
+
+      </form>
+
     </div>
+
+  </div>
+
 </div>
+
 
 <script src="vistas/js/compras/generarOC.js"></script>
 
 <style>
+
     #div1 {
         overflow: auto;
         width: 100%;
@@ -374,6 +644,28 @@
         box-shadow: none;
     }
 
+    #modalEditarRegistro .form-control,
+    #modalEditarRegistro select,
+    #modalEditarRegistro textarea,
+    #modalEditarRegistro input[type="file"] {
+        border: 2px solid #ff7a00 !important;
+        /* naranja */
+        border-radius: 4px;
+        box-shadow: none;
+    }
+
+    #modalModificarOC .form-control,
+    #modalModificarOC select,
+    #modalModificarOC textarea,
+    #modalModificarOC input[type="file"] {
+        border: 2px solid #ff7a00 !important;
+        /* naranja */
+        border-radius: 4px;
+        box-shadow: none;
+    }
+
+    
+
     /* Enfocado */
     #modalAgregarOC .form-control:focus,
     #modalAgregarOC select:focus,
@@ -384,9 +676,41 @@
         box-shadow: 0 0 0 3px rgba(255, 122, 0, .2);
     }
 
+    #modalEditarRegistro .form-control:focus,
+    #modalEditarRegistro select:focus,
+    #modalEditarRegistro textarea:focus,
+    #modalEditarRegistro input[type="file"]:focus {
+        border-color: #ff7a00 !important;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 122, 0, .2);
+    }
+
+    #modalModificarOC .form-control:focus,
+    #modalModificarOC select:focus,
+    #modalModificarOC textarea:focus,
+    #modalModificarOC input[type="file"]:focus {
+        border-color: #ff7a00 !important;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 122, 0, .2);
+    }
+
     /* Readonly / Disabled con mismo borde */
     #modalAgregarOC .form-control[readonly],
     #modalAgregarOC .form-control:disabled {
+        background-color: #f6f6f6;
+        border-color: #ff7a00;
+        opacity: 1;
+    }
+
+    #modalEditarRegistro .form-control[readonly],
+    #modalEditarRegistro .form-control:disabled {
+        background-color: #f6f6f6;
+        border-color: #ff7a00;
+        opacity: 1;
+    }
+
+    #modalModificarOC .form-control[readonly],
+    #modalModificarOC .form-control:disabled {
         background-color: #f6f6f6;
         border-color: #ff7a00;
         opacity: 1;
@@ -405,8 +729,40 @@
         /* espacio para la flecha */
     }
 
+    #modalEditarRegistro select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff7a00' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px 16px;
+        padding-right: 34px;
+        /* espacio para la flecha */
+    }
+
+    #modalModificarOC select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff7a00' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px 16px;
+        padding-right: 34px;
+        /* espacio para la flecha */
+    }
+
     /* Espaciado compacto */
     #modalAgregarOC .form-group {
+        margin-bottom: 12px;
+    }
+
+    #modalEditarRegistro .form-group {
+        margin-bottom: 12px;
+    }
+
+    #modalModificarOC .form-group {
         margin-bottom: 12px;
     }
 
