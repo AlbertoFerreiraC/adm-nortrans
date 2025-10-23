@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     cargarDatosTabla();
+    centroDeCostoAgregar();
+    tipoMaquinaAgregar();
 
     $('#btnGuardar').click(function () {
         agregarDatos();
@@ -95,9 +97,30 @@ function cargarDatosTabla() {
 }
 
 function agregarDatos() {
+    var centroCosto = $("#centroCostoAgregar").val();
+    var tipoMaquina = $("#tipoMaquinaAgregar").val();
+    var descripcion = $("#descripcionAgregar").val();
+    var kmNuevo = $("#kmNuevoAgregar").val();
+    var fechaKm = $("#fechaKmAgregar").val();
+
+    if (!centroCosto || !tipoMaquina || !descripcion || !kmNuevo || !fechaKm) {
+        swal({
+            type: "error",
+            title: "Debe completar todos los campos obligatorios",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
     var params = {
-        "descripcion": $("#descripcionAgregar").val()
+        "centro_de_costo": centroCosto,
+        "tipo_bus": tipoMaquina,
+        "descripcion": descripcion,
+        "km_actual": kmNuevo,
+        "fecha_km": fechaKm
     };
+
     $.ajax({
         url: "../api_adm_nortrans/maquina/funAgregar.php",
         method: "POST",
@@ -110,27 +133,23 @@ function agregarDatos() {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro cargado con exito",
+                    title: "Registro cargado con éxito",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
                     location.reload();
                 });
-            }
-
-            if (response['mensaje'] === "nok") {
+            } else if (response['mensaje'] === "registro_existente") {
                 swal({
                     type: "error",
-                    title: "Ha ocurrido un error al procesar la carga",
+                    title: "El registro ya existe en la base de datos",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
-            }
-
-            if (response['mensaje'] === "registro_existente") {
+            } else {
                 swal({
                     type: "error",
-                    title: "El registro que quiere cargar ya existe en la base de datos",
+                    title: "Ha ocurrido un error al procesar la carga",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
@@ -144,13 +163,15 @@ function agregarDatos() {
             confirmButtonText: "Aceptar"
         });
     });
-
 }
 
-function obtenerDatosParaModificar(valor) {
-    var params = {
-        "id": valor
-    };
+
+function obtenerDatosParaModificar(idmaquina) {
+    var params = { "idmaquina": idmaquina };
+
+    centroDeCostoModificar();
+    tipoMaquinaModificar();
+
     $.ajax({
         url: "../api_adm_nortrans/maquina/funDatosParaModificar.php",
         method: "POST",
@@ -160,28 +181,40 @@ function obtenerDatosParaModificar(valor) {
         processData: false,
         dataType: "json",
         success: function (response) {
-            for (var i in response) {
-                $("#descripcionModificar").val(response[i].descripcion);
-                $("#idModificar").val(response[i].id);
+            if (response.length > 0) {
+                var item = response[0];
+                $("#idModificar").val(item.idmaquina);
+                $("#descripcionModificar").val(item.descripcion);
+                $("#kmModificar").val(item.km_actual);
+                $("#fechaKmModificar").val(item.fecha_km);
+
+                setTimeout(() => {
+                    $("#centroCostoModificar").val(item.centro_de_costo);
+                    $("#tipoMaquinaModificar").val(item.tipo_bus);
+                }, 200);
             }
-
+        },
+        error: function () {
+            swal({
+                type: "error",
+                title: "Error al cargar los datos para modificar",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
         }
-    }).fail(function () {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al traer los datos oslicitados",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
     });
-
 }
 
 function modificarDatos() {
     var params = {
+        "idmaquina": $("#idModificar").val(),
+        "centro_de_costo": $("#centroCostoModificar").val(),
+        "tipo_bus": $("#tipoMaquinaModificar").val(),
         "descripcion": $("#descripcionModificar").val(),
-        "id": $("#idModificar").val()
+        "km_actual": $("#kmModificar").val(),
+        "fecha_km": $("#fechaKmModificar").val()
     };
+
     $.ajax({
         url: "../api_adm_nortrans/maquina/funModificar.php",
         method: "POST",
@@ -194,42 +227,30 @@ function modificarDatos() {
             if (response['mensaje'] === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro modificado con exito",
+                    title: "Registro modificado con éxito",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
-                }).then((value) => {
-                    location.reload();
-                });
-            }
-
-            if (response['mensaje'] === "nok") {
+                }).then(() => location.reload());
+            } else {
                 swal({
                     type: "error",
-                    title: "Ha ocurrido un error al procesar la modificación",
+                    title: "Error al modificar el registro",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
             }
-
-            if (response['mensaje'] === "repetido") {
-                swal({
-                    type: "error",
-                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            }
+        },
+        error: function () {
+            swal({
+                type: "error",
+                title: "Error de conexión al modificar el registro",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
         }
-    }).fail(function () {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la modificación",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
     });
-
 }
+
 
 function eliminarDatos(valor) {
     var params = {
@@ -274,4 +295,74 @@ function eliminarDatos(valor) {
         });
     });
 
+}
+
+// ================================ //
+// =========  SELECT  ============= //
+// ================================ //
+function centroDeCostoAgregar() {
+    $('#centroCostoAgregar').empty().append('<option value ="">Seleccionar...</option>');
+    $.ajax({
+        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            let lista = "";
+            for (var i in response) {
+                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+            }
+            $('#centroCostoAgregar').append(lista);
+        }
+    });
+}
+
+function tipoMaquinaAgregar() {
+    $('#tipoMaquinaAgregar').empty().append('<option value ="">Seleccionar...</option>');
+    $.ajax({
+        url: "../api_adm_nortrans/tipoequipo/funListar.php",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            let lista = "";
+            for (var i in response) {
+                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+            }
+            $('#tipoMaquinaAgregar').append(lista);
+        }
+    });
+}
+
+// ================================ //
+// =========MODIFICAR ============= //
+// ================================ //
+function centroDeCostoModificar() {
+    $('#centroCostoModificar').empty().append('<option value="">Seleccionar...</option>');
+    $.ajax({
+        url: "../api_adm_nortrans/centroDeCosto/funListar.php",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            let lista = "";
+            for (let i in response) {
+                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+            }
+            $('#centroCostoModificar').append(lista);
+        }
+    });
+}
+
+function tipoMaquinaModificar() {
+    $('#tipoMaquinaModificar').empty().append('<option value="">Seleccionar...</option>');
+    $.ajax({
+        url: "../api_adm_nortrans/tipoequipo/funListar.php",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            let lista = "";
+            for (let i in response) {
+                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+            }
+            $('#tipoMaquinaModificar').append(lista);
+        }
+    });
 }

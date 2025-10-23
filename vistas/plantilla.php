@@ -222,7 +222,8 @@ session_start();
         "categoriaPautaInspeccion",
         "reporteFalla",
         "conductor",
-        "maquina"
+        "maquina",
+        "registroKM"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

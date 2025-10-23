@@ -453,7 +453,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu mantenedor-scroll">
-							<li><a href=""><i class="fa fa-bullhorn"></i> Registro de Km</a></li>
+							<li><a href="registroKM"><i class="fa fa-bullhorn"></i> Registro de Km</a></li>
 							<li><a href="reporteFalla"><i class="fa fa-bullhorn"></i> Reporte de Falla</a></li>
 						</ul>
 

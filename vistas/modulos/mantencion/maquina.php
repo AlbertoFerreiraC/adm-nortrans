@@ -99,10 +99,36 @@ MODAL AGREGAR TAREA
                     <div class="box-body">
 
                         <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="centroCostoAgregar">Centro de costo:</label>
+                            <select class="form-control" id="centroCostoAgregar" name="centroCostoAgregar" required>
+                            </select>
+                        </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="tipoMaquinaAgregar">Tipo Maquina:</label>
+                            <select class="form-control" id="tipoMaquinaAgregar" name="tipoMaquinaAgregar" required>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12">
                             <label for="nuevoNombre">Descripción:</label>
-                            <input type="text" class="form-control input-md" name="descripcionAgregar" id="descripcionAgregar" placeholder="Ingresar Descripción" required>
+                            <input type="text" class="form-control input-md" name="descripcionAgregar" id="descripcionAgregar" required>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="kmNuevoAgregar">Km nuevo:</label>
+                            <input type="text" class="form-control input-md" name="kmNuevoAgregar" id="kmNuevoAgregar" value="0" required>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="fechaKmAgregar">Fecha KM:</label>
+                            <input
+                                type="date"
+                                class="form-control input-md"
+                                name="fechaKmAgregar"
+                                id="fechaKmAgregar"
+                                required>
                         </div>
 
                     </div>
@@ -130,66 +156,67 @@ MODAL AGREGAR TAREA
 </div>
 
 <!--=====================================
-MODAL EDITAR TAREA
+MODAL EDITAR MAQUINA
 ======================================-->
-
 <div id="modalModificar" class="modal fade" role="dialog">
-
     <div class="modal-dialog">
 
         <div class="modal-content">
+            <form role="form" method="post" id="formulario_para_modificar">
 
-            <form role="form" method="post">
-
-                <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
-
+                <!-- CABEZA -->
                 <div class="modal-header" style="background:#A9A9A9; color:white">
-
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    <h4 class="modal-title">Editar Registro</h4>
-
+                    <h4 class="modal-title">Editar Registro de Máquina</h4>
                 </div>
 
-                <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-
+                <!-- CUERPO -->
                 <div class="modal-body">
-
                     <div class="box-body">
-                        <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
-                        <div class="form-group col-sm-12 col-xs-12">
-                            <label for="nuevoNombre">Descripción:</label>
-                            <input type="text" class="form-control input-md" name="descripcionModificar" id="descripcionModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="centroCostoModificar">Centro de costo:</label>
+                            <select class="form-control" id="centroCostoModificar" name="centroCostoModificar" required></select>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="tipoMaquinaModificar">Tipo Máquina:</label>
+                            <select class="form-control" id="tipoMaquinaModificar" name="tipoMaquinaModificar" required></select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="descripcionModificar">Descripción:</label>
+                            <input type="text" class="form-control" id="descripcionModificar" name="descripcionModificar" required>
+                            <input type="hidden" id="idModificar" name="idModificar">
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="kmModificar">Kilometraje actual:</label>
+                            <input type="number" class="form-control" id="kmModificar" name="kmModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-6">
+                            <label for="fechaKmModificar">Fecha KM:</label>
+                            <input type="date" class="form-control" id="fechaKmModificar" name="fechaKmModificar" required>
                         </div>
 
                     </div>
-
                 </div>
 
-                <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
+                <!-- PIE -->
                 <div class="modal-footer">
-
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-                    <button type="button" class="btn btn-primary" style="background-color: #adaf9c; border-color: #f46717; " id="btnModificar"><i class="fa fa-hdd-o" aria-hidden="true"></i> Modificar Registro</button>
-
+                    <button type="button" class="btn btn-primary" id="btnModificar">
+                        <i class="fa fa-hdd-o" aria-hidden="true"></i> Guardar Cambios
+                    </button>
                 </div>
 
             </form>
-
         </div>
 
     </div>
-
 </div>
+
 
 <script src="vistas/js/mantencion/maquina.js"></script>
 
@@ -205,3 +232,19 @@ MODAL EDITAR TAREA
         background-color: lightgray;
     }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        // Cuando se abre el modal de "Agregar Registro"
+        $('#modalAgregar').on('show.bs.modal', function() {
+            const hoy = new Date();
+            const año = hoy.getFullYear();
+            const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+            const dia = String(hoy.getDate()).padStart(2, '0');
+            const fechaActual = `${año}-${mes}-${dia}`;
+            document.getElementById('fechaKmAgregar').value = fechaActual;
+        });
+
+    });
+</script>
