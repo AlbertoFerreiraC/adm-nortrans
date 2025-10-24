@@ -223,7 +223,8 @@ session_start();
         "reporteFalla",
         "conductor",
         "maquina",
-        "registroKM"
+        "registroKM",
+        "editarKM"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];

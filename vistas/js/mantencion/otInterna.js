@@ -1,128 +1,428 @@
-let repuestosTemp = [];
-let tareas = [];
-
-// Agregar repuesto
-$("#btnAgregarRepuesto").click(function () {
-    const id = $("#repuesto").val();
-    const cantidad = parseInt($("#cantidadRepuesto").val());
-    if (!id || cantidad <= 0) return alert("Seleccione repuesto y cantidad válida.");
-
-    const producto = id === "600510618" ? "BOMBA DE AGUA" : "GRASA INDUSTRIAL";
-    repuestosTemp.push({
-        tipo: id.startsWith("I") ? "Insumo" : "Repuesto",
-        id,
-        producto,
-        um: "UND",
-        cantidad
-    });
-    actualizarTablaRepuestos();
+$(document).ready(function () {
+    cargaCentroDeCosto();
+    cargarMaquina();
+    cargarTipoTarea();
+    listarSistema();
+    listarSubSistema();
+    listarTecnico();
+    listarRepuestos();
 });
 
-// Eliminar repuesto
-$(document).on("click", ".btnEliminarRepuesto", function () {
-    const index = $(this).data("index");
-    repuestosTemp.splice(index, 1);
-    actualizarTablaRepuestos();
-});
 
-function actualizarTablaRepuestos() {
-    const tbody = $("#tablaRepuestos tbody");
-    tbody.empty();
-
-    if (repuestosTemp.length === 0) {
-        tbody.append('<tr><td colspan="6" style="text-align:center;">Ningún dato disponible en esta tabla</td></tr>');
-        return;
+$('#btnAgregarTarea').click(function () {
+    if($("#tipoTarea").val() != "-" && 
+       $("#sistema").val() != "-" && 
+       $("#subSistema").val() != "-" && 
+       $("#tecnico").val() != "-" && 
+       $("#observacion").val() != "" && 
+       $("#fechaHoraTarea").val() != "") {
+        agregarTarea();
+    }else{
+        swal({
+            type: "error",
+            title: "Debe seleccionar y cargar todos los campos obligatorios.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
     }
-
-    repuestosTemp.forEach((r, i) => {
-        tbody.append(`
-        <tr>
-          <td>${r.tipo}</td>
-          <td>${r.id}</td>
-          <td>${r.producto}</td>
-          <td>${r.um}</td>
-          <td>${r.cantidad}</td>
-          <td><center><button class="btn btn-danger btn-sm btnEliminarRepuesto" data-index="${i}"><i class="fa fa-trash"></i></button></center></td>
-        </tr>
-      `);
-    });
-}
-
-// Agregar tarea
-$("#btnAgregarTarea").click(function () {
-    const tipo = $("#tipoTarea").val();
-    const sistema = $("#sistema").val();
-    const subSistema = $("#subSistema").val();
-    const tecnico = $("#tecnico").val();
-    const observacion = $("#observacion").val();
-
-    if (!tipo || !sistema || !subSistema || !tecnico) {
-        return alert("Complete los campos obligatorios de la tarea.");
-    }
-
-    const tarea = {
-        tipo, sistema, subSistema, tecnico,
-        detalle: observacion || "Sin observación",
-        totalRepuestos: repuestosTemp.length,
-        repuestos: [...repuestosTemp]
-    };
-
-    tareas.push(tarea);
-    repuestosTemp = [];
-    actualizarTablaRepuestos();
-    actualizarTablaTareas();
 });
 
-// Eliminar tarea
-$(document).on("click", ".btnEliminarTarea", function () {
-    const index = $(this).data("index");
-    tareas.splice(index, 1);
-    actualizarTablaTareas();
+$('#btnAgregarRepuesto').click(function () {
+    if($("#repuesto").val() != "-" && 
+       $("#cantidadRepuesto").val() != "") {
+        agregarRepuesto();
+    }else{
+        swal({
+            type: "error",
+            title: "Debe seleccionar y cargar todos los campos obligatorios.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    }
 });
 
-function actualizarTablaTareas() {
-    const tbody = $("#tablaTareas tbody");
-    tbody.empty();
-
-    if (tareas.length === 0) {
-        tbody.append('<tr><td colspan="7" style="text-align:center;">Ningún dato disponible en esta tabla</td></tr>');
-        return;
+$('#btnCrearOT').click(function () {
+    if($("#fechaOT").val() != "" && 
+       $("#kmActual").val() != "" && 
+       $("#maquina").val() != "-" && 
+       $("#centroCosto").val() != "-" && 
+       contadorDeFilasTarea() > 0) {
+        procesarCabecera();
+    }else{
+        swal({
+            type: "error",
+            title: "Debe seleccionar y cargar todos los campos obligatorios y agregar al menos una tarea.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
     }
+});
 
-    tareas.forEach((t, i) => {
-        tbody.append(`
-        <tr>
-          <td>${t.tipo}</td>
-          <td>${t.sistema}</td>
-          <td>${t.subSistema}</td>
-          <td>${t.tecnico}</td>
-          <td>${t.detalle}</td>
-          <td>${t.totalRepuestos}</td>
-          <td><center><button class="btn btn-danger btn-sm btnEliminarTarea" data-index="${i}"><i class="fa fa-trash"></i></button></center></td>
-        </tr>
-      `);
+
+
+function cargaCentroDeCosto(){
+    $('#centroCosto').empty();
+    $('#centroCosto').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/gestionarRendicion/funListarCentroDeCosto.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+            }
+            $('#centroCosto').append(listaEmpresa);
+        }        
     });
 }
 
-// Crear OT
-$("#btnCrearOT").click(function () {
-    if (tareas.length === 0) return alert("Debe agregar al menos una tarea.");
+function cargarMaquina(){
+    $('#maquina').empty();
+    $('#maquina').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarMaquinas.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#maquina').append(listaEmpresa);
+        }        
+    });
+}
 
-    const datosOT = {
-        fechaOT: $("#fechaOT").val(),
-        kmActual: $("#kmActual").val(),
-        maquina: $("#maquina").val(),
-        centroCosto: $("#centroCosto").val(),
-        tareas
+function cargarTipoTarea(){
+    $('#tipoTarea').empty();
+    $('#tipoTarea').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarTipoTarea.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#tipoTarea').append(listaEmpresa);
+        }        
+    });
+}
+
+function listarSistema(){
+    $('#sistema').empty();
+    $('#sistema').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarSistema.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#sistema').append(listaEmpresa);
+        }        
+    });
+}
+
+function listarSubSistema(){
+    $('#subSistema').empty();
+    $('#subSistema').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarSubSistema.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#subSistema').append(listaEmpresa);
+        }        
+    });
+}
+
+function listarTecnico(){
+    $('#tecnico').empty();
+    $('#tecnico').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarPersonalTecnico.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#tecnico').append(listaEmpresa);
+        }        
+    });
+}
+
+function listarRepuestos(){
+    $('#repuesto').empty();
+    $('#repuesto').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url:"../api_adm_nortrans/generarOtInterna/funListarRepuestos.php",
+        method:"GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+           for (var i in response){        
+            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion.toUpperCase()+'</option>';                
+            }
+            $('#repuesto').append(listaEmpresa);
+        }        
+    });
+}
+
+function agregarTarea(){
+        var fila = "";
+        fila = '<tr id ="filaTarea_'+contadorDeFilasTarea()+'">'+
+                        '<td>'+ $("#tipoTarea option:selected").text() +'</td>'+
+                        '<td>'+ $("#sistema option:selected").text() +'</td>'+
+                        '<td>'+ $("#subSistema option:selected").text() +'</td>'+
+                        '<td>'+ $("#tecnico option:selected").text() +'</td>'+
+                        '<td>'+ $("#observacion").val() +'</td>'+
+                        '<td>'+ $("#fechaHoraTarea").val() +'</td>'+
+
+                        '<td>'+
+                            '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="'+contadorDeFilasTarea()+'"><i class="fa fa-times"></i></button>'+                      
+                        '</td>'+
+                        
+                        '<td style="display: none;" >'+ $("#tipoTarea").val() +'</td>'+
+                        '<td style="display: none;" >'+ $("#sistema").val() +'</td>'+
+                        '<td style="display: none;" >'+ $("#subSistema").val() +'</td>'+
+                        '<td style="display: none;" >'+ $("#tecnico").val() +'</td>'+                       
+                    +'</tr>'; 
+        $('#tablaTareas').append(fila);   
+        cargarTipoTarea();
+        listarSistema();
+        listarSubSistema();
+        listarTecnico();
+        $("#observacion").val('');
+        $("#fechaHoraTarea").val('');
+
+            $('.btnEliminar').click(function() {
+                var id_registro = this.id;
+                swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, eliminar registro!'
+                }).then(function(result){
+                    if(result.value){
+                        $("#filaTarea_"+id_registro).remove();
+                    }                        
+                }); 
+            });        
+}
+
+function contadorDeFilasTarea(){
+  var cont = 0;
+  $('#tablaTareas tbody tr').each(function(){ 
+     cont++;      
+ });
+  return (cont+1);
+}
+
+function agregarRepuesto(){
+        var fila = "";
+        fila = '<tr id ="filaRepuesto_'+contadorDeFilasRepuestos()+'">'+
+                        '<td>'+ $("#repuesto").val() +'</td>'+
+                        '<td>'+ $("#repuesto option:selected").text() +'</td>'+                        
+                        '<td>'+ $("#cantidadRepuesto").val() +'</td>'+
+                        '<td>'+
+                            '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarRepuesto" id="'+contadorDeFilasRepuestos()+'"><i class="fa fa-times"></i></button>'+                      
+                        '</td>'+                   
+                    +'</tr>'; 
+        $('#tablaRepuestos').append(fila);   
+        listarRepuestos();
+        $("#cantidadRepuesto").val('');
+
+            $('.btnEliminarRepuesto').click(function() {
+                var id_registro = this.id;
+                swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, eliminar registro!'
+                }).then(function(result){
+                    if(result.value){
+                        $("#filaRepuesto_"+id_registro).remove();
+                    }                        
+                }); 
+            });        
+}
+
+function contadorDeFilasRepuestos(){
+  var cont = 0;
+  $('#tablaRepuestos tbody tr').each(function(){ 
+     cont++;      
+ });
+  return (cont+1);
+}
+
+function procesarCabecera() {
+    var params = {
+        "idUsuario": $("#idUsuario").val(),
+        "fecha": $("#fechaOT").val(),
+        "kmActual": $("#kmActual").val(),
+        "maquina": $("#maquina").val(),
+        "centroCosto": $("#centroCosto").val()
     };
+    $.ajax({
+        url: "../api_adm_nortrans/generarOtInterna/funProcesarCabecera.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] != "nok") {
+                procesarTareas(response['mensaje']);
+            }
 
-    if (!datosOT.maquina || !datosOT.centroCosto) {
-        return alert("Complete los datos generales de la OT.");
-    }
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-    alert("✅ OT creada correctamente.\n\n" + JSON.stringify(datosOT, null, 2));
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la carga",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
 
-    // Reiniciar
-    tareas = [];
-    actualizarTablaTareas();
-});
+}
+
+function procesarTareas(id) {
+    var datos = '{"idOt":"'+id+'", ';
+    //************************************************************************
+    var datos_tabla = '"tabla":[';
+      $('#tablaTareas tbody tr').each(function(){ 
+    datos_tabla = datos_tabla + 
+    '{"tipoTarea":"'+$(this).find("td").eq(7).html()+
+    '","sistema":"'+$(this).find("td").eq(8).html()+
+    '","subSistema":"'+$(this).find("td").eq(9).html()+
+    '","tecnico":"'+$(this).find("td").eq(10).html()+
+    '","observacion":"'+$(this).find("td").eq(4).html()+
+    '","fechaHoraTarea":"'+$(this).find("td").eq(5).html()+'"},';
+      });
+    datos_tabla = datos_tabla.substr(0,datos_tabla.length-1);  
+    datos_tabla = datos_tabla + ']';  
+    //************************************************************************
+    datos = datos + datos_tabla + "}";
+    $.ajax({
+        url: "../api_adm_nortrans/generarOtInterna/funProcesaDetalleTareas.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {     
+            if (response['mensaje'] == "ok") {
+                if(contadorDeFilasRepuestos() > 0){
+                    procesarRepuestos(id);
+                }else{
+                    swal({
+                        type: "success",
+                        title: "Orden de trabajo generado con éxito.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Aceptar"
+                    }).then((value) => {
+                        location.reload();
+                    });
+                }                    
+            } 
+            
+            if (response['mensaje'] === "nok") {
+                mensajeError("Ha ocurrido un error al procesar la carga de tareas.");
+            }                
+        }
+    });
+
+}
+
+function procesarRepuestos(id) {
+    var datos = '{"idOt":"'+id+'", ';
+    //************************************************************************
+    var datos_tabla = '"tabla":[';
+      $('#tablaRepuestos tbody tr').each(function(){ 
+    datos_tabla = datos_tabla + 
+    '{"repuesto":"'+$(this).find("td").eq(0).html()+
+    '","cantidadRepuesto":"'+$(this).find("td").eq(2).html()+'"},';
+      });
+    datos_tabla = datos_tabla.substr(0,datos_tabla.length-1);  
+    datos_tabla = datos_tabla + ']';  
+    //************************************************************************
+    datos = datos + datos_tabla + "}";
+    $.ajax({
+        url: "../api_adm_nortrans/generarOtInterna/funProcesaDetalleRepuestos.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {     
+            if (response['mensaje'] == "ok") {
+                swal({
+                    type: "success",
+                    title: "Orden de trabajo generado con éxito.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });    
+            } 
+            
+            if (response['mensaje'] === "nok") {
+                mensajeError("Ha ocurrido un error al procesar la carga de repuestos.");
+            }                
+        }
+    });
+
+}

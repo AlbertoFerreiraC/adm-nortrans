@@ -455,6 +455,7 @@
 						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href="registroKM"><i class="fa fa-bullhorn"></i> Registro de Km</a></li>
 							<li><a href="reporteFalla"><i class="fa fa-bullhorn"></i> Reporte de Falla</a></li>
+							<li><a href="editarKM"><i class="fa fa-bullhorn"></i> Editar Km Maquina</a></li>
 						</ul>
 
 					</li>

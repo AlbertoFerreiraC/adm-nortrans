@@ -1,232 +1,242 @@
-<div class="content-wrapper">
+<input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
 
+<div class="content-wrapper">
   <section class="content-header">
-    <h1>Creación de Servicio Externo</h1>
+    <h1>Servicio Externo</h1>
     <ol class="breadcrumb">
-      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Mantenimiento</a></li>
+      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio / Mantención</a></li>
       <li class="active">Servicio Externo</li>
     </ol>
   </section>
 
   <section class="content">
-
     <div class="box">
+      <div class="box-header with-border">
+        <div class="form-group col-sm-3 col-xs-12">
+          <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalServicioExterno">
+            <i class="fa fa-plus"></i> Nuevo Servicio
+          </button>
+        </div>
 
-      <!-- ===================== CREACIÓN SERVICIO EXTERNO ===================== -->
-      <div class="box-header with-border" style="background:#E1E1E1; color:black;">
-        <h4>Creación servicio externo</h4>
+        <div class="form-group col-sm-9 col-xs-12">
+          <input type="text" id="filtradoDinamico" class="form-control input-sm"
+            style="text-align:center; font-size:17px;" placeholder="Filtrado general...">
+        </div>
       </div>
 
       <div class="box-body">
-
-        <div class="form-group col-sm-2">
-          <label>Fecha OT</label>
-          <input type="date" id="fechaOT" class="form-control input-sm" value="2025-10-09">
-        </div>
-
-        <div class="form-group col-sm-3">
-          <label>Tipo tarea</label>
-          <select class="form-control input-sm" id="tipoTarea">
-            <option value="">Seleccione...</option>
-            <option value="Inspección">Inspección</option>
-            <option value="Correctiva">Correctiva</option>
-            <option value="Preventiva">Preventiva</option>
-          </select>
-        </div>
-
-        <div class="form-group col-sm-3">
-          <label>Máquina</label>
-          <select class="form-control input-sm" id="maquina">
-            <option value="">Seleccione...</option>
-            <option value="219 / DSSF-23">219 / DSSF-23</option>
-            <option value="102 / CARG-15">102 / CARG-15</option>
-          </select>
-        </div>
-
-        <div class="form-group col-sm-3">
-          <label>Proveedor</label>
-          <select class="form-control input-sm" id="proveedor">
-            <option value="">Seleccione...</option>
-            <option value="SISTEMA INFORMATICOS P2P">SISTEMA INFORMATICOS P2P</option>
-            <option value="SERVITRANS SRL">SERVITRANS SRL</option>
-            <option value="MECANICOS ASOCIADOS">MECANICOS ASOCIADOS</option>
-          </select>
-        </div>
-
-        <div class="form-group col-sm-1" style="margin-top:25px;">
-          <button class="btn btn-primary btn-block" id="btnValidar"><i class="fa fa-check"></i> Validar tipo tarea</button>
-        </div>
-      </div>
-
-      <!-- ===================== SECCIÓN CORRECTIVA ===================== -->
-      <div class="box-header with-border" style="background:#E8E8E8; color:black;">
-        <h4>Correctiva</h4>
-      </div>
-
-      <div class="box-body">
-
-        <div class="form-group col-sm-3">
-          <label>Sistema</label>
-          <select class="form-control input-sm" id="sistema">
-            <option value="">Seleccione...</option>
-            <option value="Motor">Motor</option>
-            <option value="Frenos">Frenos</option>
-            <option value="Transmisión">Transmisión</option>
-          </select>
-        </div>
-
-        <div class="form-group col-sm-3">
-          <label>Sub Sistema</label>
-          <select class="form-control input-sm" id="subSistema">
-            <option value="">Seleccione...</option>
-            <option value="Lubricación">Lubricación</option>
-            <option value="Refrigeración">Refrigeración</option>
-            <option value="Combustión">Combustión</option>
-          </select>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <label>Observación (max. 350)</label>
-          <textarea class="form-control input-sm" id="observacion" maxlength="350"></textarea>
-        </div>
-
-        <div class="form-group col-sm-12 text-right">
-          <button class="btn btn-primary" id="btnAgregarTarea"><i class="fa fa-plus"></i> Agregar tarea</button>
-        </div>
-
-        <div class="col-sm-12">
-          <table class="table table-bordered table-striped dt-responsive" id="tablaTareas" width="100%">
+        <div id="divTabla">
+          <table class="table table-bordered table-striped dt-responsive" id="tablaServicioExterno" width="100%">
             <thead>
               <tr>
-                <th><center>Sistema</center></th>
-                <th><center>Sub Sistema</center></th>
-                <th><center>Observación</center></th>
-                <th><center>Eliminar</center></th>
+                <th style="width:10px">
+                  <center>#</center>
+                </th>
+                <th>
+                  <center>Fecha OT</center>
+                </th>
+                <th>
+                  <center>Máquina</center>
+                </th>
+                <th>
+                  <center>Proveedor</center>
+                </th>
+                <th>
+                  <center>Acciones</center>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr><td colspan="4" style="text-align:center;">Ningún dato disponible en esta tabla</td></tr>
+              <tr>
+                <td colspan="6" class="text-center">Ningún registro disponible</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
-
-      <!-- ===================== DATOS FINALES ===================== -->
-      <div class="box-body">
-        <div class="form-group col-sm-2">
-          <label>Km actual</label>
-          <input type="number" class="form-control input-sm" id="kmActual" placeholder="0">
-        </div>
-
-        <div class="form-group col-sm-3">
-          <label>Fecha hora</label>
-          <input type="datetime-local" class="form-control input-sm" id="fechaHora" value="2025-10-11T12:41">
-        </div>
-
-        <div class="form-group col-sm-3" style="margin-top:25px;">
-          <button class="btn btn-success btn-block" id="btnGenerarServicio"><i class="fa fa-cogs"></i> Generar Servicio Externo</button>
-        </div>
-      </div>
-
     </div>
-
   </section>
 </div>
 
+<!--=====================================
+MODAL SERVICIO EXTERNO
+======================================-->
+<div id="modalServicioExterno" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <form id="formServicioExterno" method="post">
+
+        <div class="modal-header" style="background:#007B9E; color:white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Generar Servicio Externo</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="box-body">
+
+            <h4><strong>Datos del Servicio</strong></h4>
+            <hr>
+
+            <div class="form-group col-md-6 col-xs-6">
+              <label for="fechaOt">Fecha OT:</label>
+              <input type="date" id="fechaOt" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-6 col-xs-6">
+              <label for="tipoTarea">Tipo de Tarea:</label>
+              <select id="tipoTarea" class="form-control" required>
+                <option value="">Seleccionar...</option>
+                <option value="MANTENIMIENTO">Mantenimiento</option>
+                <option value="REPARACIÓN">Reparación</option>
+                <option value="INSPECCIÓN">Inspección</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6 col-xs-6">
+              <label for="maquina">Máquina:</label>
+              <select id="maquina" class="form-control" required></select>
+            </div>
+
+            <div class="form-group col-md-6 col-xs-6">
+              <label for="proveedor">Proveedor:</label>
+              <select id="proveedor" class="form-control" required></select>
+            </div>
+
+            <div class="form-group col-md-12">
+              <button type="button" class="btn btn-info" id="btnValidarTarea">
+                <i class="fa fa-check"></i> Validar Tipo Tarea
+              </button>
+            </div>
+
+            <!-- SECCIÓN CORRECTIVA (oculta hasta validar tipo tarea) -->
+            <div id="seccionCorrectiva" style="display:none; margin-top:20px;">
+              <div class="panel panel-default">
+                <div class="panel-heading"><strong>Correctiva</strong></div>
+                <div class="panel-body">
+
+                  <div class="form-group col-md-6 col-xs-6">
+                    <label for="sistema">Sistema:</label>
+                    <select id="sistema" class="form-control"></select>
+                  </div>
+
+                  <div class="form-group col-md-6 col-xs-6">
+                    <label for="subSistema">Sub Sistema:</label>
+                    <select id="subSistema" class="form-control"></select>
+                  </div>
+
+                  <div class="form-group col-md-12 col-xs-12">
+                    <label for="observacion">Observación (max. 350):</label>
+                    <textarea id="observacion" class="form-control" rows="1" maxlength="350"></textarea>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <button type="button" class="btn btn-primary" id="btnAgregarTarea">
+                      <i class="fa fa-plus"></i> Agregar Tarea
+                    </button>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <table class="table table-bordered table-striped" id="tablaTareas">
+                      <thead>
+                        <tr>
+                          <th>
+                            <center>Sistema</center>
+                          </th>
+                          <th>
+                            <center>Sub Sistema</center>
+                          </th>
+                          <th>
+                            <center>Observación</center>
+                          </th>
+                          <th>
+                            <center>Eliminar</center>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="4" class="text-center">Ningún dato disponible en esta tabla</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="kmActual">Km actual:</label>
+                    <input type="number" id="kmActual" class="form-control" placeholder="Ingrese km actual">
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="fechaHora">Fecha hora:</label>
+                    <input type="datetime-local" id="fechaHora" class="form-control">
+                  </div>
+
+                  <div class="form-group col-md-12 text-right">
+                    <button type="button" class="btn btn-success" id="btnGenerarServicio">
+                      <i class="fa fa-cogs"></i> Generar Servicio Externo
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
 <style>
-  #div1 {
-    overflow: scroll;
+  #divTabla {
+    overflow: auto;
     width: 100%;
   }
-  #div1 table {
-    width: 100%;
-    background-color: #f4f4f4;
+
+  #tablaServicioExterno th,
+  #tablaServicioExterno td,
+  #tablaTareas th,
+  #tablaTareas td {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .panel-default {
+    border-color: #ccc;
+  }
+
+  .panel-heading {
+    background: #f1f1f1;
+    font-weight: bold;
+  }
+
+  textarea {
+    resize: none;
   }
 </style>
 
+<script src="vistas/js/mantencion/servicioExterno.js"></script>
+
 <script>
-  let tareas = [];
+  document.addEventListener("DOMContentLoaded", function() {
 
-  // === VALIDAR TIPO DE TAREA ===
-  $("#btnValidar").click(function () {
-    const tipo = $("#tipoTarea").val();
-    const maquina = $("#maquina").val();
-    const proveedor = $("#proveedor").val();
+    $('#modalServicioExterno').on('shown.bs.modal', function() {
 
-    if (!tipo || !maquina || !proveedor) {
-      return alert("Complete todos los campos antes de validar.");
-    }
+      const ahora = new Date();
 
-    alert(`✅ Tipo de tarea "${tipo}" validado correctamente para la máquina ${maquina} y proveedor ${proveedor}.`);
-  });
+      const fechaLocal = ahora.toISOString().split("T")[0];
+      document.getElementById("fechaOt").value = fechaLocal;
 
-  // === AGREGAR TAREA ===
-  $("#btnAgregarTarea").click(function () {
-    const sistema = $("#sistema").val();
-    const subSistema = $("#subSistema").val();
-    const observacion = $("#observacion").val();
+      const zonaOffset = new Date().getTimezoneOffset() * 60000;
+      const localISOTime = new Date(Date.now() - zonaOffset).toISOString().slice(0, 16);
+      document.getElementById("fechaHora").value = localISOTime;
 
-    if (!sistema || !subSistema || !observacion) {
-      return alert("Complete los campos de sistema, sub sistema y observación.");
-    }
-
-    tareas.push({ sistema, subSistema, observacion });
-    actualizarTabla();
-    limpiarCampos();
-  });
-
-  function limpiarCampos() {
-    $("#sistema").val("");
-    $("#subSistema").val("");
-    $("#observacion").val("");
-  }
-
-  function actualizarTabla() {
-    const tbody = $("#tablaTareas tbody");
-    tbody.empty();
-
-    if (tareas.length === 0) {
-      tbody.append('<tr><td colspan="4" style="text-align:center;">Ningún dato disponible en esta tabla</td></tr>');
-      return;
-    }
-
-    tareas.forEach((t, i) => {
-      tbody.append(`
-        <tr>
-          <td>${t.sistema}</td>
-          <td>${t.subSistema}</td>
-          <td>${t.observacion}</td>
-          <td><center><button class="btn btn-danger btn-sm btnEliminar" data-index="${i}"><i class="fa fa-trash"></i></button></center></td>
-        </tr>
-      `);
     });
-  }
-
-  $(document).on("click", ".btnEliminar", function () {
-    const index = $(this).data("index");
-    tareas.splice(index, 1);
-    actualizarTabla();
-  });
-
-  // === GENERAR SERVICIO EXTERNO ===
-  $("#btnGenerarServicio").click(function () {
-    const datos = {
-      fechaOT: $("#fechaOT").val(),
-      tipoTarea: $("#tipoTarea").val(),
-      maquina: $("#maquina").val(),
-      proveedor: $("#proveedor").val(),
-      kmActual: $("#kmActual").val(),
-      fechaHora: $("#fechaHora").val(),
-      tareas
-    };
-
-    if (!datos.maquina || !datos.proveedor || tareas.length === 0) {
-      return alert("Debe completar los datos y agregar al menos una tarea antes de generar el servicio.");
-    }
-
-    alert("✅ Servicio externo generado correctamente.\n\n" + JSON.stringify(datos, null, 2));
-
-    tareas = [];
-    actualizarTabla();
   });
 </script>

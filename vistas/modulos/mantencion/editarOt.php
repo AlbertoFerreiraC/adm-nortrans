@@ -1,225 +1,181 @@
+<input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
 <div class="content-wrapper">
-  <section class="content-header" style="background-color: black; padding: 20px; text-align: center;">
-    <h1 style="color: white; font-weight: bold;">Servicio OT: Editar OT</h1>
-  </section>
 
-  <section class="content">
-    <div class="box">
+    <section class="content-header">
+        <h1>Editar Orden de Trabajo (OT)</h1>
+        <ol class="breadcrumb">
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Mantenimiento</a></li>
+            <li class="active">Editar OT</li>
+        </ol>
+    </section>
 
-      <!-- PANEL: DATOS DE LA OT -->
-      <div class="panel-group" id="frm:j_idt110">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="padding: 1px;">
-            <h4 class="panel-opcion">
-              <a data-toggle="collapse" href="#frm_j_idt110_content" class="panel-opcion-link" aria-expanded="true">
-                Datos de la OT
-              </a>
-            </h4>
-          </div>
+    <section class="content">
 
-          <div id="frm_j_idt110_content" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="row">
-                <div class="form-group col-sm-4 col-xs-12">
-                  <label for="numeroOt">N° OT</label>
-                  <input class="form-control input-md cajatexto solo-ruc" name="numeroOt" id="numeroOt">
-                </div>
+        <div class="box">
 
-                <div class="form-group col-sm-4 col-xs-12">
-                  <button type="button" class="btn btn-primary btn-block" id="btnBuscarOt"
-                    style="background-color: #FF6600; margin-top: 25px;">
-                    <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                  </button>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="fechaOt">Fecha</label>
-                  <input type="text" class="form-control input-md cajatexto" name="fechaOt" id="fechaOt" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="maquinaOt">Maquina</label>
-                  <input type="text" class="form-control input-md cajatexto" name="maquinaOt" id="maquinaOt" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="kmIngresado">Km ingresado</label>
-                  <input type="text" class="form-control input-md cajatexto" name="kmIngresado" id="kmIngresado" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="tipoOt">Tipo OT</label>
-                  <input type="text" class="form-control input-md cajatexto" name="tipoOt" id="tipoOt" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="creadoPor">Creado por:</label>
-                  <input type="text" class="form-control input-md cajatexto" name="creadoPor" id="creadoPor" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="tipoMaquina">Tipo de Maquina</label>
-                  <input type="text" class="form-control input-md cajatexto" name="tipoMaquina" id="tipoMaquina" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="idAño">Año</label>
-                  <input type="text" class="form-control input-md cajatexto" name="idAño" id="idAño" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="marcaChasis">Marca Chasis</label>
-                  <input type="text" class="form-control input-md cajatexto" name="marcaChasis" id="marcaChasis" disabled>
-                </div>
-
-                <div class="form-group col-sm-3 col-xs-12">
-                  <label for="modeloChasis">Modelo Chasis</label>
-                  <input type="text" class="form-control input-md cajatexto" name="modeloChasis" id="modeloChasis" disabled>
-                </div>
-              </div>
+            <!-- ===================== DATOS OT ===================== -->
+            <div class="box-header with-border" style="background:#E1E1E1; color:black;">
+                <h4>Datos</h4>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- PANEL: LISTA DE TAREAS -->
-      <div class="panel-group" id="panelListaSolicitudActivas">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="padding: 1px;">
-            <h4 class="panel-opcion">
-              <a data-toggle="collapse" href="#listaSolicitudActivas_content"
-                class="panel-opcion-link" aria-expanded="true">Lista de las Tareas</a>
-            </h4>
-          </div>
+            <div class="box-body">
 
-          <!-- ID CORREGIDO -->
-          <div id="listaSolicitudActivas_content" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="table-container">
-                <div class="table-responsive">
-                  <div class="box-body">
-                    <div id="ficha">
+                <div class="row">
 
-                      <!-- CONTROLES: Mostrar registros y Buscar -->
-                      <div class="table-controls">
-                        <div class="control-left">
-                          <label for="entriesSelect"><strong>Mostrar</strong>
-                            <select id="entriesSelect" onchange="updateVisibleRows()">
-                              <option value="5">5</option>
-                              <option value="10" selected>10</option>
-                              <option value="25">25</option>
-                              <option value="50">50</option>
-                              <option value="100">100</option>
-                            </select>
-                            <strong>registros</strong>
-                          </label>
-                        </div>
-
-                        <div class="control-right">
-                          <label for="searchInput"><strong>Buscar:</strong>
-                            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
-                          </label>
-                        </div>
-                      </div>
-
-                      <!-- TABLA -->
-                      <table class="table table-bordered table-striped dt-responsive" id="fichaContrato"
-                        width="100%" style="text-align: center;">
-                        <thead>
-                          <tr>
-                            <th><center>Nº Tarea</center></th>
-                            <th><center>Fecha</center></th>
-                            <th><center>Tipo Tarea</center></th>
-                            <th><center>Técnico</center></th>
-                            <th><center>Sistema</center></th>
-                            <th><center>Sub sistema</center></th>
-                            <th><center>Observación</center></th>
-                            <th><center>Estado</center></th>
-                            <th><center>Nº Tarea Origen</center></th>
-                            <th><center>Selección</center></th>
-                          </tr>
-                        </thead>
-                        <tbody></tbody>
-                      </table>
+                    <div class="form-group col-sm-3">
+                        <label>Orden de Trabajo</label>
+                        <select class="form-control input-sm" id="nroOts"> </select>
                     </div>
-                  </div>
+
+                    <div class="form-group col-sm-12 col-sm-3">
+                        <label></label>
+                        <button class="btn btn-info btn-block" id="btnBuscarOt"><i class="fa fa-search"></i> Buscar OT</button>
+                    </div>
+
                 </div>
-              </div>
+                <div class="form-group col-sm-3">
+                    <label>Fecha OT</label>
+                    <input type="date" class="form-control input-sm" id="fechaOT">
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Km actual</label>
+                    <input type="number" class="form-control input-sm" id="kmActual" placeholder="0">
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Máquina</label>
+                    <select class="form-control input-sm" id="maquina">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Centro costo</label>
+                    <select class="form-control input-sm" id="centroCosto">
+                    </select>
+                </div>
+
+                <!-- ===================== BOTÓN FINAL ===================== -->
+                <div class="box-footer text-right">
+                    <button class="btn btn-warning btn-md " id="btnEditarOT"><i class="fa fa-check"></i> Editar Cabecera OT</button>
+                </div>
             </div>
-          </div>
+
+            <!-- ===================== TAREAS ===================== -->
+            <div class="box-header with-border" style="background:#E1E1E1; color:black;">
+                <h4>Tareas</h4>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group col-sm-3">
+                    <label>Tipo tarea</label>
+                    <select class="form-control input-sm" id="tipoTarea">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Sistema</label>
+                    <select class="form-control input-sm" id="sistema">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Sub Sistema</label>
+                    <select class="form-control input-sm" id="subSistema">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Fecha y Hora Tarea</label>
+                    <input type="datetime-local" class="form-control input-sm" id="fechaHoraTarea">
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label>Observación técnica (máx. 350)</label>
+                    <textarea class="form-control input-sm" id="observacion" maxlength="350"></textarea>
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label>Personal técnico</label>
+                    <select class="form-control input-sm" id="tecnico">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-12 col-sm-3">
+                    <label></label>
+                    <button class="btn btn-primary btn-block" id="btnAgregarTarea"><i class="fa fa-plus"></i> Agregar Tarea</button>
+                </div>
+
+                <!-- ===================== LISTA DE TAREAS ===================== -->
+                    <div class="box-body" style="margin-top:10px;">
+                        <table class="table table-bordered table-striped dt-responsive" id="tablaTareas" width="100%" style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th><center>Tipo tarea</center></th>
+                                    <th><center>Sistema</center></th>
+                                    <th><center>Sub Sistema</center></th>
+                                    <th><center>Técnico</center></th>
+                                    <th><center>Observación</center></th>
+                                    <th><center>Fecha y Hora</center></th>
+                                    <th><center>Acciones</center></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+            </div>
+
+            <!-- ===================== REPUESTOS ===================== -->
+            <div class="box-header with-border" style="background:#D9EDF7; color:black;">
+                <h4>Repuestos para la Orden de Trabajo</h4>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group col-sm-7">
+                    <label>Repuesto</label>
+                    <select class="form-control input-sm" id="repuesto">
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label>Cantidad</label>
+                    <input type="number" class="form-control input-sm" id="cantidadRepuesto">
+                </div>
+
+                <div class="form-group col-sm-3" style="margin-top:25px;">
+                    <button class="btn btn-info btn-block" id="btnAgregarRepuesto"><i class="fa fa-plus"></i> Agregar Repuesto</button>
+                </div>
+
+                <div class="col-sm-12" style="margin-top:10px;">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaRepuestos" width="100%" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th><center>ID</center></th>
+                                <th><center>Descripción</center></th>
+                                <th><center>Cantidad</center></th>
+                                <th><center>Acciones</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>               
         </div>
-      </div>
 
-      <!-- BOTÓN AGREGAR TAREA -->
-      <div class="form-group col-sm-4 col-xs-12">
-        <button type="button" class="btn btn-primary btn-block" id="aggTarea"
-          style="background-color: #FF6600; margin-top: 25px;">
-          <i class="fa fa-plus" aria-hidden="true"></i> Agregar Tarea
-        </button>
-      </div>
-
-    </div>
-  </section>
+    </section>
 </div>
 
-<!-- === ESTILOS === -->
 <style>
-  .table-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-  }
+    #div1 {
+        overflow: scroll;
+        width: 100%;
+    }
 
-  .table-controls label {
-    font-weight: 500;
-  }
-
-  .table-controls select {
-    margin: 0 5px;
-    padding: 3px 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-
-  .table-controls input {
-    margin-left: 5px;
-    padding: 3px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    #div1 table {
+        width: 100%;
+        background-color: #f4f4f4;
+    }
 </style>
 
-<!-- === SCRIPTS === -->
-<script>
-  // FILTRO Y PAGINACIÓN BÁSICA
-  function filterTable() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const table = document.getElementById("fichaContrato");
-    const rows = table.tBodies[0].rows;
-
-    Array.from(rows).forEach(row => {
-      const cells = Array.from(row.cells);
-      const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
-      row.style.display = match ? "" : "none";
-    });
-  }
-
-  function updateVisibleRows() {
-    const limit = parseInt(document.getElementById("entriesSelect").value);
-    const table = document.getElementById("fichaContrato");
-    const rows = Array.from(table.tBodies[0].rows);
-
-    let visibleCount = 0;
-    rows.forEach(row => {
-      if (row.style.display !== "none") {
-        visibleCount++;
-        row.style.display = visibleCount <= limit ? "" : "none";
-      }
-    });
-  }
-</script>
+<script src="vistas/js/mantencion/editarOt.js"></script>
