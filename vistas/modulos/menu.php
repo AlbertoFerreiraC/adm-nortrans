@@ -431,15 +431,12 @@
 							<li><a href="preventivaOT"><i class="fa fa-angle-right"></i>Preventiva OT</a></li>
 							<li><a href="otInterna"><i class="fa fa-angle-right"></i> OT Interna</a></li>
 							<li><a href="servicioExternoOt"><i class="fa fa-angle-right"></i> Servicio Externo OT</a></li>
-							<li><a href="pautaInspeccion"><i class="fa fa-angle-right"></i> Pauta Inspeccion</a></li>
 
 							<!-- Acciones de la OT -->
 							<li class="header" style="font-weight:bold; color:#fff; margin:2px 10px; font-size:14px!important;">Acciones de la OT</li>
 							<li><a href="asignarTareasPendientes"><i class="fa fa-angle-right"></i> Asignar Tareas Pendientes</a></li>
 							<li><a href="editarOt"><i class="fa fa-angle-right"></i> Editar OT</a></li>
-							<li><a href="autorizarRespuestoOt"><i class="fa fa-angle-right"></i>Autizar Respuesto OT</a></li>
-							<li><a href="determinarTareaOt"><i class="fa fa-angle-right"></i>Derterminar Tarea OT</a></li>
-							<li><a href="detencionProgramada"><i class="fa fa-angle-right"></i>Detencion Programada</a></li>
+							<li><a href="terminarTareaOt"><i class="fa fa-angle-right"></i>Terminar Tarea OT</a></li>
 						</ul>
 					</li>
 
@@ -458,6 +455,26 @@
 							<li><a href="editarKM"><i class="fa fa-bullhorn"></i> Editar Km Maquina</a></li>
 						</ul>
 
+					</li>
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-cogs"></i>
+							<span>Consulta</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu mantenedor-scroll">
+
+							<!-- Creacion de OT -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:2px 10px; font-size:14px!important;">Consultas</li>
+							<li><a href="ordenTrabajo"><i class="fa fa-angle-right"></i>Orden de Trabajo</a></li>
+
+							<!-- Acciones de la OT -->
+							<li class="header" style="font-weight:bold; color:#fff; margin:2px 10px; font-size:14px!important;">Informes</li>
+							<li><a href="tareasAsignadas"><i class="fa fa-angle-right"></i> Tareas Asignadas</a></li>
+						</ul>
 					</li>
 
 					<!-- Sub módulo mantenedor -->
@@ -482,6 +499,7 @@
 							<li><a href="categoriaPautaInspeccion"><i class="fa fa-clipboard"></i> Categoría Pauta Inspección</a></li>
 							<li><a href="conductor"><i class="fa fa-clipboard"></i> Conductores</a></li>
 							<li><a href="maquina"><i class="fa fa-clipboard"></i> Maquinas</a></li>
+							<li><a href="personalTecnico"><i class="fa fa-clipboard"></i> Personal Tecnico</a></li>
 						</ul>
 
 					</li>

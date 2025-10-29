@@ -1,260 +1,159 @@
+<input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
+
 <div class="content-wrapper">
-    <section class="content-header" style="background-color: black; padding: 20px; text-align: center;">
-        <h1 style="color: white; font-weight: bold;">Consulta: Documentos laborales por vencer</h1>
+    <!-- ENCABEZADO -->
+    <section class="content-header">
+        <h1>Asignar Tareas Pendientes</h1>
+        <ol class="breadcrumb">
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio / Mantención</a></li>
+            <li class="active">Tareas Pendientes</li>
+        </ol>
     </section>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <section class="content">
         <div class="box">
-            <div class="panel-group" id="frm:j_idt110">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 1px;">
-                        <h4 class="panel-opcion">
-                            <a data-toggle="collapse" href="#frm_j_idt110_content" class="panel-opcion-link" aria-expanded="true">
-                                Lista
-                            </a>
-                        </h4>
-                    </div>
 
-                    <div class="table-controls">
-                        <div class="control-left">
-                            <label for="entriesSelect">Mostrar
-                                <select id="entriesSelect" onchange="updateVisibleRows()">
-                                    <option value="5">5</option>
-                                    <option value="10" selected>10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> registros
-                            </label>
-                        </div>
-
-                        <div class="control-right">
-                            <label for="searchInput">Buscar:
-                                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Escriba para buscar...">
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="frm_j_idt110_content" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <div class="table-container">
-                                <div class="table-responsive">
-                                    <div class="box-body">
-                                        <div id="lista">
-                                            <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th onclick="sortTable(0, this)">Fecha</th>
-                                                        <th onclick="sortTable(1, this)">Nº OT</th>
-                                                        <th onclick="sortTable(2, this)">Detalle OT</th>
-                                                        <th onclick="sortTable(3, this)">Maquina</th>
-                                                        <th onclick="sortTable(4, this)">Centro Costo</th>
-                                                        <th onclick="sortTable(5, this)">Tipo Tarea</th>
-                                                        <th onclick="sortTable(6, this)">Motivo</th>
-                                                        <th onclick="sortTable(7, this)">Sistema</th>
-                                                        <th onclick="sortTable(8, this)">Sub sistema</th>
-                                                        <th onclick="sortTable(9, this)">Estado</th>
-                                                        <th onclick="sortTable(10, this)">Seleccionar</th>
-                                                        <th onclick="sortTable(11, this)">Detencion Programada</th>
-                                                        <th onclick="sortTable(12, this)">Servicio Externo</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- TABLA DE RESULTADOS -->
+            <div class="box-body">
+                <div id="divTablaTareasPendientes">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaTareasPendientes" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <center>#</center>
+                                </th>
+                                <th>
+                                    <center>Fecha</center>
+                                </th>
+                                <th>
+                                    <center>N° OT</center>
+                                </th>
+                                <th>
+                                    <center>Máquina</center>
+                                </th>
+                                <th>
+                                    <center>Centro de Costo</center>
+                                </th>
+                                <th>
+                                    <center>Tipo Tarea</center>
+                                </th>
+                                <th>
+                                    <center>Sistema</center>
+                                </th>
+                                <th>
+                                    <center>Sub Sistema</center>
+                                </th>
+                                <th>
+                                    <center>Observación</center>
+                                </th>
+                                <th>
+                                    <center>Estado</center>
+                                </th>
+                                <th>
+                                    <center>Acción</center>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="11" class="text-center">Cargando datos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
-
     </section>
-
-
-    <style>
-        #lista table {
-            font-size: 10px;
-            border-collapse: separate !important;
-            border-spacing: 0;
-            text-align: center;
-        }
-
-        #lista th {
-            font-size: 13px;
-            background-color: #f4f4f4;
-            border: 1px solid #ddd !important;
-            cursor: pointer;
-            position: relative;
-            user-select: none;
-            padding-right: 20px;
-            /* Espacio para la flecha */
-        }
-
-        #lista th.asc::after {
-            content: "▲";
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #555;
-        }
-
-        #lista th.desc::after {
-            content: "▼";
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #555;
-        }
-
-        #lista td {
-            font-size: 15px;
-            border: 1px solid #ddd !important;
-        }
-
-        .panel-opcion-link:focus,
-        .panel-opcion-link:active {
-            text-decoration: underline;
-        }
-
-        .table-container {
-            margin: 0 15px 15px 15px;
-            /* sin margen superior */
-        }
-
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .table {
-            margin-bottom: 0;
-        }
-
-        .table-striped>tbody>tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .table-bordered {
-            border: 1px solid #ddd !important;
-        }
-
-        .records-control {
-            top: 80px;
-            right: 100px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .table-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 0 15px 5px 15px;
-            /* menos espacio debajo */
-            flex-wrap: wrap;
-        }
-
-
-        .control-left,
-        .control-right {
-            margin: 5px;
-        }
-
-        .control-right input {
-            max-width: 200px;
-        }
-
-        #btnMostarListado {
-            margin-top: 22px !important;
-            position: relative;
-            left: 30px;
-        }
-    </style>
-
-    <script>
-        let sortDirection = [];
-
-        function sortTable(columnIndex, thElement) {
-            const table = document.getElementById("tablaDocumentos");
-            const rows = Array.from(table.tBodies[0].rows);
-            const dir = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
-            sortDirection[columnIndex] = dir;
-
-            // Limpiar clases de flechas en todos los th
-            const headers = table.querySelectorAll("th");
-            headers.forEach((th, i) => {
-                th.classList.remove("asc", "desc");
-                if (i === columnIndex) th.classList.add(dir);
-            });
-
-            rows.sort((a, b) => {
-                let aText = a.cells[columnIndex].innerText.trim();
-                let bText = b.cells[columnIndex].innerText.trim();
-
-                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-                const isDate = datePattern.test(aText) && datePattern.test(bText);
-
-                if (isDate) {
-                    return dir === "asc" ?
-                        new Date(aText) - new Date(bText) :
-                        new Date(bText) - new Date(aText);
-                }
-
-                return dir === "asc" ?
-                    aText.localeCompare(bText, 'es', {
-                        numeric: true
-                    }) :
-                    bText.localeCompare(aText, 'es', {
-                        numeric: true
-                    });
-            });
-
-            const tbody = table.tBodies[0];
-            tbody.innerHTML = "";
-            rows.forEach(row => tbody.appendChild(row));
-        }
-
-    
-        function filterTable() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const table = document.querySelector("#lista table");
-            const rows = table.tBodies[0].rows;
-
-            Array.from(rows).forEach(row => {
-                const cells = Array.from(row.cells);
-                const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
-                row.style.display = match ? "" : "none";
-            });
-        }
-
-        function updateVisibleRows() {
-            const limit = parseInt(document.getElementById("entriesSelect").value);
-            const table = document.querySelector("#lista table");
-            const rows = Array.from(table.tBodies[0].rows);
-
-            let visibleCount = 0;
-            rows.forEach(row => {
-                if (row.style.display !== "none") {
-                    visibleCount++;
-                    row.style.display = visibleCount <= limit ? "" : "none";
-                }
-            });
-        }
-
-        // Vincular búsqueda con límite dinámicamente
-        document.getElementById("searchInput").addEventListener("input", () => {
-            filterTable();
-            updateVisibleRows();
-        });
-    </script>
-    <script src="vistas/js/.js"></script>
 </div>
+
+<!--=====================================
+MODAL ASIGNAR TAREA
+======================================-->
+<div id="modalAsignarTarea" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- ENCABEZADO -->
+            <div class="modal-header" style="background:#007B9E; color:white;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Asignar Tarea</h4>
+            </div>
+
+            <!-- CUERPO -->
+            <div class="modal-body">
+                <div class="box-body">
+
+                    <h4><strong>Datos de la Tarea</strong></h4>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-3"><b>N° OT:</b> <span id="verNumOT"></span></div>
+                        <div class="col-md-3"><b>Máquina:</b> <span id="verMaquina"></span></div>
+                        <div class="col-md-3"><b>Centro Costo:</b> <span id="verCentro"></span></div>
+                        <div class="col-md-3"><b>Tipo Tarea:</b> <span id="verTipoTarea"></span></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Sistema:</b> <span id="verSistema"></span></div>
+                        <div class="col-md-4"><b>Sub Sistema:</b> <span id="verSubSistema"></span></div>
+                        <div class="col-md-4"><b>Estado:</b> <span id="verEstado"></span></div>
+                    </div>
+
+                    <br>
+                    <h4><strong>Asignación</strong></h4>
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="tipoAsignacion">Seleccione tipo de asignación:</label>
+                        <select id="tipoAsignacion" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="detencion_programada">Derivar a Detención Programada</option>
+                            <option value="servicio_externo">Derivar a Servicio Externo</option>
+                            <option value="asignar_tecnico">Asignar a Personal Técnico</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="campoTecnico" style="display:none;">
+                        <label for="selectTecnico">Seleccione Técnico:</label>
+                        <select id="selectTecnico" class="form-control">
+                            <option value="">-- Seleccione Técnico --</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PIE -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnConfirmarAsignacion">
+                    <i class="fa fa-check"></i> Confirmar Asignación
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ESTILOS -->
+<style>
+    #divTablaTareasPendientes {
+        overflow: auto;
+        width: 100%;
+    }
+
+    #tablaTareasPendientes th,
+    #tablaTareasPendientes td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .modal-body span {
+        font-weight: 500;
+    }
+</style>
+
+<script src="vistas/js/mantencion/asignarTareasPendientes.js"></script>

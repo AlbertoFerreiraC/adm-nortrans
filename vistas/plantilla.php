@@ -208,7 +208,7 @@ session_start();
         "asignarTareasPendientes",
         "editarOt",
         "autorizarRespuestoOt",
-        "determinarTareaOt",
+        "terminarTareaOt",
         "detencionProgramada",
         "campania",
         "pauta_mantencion",
@@ -224,7 +224,10 @@ session_start();
         "conductor",
         "maquina",
         "registroKM",
-        "editarKM"
+        "editarKM",
+        "ordenTrabajo",
+        "personalTecnico",
+        "tareasAsignadas"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];
