@@ -1,251 +1,234 @@
 $(document).ready(function () {
-    $('.solo-numero').keyup(function () {
-        this.value = (this.value + '').replace(/[^.0-9]/g, '');
+
+    listarDatos();
+
+    $('#filtradoDinamico').keyup(function () {
+
+        var busqueda = document.getElementById('filtradoDinamico');
+        var table = document.getElementById("tabla").tBodies[0];
+        buscaTabla = function () {
+            texto = busqueda.value.toLowerCase();
+            var r = 0;
+            while (row = table.rows[r++]) {
+                if (row.innerText.toLowerCase().indexOf(texto) !== -1)
+                    row.style.display = null;
+                else
+                    row.style.display = 'none';
+            }
+        }
+        busqueda.addEventListener('keyup', buscaTabla);
+
     });
 
-    $(".puntos_de_mil").on({
-        "focus": function (event) {
-            $(event.target).select();
-        },
-        "keyup": function (event) {
-            $(event.target).val(function (index, value) {
-                return value.replace(/\D/g, "")
-                    .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+
+    $('#nuevoReporte').click(function () {
+        cargarMaquina();
+        listarSistema();
+        listarSubSistema();
+        listarConductor();
+        $("#observacionAgregar").val();
+        $("#kmActualAgregar").val();
+    });
+
+    $('#btnAgregarDetalleAgregar').click(function () {
+        if ($("#sistemaAgregar").val() != "-" &&
+            $("#subSistemaAgregar").val() != "-" &&
+            $("#observacionAgregar").val() != "") {
+            agregarFalla();
+        } else {
+            swal({
+                type: "error",
+                title: "Debe seleccionar y cargar todos los campos obligatorios.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
             });
         }
     });
 
-    cargarDatosTabla();
-    maquinaAgregar();
-    conductorAgregar();
-    sistemaAgregar();
-    subSistemaAgregar();
-
-    $("#filtradoDinamico").on("keyup", function () {
-        const texto = this.value.toLowerCase();
-        const rows = $("#tablaReportes tbody tr");
-        rows.each(function () {
-            const ok = $(this).text().toLowerCase().indexOf(texto) !== -1;
-            $(this).toggle(ok);
-        });
-    });
-
-    $('#btnGrabarReporte').click(function () {
-        const filasValidas = $("#tablaDetalle tbody tr").filter(function () {
-            return !$(this).find("td").first().hasClass("text-center");
-        }).length;
-
-        if ($("#maquina").val() && $("#conductor").val() && $("#kmActual").val()) {
-            if (filasValidas === 0) {
-                mensajeError("Debe agregar al menos un detalle antes de guardar el reporte.");
-                return;
-            }
-            agregarReporte();
+    $('#btnAgregarReporte').click(function () {
+        if ($("#maquinaAgregar").val() != "-" &&
+            $("#conductorAgregar").val() != "-" &&
+            $("#kmActualAgregar").val() != "" &&
+            contadorDeFilasFalla() > 0) {
+            procesarCabecera();
         } else {
-            mensajeError("Debe completar los campos obligatorios.");
+            swal({
+                type: "error",
+                title: "Debe seleccionar y cargar todos los campos obligatorios.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
         }
     });
 
-    $("#btnAgregarDetalle").click(function () {
-        const sistema = $("#sistema").val();
-        const sistemaTexto = $("#sistema option:selected").text();
-        const subSistema = $("#subSistema").val();
-        const subSistemaTexto = $("#subSistema option:selected").text();
-        const observacion = $("#observacion").val().trim();
-
-        if (sistema === "" || sistema === null || sistema === " " || sistema === "Seleccionar...") {
-            mensajeError("Debe seleccionar un sistema.");
-            return;
+    $('#btnAgregarDetalleModificar').click(function () {
+        if ($("#sistemaModificar").val() != "-" &&
+            $("#subSistemaModificar").val() != "-" &&
+            $("#observacionModificar").val() != "") {
+            agregarFallaModificar();
+        } else {
+            swal({
+                type: "error",
+                title: "Debe seleccionar y cargar todos los campos obligatorios.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
         }
+    });
 
-        if (!observacion) {
-            mensajeError("El campo observación no puede estar vacío.");
-            return;
+    $('#btnModificarReporte').click(function () {
+        if ($("#maquinaModificar").val() != "-" &&
+            $("#conductorModificar").val() != "-" &&
+            $("#kmActualModificar").val() != "") {
+            modificarCabecera();
+        } else {
+            swal({
+                type: "error",
+                title: "Debe seleccionar y cargar todos los campos obligatorios.",
+                showConfirmButton: true,
+                confirmButtonText: "Aceptar"
+            });
         }
-
-        // Evitar duplicar filas con el mismo sistema y observación
-        let existe = false;
-        $("#tablaDetalle tbody tr").each(function () {
-            const sis = $(this).find("td").eq(0).attr("data-id");
-            const obs = $(this).find("td").eq(2).text().trim();
-            if (sis === sistema && obs === observacion) {
-                existe = true;
-            }
-        });
-
-        if (existe) {
-            mensajeError("Este detalle ya fue agregado.");
-            return;
-        }
-
-        $("#tablaDetalle tbody tr td.text-center").closest("tr").remove();
-
-        const fila = `
-        <tr>
-            <td data-id="${sistema}">${sistemaTexto}</td>
-            <td data-id="${subSistema || ''}">${subSistemaTexto || '-'}</td>
-            <td>${observacion}</td>
-            <td>
-                <button type="button" class="btn btn-danger btn-sm btnEliminar">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-    `;
-
-        $("#tablaDetalle tbody").append(fila);
-
-        $(".btnEliminar").off("click").on("click", function () {
-            $(this).closest("tr").remove();
-            if ($("#tablaDetalle tbody tr").length === 0) {
-                $("#tablaDetalle tbody").append('<tr><td colspan="4" class="text-center">Ningún dato disponible en esta tabla</td></tr>');
-            }
-        });
-
-        // Limpiar campos y mantener foco en Sistema
-        $("#sistema").val("");
-        $("#subSistema").val("");
-        $("#observacion").val("");
-        $("#sistema").focus();
     });
 
 });
 
-function cargarDatosTabla() {
-    $("#tablaReportes tbody").empty();
+
+// PARA AGREGAR
+
+function cargarMaquina() {
+    $('#maquinaAgregar').empty();
+    $('#maquinaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
     $.ajax({
-        url: "../api_adm_nortrans/reporteFalla/funListar.php",
+        url: "../api_adm_nortrans/generarOtInterna/funListarMaquinas.php",
         method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            var fila = "";
             for (var i in response) {
-                fila += '<tr>';
-                fila += '<td>' + (parseInt(i) + 1) + '</td>';
-                fila += '<td>' + (response[i].dependencia || '') + '</td>';
-                fila += '<td>' + (response[i].maquina || '') + '</td>';
-                fila += '<td>' + (response[i].conductor || '') + '</td>';
-                fila += '<td>' + (response[i].km_reportado || '') + '</td>';
-                fila += '<td>' + (response[i].fecha || '') + '</td>';
-                fila += '<td>';
-                fila += '<center><div class="btn-group">';
-                fila += '<button type="button" title="Eliminar" class="btn btn-danger btnEliminar" id="' + response[i].idreporte_falla + '"><i class="fa fa-trash"></i></button>';
-                fila += '</div></center>';
-                fila += '</td>';
-                fila += '</tr>';
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
             }
-            $("#tablaReportes tbody").append(fila);
-            $(".btnEliminar").click(function () {
-                var id = this.id;
-                swal({
-                    title: "¿Está seguro de eliminar el reporte?",
-                    text: "¡Esto eliminará también los detalles asociados!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    cancelButtonText: "Cancelar",
-                    confirmButtonText: "Sí, eliminar"
-                }).then(function (result) {
-                    if (result.value) {
-                        eliminarReporte(id);
-                    }
-                });
-            });
-        },
-        error: function () {
-            mensajeError("Error al cargar los reportes.");
+            $('#maquinaAgregar').append(listaEmpresa);
         }
     });
 }
 
-function agregarReporte() {
-    const maquina = $("#maquina").val();
-    const conductor = $("#conductor").val();
-    const km = $("#kmActual").val().replace(/\./g, '');
-    const usuario = $("#idUsuario").val();
-
-    if (!maquina || !conductor || !km) {
-        mensajeError("Debe completar máquina, conductor y kilometraje.");
-        return;
-    }
-
-    const cabecera = {
-        usuario: usuario,
-        maquina: maquina,
-        conductor: conductor,
-        km_reportado: km,
-        dependencia: 1
-    };
-
+function listarSistema() {
+    $('#sistemaAgregar').empty();
+    $('#sistemaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
     $.ajax({
-        url: "../api_adm_nortrans/reporteFalla/funAgregar.php",
-        method: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(cabecera),
+        url: "../api_adm_nortrans/generarOtInterna/funListarSistema.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            if (response.mensaje === "ok" && response.idreporte_falla) {
-                const idreporte = response.idreporte_falla;
-                const detalle = [];
-                $("#tablaDetalle tbody tr").each(function () {
-                    if ($(this).find("td").first().hasClass("text-center")) return;
-                    const sistemaID = $(this).find("td").eq(0).attr("data-id");
-                    const subSistemaID = $(this).find("td").eq(1).attr("data-id");
-                    const observacion = $(this).find("td").eq(2).text().trim();
-                    if (sistemaID && observacion) {
-                        detalle.push({
-                            sistema: sistemaID,
-                            sub_sistema: subSistemaID || null,
-                            observacion: observacion
-                        });
-                    }
-                });
-
-                if (detalle.length === 0) {
-                    mensajeError("Debe agregar al menos un detalle válido.");
-                    return;
-                }
-
-                $.ajax({
-                    url: "../api_adm_nortrans/reporteFalla/funAgregarDetalle.php",
-                    method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        idreporte_falla: idreporte,
-                        detalle: detalle
-                    }),
-                    dataType: "json",
-                    success: function (respDet) {
-                        if (respDet.mensaje === "ok") {
-                            swal({
-                                type: "success",
-                                title: "Reporte guardado con éxito.",
-                                showConfirmButton: true,
-                                confirmButtonText: "Aceptar"
-                            }).then(() => location.reload());
-                        } else {
-                            mensajeError("Ocurrió un error al guardar el detalle.");
-                        }
-                    },
-                    error: function () {
-                        mensajeError("Error en la comunicación al guardar el detalle.");
-                    }
-                });
-            } else {
-                mensajeError("Error al guardar la cabecera del reporte.");
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
             }
-        },
-        error: function () {
-            mensajeError("Error de conexión con el servidor.");
+            $('#sistemaAgregar').append(listaEmpresa);
         }
     });
 }
 
-function eliminarReporte(id) {
-    var params = { "id": id };
+function listarSubSistema() {
+    $('#subSistemaAgregar').empty();
+    $('#subSistemaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
     $.ajax({
-        url: "../api_adm_nortrans/reporteFalla/funEliminar.php",
+        url: "../api_adm_nortrans/generarOtInterna/funListarSubSistema.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
+            }
+            $('#subSistemaAgregar').append(listaEmpresa);
+        }
+    });
+}
+
+function listarConductor() {
+    $('#conductorAgregar').empty();
+    $('#conductorAgregar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funListarConductores.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
+            }
+            $('#conductorAgregar').append(listaEmpresa);
+        }
+    });
+}
+
+function agregarFalla() {
+    var fila = "";
+    fila = '<tr id ="filaFalla_' + contadorDeFilasFalla() + '">' +
+        '<td>' + $("#sistemaAgregar option:selected").text() + '</td>' +
+        '<td>' + $("#subSistemaAgregar option:selected").text() + '</td>' +
+        '<td>' + $("#observacionAgregar").val() + '</td>' +
+        '<td>' +
+        '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarAgregar" id="' + contadorDeFilasFalla() + '"><i class="fa fa-times"></i></button>' +
+        '</td>' +
+        '<td style="display: none;" >' + $("#sistemaAgregar").val() + '</td>' +
+        '<td style="display: none;" >' + $("#subSistemaAgregar").val() + '</td>' +
+        +'</tr>';
+    $('#tablaDetalleAgergar').append(fila);
+    listarSistema();
+    listarSubSistema();
+    $("#observacionAgregar").val('');
+
+    $('.btnEliminarAgregar').click(function () {
+        var id_registro = this.id;
+        swal({
+            title: '¿Está seguro de eliminar el registro?',
+            text: "¡Si no lo está puede cancelar la accíón!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Si, eliminar registro!'
+        }).then(function (result) {
+            if (result.value) {
+                $("#filaFalla_" + id_registro).remove();
+            }
+        });
+    });
+}
+
+function contadorDeFilasFalla() {
+    var cont = 0;
+    $('#tablaDetalleAgergar tbody tr').each(function () {
+        cont++;
+    });
+    return (cont + 1);
+}
+
+function procesarCabecera() {
+    var params = {
+        "idUsuario": $("#idUsuario").val(),
+        "maquina": $("#maquinaAgregar").val(),
+        "kmActual": $("#kmActualAgregar").val(),
+        "conductor": $("#conductorAgregar").val()
+    };
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funProcesarCabecera.php",
         method: "POST",
         cache: false,
         data: JSON.stringify(params),
@@ -253,91 +236,472 @@ function eliminarReporte(id) {
         processData: false,
         dataType: "json",
         success: function (response) {
+            if (response['mensaje'] != "nok") {
+                procesarFallas(response['mensaje']);
+            }
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la carga",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
+
+function procesarFallas(id) {
+    var datos = '{"idFalla":"' + id + '", ';
+    //************************************************************************
+    var datos_tabla = '"tabla":[';
+    $('#tablaDetalleAgergar tbody tr').each(function () {
+        datos_tabla = datos_tabla +
+            '{"sistema":"' + $(this).find("td").eq(4).html() +
+            '","subSistema":"' + $(this).find("td").eq(5).html() +
+            '","observacion":"' + $(this).find("td").eq(2).html() + '"},';
+    });
+    datos_tabla = datos_tabla.substr(0, datos_tabla.length - 1);
+    datos_tabla = datos_tabla + ']';
+    //************************************************************************
+    datos = datos + datos_tabla + "}";
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funProcesarDetalle.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
             if (response['mensaje'] == "ok") {
                 swal({
                     type: "success",
-                    title: "Reporte eliminado correctamente.",
+                    title: "Reporte de falla cargada con éxito.",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
-                }).then(() => { location.reload(); });
-            } else {
-                mensajeError("Error al eliminar el reporte.");
+                }).then((value) => {
+                    location.reload();
+                });
             }
+
+            if (response['mensaje'] === "nok") {
+                mensajeError("Ha ocurrido un error al procesar la carga de tareas.");
+            }
+        }
+    });
+
+}
+
+// LISTADO
+
+function listarDatos() {
+    $("#tablaReportes tbody").empty();
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funListaReporteFalla.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila += '<tr>';
+                fila += '<td>' + response[i].id + '</td>';
+                fila += '<td>' + response[i].maquina + '</td>';
+                fila += '<td>' + response[i].conductor + '</td>';
+                fila += '<td>' + response[i].kmReportado + '</td>';
+                fila += '<td>' + response[i].fecha + '</td>';
+                fila += '<td>';
+                fila += '<center>';
+                fila += '<div class="btn-group">';
+                fila += '<button title="MOdificar" class="btn btn-warning btnModificarFalla" id="' + response[i].id + '" data-toggle="modal" data-target="#modalModificarReporte"><i class="fa fa-pencil"></i></button>';
+                fila += '</div>';
+                fila += '<div class="btn-group">';
+                fila += '<button title="Eliminar" class="btn btn-danger btnEliminarFalla" id="' + response[i].id + '"><i class="fa fa-times"></i></button>';
+                fila += '</div>';
+                fila += '</center>';
+                fila += '</td>';
+                fila += '</tr>';
+            }
+
+            $('#tablaReportes tbody').append(fila);
+
+            $('.btnModificarFalla').click(function () {
+                var id_registro = this.id;
+                obtenerDatosParaModificar(id_registro);
+            });
+
+            $('.btnEliminarFalla').click(function () {
+                var id_registro = this.id;
+                swal({
+                    title: '¿Está seguro de anular el registro?',
+                    text: "¡Si no lo está puede cancelar la accíón!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, anular registro'
+                }).then(function (result) {
+                    if (result.value) {
+                        eliminarFalla(id_registro);
+                    }
+                });
+            });
         }
     }).fail(function () {
-        mensajeError("Error de conexión al eliminar el registro.");
+        swal({
+            icon: "error",
+            title: "Ha ocurrido un error al cargar la lista",
+            button: "Aceptar"
+        });
     });
 }
 
-function mensajeError(mensaje) {
-    swal({
-        type: "error",
-        title: mensaje,
-        showConfirmButton: true,
-        confirmButtonText: "Aceptar"
-    });
-}
-
-function maquinaAgregar() {
-    $('#maquina').empty().append('<option value="">Seleccionar...</option>');
+function eliminarFalla(valor) {
+    var params = {
+        "id": valor
+    };
     $.ajax({
-        url: "../api_adm_nortrans/maquina/funListar.php",
-        method: "GET",
+        url: "../api_adm_nortrans/gestionarReporteFalla/funEliminarFalla.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            let opciones = "";
-            for (let i in response) {
-                opciones += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+            if (response['mensaje'] === "ok") {
+                location.reload();
             }
-            $('#maquina').append(opciones);
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
         }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la eliminación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
     });
+
 }
 
-function conductorAgregar() {
-    $('#conductor').empty().append('<option value="">Seleccionar...</option>');
+function obtenerDatosParaModificar(valor) {
+    var params = {
+        "id": valor
+    };
     $.ajax({
-        url: "../api_adm_nortrans/conductor/funListar.php",
-        method: "GET",
+        url: "../api_adm_nortrans/gestionarReporteFalla/funDatosParaModificar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            var opciones = "";
             for (var i in response) {
-                opciones += '<option value="' + response[i].id + '">' + response[i].nombre + '</option>';
+                $("#idModificar").val(response[i].id);
+                $("#kmActualModificar").val(response[i].kmReportado);
+                cargarMaquinaModificar(response[i].maquina);
+                listarConductorModificar(response[i].conductor);
+                listarDetalleFalla(response[i].id);
+                //----------------------------------------------------
+                listarSistemaModificar();
+                listarSubSistemaModificar();
+                $("#observacionAgregar").val('');
             }
-            $('#conductor').append(opciones);
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al traer los datos solicitados.",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
+
+function cargarMaquinaModificar(id) {
+    $('#maquinaModificar').empty();
+    var listaEmpresa = "";
+    $.ajax({
+        url: "../api_adm_nortrans/generarOtInterna/funListarMaquinas.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
+            }
+            $('#maquinaModificar').append(listaEmpresa);
+            $("#maquinaModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
 
-function sistemaAgregar() {
-    $('#sistema').empty().append('<option value ="">Seleccionar...</option>');
+function listarConductorModificar(id) {
+    $('#conductorModificar').empty();
+    var listaEmpresa = "";
     $.ajax({
-        url: "../api_adm_nortrans/sistemaMaquina/funListar.php",
+        url: "../api_adm_nortrans/gestionarReporteFalla/funListarConductores.php",
         method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            let lista = "";
             for (var i in response) {
-                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
             }
-            $('#sistema').append(lista);
+            $('#conductorModificar').append(listaEmpresa);
+            $("#conductorModificar option[value='" + id + "']").attr("selected", true);
         }
     });
 }
 
-function subSistemaAgregar() {
-    $('#subSistema').empty().append('<option value ="">Seleccionar...</option>');
+function listarSistemaModificar() {
+    $('#sistemaModificar').empty();
+    $('#sistemaModificar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
     $.ajax({
-        url: "../api_adm_nortrans/subsistemaMaquina/funListar.php",
+        url: "../api_adm_nortrans/generarOtInterna/funListarSistema.php",
         method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            let lista = "";
             for (var i in response) {
-                lista += `<option value="${response[i].id}">${response[i].descripcion}</option>`;
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
             }
-            $('#subSistema').append(lista);
+            $('#sistemaModificar').append(listaEmpresa);
         }
     });
+}
+
+function listarSubSistemaModificar() {
+    $('#subSistemaModificar').empty();
+    $('#subSistemaModificar').append('<option value ="-">Seleccionar...</opction>');
+    var listaEmpresa = "";
+    $.ajax({
+        url: "../api_adm_nortrans/generarOtInterna/funListarSubSistema.php",
+        method: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion.toUpperCase() + '</option>';
+            }
+            $('#subSistemaModificar').append(listaEmpresa);
+        }
+    });
+}
+
+function listarDetalleFalla(id) {
+    $("#tablaDetalleModificar tbody").empty();
+    var params = {
+        "id": id
+    };
+    var fila = "";
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/dunDatosDetalleFalla.php",
+        method: "POST",
+        data: JSON.stringify(params),
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            for (var i in response) {
+                fila += '<tr>';
+                fila += '<td>' + response[i].sistema + '</td>';
+                fila += '<td>' + response[i].sub_sistema + '</td>';
+                fila += '<td>' + response[i].observacion + '</td>';
+                fila += '<td>';
+                fila += '<center>';
+                fila += '<div class="btn-group">';
+                fila += '<button title="Eliminar" class="btn btn-danger btnEliminarFallaModificar" id="' + response[i].id + '"><i class="fa fa-times"></i></button>';
+                fila += '</div>';
+                fila += '</center>';
+                fila += '</td>';
+                fila += '</tr>';
+            }
+
+            $('#tablaDetalleModificar tbody').append(fila);
+
+            $('.btnEliminarFallaModificar').click(function () {
+                var id_registro = this.id;
+                swal({
+                    title: '¿Está seguro de anular el registro?',
+                    text: "¡Si no lo está puede cancelar la accíón!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, anular registro'
+                }).then(function (result) {
+                    if (result.value) {
+                        eliminarFallaTarea(id_registro);
+                    }
+                });
+            });
+
+
+        }
+    }).fail(function () {
+        swal({
+            icon: "error",
+            title: "Ha ocurrido un error al cargar la lista",
+            button: "Aceptar"
+        });
+    });
+}
+
+function agregarFallaModificar() {
+
+    var datos = '{"idFalla":"' + $("#idModificar").val() + '", ';
+    //************************************************************************
+    var datos_tabla = '"tabla":[';
+    datos_tabla = datos_tabla +
+        '{"sistema":"' + $("#sistemaModificar").val() +
+        '","subSistema":"' + $("#subSistemaModificar").val() +
+        '","observacion":"' + $("#observacionModificar").val() + '"},';
+    datos_tabla = datos_tabla.substr(0, datos_tabla.length - 1);
+    datos_tabla = datos_tabla + ']';
+    //************************************************************************
+    datos = datos + datos_tabla + "}";
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funProcesarDetalle.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] == "ok") {
+                listarSistema();
+                listarSubSistema();
+                $("#observacionAgregar").val('');
+                listarDetalleFalla($("#idModificar").val());
+            }
+
+            if (response['mensaje'] === "nok") {
+                mensajeError("Ha ocurrido un error al procesar la carga de fallas.");
+            }
+        }
+    });
+}
+
+function eliminarFallaTarea(valor) {
+    var params = {
+        "id": valor
+    };
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funEliminarFallaTarea.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                listarDetalleFalla($("#idModificar").val());
+            }
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la eliminación",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
+}
+
+function modificarCabecera() {
+    var params = {
+        "idFalla": $("#idModificar").val(),
+        "maquina": $("#maquinaModificar").val(),
+        "kmActual": $("#kmActualModificar").val(),
+        "conductor": $("#conductorModificar").val()
+    };
+    $.ajax({
+        url: "../api_adm_nortrans/gestionarReporteFalla/funModificar.php",
+        method: "POST",
+        cache: false,
+        data: JSON.stringify(params),
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] != "nok") {
+                swal({
+                    type: "success",
+                    title: "Operación realizada con éxito.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
+
+        }
+    }).fail(function () {
+        swal({
+            type: "error",
+            title: "Ha ocurrido un error al procesar la carga",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar"
+        });
+    });
+
 }

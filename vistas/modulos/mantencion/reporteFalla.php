@@ -1,12 +1,11 @@
 <input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
-
 <div class="content-wrapper">
 
     <section class="content-header">
         <h1>Administrar Reporte de Falla</h1>
         <ol class="breadcrumb">
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio / Mantención</a></li>
-            <li class="active">Administrar Reporte de Falla</li>
+            <li class="active">Reporte de Falla</li>
         </ol>
     </section>
 
@@ -16,30 +15,24 @@
 
             <div class="box-header with-border">
                 <div class="form-group col-sm-3 col-xs-12">
-                    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalAgregarReporte">
+                    <button class="btn btn-success btn-block" id="nuevoReporte" data-toggle="modal" data-target="#modalAgregarReporte">
                         <i class="fa fa-plus" aria-hidden="true"></i> Agregar Reporte
                     </button>
                 </div>
 
-                <div class="form-group col-sm-9 col-xs-12">
-                    <input type="text"
-                        class="form-control input-sm"
-                        style="text-align:center; font-size:17px;"
-                        id="filtradoDinamico"
-                        placeholder="Filtrado general...">
+
+                <div class="form-group col-sm-9 col-xs-12 ">
+                    <input type="text" style=" text-align: center; font-size: 17px;" class="form-control input-sm" name="filtradoDinamico" id="filtradoDinamico" autocomplete="off" placeholder="Filtrado General ...">
                 </div>
             </div>
 
             <div class="box-body">
                 <div id="divTabla">
-                    <table class="table table-bordered table-striped dt-responsive" id="tablaReportes" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaReportes" width="100%" style="text-align:center;">
                         <thead>
                             <tr>
                                 <th style="width:10px">
                                     <center>#</center>
-                                </th>
-                                <th>
-                                    <center>Dependencia</center>
                                 </th>
                                 <th>
                                     <center>Máquina</center>
@@ -81,7 +74,7 @@ MODAL AGREGAR REPORTE
                 <!-- CABEZA -->
                 <div class="modal-header" style="background:#A9A9A9; color:white">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Nuevo Reporte de Mantención</h4>
+                    <h4 class="modal-title">Nuevo Reporte</h4>
                 </div>
 
                 <!-- CUERPO -->
@@ -91,58 +84,50 @@ MODAL AGREGAR REPORTE
                         <!-- DATOS GENERALES -->
                         <h4><strong>Datos Generales</strong></h4>
                         <hr>
-                        <div class="form-group col-md-6 col-xs-12">
-                            <label for="maquina">Máquina:</label>
-                            <select class="form-control" id="maquina" name="maquina" required>
-                                <option value="">Seleccionar...</option>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="maquinaAgregar">Máquina:</label>
+                            <select class="form-control" id="maquinaAgregar" name="maquinaAgregar">
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-xs-12">
-                            <label for="conductor">Conductor:</label>
-                            <select class="form-control" id="conductor" name="conductor" required>
-                                <option value="">Seleccionar...</option>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="conductorAgregar">Conductor:</label>
+                            <select class="form-control" id="conductorAgregar" name="conductorAgregar">
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 col-xs-12">
-                            <label for="kmActual">Km actual:</label>
-                            <input type="number" class="form-control" id="kmActual" name="kmActual" placeholder="Ingrese Km actual" required>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-info btn-sm pull-right" id="btnVerListado">
-                                <i class="fa fa-list"></i> Ver listado RF Activo
-                            </button>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="kmActualAgregar">Km actual:</label>
+                            <input type="number" class="form-control" id="kmActualAgregar" name="kmActualAgregar" placeholder="Ingrese Km actual">
                         </div>
 
                         <!-- INGRESO DE DETALLE -->
                         <div class="col-xs-12">
                             <hr>
-                            <h4><strong>Ingreso de detalle</strong></h4>
+                            <h4><strong>Ingreso de Detalle</strong></h4>
                             <hr>
                         </div>
 
                         <div class="form-group col-md-6 col-xs-12">
-                            <label for="sistema">Sistema:</label>
-                            <select class="form-control" id="sistema" name="sistema" required>
+                            <label for="sistemaAgregar">Sistema:</label>
+                            <select class="form-control" id="sistemaAgregar" name="sistemaAgregar">
                             </select>
                         </div>
 
                         <div class="form-group col-md-6 col-xs-12">
-                            <label for="subSistema">Sub Sistema:</label>
-                            <select class="form-control" id="subSistema" name="subSistema">
+                            <label for="subSistemaAgregar">Sub Sistema:</label>
+                            <select class="form-control" id="subSistemaAgregar" name="subSistemaAgregar">
                             </select>
                         </div>
 
                         <div class="form-group col-md-12 col-xs-12">
-                            <label for="observacion">Observación (máx. 200 caracteres):</label>
-                            <textarea class="form-control" id="observacion" name="observacion" rows="2" maxlength="200"
+                            <label for="observacionAgregar">Observación (máx. 200 caracteres):</label>
+                            <textarea class="form-control" id="observacionAgregar" name="observacionAgregar" rows="2" maxlength="200"
                                 placeholder="Ingrese observaciones..." required></textarea>
                         </div>
 
-                        <div class="col-xs-12 text-center">
-                            <button type="button" class="btn btn-primary" id="btnAgregarDetalle">
+                        <div class="col-xs-12 col-md-12  text-center">
+                            <button type="button" class="btn btn-primary btn-block" id="btnAgregarDetalleAgregar">
                                 <i class="fa fa-plus"></i> Agregar Detalle
                             </button>
                         </div>
@@ -152,7 +137,7 @@ MODAL AGREGAR REPORTE
                             <hr>
                             <h4><strong>Lista de detalle</strong></h4>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped" id="tablaDetalle">
+                                <table class="table table-bordered table-striped" id="tablaDetalleAgergar" style="text-align:center;">
                                     <thead style="background:#f4f4f4;">
                                         <tr>
                                             <th>
@@ -165,15 +150,11 @@ MODAL AGREGAR REPORTE
                                                 <center>Observación</center>
                                             </th>
                                             <th>
-                                                <center>Eliminar</center>
+                                                <center>Acciones</center>
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="4" class="text-center">Ningún dato disponible en esta tabla</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
                             </div>
                         </div>
@@ -184,8 +165,8 @@ MODAL AGREGAR REPORTE
                 <!-- PIE -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                    <button type="button" class="btn btn-success" id="btnGrabarReporte">
-                        <i class="fa fa-hdd-o"></i> Grabar reporte
+                    <button type="button" class="btn btn-success" id="btnAgregarReporte">
+                        <i class="fa fa-hdd-o"></i> Grabar Reporte
                     </button>
                 </div>
 
@@ -194,45 +175,116 @@ MODAL AGREGAR REPORTE
     </div>
 </div>
 
-<!--=====================================
-SCRIPTS
-======================================-->
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const btnAgregar = document.getElementById("btnAgregarDetalle");
-        const tablaBody = document.querySelector("#tablaDetalle tbody");
-        const sistema = document.getElementById("sistema");
-        const subSistema = document.getElementById("subSistema");
-        const observacion = document.getElementById("observacion");
+<div id="modalModificarReporte" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <input type="hidden" id="idModificar">
+        <div class="modal-content">
+            <form role="form" method="post" id="formularioModificarReporte">
 
-        btnAgregar.addEventListener("click", () => {
-            if (!sistema.value || !observacion.value.trim()) {
-                return;
-            }
+                <!-- CABEZA -->
+                <div class="modal-header" style="background:#A9A9A9; color:white">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modificar Reporte</h4>
+                </div>
 
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td data-id="${sistema.value}">${sistema.options[sistema.selectedIndex].text}</td>
-                <td data-id="${subSistema.value}">${subSistema.options[subSistema.selectedIndex]?.text || "-"}</td>
-                <td>${observacion.value}</td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm btnEliminar">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </td>
-            `;
-            tablaBody.appendChild(fila);
+                <!-- CUERPO -->
+                <div class="modal-body">
+                    <div class="box-body">
 
-            fila.querySelector(".btnEliminar").addEventListener("click", () => fila.remove());
+                        <!-- DATOS GENERALES -->
+                        <h4><strong>Datos Generales</strong></h4>
+                        <hr>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="maquinaModificar">Máquina:</label>
+                            <select class="form-control" id="maquinaModificar" name="maquinaModificar">
+                            </select>
+                        </div>
 
-            sistema.value = "";
-            subSistema.value = "";
-            observacion.value = "";
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="conductorModificar">Conductor:</label>
+                            <select class="form-control" id="conductorModificar" name="conductorModificar">
+                            </select>
+                        </div>
 
-            console.log("✅ Fila agregada correctamente a la tablaDetalle");
-        });
-    });
-</script>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="kmActualModificar">Km actual:</label>
+                            <input type="number" class="form-control" id="kmActualModificar" name="kmActualModificar">
+                        </div>
+
+                        <button type="button" class="btn btn-success pull-right" id="btnModificarReporte">
+                            <i class="fa fa-hdd-o"></i> Actualizar Cabecera
+                        </button>
+
+                        <!-- INGRESO DE DETALLE -->
+                        <div class="col-xs-12">
+                            <hr>
+                            <h4><strong>Ingreso de Detalle</strong></h4>
+                            <hr>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="sistemaModificar">Sistema:</label>
+                            <select class="form-control" id="sistemaModificar" name="sistemaModificar">
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="subSistemaModificar">Sub Sistema:</label>
+                            <select class="form-control" id="subSistemaModificar" name="subSistemaModificar">
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="observacionModificar">Observación (máx. 200 caracteres):</label>
+                            <textarea class="form-control" id="observacionModificar" name="observacionModificar" rows="2" maxlength="200"
+                                placeholder="Ingrese observaciones..." required></textarea>
+                        </div>
+
+                        <div class="col-xs-12 col-md-12  text-center">
+                            <button type="button" class="btn btn-primary btn-block" id="btnAgregarDetalleModificar">
+                                <i class="fa fa-plus"></i> Agregar Detalle
+                            </button>
+                        </div>
+
+                        <!-- LISTA DE DETALLE -->
+                        <div class="col-xs-12" style="margin-top: 20px;">
+                            <hr>
+                            <h4><strong>Lista de detalle</strong></h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="tablaDetalleModificar" style="text-align:center;">
+                                    <thead style="background:#f4f4f4;">
+                                        <tr>
+                                            <th>
+                                                <center>Sistema</center>
+                                            </th>
+                                            <th>
+                                                <center>Sub Sistema</center>
+                                            </th>
+                                            <th>
+                                                <center>Observación</center>
+                                            </th>
+                                            <th>
+                                                <center>Acciones</center>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- PIE -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <style>

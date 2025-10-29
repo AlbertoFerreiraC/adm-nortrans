@@ -227,7 +227,9 @@ session_start();
         "editarKM",
         "ordenTrabajo",
         "personalTecnico",
-        "tareasAsignadas"
+        "tareasAsignadas",
+        "repuestosOt",
+        "listaOT"
       ];
       // GENERALES
       $paginasModGenerales = ["usuario", "centroDeCosto"];
