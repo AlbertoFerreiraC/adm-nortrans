@@ -44,14 +44,14 @@
                                             <thead>
                                                 <tr>
                                                     <th onclick="sortTable(0, this)">N° Solicitud</th>
-                                                    <th onclick="sortTable(1, this)">Fecha solicitud</th>
-                                                    <th onclick="sortTable(2, this)">Empresa</th>
-                                                    <th onclick="sortTable(3, this)">Cargo</th>
-                                                    <th onclick="sortTable(4, this)">Centro costo</th>
-                                                    <th onclick="sortTable(5, this)">Pre aprobado</th>
-                                                    <th onclick="sortTable(6, this)">Aprobado</th>
-                                                    <th onclick="sortTable(7, this)">Tipo contrato</th>
-                                                    <th onclick="sortTable(8, this)">Estado actual</th>
+                                                    <th onclick="sortTable(1, this)">Empresa</th>
+                                                    <th onclick="sortTable(2, this)">Fecha Requerida</th>
+                                                    <th onclick="sortTable(3, this)">Division</th>
+                                                    <th onclick="sortTable(4, this)">Cargo</th>
+                                                    <th onclick="sortTable(5, this)">Cantidad Solicitada</th>
+                                                    <th onclick="sortTable(6, this)">Estado</th>
+                                                    <th onclick="sortTable(7, this)">Pre Aprobador</th>
+                                                    <th onclick="sortTable(8, this)">Aprobador</th>
                                                     <th onclick="sortTable(9, this)">Impresión</th>
                                                 </tr>
                                             </thead>
@@ -72,13 +72,13 @@
 <script src="vistas/js/recursosHumanos/solicitudDeContratacion.js"></script>
 
 <style>
-   #lista table {
-    font-size: 10px;
-    border-collapse: separate !important;
-    border-spacing: 0;
-    text-align: center;
-    margin: 0;
-}
+    #lista table {
+        font-size: 10px;
+        border-collapse: separate !important;
+        border-spacing: 0;
+        text-align: center;
+        margin: 0;
+    }
 
     #lista th {
         font-size: 13px;

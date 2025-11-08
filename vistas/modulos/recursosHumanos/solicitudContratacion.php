@@ -112,7 +112,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="equipoAgregar">Motivo:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="motivoAgregar" id="motivoAgregar">
-                <option value=" ">Seleccionar...</option>
+                <option>Seleccionar...</option>
                 <option value="Reemplazo dotación">Reemplazo dotación</option>
                 <option value="Aumento dotación">Aumento dotación</option>
               </select>
@@ -121,8 +121,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="divisionAgregar">División:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto solo-ruc" name="divisionAgregar" id="divisionAgregar">
-                <option value=" "></option>
-                <option value=" ">Seleccionar...</option>
+                <option>Seleccionar...</option>
                 <option value="Industrial" selected>Industrial</option>
                 <option value="Interurbano">Interurbano</option>
               </select>
@@ -156,7 +155,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="licenciaAgregar">Licencia conducir:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
               <select class="form-control input-md cajatexto" id="licenciaAgregar" name="licenciaAgregar">
-                <option value="Seleccionar...">Seleccionar...</option>
+                <option>Seleccionar...</option>
                 <option value="Si">Si</option>
                 <option value="No">No</option>
               </select>
@@ -170,7 +169,7 @@ MODAL AGREGAR TAREA
             <div class="form-group col-sm-4 col-xs-12">
               <label for="tipocontratoAgregar">Tipo contrato:</label>
               <select class="form-control input-md cajatexto" id="tipocontratoAgregar" name="tipocontratoAgregar" onchange="mostrarFechaTermino()">
-                <option value=" ">Seleccionar...</option>
+                <option>Seleccionar...</option>
                 <option value="Indefinido">Indefinido</option>
                 <option value="Plazo Fijo">Plazo Fijo</option>
                 <option value="Por Obra">Por Obra</option>
@@ -196,44 +195,50 @@ MODAL AGREGAR TAREA
             <div class="col-md-12 col-xs-12">
               <div class="box box-warning">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Requisitos de Selección</h3> 
-                </div>                                             
+                  <h3 class="box-title">Requisitos de Selección</h3>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group col-sm-4 col-xs-12">                 
-                      <label for="requisitosAgregar">Requisitos:</label>
-                      <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosAgregar" name="requisitosAgregar"></select>
-                    </div>
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="requisitosAgregar">Requisitos:</label>
+                    <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosAgregar" name="requisitosAgregar"></select>
+                  </div>
 
-                    <div class="form-group col-sm-7 col-xs-12">
-                      <label for="observacionRequisitoAgregar">Observación:</label>
-                      <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoAgregar" id="observacionRequisitoAgregar">
-                    </div>
+                  <div class="form-group col-sm-7 col-xs-12">
+                    <label for="observacionRequisitoAgregar">Observación:</label>
+                    <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoAgregar" id="observacionRequisitoAgregar">
+                  </div>
 
-                    <div class="form-group col-sm-1 col-xs-12">                 
-                      <label for="btnEliminarCliente"></label>
-                      <div style ="align-items: center; justify-content: center; display:flex;"> 
-                        <div class="btn-group">                        
-                          <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosAgregar"><i class="fa fa-plus"></i></button>
-                        </div>
-                      </div>  
+                  <div class="form-group col-sm-1 col-xs-12">
+                    <label for="btnEliminarCliente"></label>
+                    <div style="align-items: center; justify-content: center; display:flex;">
+                      <div class="btn-group">
+                        <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosAgregar"><i class="fa fa-plus"></i></button>
+                      </div>
                     </div>
+                  </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">                 
-                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoAgregar" width="100%">                        
-                        <thead>            
-                            <tr>              
-                              <th><center> Concepto</center></th>
-                              <th><center> Observación</center></th>
-                              <th><center>Acciones</center></th>
-                            </tr> 
-                        </thead>
-                        <tbody></tbody>
-                      </table>  
-                    </div>
+                  <div class="form-group col-sm-12 col-xs-12">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoAgregar" width="100%">
+                      <thead>
+                        <tr>
+                          <th>
+                            <center> Concepto</center>
+                          </th>
+                          <th>
+                            <center> Observación</center>
+                          </th>
+                          <th>
+                            <center>Acciones</center>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
                 </div>
               </div><!-- /.box -->
-            </div> 
+            </div>
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -395,44 +400,50 @@ MODAL EDITAR TAREA
             <div class="col-md-12 col-xs-12">
               <div class="box box-warning">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Requisitos de Selección</h3> 
-                </div>                                             
+                  <h3 class="box-title">Requisitos de Selección</h3>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group col-sm-4 col-xs-12">                 
-                      <label for="requisitosModificar">Requisitos:</label>
-                      <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosModificar" name="requisitosModificar"></select>
-                    </div>
+                  <div class="form-group col-sm-4 col-xs-12">
+                    <label for="requisitosModificar">Requisitos:</label>
+                    <select class="form-control input-md cajatexto js-example-basic-single" id="requisitosModificar" name="requisitosModificar"></select>
+                  </div>
 
-                    <div class="form-group col-sm-7 col-xs-12">
-                      <label for="observacionRequisitoModificar">Observación:</label>
-                      <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoModificar" id="observacionRequisitoModificar">
-                    </div>
+                  <div class="form-group col-sm-7 col-xs-12">
+                    <label for="observacionRequisitoModificar">Observación:</label>
+                    <input type="text" class="form-control cajatexto input-md solo-numero puntos_de_mil estiloMontos" name="observacionRequisitoModificar" id="observacionRequisitoModificar">
+                  </div>
 
-                    <div class="form-group col-sm-1 col-xs-12">                 
-                      <label for="btnAgregarRequisitosModificar"></label>
-                      <div style ="align-items: center; justify-content: center; display:flex;"> 
-                        <div class="btn-group">                        
-                          <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosModificar"><i class="fa fa-plus"></i></button>
-                        </div>
-                      </div>  
+                  <div class="form-group col-sm-1 col-xs-12">
+                    <label for="btnAgregarRequisitosModificar"></label>
+                    <div style="align-items: center; justify-content: center; display:flex;">
+                      <div class="btn-group">
+                        <button title="Agregar Tipo de Entrevista" type="button" class="btn btn-success" id="btnAgregarRequisitosModificar"><i class="fa fa-plus"></i></button>
+                      </div>
                     </div>
+                  </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">                 
-                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoModificar" width="100%">                        
-                        <thead>            
-                            <tr>              
-                              <th><center> Concepto</center></th>
-                              <th><center> Observación</center></th>
-                              <th><center>Acciones</center></th>
-                            </tr> 
-                        </thead>
-                        <tbody></tbody>
-                      </table>  
-                    </div>
+                  <div class="form-group col-sm-12 col-xs-12">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoModificar" width="100%">
+                      <thead>
+                        <tr>
+                          <th>
+                            <center> Concepto</center>
+                          </th>
+                          <th>
+                            <center> Observación</center>
+                          </th>
+                          <th>
+                            <center>Acciones</center>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
                 </div>
               </div><!-- /.box -->
-            </div> 
+            </div>
 
             <div class="col-md-12 col-xs-12">
               <div class="box box-success">
@@ -582,26 +593,30 @@ MODAL VER MAS
           </div>
 
           <div class="col-md-12 col-xs-12">
-              <div class="box box-warning">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Requisitos de Selección</h3> 
-                </div>                                             
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group col-sm-12 col-xs-12">                 
-                      <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoVista" width="100%">                        
-                        <thead>            
-                            <tr>              
-                              <th><center> Concepto</center></th>
-                              <th><center> Observación</center></th>
-                            </tr> 
-                        </thead>
-                        <tbody></tbody>
-                      </table>  
-                    </div>
+            <div class="box box-warning">
+              <div class="box-header with-border">
+                <h3 class="box-title">Requisitos de Selección</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group col-sm-12 col-xs-12">
+                  <table class="table table-bordered table-striped dt-responsive" id="tablaRequisitoVista" width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          <center> Concepto</center>
+                        </th>
+                        <th>
+                          <center> Observación</center>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
                 </div>
-              </div><!-- /.box -->
-            </div> 
+              </div>
+            </div><!-- /.box -->
+          </div>
 
           <div class="col-md-12 col-xs-12">
             <div class="box box-success">

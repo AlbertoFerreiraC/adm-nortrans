@@ -49,6 +49,7 @@
                                                         <th onclick="sortTable(2, this)">Id Centro Costo</th>
                                                         <th onclick="sortTable(3, this)">Tipo de Documento</th>
                                                         <th onclick="sortTable(4, this)">Fecha Expiración</th>
+                                                        <th onclick="sortTable(5, this)">Tiempo restante</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
