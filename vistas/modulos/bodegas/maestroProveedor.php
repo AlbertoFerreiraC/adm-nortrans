@@ -4,15 +4,15 @@
 
         <h1>
 
-            Maestro Producto
+            Administrar Proveedores
 
         </h1>
 
         <ol class="breadcrumb">
 
-            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Bodega/Mantenedor</a></li>
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio/Contabilidad/Mantenedor</a></li>
 
-            <li class="active">Administrar Maestro Producto</li>
+            <li class="active">Administrar Proveedores</li>
 
         </ol>
 
@@ -47,31 +47,34 @@
                                     <center>#</center>
                                 </th>
                                 <th>
-                                    <center> Tipo Producto</center>
+                                    <center> Comuna</center>
                                 </th>
                                 <th>
-                                    <center> Categoria</center>
+                                    <center> Condicion de Pago</center>
                                 </th>
                                 <th>
-                                    <center> Sub Categoria</center>
+                                    <center> Tipo de Proveedor</center>
                                 </th>
                                 <th>
-                                    <center> Id Producto</center>
+                                    <center> Descripción</center>
                                 </th>
                                 <th>
-                                    <center> Producto</center>
+                                    <center> RUT</center>
                                 </th>
                                 <th>
-                                    <center> Unidad de Medida</center>
+                                    <center> Telefono</center>
                                 </th>
                                 <th>
-                                    <center> # Por Unidad de Medida</center>
+                                    <center> Correo</center>
                                 </th>
                                 <th>
-                                    <center> Estado</center>
+                                    <center> Direccion</center>
                                 </th>
                                 <th>
-                                    <center> Editar</center>
+                                    <center> Criticidad</center>
+                                </th>
+                                <th>
+                                    <center>Acciones</center>
                                 </th>
                             </tr>
                         </thead>
@@ -121,44 +124,48 @@ MODAL AGREGAR TAREA
                     <div class="box-body">
 
                         <div class="form-group col-md-6">
-                            <label for="tipoProductoAgregar">Tipo Producto:</label>
-                            <select class="form-control input-md cajatexto" name="tipoProductoAgregar" id="tipoProductoAgregar">
-                                <option value="" selected>Seleccionar...</option>
-                                <option value="Insumos">Insumos</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="EPP">EPP</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group col-md-6">
-                            <label for="categoriaAgregar">Categoria:</label>
-                            <select class="form-control input-md cajatexto" name="categoriaAgregar" id="categoriaAgregar"></select>
+                            <label for="comunaAgregar">Comuna:</label>
+                            <select class="form-control input-md cajatexto" name="comunaAgregar" id="comunaAgregar"></select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="subCategoriaAgregar">Sub Categoria:</label>
-                            <select class="form-control input-md cajatexto" name="subCategoriaAgregar" id="subCategoriaAgregar"></select>
+                            <label for="condiciondepagoAgregar">Condicion de Pago:</label>
+                            <select class="form-control input-md cajatexto" name="condiciondepagoAgregar" id="condiciondepagoAgregar"></select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="unidadMedidaAgregar">Unidad de Medida:</label>
-                            <select class="form-control input-md cajatexto" name="unidadMedidaAgregar" id="unidadMedidaAgregar"></select>
+                            <label for="tipoProveedorAgregar">Tipo Proveedor:</label>
+                            <select class="form-control input-md cajatexto" name="tipoProveedorAgregar" id="tipoProveedorAgregar"></select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="porUnidadAgregar"># Por Unidad De Medida:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="porUnidadAgregar" id="porUnidadAgregar">
+                            <label for="criticidadAgregar">Criticidad:</label>
+                            <select class="form-control input-md cajatexto" name="criticidadAgregar" id="criticidadAgregar"></select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="stokMinimoAgregar">Stock Minimo:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="stokMinimoAgregar" id="stokMinimoAgregar">
+                            <label for="nuevoNombre">Descripción:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="descripcionAgregar" id="descripcionAgregar" placeholder="Ingresar Descripción" required>
                         </div>
 
-                        <div class="form-group col-md-12">
-                            <label for="descripcionAgregar">Descripción:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="descripcionAgregar" id="descripcionAgregar">
+                        <div class="form-group col-md-6">
+                            <label for="rutAgregar">RUT:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="rutAgregar" id="rutAgregar" placeholder="Ingresar Rut" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="telefonoAgregar">Telefono:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="telefonoAgregar" id="telefonoAgregar" placeholder="Ingresar Telefono de Contacto" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="correoAgregar">Correo:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="correoAgregar" id="correoAgregar" placeholder="Ingresar Correo de Contacto" required>
+                        </div>
+
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="direccionAgregar">Dirección:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="direccionAgregar" id="direccionAgregar" placeholder="Ingresar Dirección" required>
                         </div>
 
                     </div>
@@ -216,51 +223,57 @@ MODAL EDITAR TAREA
                 <div class="modal-body">
 
                     <div class="box-body">
-
                         <div class="form-group col-md-6">
-                            <label for="tipoProductoModificar">Tipo Producto:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="tipoProductoModificar" id="tipoProductoModificar">
-                                <option value="" selected>Seleccionar...</option>
-                                <option value="Insumos">Insumos</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="EPP">EPP</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group col-md-6">
-                            <label for="categoriaModificar">Categoria:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="categoriaModificar" id="categoriaModificar"></select>
+                            <label for="comunaModificar">Comuna:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="comunaModificar" id="comunaModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="subCategoriaModificar">Sub Categoria:</label>
-                            <select class="form-control input-md cajatexto solo-ruc" name="subCategoriaModificar" id="subCategoriaModificar"></select>
+                            <label for="condiciondepagoModificar">Condicion de Pago:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="condiciondepagoModificar" id="condiciondepagoModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="unidadMedidaModificar">Unidad de Medida:</label>
-                            <select class="form-control input-md cajatexto" name="unidadMedidaModificar" id="unidadMedidaModificar"></select>
+                            <label for="tipoProveedorModificar">Tipo Proveedor:</label>
+                            <select class="form-control input-md cajatexto solo-ruc" name="tipoProveedorModificar" id="tipoProveedorModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="porUnidadModificar"># Por Unidad De Medida:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="porUnidadModificar" id="porUnidadModificar" required>
+                            <label for="criticidadModificar">Criticidad:</label>
+                            <select class="form-control input-md cajatexto" name="criticidadModificar" id="criticidadModificar"></select>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="stokMinimoModificar">Stock Minimo:</label>
-                            <input type="text" class="form-control input-md cajatexto" name="stokMinimoModificar" id="stokMinimoModificar" required>
-                            <input type="hidden" name="idModificar" id="idModificar" required>
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <label for="descripcionModificar">Descripción:</label>
+                            <label for="nuevoNombre">Descripción:</label>
                             <input type="text" class="form-control input-md cajatexto" name="descripcionModificar" id="descripcionModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="rutModificar">RUT:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="rutModificar" id="rutModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="telefonoModificar">Telefono:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="telefonoModificar" id="telefonoModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="correoModificar">Correo:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="correoModificar" id="correoModificar" required>
+                            <input type="hidden" name="idModificar" id="idModificar" required>
+                        </div>
+
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="direccionModificar">Dirección:</label>
+                            <input type="text" class="form-control input-md cajatexto" name="direccionModificar" id="direccionModificar" required>
                             <input type="hidden" name="idModificar" id="idModificar" required>
                         </div>
                     </div>
@@ -287,7 +300,7 @@ MODAL EDITAR TAREA
 
 </div>
 
-<script src="vistas/js/bodegas/maestroProducto.js"></script>
+<script src="vistas/js/contabilidad/maestroProveedor.js"></script>
 
 
 <style>

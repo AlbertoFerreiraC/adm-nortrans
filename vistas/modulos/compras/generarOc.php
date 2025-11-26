@@ -132,7 +132,7 @@
                                         <select class="form-control" name="nuevoTipoDocCompra" id="nuevoTipoDocCompra">
                                             <option value=" ">Seleccionar...</option>
                                             <option value="Factura Afecta">Factura Afecta</option>
-                                            <option value="Factura Excenta">Factura Excenta</option>
+                                            <option value="Factura Exenta">Factura Exenta</option>
                                             <option value="Boleta de Honorario">Boleta de Honorario</option>
                                             <option value="Vale por">Vale por</option>
                                         </select>
@@ -280,13 +280,13 @@
             <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
              <input type="hidden" id="idDetalleRegistroEditar">
             
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="costoUnitarioEditar">Costo Unitario:</label>
                 <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="costoUnitarioEditar" id="costoUnitarioEditar">
             </div>
 
             <div class="form-group col-md-4">
-                <label>Tipo Descuento</label>
+                <label>Tipo Descuento:</label><small style="color: red;">(Unitario)</small>
                 <select class="form-control" name="tipoDescuentoEditar" id="tipoDescuentoEditar">
                     <option value="Sin Descuento">Sin Descuento</option>
                     <option value="Monto">Monto</option>
@@ -294,8 +294,8 @@
                 </select>
             </div>
 
-            <div class="form-group col-md-4">
-                <label for="montoDescuentoEditar">Monto Descuento:</label>
+            <div class="form-group col-md-5">
+                <label for="montoDescuentoEditar">Monto Descuento:</label><small style="color: red;">(Unitario)</small>
                 <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="montoDescuentoEditar" id="montoDescuentoEditar"  disabled>
             </div>
 
@@ -424,7 +424,7 @@
                                         <select class="form-control" name="nuevoTipoDocCompraModificar" id="nuevoTipoDocCompraModificar">
                                             <option value=" ">Seleccionar...</option>
                                             <option value="Factura Afecta">Factura Afecta</option>
-                                            <option value="Factura Excenta">Factura Excenta</option>
+                                            <option value="Factura Exenta">Factura Exenta</option>
                                             <option value="Boleta de Honorario">Boleta de Honorario</option>
                                             <option value="Vale por">Vale por</option>
                                         </select>
@@ -558,13 +558,13 @@
             <!-- ENTRADA PARA EL DESCRIPCION DE LA TAREA -->
              <input type="hidden" id="idDetalleRegistroEditarParaModificacion">
             
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="costoUnitarioEditar">Costo Unitario:</label>
                 <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="costoUnitarioEditarParaModificacion" id="costoUnitarioEditarParaModificacion">
             </div>
 
             <div class="form-group col-md-4">
-                <label>Tipo Descuento</label>
+                <label>Tipo Descuento:</label><small style="color: red;">(Unitario)</small>
                 <select class="form-control" name="tipoDescuentoEditarParaModificacion" id="tipoDescuentoEditarParaModificacion">
                     <option value="Sin Descuento">Sin Descuento</option>
                     <option value="Monto">Monto</option>
@@ -572,8 +572,8 @@
                 </select>
             </div>
 
-            <div class="form-group col-md-4">
-                <label for="montoDescuentoEditarParaModificacion">Monto Descuento:</label>
+            <div class="form-group col-md-5">
+                <label for="montoDescuentoEditarParaModificacion">Monto Descuento:</label><small style="color: red;">(Unitario)</small>
                 <input type="text" class="form-control input-md solo-numero puntos_de_mil" name="montoDescuentoEditarParaModificacion" id="montoDescuentoEditarParaModificacion"  disabled>
             </div>
 

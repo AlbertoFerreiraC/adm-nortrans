@@ -32,16 +32,21 @@ $(document).ready(function () {
     cargarDatosTabla();
 
     $('#btnGenerarOC').click(function () {
+        // DESHABILITA EL BOTÓN
+        $("#btnGenerarOC").prop("disabled", true).text("Procesando...");
+
         if($("#nuevaEmpresa").val()  != "-" && $("#nuevoProveedor").val()  != "-" && 
-           $("#nuevotipoOC").val()  != "-" && $("#nuevotipoDocProv").val()  != "-" && 
-           $("#nuevoNumDocProveedor").val()  != "" && $("#nuevoArchivo")[0].files[0] != undefined && 
-           $("#nuevoPlazoPago").val()  != "-" && $("#nuevaFormaPago").val()  != "-" && 
-           $("#nuevoPlazoEntrega").val()  != "-" && $("#nuevoTipoDocCompra").val()  != "-" && 
-           $("#preapruebaAgregar").val()  != "-" && $("#preaprueba2Agregar").val()  != "-" && 
-           $("#totalGeneralAgregar").val()  != "" && $("#totalGeneralAgregar").val()  != "0"){
-                agregarDatos();
+        $("#nuevotipoOC").val()  != "-" && $("#nuevotipoDocProv").val()  != "-" && 
+        $("#nuevoNumDocProveedor").val()  != "" && $("#nuevoArchivo")[0].files[0] != undefined && 
+        $("#nuevoPlazoPago").val()  != "-" && $("#nuevaFormaPago").val()  != "-" && 
+        $("#nuevoPlazoEntrega").val()  != "-" && $("#nuevoTipoDocCompra").val()  != "-" && 
+        $("#preapruebaAgregar").val()  != "-" && $("#preaprueba2Agregar").val()  != "-" && 
+        $("#totalGeneralAgregar").val()  != "" && $("#totalGeneralAgregar").val()  != "0")
+        {
+            agregarDatos();
         }else{
             mensajeError("Debe completar todos los campos obligatorios.");
+            $("#btnGenerarOC").prop("disabled", false).text("Generar OC"); // RE-HABILITA
         }      
     });
 
@@ -73,6 +78,13 @@ $(document).ready(function () {
         formaPagoAgregar();
         PreapruebaAgregar();
         solicitudesAprobadasAgregar();
+        //---------------------------------------
+        $("#nuevoPlazoEntrega option:first").prop("selected", true);
+        $("#nuevotipoOC option:first").prop("selected", true);
+        $("#nuevoNumDocProveedor").val('');
+        $('#nuevoArchivo').val('');
+        $("#nuevoPlazoEntrega option:first").prop("selected", true);
+        $("#nuevoTipoDocCompra option:first").prop("selected", true);
     });
 
     $('#btnAsociarSolicitud').click(function () {
@@ -525,16 +537,15 @@ function agregarDatos() {
         success: function (response) {
             if (response['mensaje'] != "nok") {
                 agregarDatosDetalle(response['mensaje']);
-            }
-
-            if (response['mensaje'] == "nok") {
+            } else {
                 mensajeError("Ha ocurrido un error al procesar la carga.");
+                $("#btnGenerarOC").prop("disabled", false).text("Generar OC");
             }
-
         }
-    }).fail(function () {
-        mensajeError("Ha ocurrido un error al procesar la carga.");
-    });
+        }).fail(function () {
+            mensajeError("Ha ocurrido un error al procesar la carga.");
+            $("#btnGenerarOC").prop("disabled", false).text("Generar OC");
+        });
 
 }
 
@@ -574,7 +585,7 @@ function agregarDatosDetalle(id) {
             if (response['mensaje'] == "ok") {
                 swal({
                     type: "success",
-                    title: "Orden de Compra cargado con éxito.",
+                    title: "Orden de Compra número "+id+" cargado con éxito.",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
@@ -626,19 +637,21 @@ function agregarDatosDetalleModificacion(id) {
             if (response['mensaje'] == "ok") {
                 swal({
                     type: "success",
-                    title: "Orden de Compra modificado con éxito.",
+                    title: "Orden de Compra número "+id+" cargado con éxito.",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
-                }).then((value) => {
+                }).then(() => {
                     location.reload();
-                });    
-            } 
-            
-            if (response['mensaje'] === "nok") {
-                mensajeError("Ha ocurrido un error al procesar la actualización.");
-            }                
+                });
+            } else {
+                mensajeError("Ha ocurrido un error al procesar la carga.");
+                $("#btnGenerarOC").prop("disabled", false).text("Generar OC");
+            }
         }
-    });
+        }).fail(function () {
+            mensajeError("Ha ocurrido un error al procesar la carga.");
+            $("#btnGenerarOC").prop("disabled", false).text("Generar OC");
+        });
 
 }
 
@@ -1010,8 +1023,8 @@ function controlTotal(){
   subTotal = totalSinDescuento;
   totalDescuento = totalSinDescuento - totalConDescuento;
   neto = totalConDescuento;
-  totalIVA = totalConDescuento - (totalConDescuento*18)/100;
-  totalGeneral = totalConDescuento + totalIVA;
+  totalIVA = totalConDescuento - (totalConDescuento / 1.19);
+  totalGeneral = neto;
   $('#subTotalAgregar').val(number_format(subTotal,0));
   $('#descuentoTotalAgregar').val(number_format(totalDescuento,0));
   $('#netoAgregar').val(number_format(neto,0));
@@ -1044,8 +1057,8 @@ function controlTotalModificacion(){
   subTotal = totalSinDescuento;
   totalDescuento = totalSinDescuento - totalConDescuento;
   neto = totalConDescuento;
-  totalIVA = totalConDescuento - (totalConDescuento*18)/100;
-  totalGeneral = totalConDescuento + totalIVA;
+  totalIVA = totalConDescuento - (totalConDescuento / 1.19);
+  totalGeneral = neto;
   $('#subTotalModificar').val(number_format(subTotal,0));
   $('#descuentoTotalModificar').val(number_format(totalDescuento,0));
   $('#netoModificar').val(number_format(neto,0));

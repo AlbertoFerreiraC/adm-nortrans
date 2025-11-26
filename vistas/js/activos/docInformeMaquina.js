@@ -29,7 +29,7 @@ function cargarDatosTabla() {
                             <td>${r.idmaquina ?? ''}</td>
                             <td>${r.patente ?? ''}</td>
                             <td>${r.tipo_documento_maquina ?? ''}</td>
-                            <td>${r.fecha_vencimiento ?? ''}</td>
+                            <td>${r.fecha_inicio ?? ''}</td>
                         </tr>
                     `;
                     tbody.append(fila);

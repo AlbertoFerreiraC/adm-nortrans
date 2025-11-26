@@ -891,10 +891,10 @@ function agregarDatos() {
         processData: false,
         dataType: "json",
         success: function (response) {
-            if(response['mensaje'] === "ok"){
+            if(response['mensaje'] != "nok"){
                 swal({
                     type: "success",
-                    title: "Solicitud cargada con éxito",
+                    title: "Solicitud número "+response['mensaje']+" cargada con éxito.",
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {

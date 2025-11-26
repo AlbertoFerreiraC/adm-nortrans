@@ -34,23 +34,6 @@
                             </a>
                         </h4>
                     </div>
-
-                    <div class="box-body">
-                        <div class="d-flex align-items-center botones-container"">
-                            <button type=" button" class="btn btn-primary " data-toggle="modal" data-target="#modalEditar" id="btnverActivos">
-                            <i class="fa fa-search" aria-hidden="true"></i> Ver Activos
-                            </button>
-
-                            <button type="button" class="btn btn-primary " id="btnverTodos">
-                                <i class="fa fa-list" aria-hidden="true"></i> Ver Todos
-                            </button>
-
-                            <button type="button" class="btn btn-primary" id="btnverBloqueados"" style=" background-color: #FF6600;">
-                                <i class="fa fa-file" aria-hidden="true"></i> Ver Bloqueados
-                            </button>
-                        </div>
-                    </div>
-
                     <!-- Controles de tabla -->
                     <div class="table-controls">
                         <div class="control-left">
@@ -88,7 +71,6 @@
                                                         <th onclick="sortTable(4, this)">Modelo chasis</th>
                                                         <th onclick="sortTable(5, this)">Centro Costo</th>
                                                         <th onclick="sortTable(6, this)">Estado</th>
-                                                        <th onclick="sortTable(7, this)">Editar</th>
                                                     </tr>
 
                                                 </thead>

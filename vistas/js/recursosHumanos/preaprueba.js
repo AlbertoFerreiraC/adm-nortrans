@@ -194,130 +194,6 @@ function cargarDatosTabla() {
     });
 }
 
-
-function obtenerDatosParaModificar(valor) {
-
-    var params = {
-        "id": valor
-    };
-    $.ajax({
-        url: "../api_adm_nortrans/solicitudContratacion/funDatosParaModificar.php",
-        method: "POST",
-        cache: false,
-        data: JSON.stringify(params),
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            for (var i in response) {
-                $("#idModificar").val(response[i].idcontratacion);
-                cargoModificar(response[i].cargo);
-                empresaModificar(response[i].empresa);
-                CentroDeCostoModificar(response[i].CentroDeCosto);
-                equipoModificar(response[i].tipoBus);
-                turnoModificar(response[i].turnos_laborales);
-                CentroDeCostoModificarCargaInicial(response[i].centro_de_costo, response[i].empresa);
-                apruebaModificar(response[i].aprueba);
-                preapruebaModificar(response[i].preaprueba);
-
-
-                $('#motivoModificar option[value="' + response[i].motivo + '"]').attr("selected", true);
-                $('#requisitoseleccionModificar option[value="' + response[i].requisito_seleccion + '"]').attr("selected", true);
-                $('#divisionModificar option[value="' + response[i].division + '"]').attr("selected", true);
-                $("#cantidadModificar").val(response[i].cantidad_solicitada);
-                $("#fecharequeridaModificar").val(response[i].fecha_requerida);
-                $("#fechaterminoModificar").val(response[i].fecha_termino);
-                $("#remuneracionModificar").val(response[i].remuneracion);
-                $("#comentarioPreapruebaVer").val(response[i].observacion_pre_aprobacion);
-
-                $("#observacionEntrevistaPsicolaboralMod").val(response[i].observacionEntrevistaPsicolaboral);
-                $("#observacionEntrevistaTecnicaMod").val(response[i].observacionEntrevistaTecnica);
-                $("#observacionPruebaConduccionMod").val(response[i].observacionPruebaConduccion);
-
-                //--------------------------
-                $('#licenciaModificar option[value="' + response[i].licenciaDeConducir + '"]').attr("selected", true);
-                $('#tipocontratoModificar option[value="' + response[i].tipo_contrato + '"]').attr("selected", true);
-
-
-                $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
-
-            }
-
-        }
-    }).fail(function () {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al traer los datos solicitados",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
-    });
-
-}
-
-function modificarDatos() {
-    var idContratacion = $("#idModificar").val();
-
-    if (!idContratacion) {
-        swal({
-            type: "error",
-            title: "Error: ID de contratación no encontrado",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
-        return;
-    }
-
-    var params = {
-        "idcontratacion": idContratacion,
-        "observacion_pre_aprobacion": $("#comentarioPreapruebaVer").val(),
-        "fecha_pre_aperobacion": $("#fechaPreAprobacion").val(),
-    };
-
-    $.ajax({
-        url: "../api_adm_nortrans/preaprueba/funAprobar.php",
-        method: "POST",
-        cache: false,
-        data: JSON.stringify(params),
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (response) {
-            if (response['mensaje'] === "ok") {
-                swal({
-                    type: "success",
-                    title: "Registro modificado con éxito",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                }).then((value) => {
-                    location.reload();
-                });
-            } else if (response['mensaje'] === "nok") {
-                swal({
-                    type: "error",
-                    title: "Ha ocurrido un error al procesar la modificación",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            } else if (response['mensaje'] === "repetido") {
-                swal({
-                    type: "error",
-                    title: "El registro que quiere modificar ya existe en otro registro en la base de datos",
-                    showConfirmButton: true,
-                    confirmButtonText: "Aceptar"
-                });
-            }
-        }
-    }).fail(function () {
-        swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la modificación",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-        });
-    });
-}
-
 function obtenerDatosParaVerMasPreprueba(valor) {
 
     var params = {
@@ -352,6 +228,7 @@ function obtenerDatosParaVerMasPreprueba(valor) {
                 $("#fechaterminoVerMas").val(response[i].fecha_termino);
                 $("#remuneracionVer").val(response[i].remuneracion);
                 $("#comentarioVer").val(response[i].comentario_general);
+                $("#solicitanteVer").val(response[i].usuario);
 
                 $("#observacionEntrevistaPsicolaboralVer").val(response[i].observacionEntrevistaPsicolaboral);
                 $("#observacionEntrevistaTecnicaVer").val(response[i].observacionEntrevistaTecnica);

@@ -171,6 +171,10 @@ MODAL VER MAS
                         <input type="number" class="form-control input-md cajatexto" name="remuneracionVer" id="remuneracionVer" disabled>
                     </div>
 
+                    <div class="form-group col-sm-12 col-xs-12">
+                        <label for="solicitanteVer">Solictante:</label>
+                        <input type="number" class="form-control input-md cajatexto" name="solicitanteVer" id="solicitanteVer" disabled>
+                    </div>
 
                     <div class="col-md-12 col-xs-12">
                         <div class="box box-success">

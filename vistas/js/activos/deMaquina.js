@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    // cargarDatosTabla(); nuevoEquipo
+    cargarDatosTabla();
 
     $('#btnNuevo').click(function () {
         TipoBus();
@@ -42,6 +42,50 @@ $(document).ready(function () {
         }
     });
 });
+
+
+function cargarDatosTabla() {
+    const tbody = $("#tablaDocumentos tbody");
+    tbody.empty();
+    $.ajax({
+        url: "../api_adm_nortrans/deMaquina/funListar.php",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            if (response && response.length > 0) {
+                response.forEach((r) => {
+                    const fila = `
+                        <tr>
+                            <td>${r.patente ?? ''}</td>
+                            <td>${r.numero_interno_maquina ?? ''}</td>
+                            <td>${r.tipo_documento_maquina_nombre ?? r.tipo_documento_maquina ?? ''}</td>
+                            <td>${r.clase_bus_nombre ?? r.clase_bus ?? ''}</td>
+                            <td>${r.modelo_chasis_nombre ?? r.modelo_chasis ?? ''}</td>
+                            <td>${r.centro_costo_nombre ?? r.centro_de_costo ?? ''}</td>
+                            <td>${r.estado ?? ''}</td>
+
+                        </tr>`;
+                    tbody.append(fila);
+                });
+            } else {
+                tbody.append(`
+                    <tr>
+                        <td colspan="8" class="text-center">No hay resultados</td>
+                    </tr>
+                `);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar datos:", error);
+            swal({
+                type: "error",
+                title: "Error al cargar el listado",
+                text: error,
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+}
 
 function TipoBus() {
     $('#tipoMaquina').empty();
@@ -305,51 +349,48 @@ function tipoPoliza() {
 }
 
 function agregarDatos() {
-    var datos = '{"patente":"' + $("#idpatente").val() +
-        '","numero_interno_maquina":"' + $("#numInterno").val() +
-        '","tipo_maquina":"' + $("#tipoMaquina").val() +
-        '","anho_maquina":"' + $("#añoMaquina").val() +
-        '","capacidad_estanque":"' + $("#capacidadTanque").val() +
-        '","secuencia_mantenimiento":"' + $("#secuenciaMantencion").val() +
-        '","numero_asientos":"' + $("#asientosmaquina").val() +
-        '","numero_puertas":"' + $("#numPuertas").val() +
-        '","centro_de_costo":"' + $("#centroCosto").val() +
-        '","padron":"' + $("#idPatron").val();
+
+    const datos = {
+        patente: $("#idpatente").val(),
+        numero_interno_maquina: $("#numInterno").val(),
+        tipo_maquina: $("#tipoMaquina").val(),
+        anho_maquina: $("#añoMaquina").val(),
+        capacidad_estanque: $("#capacidadTanque").val(),
+        secuencia_mantenimiento: $("#secuenciaMantencion").val(),
+        numero_asientos: $("#asientosmaquina").val(),
+        numero_puertas: $("#numPuertas").val(),
+        centro_de_costo: $("#centroCosto").val(),
+        padron: $("#idPatron").val()
+    };
 
     $.ajax({
         url: "../api_adm_nortrans/deMaquina/funAgregar.php",
         method: "POST",
-        cache: false,
         data: datos,
-        contentType: false,
-        processData: false,
         dataType: "json",
+
         success: function (response) {
-            if (response['mensaje'] === "ok") {
+
+            if (response.mensaje === "ok") {
                 swal({
                     type: "success",
-                    title: "Registro cargado con exito",
-                    showConfirmButton: true,
+                    title: "Registro cargado con éxito",
                     confirmButtonText: "Aceptar"
-                }).then((value) => {
-                    location.reload();
-                });
+                }).then(() => location.reload());
             }
 
-            if (response['mensaje'] === "nok") {
+            if (response.mensaje === "nok") {
                 swal({
                     type: "error",
                     title: "Ha ocurrido un error al procesar la carga",
-                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 });
             }
 
-            if (response['mensaje'] === "registro_existente") {
+            if (response.mensaje === "registro_existente") {
                 swal({
                     type: "error",
-                    title: "El registro que quiere cargar ya existe en la base de datos",
-                    showConfirmButton: true,
+                    title: "El registro ya existe",
                     confirmButtonText: "Aceptar"
                 });
             }
@@ -357,8 +398,7 @@ function agregarDatos() {
     }).fail(function () {
         swal({
             type: "error",
-            title: "Ha ocurrido un error al procesar la carga",
-            showConfirmButton: true,
+            title: "Ha ocurrido un error",
             confirmButtonText: "Aceptar"
         });
     });
