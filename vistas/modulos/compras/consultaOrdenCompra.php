@@ -15,11 +15,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-4 col-xs-12">
                                     <label for="empresa">Empresa:</label>
-                                    <select class="form-control input-md cajatexto solo-ruc" name="empresa" id="empresa">
-                                        <option value="" selected>Seleccionar...</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    <select class="form-control input-md cajatexto solo-ruc" name="empresaConsultar" id="empresaConsultar"></select>
                                 </div>
 
                                 <div class="form-group col-sm-4 col-xs-12">
@@ -36,16 +32,12 @@
 
                             <!-- SEGUNDA FILA -->
                             <div class="row">
-                               <div class="form-group col-sm-2 col-xs-12">
-                                    <label for="vistaNumerOC">N° OC</label>
-                                    <input type="text" class="form-control input-md cajatexto solo-ruc" name="vistaNumerOC" id="vistaNumerOC" disabled>
-                                </div>
 
                                 <div class="form-group col-sm-2 col-xs-2">
                                     <label for="tipoOC">Tipo OC</label>
                                     <input type="text" class="form-control input-md cajatexto solo-ruc" name="tipoOC" id="tipoOC" disabled></select>
                                 </div>
-                            
+
                                 <div class="form-group col-sm-2 col-xs-12">
                                     <label for="fechaVer">Fecha :</label>
                                     <input type="text" class="form-control input-md cajatexto solo-ruc" name="fechaVer" id="fechaVer" disabled>
@@ -79,11 +71,6 @@
                                 <div class="form-group col-sm-2 col-xs-2">
                                     <label for="numDocumentoVer"> N° Documento </label>
                                     <input type="text" class="form-control input-md cajatexto solo-ruc" name="numDocumentoVer" id="numDocumentoVer" disabled></select>
-                                </div>
-
-                                <div class="form-group col-sm-2 col-xs-2">
-                                    <label for="tipoProveedorVer"> Tipo Proveedor</label>
-                                    <input type="text" class="form-control input-md cajatexto solo-ruc" name="tipoProveedorVer" id="tipoProveedorVer" disabled></select>
                                 </div>
 
                                 <div class="form-group col-sm-2 col-xs-2">
@@ -121,7 +108,7 @@
                     <div class="panel-heading" style="padding: 1px;">
                         <h4 class="panel-opcion">
                             <a data-toggle="collapse" href="#frm_j_idt110_content" class="panel-opcion-link" aria-expanded="true">
-                                Lista 
+                                Lista
                             </a>
                         </h4>
                     </div>
@@ -164,10 +151,7 @@
                                                             <center>Tipo Producto</center>
                                                         </th>
                                                         <th>
-                                                            <center>U.M/center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Id Producto</center>
+                                                            <center>U.M</center>
                                                         </th>
                                                         <th>
                                                             <center>Producto</center>
@@ -194,13 +178,7 @@
                                                             <center>MSM</center>
                                                         </th>
                                                         <th>
-                                                            <center>Tipo Aplicacion/center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Id Aplicacion</center>
-                                                        </th>
-                                                        <th>
-                                                            <center>Id Aplicacion</center>
+                                                            <center>Tipo Aplicacion</center>
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -219,6 +197,7 @@
     </section>
 </div>
 
+<script src="vistas/js/compras/consultaOrdenCompra.js"></script>
 
 <style>
     #lista table {
@@ -438,5 +417,3 @@
         }
     });
 </script>
-
-<script src="vistas/js/"></script>

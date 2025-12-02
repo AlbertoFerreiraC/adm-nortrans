@@ -23,99 +23,97 @@ $(document).ready(() => {
     });
 
     $('#btnActualizarDocumentoContrato').click(function () {
-        if( $("#documentoContrato")[0].files[0] != undefined ){
+        if ($("#documentoContrato")[0].files[0] != undefined) {
             actualizarDocumentoContrato();
-          }else{
+        } else {
             swal({
                 type: "error",
                 title: "No ha seleccionado ningún archivo",
                 showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
-          }
+        }
     });
 
     $('#btnCargarRequisito').click(function () {
-        if( $("#documentoRequisito")[0].files[0] != undefined && 
-            $("#seleccionRequisito").val() != "-" && 
-            $("#comentarioRequisito").val() != ""){
-                cargarRequisito();
-          }else{
+        if ($("#documentoRequisito")[0].files[0] != undefined &&
+            $("#seleccionRequisito").val() != "-" &&
+            $("#comentarioRequisito").val() != "") {
+            cargarRequisito();
+        } else {
             swal({
                 type: "error",
                 title: "Debe ingresar todos los campos requeridos para la carga de un requisito.",
                 showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
-          }
+        }
     });
 
     $('#btnCargarRAnexo').click(function () {
-        if( $("#documentoAnexo")[0].files[0] != undefined && 
-            $("#seleccionAnexo").val() != "-" && 
-            $("#fechaAnexo").val() != ""){
-                cargarAnexo();
-          }else{
+        if ($("#documentoAnexo")[0].files[0] != undefined &&
+            $("#seleccionAnexo").val() != "-" &&
+            $("#fechaAnexo").val() != "") {
+            cargarAnexo();
+        } else {
             swal({
                 type: "error",
                 title: "Debe ingresar todos los campos requeridos para la carga de un anexo.",
                 showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
-          }
+        }
     });
 
-    
 
-    $('#filtradoDinamicoSolicitudesActivas').keyup(function (){
-    
+
+    $('#filtradoDinamicoSolicitudesActivas').keyup(function () {
+
         var busqueda = document.getElementById('filtradoDinamicoSolicitudesActivas');
         var table = document.getElementById("listaSolicitud").tBodies[0];
-        buscaTabla = function(){
-          texto = busqueda.value.toLowerCase();
-          var r=0;
-          while(row = table.rows[r++])  
-          {
-            if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
-              row.style.display = null;
-            else
-              row.style.display = 'none';
-          }
+        buscaTabla = function () {
+            texto = busqueda.value.toLowerCase();
+            var r = 0;
+            while (row = table.rows[r++]) {
+                if (row.innerText.toLowerCase().indexOf(texto) !== -1)
+                    row.style.display = null;
+                else
+                    row.style.display = 'none';
+            }
         }
         busqueda.addEventListener('keyup', buscaTabla);
-    
-      });
 
-      $('#filtradoDinamicoContratos').keyup(function (){
-    
+    });
+
+    $('#filtradoDinamicoContratos').keyup(function () {
+
         var busqueda = document.getElementById('filtradoDinamicoContratos');
         var table = document.getElementById("fichaContrato").tBodies[0];
-        buscaTabla = function(){
-          texto = busqueda.value.toLowerCase();
-          var r=0;
-          while(row = table.rows[r++])  
-          {
-            if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
-              row.style.display = null;
-            else
-              row.style.display = 'none';
-          }
+        buscaTabla = function () {
+            texto = busqueda.value.toLowerCase();
+            var r = 0;
+            while (row = table.rows[r++]) {
+                if (row.innerText.toLowerCase().indexOf(texto) !== -1)
+                    row.style.display = null;
+                else
+                    row.style.display = 'none';
+            }
         }
         busqueda.addEventListener('keyup', buscaTabla);
-    
-      });
 
-      $(".puntos_de_mil").on({
+    });
+
+    $(".puntos_de_mil").on({
         "focus": function (event) {
             $(event.target).select();
         },
         "keyup": function (event) {
-            $(event.target).val(function (index, value ) {
-            return value.replace(/\D/g, "")
-                   .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+            $(event.target).val(function (index, value) {
+                return value.replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
             });
         }
-  });
+    });
 
 })
 
@@ -123,7 +121,7 @@ function number_format(amount, decimals) {
     amount += '';
     amount = parseFloat(amount.replace(/[^0-9\.]/g, ''));
     decimals = decimals || 0;
-    if (isNaN(amount) || amount === 0) 
+    if (isNaN(amount) || amount === 0)
         return parseFloat(0).toFixed(decimals);
     amount = '' + amount.toFixed(decimals);
     var amount_parts = amount.split('.'),
@@ -134,56 +132,51 @@ function number_format(amount, decimals) {
 }
 
 function cargarDatosSolicitudes() {
-    $("#listaSolicitud tbody").empty()
-    var fila = ""
+    $("#listaSolicitud tbody").empty();
+    let fila = "";
+
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funListarSolicitudes.php",
         method: "GET",
         cache: false,
-        contentType: false,
-        processData: false,
         dataType: "json",
         success: (response) => {
-            for (var i in response) {
-                fila =
-                    fila +
-                    "<tr><td>" +
-                    response[i].idcontratacion +
-                    "</td>" +
-                    "<td>" +
-                    response[i].empresa +
-                    "</td>" +
-                    "<td>" +
-                    response[i].fecha_requerida +
-                    "</td>" +
-                    "<td>" +
-                    response[i].usuario +
-                    "</td>" +
-                    "<td>" +
-                    response[i].division +
-                    "</td>" +
-                    "<td>" +
-                    response[i].cargo +
-                    "</td>" +
-                    "<td>" +
-                    response[i].cantidad_solicitada +
-                    "</td>" +
-                    "<td>" +
-                    response[i].cantidad_contratada +
-                    "</td>" +
-                    "<td>" +
-                    '<button title="Ver Mas" class="btn btn-warning btnVerMas" id="' +
-                    response[i].idcontratacion +
-                    '" data-toggle="modal" data-target="#modalVerMas"> Ver Mas...</button>' +
-                    "</td>" +
-                    "</tr>"
-            }
-            $("#listaSolicitud tbody").append(fila)
 
+            response.forEach((r) => {
+                fila += `
+                    <tr>
+                        <td>${r.idcontratacion}</td>
+                        <td>${r.empresa}</td>
+                        <td>${r.fecha_requerida}</td>
+                        <td>${r.usuario}</td>
+                        <td>${r.division}</td>
+                        <td>${r.cargo}</td>
+                        <td>${r.cantidad_solicitada}</td>
+                        <td>${r.cantidad_contratada}</td>
 
+                        <!-- Segunda columna de solicitante -->
+                        <td>${r.usuario}</td>
+
+                        <!-- Botón Seleccionar -->
+                        <td>
+                            <button 
+                                title="Ver Más"
+                                class="btn btn-warning btnVerMas"
+                                data-id="${r.idcontratacion}"
+                                data-toggle="modal"
+                                data-target="#modalVerMas">
+                                Seleccionar
+                            </button>
+                        </td>
+                    </tr>`;
+            });
+
+            $("#listaSolicitud tbody").append(fila);
+
+            // Evento botón Seleccionar
             $(".btnVerMas").click(function () {
-                obtenerdatosparaVerMas(this.id)
-            })
+                obtenerdatosparaVerMas($(this).data("id"));
+            });
         },
     });
 }
@@ -194,7 +187,7 @@ function modificarDatos() {
     datos.append("idFicha", $("#numeroFichaSelec").val());
     datos.append("empresa", $("#empresaModSelec").val());
     datos.append("fechaInicio", $("#fechainicioSelec").val());
-    datos.append("sueldo", $("#sueldoLiquidoSelec").val().replace(/\./g,''));
+    datos.append("sueldo", $("#sueldoLiquidoSelec").val().replace(/\./g, ''));
     $.ajax({
         url: "../api_adm_nortrans/fichaContrato/funActualizarDatosFichaContrato.php",
         method: "POST",
@@ -260,12 +253,12 @@ function obtenerDatosParaModificar(valor) {
 
                 empresaModificar(response[i].id_empresa);
                 $("#fechainicioSelec").val(response[i].fecha_inicio);
-                $("#sueldoLiquidoSelec").val(number_format(response[i].sueldo_liquido,0));
-                if(response[i].documento_contrato != "vacio"){
+                $("#sueldoLiquidoSelec").val(number_format(response[i].sueldo_liquido, 0));
+                if (response[i].documento_contrato != "vacio") {
                     $("#bntDescargarArchivo").removeAttr('disabled');
-                    $('#bntDescargarArchivo').prop('href','http://'+ip+'/nortrans-apps/adm-nortrans/vistas/img/contrato/'+response[i].idficha_contrato+'_contrato'+response[i].tipo_documento_contrato);
-                }else{
-                    $("#bntDescargarArchivo").attr('disabled','disabled');
+                    $('#bntDescargarArchivo').prop('href', 'http://' + ip + '/nortrans-apps/adm-nortrans/vistas/img/contrato/' + response[i].idficha_contrato + '_contrato' + response[i].tipo_documento_contrato);
+                } else {
+                    $("#bntDescargarArchivo").attr('disabled', 'disabled');
                 }
                 listarDatosTablaRequisito(response[i].idficha_contrato);
                 listarDatosTablaAnexo(response[i].idficha_contrato);
@@ -378,7 +371,7 @@ function cargarFichaContrato() {
 
             $(".btnImprimir").click(function () {
                 var id = $(this).data("id");
-                var tab = window.open('https://nortrans-go.com/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/solicitudDeContratacion.php?id='+id,'_blank');
+                var tab = window.open('https://nortrans-go.com/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/solicitudDeContratacion.php?id=' + id, '_blank');
             })
         },
     });
@@ -496,7 +489,7 @@ function obtenerdatosparaVerMas(valor) {
                 $("#tipocontratoModificar").val(response[i].tipo_contrato);
                 $("#fecharequeridaModificar").val(response[i].fecha_requerida);
                 $("#fechaterminoModificar").val(response[i].fecha_termino);
-                $("#remuneracionModificar").val(number_format(response[i].remuneracion,0));
+                $("#remuneracionModificar").val(number_format(response[i].remuneracion, 0));
                 $("#comentarioGeneral").val(response[i].comentario_general);
                 $("#preapruebaComentarioMod").val(response[i].observacion_pre_aprobacion);
                 $("#apruebaComentarioMod").val(response[i].observacion_aprobacion);
@@ -511,408 +504,408 @@ function obtenerdatosparaVerMas(valor) {
 
 
 // Actualizar Docuemnto de Contrato
-function actualizarDocumentoContrato(){
+function actualizarDocumentoContrato() {
     var datos = new FormData();
     datos.append("id", $("#numeroFichaSelec").val());
-    datos.append("documento", $("#documentoContrato")[0].files[0] );  
-$.ajax({
-    url:"../api_adm_nortrans/fichaContrato/funcargarDocumentoContrato.php",
-    method:"POST",
-    cache: false,
-    data: datos,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function(response) {
-        if(response['mensaje'] === "ok"){
-          swal({
-           type: "success",
-           title: "Documento de Contrato Cargado con éxito.",
-           showConfirmButton: true,
-           confirmButtonText: "Aceptar"
-          }).then((value) => {
-            location.reload();
-          });
-        }
+    datos.append("documento", $("#documentoContrato")[0].files[0]);
+    $.ajax({
+        url: "../api_adm_nortrans/fichaContrato/funcargarDocumentoContrato.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Documento de Contrato Cargado con éxito.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    location.reload();
+                });
+            }
 
-        if(response['mensaje'] === "nok"){
-          swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la modificación.",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-          });
-        }
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la modificación.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "vacio"){
-            swal({
-              type: "error",
-              title: "No hay documento para procesar.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "vacio") {
+                swal({
+                    type: "error",
+                    title: "No hay documento para procesar.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "invalido"){
-            swal({
-              type: "error",
-              title: "El archivo seleccionado no es posible cargar al sistema.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "invalido") {
+                swal({
+                    type: "error",
+                    title: "El archivo seleccionado no es posible cargar al sistema.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-    }        
-});
+        }
+    });
 
 }
 
 // Carga de Requisitos
 
-function requisitosDeSeleccion(){
+function requisitosDeSeleccion() {
     $('#seleccionRequisito').empty();
     $('#seleccionRequisito').append('<option value ="-">Seleccionar...</opction>');
     var listaEmpresa = "";
     $.ajax({
-        url:"../api_adm_nortrans/requisitosSeleccion/funListar.php",
-        method:"GET",
+        url: "../api_adm_nortrans/requisitosSeleccion/funListar.php",
+        method: "GET",
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){        
-            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#seleccionRequisito').append(listaEmpresa);
-        }        
+        }
     });
 }
 
-function cargarRequisito(){
+function cargarRequisito() {
     var datos = new FormData();
     datos.append("ficha", $("#numeroFichaSelec").val());
     datos.append("requisito", $("#seleccionRequisito").val());
     datos.append("comentario", $("#comentarioRequisito").val());
-    datos.append("documento", $("#documentoRequisito")[0].files[0] );  
- $.ajax({
-    url:"../api_adm_nortrans/fichaContrato/funCargarRequisito.php",
-    method:"POST",
-    cache: false,
-    data: datos,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function(response) {
-        if(response['mensaje'] === "ok"){
-          swal({
-           type: "success",
-           title: "Requisito Cargado con éxito.",
-           showConfirmButton: true,
-           confirmButtonText: "Aceptar"
-          }).then((value) => {
-            listarDatosTablaRequisito($("#numeroFichaSelec").val());
-            $("#comentarioRequisito").val('');
-            requisitosDeSeleccion();
-          });
-        }
+    datos.append("documento", $("#documentoRequisito")[0].files[0]);
+    $.ajax({
+        url: "../api_adm_nortrans/fichaContrato/funCargarRequisito.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Requisito Cargado con éxito.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    listarDatosTablaRequisito($("#numeroFichaSelec").val());
+                    $("#comentarioRequisito").val('');
+                    requisitosDeSeleccion();
+                });
+            }
 
-        if(response['mensaje'] === "nok"){
-          swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la carga.",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-          });
-        }
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "vacio"){
-            swal({
-              type: "error",
-              title: "No hay documento para procesar.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "vacio") {
+                swal({
+                    type: "error",
+                    title: "No hay documento para procesar.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "invalido"){
-            swal({
-              type: "error",
-              title: "El archivo seleccionado no es posible cargar al sistema.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "invalido") {
+                swal({
+                    type: "error",
+                    title: "El archivo seleccionado no es posible cargar al sistema.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-    }        
-});
+        }
+    });
 
 }
 
 
-function listarDatosTablaRequisito(valor){
+function listarDatosTablaRequisito(valor) {
     $("#tablaRequisitos tbody").empty();
     var params = {
         "id": valor
     };
     var fila = "";
     $.ajax({
-        url:"../api_adm_nortrans/fichaContrato/funListaDeRequisitos.php",
-        method:"POST",
+        url: "../api_adm_nortrans/fichaContrato/funListaDeRequisitos.php",
+        method: "POST",
         data: JSON.stringify(params),
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){
-                fila = fila + '<tr>'+
-                  '<td>'+response[i].requisito+'</td>'+
-                  '<td>'+response[i].observacion+'</td>'+
-                  '<td>'+
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<tr>' +
+                    '<td>' + response[i].requisito + '</td>' +
+                    '<td>' + response[i].observacion + '</td>' +
+                    '<td>' +
 
-                              '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://'+ip+'/nortrans-apps/adm-nortrans/vistas/img/requisitos/'+response[i].id_ficha+'_'+response[i].id_requisito+'_requisto'+response[i].tipo_adjunto+'" ><i class="fa fa-download"></i></a>'+
+                    '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://' + ip + '/nortrans-apps/adm-nortrans/vistas/img/requisitos/' + response[i].id_ficha + '_' + response[i].id_requisito + '_requisto' + response[i].tipo_adjunto + '" ><i class="fa fa-download"></i></a>' +
 
-                              '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="'+response[i].id_detalle+'"><i class="fa fa-times"></i></button>'+                      
-                        '</div>'+
-                  '</td>'+
-                +'</tr>';             
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="' + response[i].id_detalle + '"><i class="fa fa-times"></i></button>' +
+                    '</div>' +
+                    '</td>' +
+                    +'</tr>';
             }
             $('#tablaRequisitos').append(fila);
 
-            $('.btnEliminar').click(function() {
+            $('.btnEliminar').click(function () {
                 var id_registro = this.id;
                 swal({
-                  title: '¿Está seguro de eliminar el registro?',
-                  text: "¡Si no lo está puede cancelar la accíón!",
-                  type: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
+                    title: '¿Está seguro de eliminar el registro?',
+                    text: "¡Si no lo está puede cancelar la accíón!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Si, eliminar registro!'
-                }).then(function(result){
-                    if(result.value){
-                        eliminarRequistos(id_registro);                        
-                    }                        
-                });                    
+                }).then(function (result) {
+                    if (result.value) {
+                        eliminarRequistos(id_registro);
+                    }
+                });
             });
 
-        }        
+        }
     });
 
 }
 
-function eliminarRequistos(valor){
+function eliminarRequistos(valor) {
     var params = {
-                      "id": valor
-                 };
+        "id": valor
+    };
     $.ajax({
-        url:"../api_adm_nortrans/fichaContrato/funEliminarRequisito.php",
-        method:"POST",
+        url: "../api_adm_nortrans/fichaContrato/funEliminarRequisito.php",
+        method: "POST",
         cache: false,
         data: JSON.stringify(params),
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-            if(response['mensaje'] === "ok"){
-              swal({
-               type: "success",
-               title: "Registro eliminado con exito!!!",
-               showConfirmButton: true,
-               confirmButtonText: "Aceptar"
-              }).then((value) => {
-                listarDatosTablaRequisito($("#numeroFichaSelec").val());
-              });
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro eliminado con exito!!!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    listarDatosTablaRequisito($("#numeroFichaSelec").val());
+                });
             }
 
-            if(response['mensaje'] === "nok"){
-              swal({
-                type: "error",
-                title: "Ha ocurrido un error al procesar la eliminación!!!",
-                showConfirmButton: true,
-                confirmButtonText: "Aceptar"
-              });
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación!!!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
             }
 
-        }        
+        }
     });
 
 }
 
 // Carga de Anexos
 
-function anexosDeSeleccion(){
+function anexosDeSeleccion() {
     $('#seleccionAnexo').empty();
     $('#seleccionAnexo').append('<option value ="-">Seleccionar...</opction>');
     var listaEmpresa = "";
     $.ajax({
-        url:"../api_adm_nortrans/tipoAnexo/funListar.php",
-        method:"GET",
+        url: "../api_adm_nortrans/tipoAnexo/funListar.php",
+        method: "GET",
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){        
-            listaEmpresa = listaEmpresa + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                
+        success: function (response) {
+            for (var i in response) {
+                listaEmpresa = listaEmpresa + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#seleccionAnexo').append(listaEmpresa);
-        }        
+        }
     });
 }
 
-function cargarAnexo(){
+function cargarAnexo() {
     var datos = new FormData();
     datos.append("ficha", $("#numeroFichaSelec").val());
     datos.append("anexo", $("#seleccionAnexo").val());
     datos.append("fecha", $("#fechaAnexo").val());
     datos.append("comentario", $("#comentarioAnexo").val());
-    datos.append("documento", $("#documentoAnexo")[0].files[0] );  
- $.ajax({
-    url:"../api_adm_nortrans/fichaContrato/funCargarAnexo.php",
-    method:"POST",
-    cache: false,
-    data: datos,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function(response) {
-        if(response['mensaje'] === "ok"){
-          swal({
-           type: "success",
-           title: "Anexo Cargado con éxito.",
-           showConfirmButton: true,
-           confirmButtonText: "Aceptar"
-          }).then((value) => {
-            listarDatosTablaAnexo($("#numeroFichaSelec").val());
-            $("#comentarioAnexo").val('');
-            $("#fecha").val('');
-            anexosDeSeleccion();
-          });
-        }
+    datos.append("documento", $("#documentoAnexo")[0].files[0]);
+    $.ajax({
+        url: "../api_adm_nortrans/fichaContrato/funCargarAnexo.php",
+        method: "POST",
+        cache: false,
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Anexo Cargado con éxito.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    listarDatosTablaAnexo($("#numeroFichaSelec").val());
+                    $("#comentarioAnexo").val('');
+                    $("#fecha").val('');
+                    anexosDeSeleccion();
+                });
+            }
 
-        if(response['mensaje'] === "nok"){
-          swal({
-            type: "error",
-            title: "Ha ocurrido un error al procesar la carga.",
-            showConfirmButton: true,
-            confirmButtonText: "Aceptar"
-          });
-        }
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la carga.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "vacio"){
-            swal({
-              type: "error",
-              title: "No hay documento para procesar.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "vacio") {
+                swal({
+                    type: "error",
+                    title: "No hay documento para procesar.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-        if(response['mensaje'] === "invalido"){
-            swal({
-              type: "error",
-              title: "El archivo seleccionado no es posible cargar al sistema.",
-              showConfirmButton: true,
-              confirmButtonText: "Aceptar"
-            });
-        }
+            if (response['mensaje'] === "invalido") {
+                swal({
+                    type: "error",
+                    title: "El archivo seleccionado no es posible cargar al sistema.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
+            }
 
-    }        
-});
+        }
+    });
 
 }
 
-function listarDatosTablaAnexo(valor){
+function listarDatosTablaAnexo(valor) {
     $("#tablaAnexos tbody").empty();
     var params = {
         "id": valor
     };
     var fila = "";
     $.ajax({
-        url:"../api_adm_nortrans/fichaContrato/funListaDeAnexos.php",
-        method:"POST",
+        url: "../api_adm_nortrans/fichaContrato/funListaDeAnexos.php",
+        method: "POST",
         data: JSON.stringify(params),
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){
-                fila = fila + '<tr>'+
-                  '<td>'+response[i].descripcion_anexo+'</td>'+
-                  '<td>'+response[i].fecha+'</td>'+
-                  '<td>'+response[i].observacion+'</td>'+
-                  '<td>'+
+        success: function (response) {
+            for (var i in response) {
+                fila = fila + '<tr>' +
+                    '<td>' + response[i].descripcion_anexo + '</td>' +
+                    '<td>' + response[i].fecha + '</td>' +
+                    '<td>' + response[i].observacion + '</td>' +
+                    '<td>' +
 
-                              '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://'+ip+'/nortrans-apps/adm-nortrans/vistas/img/anexos/'+response[i].id_ficha+'_'+response[i].idtipo_anexo+'_anexo'+response[i].tipo_adjunto+'" ><i class="fa fa-download"></i></a>'+
+                    '<a title="Descargar" type="button" class="btn btn-success" target="_blank" href="http://' + ip + '/nortrans-apps/adm-nortrans/vistas/img/anexos/' + response[i].id_ficha + '_' + response[i].idtipo_anexo + '_anexo' + response[i].tipo_adjunto + '" ><i class="fa fa-download"></i></a>' +
 
-                              '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarAnexo" id="'+response[i].id_detalle+'"><i class="fa fa-times"></i></button>'+                      
-                        '</div>'+
-                  '</td>'+
-                +'</tr>';             
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarAnexo" id="' + response[i].id_detalle + '"><i class="fa fa-times"></i></button>' +
+                    '</div>' +
+                    '</td>' +
+                    +'</tr>';
             }
             $('#tablaAnexos').append(fila);
 
-            $('.btnEliminarAnexo').click(function() {
+            $('.btnEliminarAnexo').click(function () {
                 var id_registro = this.id;
                 swal({
-                  title: '¿Está seguro de eliminar el registro?',
-                  text: "¡Si no lo está puede cancelar la accíón!",
-                  type: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
+                    title: '¿Está seguro de eliminar el registro?',
+                    text: "¡Si no lo está puede cancelar la accíón!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Si, eliminar registro!'
-                }).then(function(result){
-                    if(result.value){
-                        eliminarAnexos(id_registro);                        
-                    }                        
-                });                    
+                }).then(function (result) {
+                    if (result.value) {
+                        eliminarAnexos(id_registro);
+                    }
+                });
             });
 
-        }        
+        }
     });
 
 }
 
-function eliminarAnexos(valor){
+function eliminarAnexos(valor) {
     var params = {
-                      "id": valor
-                 };
+        "id": valor
+    };
     $.ajax({
-        url:"../api_adm_nortrans/fichaContrato/funEliminarAnexo.php",
-        method:"POST",
+        url: "../api_adm_nortrans/fichaContrato/funEliminarAnexo.php",
+        method: "POST",
         cache: false,
         data: JSON.stringify(params),
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-            if(response['mensaje'] === "ok"){
-              swal({
-               type: "success",
-               title: "Registro eliminado con exito!!!",
-               showConfirmButton: true,
-               confirmButtonText: "Aceptar"
-              }).then((value) => {
-                listarDatosTablaAnexo($("#numeroFichaSelec").val());
-              });
+        success: function (response) {
+            if (response['mensaje'] === "ok") {
+                swal({
+                    type: "success",
+                    title: "Registro eliminado con exito!!!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                }).then((value) => {
+                    listarDatosTablaAnexo($("#numeroFichaSelec").val());
+                });
             }
 
-            if(response['mensaje'] === "nok"){
-              swal({
-                type: "error",
-                title: "Ha ocurrido un error al procesar la eliminación!!!",
-                showConfirmButton: true,
-                confirmButtonText: "Aceptar"
-              });
+            if (response['mensaje'] === "nok") {
+                swal({
+                    type: "error",
+                    title: "Ha ocurrido un error al procesar la eliminación!!!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Aceptar"
+                });
             }
 
-        }        
+        }
     });
 
 }

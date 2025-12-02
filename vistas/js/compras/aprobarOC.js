@@ -18,7 +18,7 @@ function cargarDatosTabla() {
     const params = { id: idUsuario };
 
     $.ajax({
-        url: "../api_adm_nortrans/generarOC/funListar.php",
+        url: "../api_adm_nortrans/generarOC/funListarAprobacion.php",
         method: "POST",
         data: JSON.stringify(params),
         cache: false,

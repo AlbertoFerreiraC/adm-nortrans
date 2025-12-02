@@ -116,6 +116,9 @@ function cargarDatosTabla() {
                         "<td>" +
                         response[i].aprueba +
                         "</td>" +
+                        "<td>" +
+                        response[i].usuario +
+                        "</td>" +
                         "</tr>"
                 }
                 $("#tabla tbody").append(fila)

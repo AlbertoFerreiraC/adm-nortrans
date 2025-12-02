@@ -27,7 +27,7 @@
                     <label>Empresa</label>
                     <select class="form-control input-sm" id="empresa">
                         <option value="">Seleccione</option>
-                        <option value="NORTRANS SA">NORTRANS S.A.</option>
+                        <option value="NORTRANS SPA">NORTRANS SPA</option>
                         <option value="LOGISTICA PY">LOGÍSTICA PY</option>
                     </select>
                 </div>

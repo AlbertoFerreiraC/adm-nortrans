@@ -53,6 +53,9 @@
                     <th>
                       <center> Aprueba</center>
                     </th>
+                    <th>
+                      <center> Solicitante</center>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>

@@ -42,7 +42,7 @@
                                     <center>Proveedor</center>
                                 </th>
                                 <th>
-                                    <center>Monto</center>
+                                    <center>Monto Neto</center>
                                 </th>
                                 <th>
                                     <center>Pre Aprobado por</center>

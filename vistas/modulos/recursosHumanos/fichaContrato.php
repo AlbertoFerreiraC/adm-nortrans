@@ -93,10 +93,10 @@
                             <center>Cantidad a Contratar</center>
                           </th>
                           <th>
-                            <center>Seleccionar</center>
+                            <center>Solicitante</center>
                           </th>
                           <th>
-                            <center>Impresión</center>
+                            <center>Seleccionar</center>
                           </th>
                         </tr>
                       </thead>
@@ -753,35 +753,35 @@ MODAL AGREGAR TAREA
 
     //FILTRO DINAMICO
     function filterTable() {
-        const input = document.getElementById("searchInput").value.toLowerCase();
-        const table = document.querySelector("#lista table");
-        const rows = table.tBodies[0].rows;
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const table = document.querySelector("#lista table");
+      const rows = table.tBodies[0].rows;
 
-        Array.from(rows).forEach(row => {
-            const cells = Array.from(row.cells);
-            const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
-            row.style.display = match ? "" : "none";
-        });
+      Array.from(rows).forEach(row => {
+        const cells = Array.from(row.cells);
+        const match = cells.some(cell => cell.textContent.toLowerCase().includes(input));
+        row.style.display = match ? "" : "none";
+      });
     }
 
     function updateVisibleRows() {
-        const limit = parseInt(document.getElementById("entriesSelect").value);
-        const table = document.querySelector("#lista table");
-        const rows = Array.from(table.tBodies[0].rows);
+      const limit = parseInt(document.getElementById("entriesSelect").value);
+      const table = document.querySelector("#lista table");
+      const rows = Array.from(table.tBodies[0].rows);
 
-        let visibleCount = 0;
-        rows.forEach(row => {
-            if (row.style.display !== "none") {
-                visibleCount++;
-                row.style.display = visibleCount <= limit ? "" : "none";
-            }
-        });
+      let visibleCount = 0;
+      rows.forEach(row => {
+        if (row.style.display !== "none") {
+          visibleCount++;
+          row.style.display = visibleCount <= limit ? "" : "none";
+        }
+      });
     }
 
     // Vincular búsqueda con límite dinámicamente
     document.getElementById("searchInput").addEventListener("input", () => {
-        filterTable();
-        updateVisibleRows();
+      filterTable();
+      updateVisibleRows();
     });
   </script>
 
@@ -854,29 +854,30 @@ MODAL AGREGAR TAREA
       margin-right: 25px;
       margin-left: 25px;
     }
+
     .records-control {
-        top: 80px;
-        right: 100px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 15px;
+      top: 80px;
+      right: 100px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
     }
 
     .table-controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
     }
 
     .control-left,
     .control-right {
-        margin: 5px;
+      margin: 5px;
     }
 
     .control-right input {
-        max-width: 200px;
+      max-width: 200px;
     }
   </style>

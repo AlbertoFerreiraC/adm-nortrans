@@ -37,6 +37,7 @@
           <select class="form-control input-sm" id="validarSaldo">
             <option value="con">Con saldos</option>
             <option value="sin">Sin saldos</option>
+            <option value="todos">Todos</option>
           </select>
         </div>
 
@@ -64,6 +65,7 @@
                 <th><center>Cantidad</center></th>
                 <th><center>Stock mínimo</center></th>
                 <th><center>Stock reorden</center></th>
+                <th><center>Fecha Inventario</center></th>
               </tr>
             </thead>
             <tbody>

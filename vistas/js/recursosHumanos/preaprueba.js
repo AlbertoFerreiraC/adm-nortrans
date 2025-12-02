@@ -130,69 +130,63 @@ function rechazar() {
 
 function cargarDatosTabla() {
     $("#tabla tbody").empty();
-    var fila = "";
-    var idUsuario = $("#idUsuario").val();
-    var params = {
-        "id": idUsuario
-    };
+    let fila = "";
+    let idUsuario = $("#idUsuario").val();
+    let params = { id: idUsuario };
+
     $.ajax({
         url: "../api_adm_nortrans/preaprueba/funListarPreAprueba.php",
         method: "POST",
         data: JSON.stringify(params),
         cache: false,
-        contentType: false,
+        contentType: "application/json",
         processData: false,
         dataType: "json",
         success: (response) => {
             if (response && response.length > 0) {
-                for (var i in response) {
-                    fila =
-                        fila +
-                        "<tr><td>" +
-                        (Number.parseInt(i) + 1) +
-                        "</td>" +
-                        "<td>" +
-                        "<center>" +
 
-                        '<div class="btn-group" style="align-items: center; justify-content: center; display:flex;">' +
-                        '<button title="Seleccionar" class="btn btn-primary btnSeleccionar" id="' + response[i].idcontratacion + '" data-toggle="modal" data-target="#modalVermas">Seleccionar</button>' +
-                        "</div>" +
+                response.forEach((r, i) => {
+                    fila += `
+                        <tr>
+                            <td>${i + 1}</td>
+                            <td>
+                                <center>
+                                    <div class="btn-group" style="align-items: center; justify-content: center; display:flex;">
+                                        <button title="Seleccionar" 
+                                                class="btn btn-primary btnSeleccionar" 
+                                                id="${r.idcontratacion}" 
+                                                data-toggle="modal" 
+                                                data-target="#modalVermas">
+                                            Seleccionar
+                                        </button>
+                                    </div>
+                                </center>
+                            </td>
+                            <td>${r.idcontratacion}</td>
+                            <td>${r.division}</td>
+                            <td>${r.empresa}</td>
+                            <td>${r.cargo}</td>
+                            <td>${r.centro_de_costo}</td>
+                            <td>${r.pre_aprueba}</td>
+                            <td>${r.usuario}</td>
+                        </tr>`;
+                });
 
-                        "</center>" +
-                        "</td>" +
-                        "<td>" +
-                        response[i].idcontratacion +
-                        "</td>" +
-                        "<td>" +
-                        response[i].division +
-                        "</td>" +
-                        "<td>" +
-                        response[i].empresa +
-                        "</td>" +
-                        "<td>" +
-                        response[i].cargo +
-                        "</td>" +
-                        "<td>" +
-                        response[i].centro_de_costo +
-                        "</td>" +
-                        "<td>" +
-                        response[i].pre_aprueba +
-                        "</td>" +
-                        "</tr>";
-                }
                 $("#tabla tbody").append(fila);
 
                 $(".btnSeleccionar").click(function () {
                     obtenerDatosParaVerMasPreprueba(this.id);
                 });
+
             } else {
                 $("#tabla tbody").append(
-                    '<tr><td colspan="7" class="text-center">No hay solicitudes pendientes por pre-aprobar</td></tr>'
+                    '<tr><td colspan="9" class="text-center">No hay solicitudes pendientes por pre-aprobar</td></tr>'
                 );
             }
         },
     });
 }
+
 
 function obtenerDatosParaVerMasPreprueba(valor) {
 

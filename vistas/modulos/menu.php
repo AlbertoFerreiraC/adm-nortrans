@@ -344,7 +344,7 @@
 							<li class="header" style="font-weight:bold; color:#fff; margin:10px 10px 5px;">Operación SMS</li>
 							<li><a href="generarSMS"><i class="fa fa-angle-right"></i> Generar SMS</a></li>
 							<li><a href="preAprobarSMS"><i class="fa fa-angle-right"></i> Pre Aprobar SMS</a></li>
-							<li><a href="aprobarSMS"><i class="fa fa-angle-right"></i> Validar SMS servicio</a></li>
+							<li><a href="aprobarSMS"><i class="fa fa-angle-right"></i> Aprobar SMS</a></li>
 							<li><a href="anularSMS"><i class="fa fa-angle-right"></i> Anular SMS</a></li>
 
 						</ul>

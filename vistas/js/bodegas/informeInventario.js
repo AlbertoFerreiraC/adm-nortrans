@@ -9,7 +9,8 @@ const stock = [
         costo: 85000,
         cantidad: 2,
         minimo: 1,
-        reorden: 3
+        reorden: 5,
+        fecha: "2024-06-10"
     },
     {
         bodega: "Bodega industrial",
@@ -20,7 +21,8 @@ const stock = [
         costo: 20000,
         cantidad: 10,
         minimo: 5,
-        reorden: 8
+        reorden: 5,
+        fecha: "2024-06-08"
     },
     {
         bodega: "Bodega industrial",
@@ -31,7 +33,8 @@ const stock = [
         costo: 25000,
         cantidad: 0,
         minimo: 3,
-        reorden: 5
+        reorden: 5,
+        fecha: "2024-06-05"
     }
 ];
 
@@ -50,6 +53,8 @@ $("#btnBuscar").click(function () {
         resultados = resultados.filter(r => r.cantidad > 0);
     } else if (validar === "sin") {
         resultados = resultados.filter(r => r.cantidad === 0);
+    } else if (validar === "todos") {
+        resultados = resultados;
     }
 
     cargarTabla(resultados);
@@ -76,6 +81,7 @@ function cargarTabla(lista) {
           <td>${item.cantidad}</td>
           <td>${item.minimo}</td>
           <td>${item.reorden}</td>
+          <td>${item.fecha}</td>
         </tr>
       `);
     });
