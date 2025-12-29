@@ -460,6 +460,7 @@ function cargarDatosTabla() {
                             fila += '<center>';
                                 fila += '<div class="btn-group">';
                                     fila += '<button type="button" title="Editar Order der Compra" class="btn btn-warning btnEditarOC" id="' + response[i].id + '" data-toggle="modal" data-target="#modalModificarOC"><i class="fa fa-pencil"></i></button>';
+                                    fila += '<a type="button" title="PDF" class="btn btn-success btnPdf" id="' + response[i].id + '"><i class="fa fa-file-pdf-o"></i></a>';
                                 fila += '</div>';
                             fila += '</center>';
                         fila += '</td>';
@@ -470,6 +471,12 @@ function cargarDatosTabla() {
 
             $(".btnEditarOC").click(function () {
                 obtenerDatosParaModificar(this.id);
+            });
+
+            $('.btnPdf').click(function() {
+                 $(".btnPdf")
+                  .prop('href', "/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/ordenDeCompra.php?id=" + this.id)
+                  .prop('target', '_blank');
             });
 
             $(".btnEliminar").click(function () {
@@ -589,6 +596,10 @@ function agregarDatosDetalle(id) {
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
+                    window.open(
+                    "/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/ordenDeCompra.php?id=" + id,
+                    "_blank"
+                );
                     location.reload();
                 });    
             } 
@@ -998,72 +1009,75 @@ function controlRepeticionSmS(){
   return respuesta;  
 }
 
-function controlTotal(){
-  var cont = 0;
-  var totalConDescuento = 0;
-  var totalSinDescuento = 0;
-  var subTotal = 0;
-  var neto = 0;
-  var totalDescuento = 0;
-  var totalIVA = 0;
-  var totalGeneral = 0;
-  $('#tablaDetalleOC tr').each(function(){ 
-      if(cont > 0){
-        if($(this).find("td").eq(11).html() == "ACTIVO"){
-            var cantidad = parseInt($(this).find("td").eq(6).html().replace(/\./g,'')); 
-            var costoUnitario = parseInt($(this).find("td").eq(7).html().replace(/\./g,'')); 
-            totalSinDescuento = totalSinDescuento + (cantidad*costoUnitario); 
-            totalConDescuento = totalConDescuento + parseInt($(this).find("td").eq(10).html().replace(/\./g,'')); 
+
+function controlTotal() {
+    var cont = 0;
+    var totalConDescuento = 0;
+    var totalSinDescuento = 0;
+    var subTotal = 0;
+    var neto = 0;
+    var totalDescuento = 0;
+    var totalIVA = 0;
+    var totalGeneral = 0;
+    $('#tablaDetalleOC tr').each(function () {
+        if (cont > 0) {
+            if ($(this).find("td").eq(11).html() == "ACTIVO") {
+                var cantidad = parseInt($(this).find("td").eq(6).html().replace(/\./g, ''));
+                var costoUnitario = parseInt($(this).find("td").eq(7).html().replace(/\./g, ''));
+                totalSinDescuento = totalSinDescuento + (cantidad * costoUnitario);
+                totalConDescuento = totalConDescuento + parseInt($(this).find("td").eq(10).html().replace(/\./g, ''));
+            }
+
         }
-                
-      }
-      cont++;   
-  });
-  
-  subTotal = totalSinDescuento;
-  totalDescuento = totalSinDescuento - totalConDescuento;
-  neto = totalConDescuento;
-  totalIVA = totalConDescuento - (totalConDescuento / 1.19);
-  totalGeneral = neto;
-  $('#subTotalAgregar').val(number_format(subTotal,0));
-  $('#descuentoTotalAgregar').val(number_format(totalDescuento,0));
-  $('#netoAgregar').val(number_format(neto,0));
-  $('#ivaTotal').val(number_format(totalIVA,0));
-  $('#totalGeneralAgregar').val(number_format(totalGeneral,0));
+        cont++;
+    });
+
+    subTotal = totalSinDescuento;
+    totalDescuento = totalSinDescuento - totalConDescuento;
+    neto = totalConDescuento;
+    totalIVA = Math.round(neto * 0.19);
+    totalGeneral = neto + totalIVA;
+
+    $('#subTotalAgregar').val(number_format(subTotal, 0));
+    $('#descuentoTotalAgregar').val(number_format(totalDescuento, 0));
+    $('#netoAgregar').val(number_format(neto, 0));
+    $('#ivaTotal').val(number_format(totalIVA, 0));
+    $('#totalGeneralAgregar').val(number_format(totalGeneral, 0));
+
 }
 
-function controlTotalModificacion(){
-  var cont = 0;
-  var totalConDescuento = 0;
-  var totalSinDescuento = 0;
-  var subTotal = 0;
-  var neto = 0;
-  var totalDescuento = 0;
-  var totalIVA = 0;
-  var totalGeneral = 0;
-  $('#tablaDetalleOCModificar tr').each(function(){ 
-      if(cont > 0){
-        if($(this).find("td").eq(11).html() == "ACTIVO"){
-            var cantidad = parseInt($(this).find("td").eq(6).html().replace(/\./g,'')); 
-            var costoUnitario = parseInt($(this).find("td").eq(7).html().replace(/\./g,'')); 
-            totalSinDescuento = totalSinDescuento + (cantidad*costoUnitario); 
-            totalConDescuento = totalConDescuento + parseInt($(this).find("td").eq(10).html().replace(/\./g,'')); 
+function controlTotalModificacion() {
+    var cont = 0;
+    var totalConDescuento = 0;
+    var totalSinDescuento = 0;
+    var subTotal = 0;
+    var neto = 0;
+    var totalDescuento = 0;
+    var totalIVA = 0;
+    var totalGeneral = 0;
+    $('#tablaDetalleOCModificar tr').each(function () {
+        if (cont > 0) {
+            if ($(this).find("td").eq(11).html() == "ACTIVO") {
+                var cantidad = parseInt($(this).find("td").eq(6).html().replace(/\./g, ''));
+                var costoUnitario = parseInt($(this).find("td").eq(7).html().replace(/\./g, ''));
+                totalSinDescuento = totalSinDescuento + (cantidad * costoUnitario);
+                totalConDescuento = totalConDescuento + parseInt($(this).find("td").eq(10).html().replace(/\./g, ''));
+            }
+
         }
-                
-      }
-      cont++;   
-  });
-  
-  subTotal = totalSinDescuento;
-  totalDescuento = totalSinDescuento - totalConDescuento;
-  neto = totalConDescuento;
-  totalIVA = totalConDescuento - (totalConDescuento / 1.19);
-  totalGeneral = neto;
-  $('#subTotalModificar').val(number_format(subTotal,0));
-  $('#descuentoTotalModificar').val(number_format(totalDescuento,0));
-  $('#netoModificar').val(number_format(neto,0));
-  $('#ivaTotalModificar').val(number_format(totalIVA,0));
-  $('#totalGeneralModificar').val(number_format(totalGeneral,0));
+        cont++;
+    });
+
+    subTotal = totalSinDescuento;
+    totalDescuento = totalSinDescuento - totalConDescuento;
+    neto = totalConDescuento;
+    totalIVA = Math.round(neto * 0.19);
+    totalGeneral = neto + totalIVA;
+    $('#subTotalModificar').val(number_format(subTotal, 0));
+    $('#descuentoTotalModificar').val(number_format(totalDescuento, 0));
+    $('#netoModificar').val(number_format(neto, 0));
+    $('#ivaTotalModificar').val(number_format(totalIVA, 0));
+    $('#totalGeneralModificar').val(number_format(totalGeneral, 0));
 }
 
 // PARTE DE MODIFICAR

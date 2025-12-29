@@ -257,6 +257,13 @@ function cargarDatosTabla() {
                                             data-target="#modalModificarSMS">
                                         <i class="fa fa-pencil"></i>
                                     </button>
+
+                                    <a title="PDF" 
+                                            type="button" 
+                                            class="btn btn-success btnPdf" 
+                                            id="${item.id}" >
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </a>
                                 </div>
                             </center>
                         </td>
@@ -267,6 +274,12 @@ function cargarDatosTabla() {
 
             $(".btnModificar").click(function () {
                 obtenerDatosSMS(this.id);
+            });
+
+            $('.btnPdf').click(function() {
+                 $(".btnPdf")
+                  .prop('href', "/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/sms.php?id=" + this.id)
+                  .prop('target', '_blank');
             });
         }
     });
@@ -898,6 +911,10 @@ function agregarDatos() {
                     showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then((value) => {
+                    window.open(
+                        "/nortrans-apps/adm-nortrans/extensiones/tcpdf/pdf/sms.php?id=" + response['mensaje'],
+                        "_blank"
+                    );
                     location.reload();
                 });
             }

@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $('#empresaAgregar').change(function () {
         CentroDeCostoAgregar();
-        
+
     });
 
     $('#empresaModificar').change(function () {
@@ -102,7 +102,7 @@ $(document).ready(function () {
     });
 
 
-    
+
 
     $('#btnAgregarRequisitosAgregar').click(function () {
         if ($("#requisitosAgregar").val() != "-") {
@@ -119,12 +119,12 @@ $(document).ready(function () {
 
     $('#btnAgregarRequisitosModificar').click(function () {
         if ($("#requisitosModificar").val() != "-") {
-            var descripcionConcepto = $('select[name="requisitosModificar"] option:selected').text();      
-            if(controlCargaModificacion(descripcionConcepto) == true){
+            var descripcionConcepto = $('select[name="requisitosModificar"] option:selected').text();
+            if (controlCargaModificacion(descripcionConcepto) == true) {
                 agregarDetalleRequisito();
-            }else{
+            } else {
                 mensajeError("No puede agregar el mismo requisito mas de una vez.");
-            }                
+            }
         } else {
             swal({
                 type: "error",
@@ -135,7 +135,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
 
 });
 
@@ -215,31 +215,31 @@ function cargarDatosTabla() {
 }
 
 function agregarDatos() {
-    var datos = '{"motivo":"'+$("#motivoAgregar").val()+
-    '","division":"'+$("#divisionAgregar").val()+
-    '","usuario":"'+$("#idUsuario").val()+
-    '","cargo":"'+$("#cargoAgregar").val()+
-    '","empresa":"'+$("#empresaAgregar").val()+
-    '","centroDeCosto":"'+$("#centroDecostoAgregar").val()+
-    '","cantidadSolicitada":"'+$("#cantidadAgregar").val()+
-    '","tipoBus":"'+$("#equipoAgregar").val()+
-    '","licenciaDeConducir":"'+$("#licenciaAgregar").val()+
-    '","turnosLaborales":"'+$("#tipoturnoAgregar").val()+
-    '","tipo_contrato":"'+$("#tipocontratoAgregar").val()+
-    '","fechaRequerida":"'+$("#fecharequeridaAgregar").val()+
-    '","fechaTermino":"'+$("#fechaterminoAgregar").val()+
-    '","remuneracion":"'+$("#remuneracionAgregar").val()+
-    '","comentario_general":"'+$("#comentarioAgregar").val()+
-    '","preAprueba":"'+$("#preapruebaAgregar").val()+
-    '","aprueba":"'+$("#apruebaAgregar").val()+'",';
+    var datos = '{"motivo":"' + $("#motivoAgregar").val() +
+        '","division":"' + $("#divisionAgregar").val() +
+        '","usuario":"' + $("#idUsuario").val() +
+        '","cargo":"' + $("#cargoAgregar").val() +
+        '","empresa":"' + $("#empresaAgregar").val() +
+        '","centroDeCosto":"' + $("#centroDecostoAgregar").val() +
+        '","cantidadSolicitada":"' + $("#cantidadAgregar").val() +
+        '","tipoBus":"' + $("#equipoAgregar").val() +
+        '","licenciaDeConducir":"' + $("#licenciaAgregar").val() +
+        '","turnosLaborales":"' + $("#tipoturnoAgregar").val() +
+        '","tipo_contrato":"' + $("#tipocontratoAgregar").val() +
+        '","fechaRequerida":"' + $("#fecharequeridaAgregar").val() +
+        '","fechaTermino":"' + $("#fechaterminoAgregar").val() +
+        '","remuneracion":"' + $("#remuneracionAgregar").val() +
+        '","comentario_general":"' + $("#comentarioAgregar").val() +
+        '","preAprueba":"' + $("#preapruebaAgregar").val() +
+        '","aprueba":"' + $("#apruebaAgregar").val() + '",';
     var datos_tabla = '"tabla":[';
-    $('#tablaRequisitoAgregar tbody tr').each(function(){ 
-      datos_tabla = datos_tabla + '{"requisito":"'+$(this).find("td").eq(1).html()+
-                                    '","observacion":"'+$(this).find("td").eq(2).html()+'"},';
+    $('#tablaRequisitoAgregar tbody tr').each(function () {
+        datos_tabla = datos_tabla + '{"requisito":"' + $(this).find("td").eq(1).html() +
+            '","observacion":"' + $(this).find("td").eq(2).html() + '"},';
     });
-    datos_tabla = datos_tabla.substr(0,datos_tabla.length-1);  
-    datos_tabla = datos_tabla + ']';  
-//************************************************************************
+    datos_tabla = datos_tabla.substr(0, datos_tabla.length - 1);
+    datos_tabla = datos_tabla + ']';
+    //************************************************************************
     datos = datos + datos_tabla + "}";
 
     $.ajax({
@@ -369,13 +369,13 @@ function cargarTablaModificarDetalleRequisitos(valor) {
                     '<td>' + response[i].requisito + '</td>' +
                     '<td>' + response[i].observacion + '</td>' + // si podes formateale la fecha en dia/mes/año
                     '<td>' +
-                        '<center>' +
-                            '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
-                                '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarDetalle" id="' + response[i].idDetalle + '"><i class="fa fa-times"></i></button>' +
-                            '</div>' +
-                        '</center>' +
-                    '</td>'+
-                '</tr>';
+                    '<center>' +
+                    '<div class="btn-group" style ="align-items: center; justify-content: center; display:flex;">' +
+                    '<button title="Eliminar" type="button" class="btn btn-danger btnEliminarDetalle" id="' + response[i].idDetalle + '"><i class="fa fa-times"></i></button>' +
+                    '</div>' +
+                    '</center>' +
+                    '</td>' +
+                    '</tr>';
             }
             $('#tablaRequisitoModificar').append(fila);
 
@@ -421,7 +421,7 @@ function cargarTablaModificarDetalleRequisitosVista(valor) {
                 fila = fila + '<tr>' +
                     '<td>' + response[i].requisito + '</td>' +
                     '<td>' + response[i].observacion + '</td>' + // si podes formateale la fecha en dia/mes/año
-                '</tr>';
+                    '</tr>';
             }
             $('#tablaRequisitoVista').append(fila);
 
@@ -704,19 +704,28 @@ function CentroDeCostoAgregar() {
 
 function ApruebaAgregar() {
     $('#apruebaAgregar').empty();
-    $('#apruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    $('#apruebaAgregar').append('<option value="-">Seleccionar...</option>');
+
     var listaUsuario = "";
+    var idUsuarioLogueado = $('#idUsuario').val();
+
     $.ajax({
         url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaUsuario = listaUsuario + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
+
+                if (response[i].idusuario == idUsuarioLogueado) {
+                    continue;
+                }
+
+                listaUsuario +=
+                    '<option value="' + response[i].idusuario + '">' +
+                    response[i].nombre +
+                    '</option>';
             }
+
             $('#apruebaAgregar').append(listaUsuario);
         }
     });
@@ -724,23 +733,33 @@ function ApruebaAgregar() {
 
 function PreapruebaAgregar() {
     $('#preapruebaAgregar').empty();
-    $('#preapruebaAgregar').append('<option value ="-">Seleccionar...</opction>');
+    $('#preapruebaAgregar').append('<option value="-">Seleccionar...</option>');
+
     var listaUsuario = "";
+    var idUsuarioLogueado = $('#idUsuario').val();
+
     $.ajax({
         url: "../api_adm_nortrans/usuario/funListar.php",
         method: "GET",
-        cache: false,
-        contentType: false,
-        processData: false,
         dataType: "json",
         success: function (response) {
             for (var i in response) {
-                listaUsuario = listaUsuario + '<option value = "' + response[i].idusuario + '">' + response[i].nombre + '</option>';
+
+                if (response[i].idusuario == idUsuarioLogueado) {
+                    continue;
+                }
+
+                listaUsuario +=
+                    '<option value="' + response[i].idusuario + '">' +
+                    response[i].nombre +
+                    '</option>';
             }
+
             $('#preapruebaAgregar').append(listaUsuario);
         }
     });
 }
+
 // FIN CARGA SELECT "AGREGAR"
 // INCIO CARGA SELECT "MODIFICAR"
 function cargoModificar(id) {
@@ -1096,7 +1115,7 @@ function CentroDeCostoVerMas(id) {
 }
 // FIN CARGA SELECT "VER"
 
-function cargarrequisitos(){
+function cargarrequisitos() {
     $('#requisitosAgregar').empty();
     $('#tablaRequisitoAgregar tbody').empty();
     $('#observacionRequisitoAgregar').val('');
@@ -1104,118 +1123,118 @@ function cargarrequisitos(){
     var filaCliente = "";
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funListarRequisitoContratacion.php",
-        method:"GET",
+        method: "GET",
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){                  
-            filaCliente = filaCliente + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                      
+        success: function (response) {
+            for (var i in response) {
+                filaCliente = filaCliente + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#requisitosAgregar').append(filaCliente);
-        }        
+        }
     });
-  
-  }
 
-  function cargarrequisitosModificar(){
+}
+
+function cargarrequisitosModificar() {
     $('#requisitosModificar').empty();
     $('#observacionRequisitoModificar').val('');
     var filaCliente = "";
     $.ajax({
         url: "../api_adm_nortrans/solicitudContratacion/funListarRequisitoContratacion.php",
-        method:"GET",
+        method: "GET",
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(response) {
-           for (var i in response){                  
-            filaCliente = filaCliente + '<option value = "'+response[i].id+'">'+response[i].descripcion+'</option>';                      
+        success: function (response) {
+            for (var i in response) {
+                filaCliente = filaCliente + '<option value = "' + response[i].id + '">' + response[i].descripcion + '</option>';
             }
             $('#requisitosModificar').append(filaCliente);
-        }        
+        }
     });
-  
-  }
 
-  function agregarRequisitoEnLista(){
-    var idConcepto = $("#requisitosAgregar").val();
-    var descripcionConcepto = $('select[name="requisitosAgregar"] option:selected').text();         
-    var observacion = $("#observacionRequisitoAgregar").val();
-    if(controlCarga(descripcionConcepto) == true){
-         contF++;
-         //---------------------------------------
-         var fila = '<tr id= "fil_'+contF+'">'+
-                     '<td>'+descripcionConcepto+'</td>'+
-                     '<td style="visibility:collapse; display:none;">'+idConcepto+'</td>'+
-                     '<td>'+observacion+'</td>'+
-                     '<td>'+
-                           '<div style ="align-items: center; justify-content: center; display:flex;">'+ 
-                             '<div class="btn-group" style="margin-left: 3px;">'+      
-                                   '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="'+contF+'"><i class="fa fa-times"></i></button>'+  
-                           '</div>'+  
-                       '</td>'+
-                 '</tr>'; 
-
-                 $('#tablaRequisitoAgregar').append(fila);     
-
-                 $('.btnEliminar').click(function() {
-                   var id_registro = this.id;
-                   swal({
-                     title: '¿Está seguro de eliminar el registro?',
-                     text: "¡Si no lo está puede cancelar la accíón!",
-                     type: 'warning',
-                     showCancelButton: true,
-                     confirmButtonColor: '#3085d6',
-                       cancelButtonColor: '#d33',
-                       cancelButtonText: 'Cancelar',
-                       confirmButtonText: 'Si, eliminar registro!'
-                   }).then(function(result){
-                       if(result.value){
-                         $("#fil_"+id_registro).remove();
-                       }                        
-                   }); 
-               });               
-           $("#observacionRequisitoAgregar").val('');
-    }else{
-     mensajeError("No puede agregar el mismo requisito mas de una vez.");
-    }         
 }
 
-function controlCarga(descripcion){
-    var respuesta = true; 
-    $('#tablaRequisitoAgregar tr').each(function(){ 
-       descripcionTabla = $(this).find("td").eq(0).html();
-        if(descripcion == descripcionTabla){
+function agregarRequisitoEnLista() {
+    var idConcepto = $("#requisitosAgregar").val();
+    var descripcionConcepto = $('select[name="requisitosAgregar"] option:selected').text();
+    var observacion = $("#observacionRequisitoAgregar").val();
+    if (controlCarga(descripcionConcepto) == true) {
+        contF++;
+        //---------------------------------------
+        var fila = '<tr id= "fil_' + contF + '">' +
+            '<td>' + descripcionConcepto + '</td>' +
+            '<td style="visibility:collapse; display:none;">' + idConcepto + '</td>' +
+            '<td>' + observacion + '</td>' +
+            '<td>' +
+            '<div style ="align-items: center; justify-content: center; display:flex;">' +
+            '<div class="btn-group" style="margin-left: 3px;">' +
+            '<button title="Eliminar" type="button" class="btn btn-danger btnEliminar" id="' + contF + '"><i class="fa fa-times"></i></button>' +
+            '</div>' +
+            '</td>' +
+            '</tr>';
+
+        $('#tablaRequisitoAgregar').append(fila);
+
+        $('.btnEliminar').click(function () {
+            var id_registro = this.id;
+            swal({
+                title: '¿Está seguro de eliminar el registro?',
+                text: "¡Si no lo está puede cancelar la accíón!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, eliminar registro!'
+            }).then(function (result) {
+                if (result.value) {
+                    $("#fil_" + id_registro).remove();
+                }
+            });
+        });
+        $("#observacionRequisitoAgregar").val('');
+    } else {
+        mensajeError("No puede agregar el mismo requisito mas de una vez.");
+    }
+}
+
+function controlCarga(descripcion) {
+    var respuesta = true;
+    $('#tablaRequisitoAgregar tr').each(function () {
+        descripcionTabla = $(this).find("td").eq(0).html();
+        if (descripcion == descripcionTabla) {
             respuesta = false;
         }
     });
     return respuesta;
-  }
+}
 
-  function controlCargaModificacion(descripcion){
-    var respuesta = true; 
-    $('#tablaRequisitoModificar tr').each(function(){ 
-       descripcionTabla = $(this).find("td").eq(0).html();
-        if(descripcion == descripcionTabla){
+function controlCargaModificacion(descripcion) {
+    var respuesta = true;
+    $('#tablaRequisitoModificar tr').each(function () {
+        descripcionTabla = $(this).find("td").eq(0).html();
+        if (descripcion == descripcionTabla) {
             respuesta = false;
         }
     });
     return respuesta;
-  }
+}
 
-  function mensajeError(mensaje){
+function mensajeError(mensaje) {
     swal({
-      type: "error",
-      title: mensaje,
-      showConfirmButton: true,
-      confirmButtonText: "Aceptar"
+        type: "error",
+        title: mensaje,
+        showConfirmButton: true,
+        confirmButtonText: "Aceptar"
     });
-  }
+}
 
-  function agregarDetalleRequisito() {
+function agregarDetalleRequisito() {
     var datos = new FormData();
     datos.append("id", $("#idModificar").val());
     datos.append("requisito", $("#requisitosModificar").val());

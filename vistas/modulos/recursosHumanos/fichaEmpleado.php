@@ -173,7 +173,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="emailEmpresaAgregar">Email Empresa:</label><span style="font-size: 11px; color: #DC3139;"> (Obligatorio)</span>
-              <input type="text" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
+              <input type="email" class="form-control input-md cajatexto" name="emailEmpresaAgregar" id="emailEmpresaAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">
@@ -183,7 +183,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="emailPersonalAgregar">Email Personal:</label>
-              <input type="text" class="form-control input-md cajatexto" name="emailPersonalAgregar" id="emailPersonalAgregar">
+              <input type="email" class="form-control input-md cajatexto" name="emailPersonalAgregar" id="emailPersonalAgregar">
             </div>
 
             <div class="form-group col-sm-4 col-xs-12">

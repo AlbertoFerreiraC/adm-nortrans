@@ -10,22 +10,20 @@
 
     <section class="content">
         <div class="box">
-            <div class="row table-controls">
-                <div class="form-group col-sm-2 col-xs-12">
-                    <label for="empresa">Empresa:</label>
-                    <select class="form-control input-md cajatexto solo-ruc" name="empresa" id="empresa">
-                        <option value="" selected>Seleccionar...</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-
-                <div class="form-group col-sm-4 col-xs-12" style="margin-top:25px;">
-                    <button type="button" class="btn btn-primary" id="btnBuscar">
-                        <i class="fa fa-search" aria-hidden="true"></i> Buscar
-                    </button>
+            <div class="box-header with-border">
+                <div class="row">
+                    <div class="form-group col-sm-12 col-xs-12">
+                        <input
+                            type="text"
+                            id="filtradoDinamico"
+                            class="form-control input-sm filtro-general"
+                            autocomplete="off"
+                            placeholder="Filtrado General ...">
+                    </div>
                 </div>
             </div>
+
+
             <div class="row table-controls">
                 <div class="form-group col-sm-6 col-xs-12">
                     <label for="entriesSelect">
@@ -41,15 +39,6 @@
                         </select> registros
                     </label>
                 </div>
-
-                <div class="form-group col-sm-6 col-xs-12 control-right">
-                    <label for="filtradoDinamico">
-                        Buscar:
-                        <input type="text" class="form-control input-sm" id="filtradoDinamico"
-                            placeholder="Filtrado general..." autocomplete="off"
-                            style="display:inline-block; width:300px; text-align:center; font-size:17px;">
-                    </label>
-                </div>
             </div>
 
             <div class="box-body">
@@ -58,73 +47,73 @@
                         <thead>
                             <tr>
                                 <!-- Added proper ARIA labels and improved accessibility -->
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(0, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(0, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Empresa">
                                     <center>Empresa</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(1, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(1, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por N° OC">
                                     <center>N° OC</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(2, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(2, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Fecha">
                                     <center>Fecha</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(3, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(3, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Fecha Recepción">
                                     <center>Fecha Recepcion</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(4, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(4, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Tipo OC">
                                     <center>Tipo OC</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(5, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(5, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Rut Proveedor">
                                     <center>Rut Proveedor</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(6, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(6, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Proveedor">
                                     <center>Proveedor</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(7, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(7, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Tipo Documento Compra">
                                     <center>Tipo Documento Compra</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(8, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(8, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Monto Total">
                                     <center>Monto Total</center>
                                 </th>
-                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;" 
-                                    onclick="sortTable(9, this)" 
-                                    role="button" 
-                                    tabindex="0" 
+                                <th style="cursor: pointer; position: relative; user-select: none; padding-right: 20px;"
+                                    onclick="sortTable(9, this)"
+                                    role="button"
+                                    tabindex="0"
                                     aria-label="Ordenar por Monto Compra">
                                     <center>Monto Compra</center>
                                 </th>
@@ -150,6 +139,13 @@
             width: 100% !important;
         }
     }
+
+    .filtro-general {
+        text-align: center;
+        font-size: 17px;
+        height: 40px;
+    }
+
     .control-right {
         float: right;
         text-align: right;
@@ -216,6 +212,7 @@
         font-size: 12px;
         border-radius: 3px;
     }
+
     #tabla td:nth-child(9),
     #tabla td:nth-child(10) {
         text-align: right;
@@ -286,8 +283,12 @@
 
             // Ordenamiento alfabético
             return dir === "asc" ?
-                aText.localeCompare(bText, 'es', { numeric: true }) :
-                bText.localeCompare(aText, 'es', { numeric: true });
+                aText.localeCompare(bText, 'es', {
+                    numeric: true
+                }) :
+                bText.localeCompare(aText, 'es', {
+                    numeric: true
+                });
         });
 
         const tbody = table.tBodies[0];
@@ -356,3 +357,5 @@
         updateVisibleRows();
     });
 </script>
+
+<script src="vistas/js/compras/ocPendienteRecepcion.js"></script>

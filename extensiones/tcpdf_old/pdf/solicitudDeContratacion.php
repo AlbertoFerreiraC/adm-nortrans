@@ -1,6 +1,6 @@
 <?php	
 // Desactivar toda notificación de error
-//error_reporting(0);
+error_reporting(0);
 
 header('Content-type: text/html; charset=utf-8');
 
