@@ -189,7 +189,7 @@ MODAL AGREGAR TAREA
 
             <div class="form-group col-sm-4 col-xs-12">
               <label for="remuneracionAgregar">Remuneración líquida:</label>
-              <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar">
+              <input type="number" class="form-control input-md cajatexto" name="remuneracionAgregar" id="remuneracionAgregar" min="0" step"0.01>
             </div>
 
             <div class="col-md-12 col-xs-12">
