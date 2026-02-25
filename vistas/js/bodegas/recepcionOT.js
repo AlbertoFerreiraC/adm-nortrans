@@ -108,8 +108,30 @@ function actualizarTabla() {
     });
 }
 
+// ======================= CAMBIO TIPO DOCUMENTO =======================
+$("#tipoDocumento").on("change", function () {
+
+    const tipoDocumento = $(this).val();
+
+    // Eliminar mensaje previo si existe
+    $("#infoRetencion").remove();
+
+    if (tipoDocumento === "Boleta") {
+
+        $("#tablaProductos").after(`
+            <div id="infoRetencion" class="alert alert-info" style="margin-top:10px;">
+                <b>Boleta de Honorarios:</b> 
+                La retención aplicada será considerada para devolución anual según normativa vigente.
+            </div>
+        `);
+
+    }
+});
+
+
 // ======================= CALCULOS =======================
 $("#btnCalcular").click(function () {
+
     if (lista.length === 0) {
         swal({
             type: "warning",
@@ -120,12 +142,31 @@ $("#btnCalcular").click(function () {
         return;
     }
 
+    const tipoDocumento = $("#tipoDocumento").val();
+    const fechaDocumento = $("#fechaDocumento").val();
+
     const subTotal = lista.reduce((acc, p) => acc + p.total, 0);
-    const exento = 0;
-    const neto = subTotal - exento;
-    const iva = neto * 0.1;
-    const retencion = iva * 0.3;
-    const total = neto + iva - retencion;
+    let exento = 0;
+    let neto = subTotal;
+    let iva = 0;
+    let retencion = 0;
+    let total = 0;
+
+    // ================= BOLETA HONORARIOS =================
+    if (tipoDocumento === "Boleta") {
+
+        const porcentajeRetencion = obtenerPorcentajeRetencion(fechaDocumento);
+        retencion = neto * porcentajeRetencion;
+        total = neto - retencion;
+
+    }
+    // ================= FACTURA / OTROS =================
+    else {
+
+        iva = neto * 0.19;
+        total = neto + iva;
+
+    }
 
     $("#subTotal").text(`$ ${subTotal.toLocaleString()}`);
     $("#exento").text(`$ ${exento.toLocaleString()}`);
@@ -134,6 +175,7 @@ $("#btnCalcular").click(function () {
     $("#retencion").text(`$ ${retencion.toLocaleString()}`);
     $("#total").text(`$ ${total.toLocaleString()}`);
 });
+
 
 // ======================= VALIDAR DUPLICIDAD DEL DOCUMENTO (SIMULADO) =======================
 function validarDuplicidadDocumento(nroDocumento, callback) {
@@ -212,3 +254,10 @@ $("#btnConfirmarGrabado").click(function () {
 $("#btnImprimirGuia").click(function () {
     window.open("../reportes/guia_entrada.php?nroOC=" + $("#nroOC").val(), "_blank");
 });
+
+function obtenerPorcentajeRetencion(fechaDocumento) {
+    const fecha = new Date(fechaDocumento);
+    const limite = new Date("2025-12-31");
+
+    return fecha > limite ? 0.1525 : 0.145;
+}

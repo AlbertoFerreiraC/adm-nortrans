@@ -252,6 +252,8 @@
                 </div>
             </div>
         </section>
+
+        <!--MODAL PARA EDITAR-->
     </div>
 
     <script>

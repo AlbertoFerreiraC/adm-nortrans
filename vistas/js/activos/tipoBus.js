@@ -5,7 +5,7 @@ $(document).ready(function () {
   clasePiso1();
   clasePiso2();
 
-  $('#btnGrabarFicha').click(function () {
+  $('#btnGuardar').click(function () {
     agregarDatos();
   });
 
@@ -86,7 +86,6 @@ function cargarDatosTabla() {
   });
 }
 
-
 function agregarDatos() {
   var params = {
     "nro_piso": $("#numeroPisoAgregar").val(),
@@ -163,7 +162,7 @@ function obtenerDatosParaModificar(valor) {
         $("#asientoPisoUnoModificar").val(response[i].asiento_1);
         clasePiso2Modificar(response[i].clase_piso_2);
         $("#asientoPisoDosModificar").val(response[i].asiento_2);
-        $("#idModificar").val(response[i].idtipo_piso_bus);
+        $("#idModificar").val(response[i].id);
       }
     }
   }).fail(function () {

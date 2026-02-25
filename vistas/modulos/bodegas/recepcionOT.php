@@ -67,9 +67,9 @@
                     <label>Tipo Documento</label>
                     <select class="form-control input-sm" id="tipoDocumento">
                         <option value="">Seleccione</option>
-                        <option value="Factura">Factura</option>
-                        <option value="Boleta">Boleta</option>
-                        <option value="Nota Crédito">Nota de Crédito</option>
+                        <option value="afecta">Factura Afecta</option>
+                        <option value="excenta">Factura Excenta</option>
+                        <option value="Boleta">Boleta de honorario</option>
                     </select>
                 </div>
 

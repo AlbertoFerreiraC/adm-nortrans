@@ -12,13 +12,14 @@ $(document).ready(function () {
 });
 
 function cargarDatosTabla() {
+
     $("#tablaOC tbody").empty();
 
     const idUsuario = $("#idUsuario").val();
     const params = { id: idUsuario };
 
     $.ajax({
-        url: "../api_adm_nortrans/sms/funListar.php", // endpoint de aprobar
+        url: "../api_adm_nortrans/sms/funListar.php",
         method: "POST",
         data: JSON.stringify(params),
         cache: false,
@@ -26,68 +27,85 @@ function cargarDatosTabla() {
         processData: false,
         dataType: "json",
         success: (response) => {
+
             if (response && response.length > 0) {
-                const filas = response.map((r, i) => {
+
+                const filas = response.map((r) => {
                     return `
-                    <tr>
-                      <td>${i + 1}</td>
-                      <td>${r.id ?? ''}</td>
-                      <td>${r.maquina ?? ''}</td>
-                      <td>${r.tipo ?? ''}</td>
-                      <td>${r.idproducto ?? ''}</td>
-                      <td>${r.producto ?? ''}</td>
-                      <td>${r.um ?? ''}</td>
-                      <td>${r.cantidad ?? ''}</td>
-                      <td>${r.usuario ?? ''}</td>
-                      <td>${r.centro_costo ?? ''}</td>
-                      <td>${r.estado ?? ''}</td>
-                      <td>
-                        <center>
-                          <button class="btn btn-primary btn-xs btn-seleccionar" data-id="${r.id}">
-                            SELECCIONAR
-                          </button>
-                        </center>
-                      </td>
-                    </tr>`;
+                        <tr>
+                            <td>${r.id ?? ''}</td>
+                            <td>${r.empresa ?? ''}</td>
+                            <td>${r.bodega ?? ''}</td>
+                            <td>${r.maquina ?? ''}</td>
+                            <td>${r.tipo ?? ''}</td>
+                            <td>${r.usuario ?? ''}</td>
+                            <td>${r.fecha_carga ?? ''}</td>
+                            <td>${r.estado ?? ''}</td>
+                            <td class="text-center">
+                                <button
+                                    class="btn btn-primary btn-xs btn-seleccionar"
+                                    data-id="${r.id}"
+                                    data-empresa="${r.empresa}"
+                                    data-bodega="${r.bodega}"
+                                    data-maquina="${r.maquina}"
+                                    data-tipo="${r.tipo}"
+                                    data-usuario="${r.usuario}"
+                                    data-fecha="${r.fecha_carga}"
+                                    data-estado="${r.estado}">
+                                    SELECCIONAR
+                                </button>
+                            </td>
+                        </tr>
+                    `;
                 }).join('');
+
                 $("#tablaOC tbody").append(filas);
 
             } else {
-                $("#tablaOC tbody").append(
-                    '<tr><td colspan="12" class="text-center">No hay solicitudes pendientes</td></tr>'
-                );
+
+                $("#tablaOC tbody").append(`
+                    <tr>
+                        <td colspan="9" class="text-center">
+                            No hay solicitudes pendientes
+                        </td>
+                    </tr>
+                `);
+
             }
         },
         error: () => {
             swal({
                 type: "error",
                 title: "Error al cargar la tabla",
-                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         }
     });
 }
 
-// Evento seleccionar → abre modal
-$(document).on("click", ".btn-seleccionar", function () {
-    const id = $(this).data("id");
-    const fila = $(this).closest("tr").children("td");
 
-    $("#smsId").val(id);
-    $("#smsProducto").val(fila.eq(5).text());
-    $("#smsCantidad").val(fila.eq(7).text());
-    $("#smsUsuario").val(fila.eq(8).text());
-    $("#smsCentroCosto").val(fila.eq(9).text());
+// ======================= SELECCIONAR SMS =======================
+$(document).on("click", ".btn-seleccionar", function () {
+
+    const btn = $(this);
+
+    $("#smsId").val(btn.data("id"));
+
+    // Estos campos existen a nivel cabecera
+    $("#smsProducto").val(btn.data("tipo"));      // Tipo de SMS
+    $("#smsUsuario").val(btn.data("usuario"));
+    $("#smsCentroCosto").val(btn.data("bodega")); // placeholder hasta detalle real
+
     $("#smsComentario").val("");
 
     $("#modalSeleccionar").modal("show");
 });
 
-// Botón Aprobar
-// Botón Aprobar
+
+// ======================= BOTÓN APROBAR =======================
 $("#btnAprobar").on("click", function (e) {
     e.preventDefault();
+
     const id = $("#smsId").val();
     const comentario = $("#smsComentario").val();
 
@@ -95,7 +113,6 @@ $("#btnAprobar").on("click", function (e) {
         swal({
             type: "warning",
             title: "Debes escribir un comentario para aprobar",
-            showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
         return;
@@ -104,9 +121,11 @@ $("#btnAprobar").on("click", function (e) {
     aprobar(id, comentario);
 });
 
-// Botón Rechazar
+
+// ======================= BOTÓN RECHAZAR =======================
 $("#btnRechazar").on("click", function (e) {
     e.preventDefault();
+
     const id = $("#smsId").val();
     const comentario = $("#smsComentario").val();
 
@@ -114,7 +133,6 @@ $("#btnRechazar").on("click", function (e) {
         swal({
             type: "warning",
             title: "Debes escribir un motivo para rechazar",
-            showConfirmButton: true,
             confirmButtonText: "Aceptar"
         });
         return;
@@ -124,12 +142,13 @@ $("#btnRechazar").on("click", function (e) {
 });
 
 
-// --- APROBAR ---
+// ======================= APROBAR =======================
 function aprobar(id, comentario) {
-    const params = { id: id, comentario: comentario };
+
+    const params = { id, comentario };
 
     $.ajax({
-        url: "../api_adm_nortrans/sms/funAprobar.php", // endpoint de aprobar
+        url: "../api_adm_nortrans/sms/funAprobar.php",
         method: "POST",
         data: JSON.stringify(params),
         contentType: "application/json",
@@ -137,43 +156,44 @@ function aprobar(id, comentario) {
         dataType: "json"
     })
         .done(function (response) {
+
             $("#modalSeleccionar").modal("hide");
+
             if (response && response.mensaje === "ok") {
                 swal({
                     type: "success",
                     title: "Aprobación exitosa",
                     text: "El SMS fue aprobado correctamente.",
-                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then(() => cargarDatosTabla());
             } else {
                 swal({
                     type: "error",
                     title: "Error al aprobar",
-                    text: (response && response.detalle) ? response.detalle : "No se pudo completar la acción.",
-                    showConfirmButton: true,
+                    text: response?.detalle || "No se pudo completar la acción.",
                     confirmButtonText: "Aceptar"
                 });
             }
         })
-        .fail(function (jqXHR, textStatus) {
+        .fail(function (_, textStatus) {
             $("#modalSeleccionar").modal("hide");
             swal({
                 type: "error",
                 title: "Error de conexión",
                 text: "Detalles: " + textStatus,
-                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         });
 }
 
-// --- RECHAZAR ---
+
+// ======================= RECHAZAR =======================
 function rechazar(id, comentario) {
-    const params = { id: id, comentario: comentario };
+
+    const params = { id, comentario };
 
     $.ajax({
-        url: "../api_adm_nortrans/sms/funRechazar.php", // mismo endpoint que en preAprobar
+        url: "../api_adm_nortrans/sms/funRechazar.php",
         method: "POST",
         data: JSON.stringify(params),
         contentType: "application/json",
@@ -181,32 +201,31 @@ function rechazar(id, comentario) {
         dataType: "json"
     })
         .done(function (response) {
+
             $("#modalSeleccionar").modal("hide");
+
             if (response && response.mensaje === "ok") {
                 swal({
                     type: "success",
                     title: "Rechazo exitoso",
                     text: "El SMS fue rechazado correctamente.",
-                    showConfirmButton: true,
                     confirmButtonText: "Aceptar"
                 }).then(() => cargarDatosTabla());
             } else {
                 swal({
                     type: "error",
                     title: "Error al rechazar",
-                    text: (response && response.detalle) ? response.detalle : "No se pudo completar la acción.",
-                    showConfirmButton: true,
+                    text: response?.detalle || "No se pudo completar la acción.",
                     confirmButtonText: "Aceptar"
                 });
             }
         })
-        .fail(function (jqXHR, textStatus) {
+        .fail(function (_, textStatus) {
             $("#modalSeleccionar").modal("hide");
             swal({
                 type: "error",
                 title: "Error de conexión",
                 text: "Detalles: " + textStatus,
-                showConfirmButton: true,
                 confirmButtonText: "Aceptar"
             });
         });

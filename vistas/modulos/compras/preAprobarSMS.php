@@ -28,23 +28,22 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <center>N° SMS</center>
+                                    <div style="text-align:left;">N° SMS</div>
                                 </th>
                                 <th>
-                                    <center>Empresa</center>
+                                   <div style="text-align:left;">Empresa</div>
                                 </th>
                                 <th>
-                                    <center>Fecha</center>
+                                    <div style="text-align:left;">Fecha</div>
                                 </th>
                                 <th>
-                                    <center>Tipo Solicitud</center>
+                                    <div style="text-align:left;">Tipo Solicitud</div>
                                 </th>
                                 <th>
-                                    <center>Solicitante</center>
+                                    <div style="text-align:left;">Solicitante</div>
                                 </th>
                                 <th style="width:120px;">
-                                    <center>Seleccionar</center>
-                                </th>
+                                    <div style="text-align:left;">Seleccionar</div>                                </th>
                             </tr>
                         </thead>
                         <tbody></tbody>

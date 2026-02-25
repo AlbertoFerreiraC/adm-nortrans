@@ -28,44 +28,18 @@
                     <table class="table table-bordered table-striped dt-responsive" id="tablaOC" width="100%">
                         <thead>
                             <tr>
-                                <th>
-                                    <center>N° SMS</center>
-                                </th>
-                                <th>
-                                    <center>Item SMS</center>
-                                </th>
-                                <th>
-                                    <center>Aplicación</center>
-                                </th>
-                                <th>
-                                    <center>Tipo Producto</center>
-                                </th>
-                                <th>
-                                    <center>Id Producto</center>
-                                </th>
-                                <th>
-                                    <center>Producto</center>
-                                </th>
-                                <th>
-                                    <center>U.M</center>
-                                </th>
-                                <th>
-                                    <center>Cantidad</center>
-                                </th>
-                                <th>
-                                    <center>Solicitante</center>
-                                </th>
-                                <th>
-                                    <center>Centro de Costo</center>
-                                </th>
-                                <th>
-                                    <center>Estado Item</center>
-                                </th>
-                                <th style="width:120px;">
-                                    <center>Seleccionar</center>
-                                </th>
+                                <th>N° SMS</th>
+                                <th>Empresa</th>
+                                <th>Bodega</th>
+                                <th>Máquina</th>
+                                <th>Tipo Solicitud</th>
+                                <th>Pre aprobador</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th style="width:120px;">Seleccionar</th>
                             </tr>
                         </thead>
+
                         <tbody></tbody>
                     </table>
                 </div>
@@ -92,11 +66,7 @@
                             <input type="text" id="smsProducto" class="form-control" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" id="smsCantidad" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Solicitante</label>
+                            <label>Pre aprobador</label>
                             <input type="text" id="smsUsuario" class="form-control" readonly>
                         </div>
                         <div class="form-group">
