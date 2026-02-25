@@ -69,7 +69,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td colspan="9" style="text-align:center;">No se encontraron registros.</td></tr>
+              <tr><td colspan="10" style="text-align:center;">No se encontraron registros.</td></tr>
             </tbody>
           </table>
         </div>

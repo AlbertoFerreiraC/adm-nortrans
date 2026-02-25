@@ -53,7 +53,6 @@ session_start();
   <script src="vistas/plugins/iCheck/icheck.min.js"></script>
   <script src="vistas/bower_components/chart.js/Chart.min.js"></script>
   <script src="vistas/bower_components/input-file/fileinput.min.js"></script>
-  <script src="vistas/bower_components/input-file/sortable.min.js"></script>
   <script src="vistas/bower_components/bootstrap-select/select2.min.js"></script>
 
 
