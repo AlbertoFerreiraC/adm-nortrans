@@ -523,6 +523,7 @@
 				<ul class="treeview-menu mantenedor-scroll">
 					<li><a href="actualizacionDatos"><i class="fa fa-key"></i>Actualizar Mis Datos</a></li>
 					<li><a href="usuario"><i class="fa fa-bell-o"></i>Gestión de Usuarios</a></li>
+					<li><a href="roles"><i class="fa fa-bell-o"></i>Gestión de Roles</a></li>
 					<li><a href="centroDeCosto"><i class="fa fa-bell-o"></i>Centro de Costo</a></li>
 				</ul>
 			</li>

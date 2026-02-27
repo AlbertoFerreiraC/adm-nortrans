@@ -232,7 +232,7 @@ session_start();
         "listaOT"
       ];
       // GENERALES
-      $paginasModGenerales = ["usuario", "centroDeCosto"];
+      $paginasModGenerales = ["usuario", "centroDeCosto", "roles"];
 
       if (in_array($ruta, $paginasGenerales)) {
         include "modulos/$ruta.php";
