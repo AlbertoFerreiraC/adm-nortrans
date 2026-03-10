@@ -256,3 +256,5 @@
     </script>
 
 </div>
+
+<script src="vistas/js/compras/listaOC.js"></script>

@@ -51,8 +51,6 @@
                                                         <th onclick="sortTable(4, this)">Producto</th>
                                                         <th onclick="sortTable(5, this)">Cantidad</th>
                                                         <th onclick="sortTable(6, this)">Cantidad Entregada</th>
-                                                        <th onclick="sortTable(7, this)">N° OC</th>
-                                                        <th onclick="sortTable(8, this)">Detalle OC</th>
                                                         <th onclick="sortTable(9, this)">Tipo Doc Origen</th>
                                                         <th onclick="sortTable(10, this)">Documento Origen</th>
                                                         <th onclick="sortTable(11, this)">Detalle Doc Origen</th>
@@ -258,3 +256,5 @@
     </script>
 
 </div>
+
+<script src="vistas/js/compras/consultaSMS.js"></script>

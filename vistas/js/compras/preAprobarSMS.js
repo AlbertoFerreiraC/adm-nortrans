@@ -37,8 +37,12 @@ function cargarDatosTabla() {
                       <td>${r.usuario ?? ''}</td> <!-- Solicitante -->
                       <td>
                         <center>
-                          <button class="btn btn-primary btn-xs btn-seleccionar" data-id="${r.id}">
+                            <button 
+                            class="btn btn-primary btn-xs btn-seleccionar"
+                            data-id="${r.id}"
+                            data-observacion="${r.observacion ?? ''}">
                             SELECCIONAR
+                            </button>
                           </button>
                         </center>
                       </td>
@@ -65,7 +69,10 @@ function cargarDatosTabla() {
 
 // Evento seleccionar
 $(document).on("click", ".btn-seleccionar", function () {
+
     const id = $(this).data("id");
+    const observacion = $(this).data("observacion");
+
     const fila = $(this).closest("tr").children("td");
 
     $("#smsId").val(id);
@@ -73,6 +80,8 @@ $(document).on("click", ".btn-seleccionar", function () {
     $("#smsFecha").val(fila.eq(2).text());
     $("#smsTipo").val(fila.eq(3).text());
     $("#smsUsuario").val(fila.eq(4).text());
+    $("#comentarioSMS").val(observacion);
+
     $("#smsComentario").val("");
 
     $("#modalSeleccionar").modal("show");

@@ -51,7 +51,8 @@ function cargarDatosTabla() {
                                     data-tipo="${r.tipo}"
                                     data-usuario="${r.usuario}"
                                     data-fecha="${r.fecha_carga}"
-                                    data-estado="${r.estado}">
+                                    data-estado="${r.estado}"
+                                    data-observacion_pre_aprobacion="${r.observacion_pre_aprobacion ?? ''}">
                                     SELECCIONAR
                                 </button>
                             </td>
@@ -83,7 +84,6 @@ function cargarDatosTabla() {
     });
 }
 
-
 // ======================= SELECCIONAR SMS =======================
 $(document).on("click", ".btn-seleccionar", function () {
 
@@ -95,12 +95,12 @@ $(document).on("click", ".btn-seleccionar", function () {
     $("#smsProducto").val(btn.data("tipo"));      // Tipo de SMS
     $("#smsUsuario").val(btn.data("usuario"));
     $("#smsCentroCosto").val(btn.data("bodega")); // placeholder hasta detalle real
+    $("#comentarioPreAprobacion").val(btn.data("observacion_pre_aprobacion"));
 
     $("#smsComentario").val("");
 
     $("#modalSeleccionar").modal("show");
 });
-
 
 // ======================= BOTÓN APROBAR =======================
 $("#btnAprobar").on("click", function (e) {

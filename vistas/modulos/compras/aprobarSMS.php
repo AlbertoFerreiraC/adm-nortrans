@@ -75,6 +75,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Comentario Pre Aprobacion</label>
+                            <input type="text" id="comentarioPreAprobacion" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group">
                             <label>Comentario</label>
                             <textarea id="smsComentario" class="form-control" rows="3"
                                 placeholder="Escribí un comentario..." required></textarea>

@@ -44,22 +44,16 @@
                                             <table id="tablaDocumentos" class="table table-bordered table-striped dt-responsive" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th onclick="sortTable(0, this)">Empresa</th>
-                                                        <th onclick="sortTable(1, this)">Fecha OC</th>
-                                                        <th onclick="sortTable(2, this)">N° OC</th>
-                                                        <th onclick="sortTable(3, this)">N° Item</th>
-                                                        <th onclick="sortTable(4, this)">Estado OC</th>
-                                                        <th onclick="sortTable(5, this)">Aplicacion</th>
-                                                        <th onclick="sortTable(6, this)">Centro Costo</th>
-                                                        <th onclick="sortTable(7, this)">Tipo Producto</th>
-                                                        <th onclick="sortTable(8, this)">Producto</th>
-                                                        <th onclick="sortTable(9, this)">Cantidad</th>
-                                                        <th onclick="sortTable(10, this)">Sub Total</th>
-                                                        <th onclick="sortTable(11, this)">Estado Item</th>
-                                                        <th onclick="sortTable(12, this)">Rut Proveedor</th>
-                                                        <th onclick="sortTable(13, this)">Proveedor</th>
-                                                        <th onclick="sortTable(14, this)">Plazo Pago</th>
-                                                        <th onclick="sortTable(15, this)">Forma Pago</th>
+                                                        <th onclick="sortTable(0,this)">N° OC</th>
+                                                        <th onclick="sortTable(1,this)">N° Item</th>
+                                                        <th onclick="sortTable(2,this)">Aplicación</th>
+                                                        <th onclick="sortTable(3,this)">Tipo Producto</th>
+                                                        <th onclick="sortTable(4,this)">Producto</th>
+                                                        <th onclick="sortTable(5,this)">Unidad Medida</th>
+                                                        <th onclick="sortTable(6,this)">Cantidad</th>
+                                                        <th onclick="sortTable(7,this)">Costo Unitario</th>
+                                                        <th onclick="sortTable(8,this)">Sub Total</th>
+                                                        <th onclick="sortTable(9,this)">Estado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -261,3 +255,5 @@
     </script>
 
 </div>
+
+<script src="vistas/js/compras/listaDetOc.js"></script>
