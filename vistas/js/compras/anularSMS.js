@@ -32,12 +32,10 @@ function cargarDatosTabla() {
                     <tr>
                       <td>${i + 1}</td> <!-- N° item -->
                       <td>${r.aplicacion ?? ''}</td> <!-- Aplicacion -->
-                      <td>${r.centro_costo ?? ''}</td> <!-- Centro Costo -->
+                      <td>${r.centro_de_costo ?? ''}</td> <!-- Centro_de_Costo -->
                       <td>${r.tipo ?? ''}</td> <!-- Tipo Item -->
-                      <td>${r.producto ?? ''}</td> <!-- Producto -->
+                      <td>${r.insumos ?? ''}</td> <!-- insumos -->
                       <td>${r.cantidad ?? ''}</td> <!-- Cantidad -->
-                      <td>${r.nro_oc ?? ''}</td> <!-- N° OC -->
-                      <td>${r.detalle_oc ?? ''}</td> <!-- Detalle OC -->
                       <td>${r.estado ?? ''}</td> <!-- Estado Item -->
                       <td>
                         <center>

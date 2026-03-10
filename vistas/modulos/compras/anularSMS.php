@@ -47,12 +47,6 @@
                                     <center>Cantidad</center>
                                 </th>
                                 <th>
-                                    <center>N° OC</center>
-                                </th>
-                                <th>
-                                    <center>Detalle OC</center>
-                                </th>
-                                <th>
                                     <center>Estado Item</center>
                                 </th>
                                 <th style="width:120px;">
