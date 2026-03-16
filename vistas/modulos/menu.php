@@ -492,7 +492,7 @@
 
 						<ul class="treeview-menu mantenedor-scroll">
 							<li><a href="campania"><i class="fa fa-bullhorn"></i> Campaña</a></li>
-							<li><a href="pauta_mantencion"><i class="fa fa-wrench"></i> Pauta de Mantención</a></li>
+							<li><a href="pautaInspeccion"><i class="fa fa-wrench"></i> Pauta de Mantención</a></li>
 							<li><a href="sistemaMaquina"><i class="fa fa-cogs"></i> Sistema de la Máquina</a></li>
 							<li><a href="subsistemaMaquina"><i class="fa fa-cog"></i> Subsistema de la Máquina</a></li>
 							<li><a href="tipoTareaMantencion"><i class="fa fa-tasks"></i> Tipo Tarea Mantención</a></li>

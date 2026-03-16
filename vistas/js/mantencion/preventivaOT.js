@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // 🔍 Buscar OT Preventiva
+    let idOTActual = null;
+    // Buscar OT Preventiva
     $("#btnBuscarPreventiva").click(function () {
         const nroSolicitud = $("#nroSolicitud").val().trim();
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 🧾 Cargar tabla principal con todos los campos
+    // Cargar tabla principal con todos los campos
     function llenarTablaPreventiva(data) {
         let filas = "";
 
@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#tablaPreventiva tbody").html(filas);
     }
 
-    // 🧹 Limpiar tabla cuando no hay resultados
+    // Limpiar tabla cuando no hay resultados
     function limpiarTablaPreventiva() {
         $("#tablaPreventiva tbody").html(
             `<tr><td colspan="9" class="text-center">Ningún registro disponible</td></tr>`
         );
     }
 
-    // 🗓️ Formatear fechas
+    // Formatear fechas
     function formatearFecha(fechaISO) {
         if (!fechaISO) return "";
         const fecha = new Date(fechaISO);
@@ -74,31 +74,42 @@ document.addEventListener("DOMContentLoaded", function () {
         return `${dia}/${mes}/${anio}`;
     }
 
-    // 👁️ Ver detalle (abrir modal con cabecera + tareas)
+    // Ver detalle (abrir modal con cabecera + tareas)
     $(document).on("click", ".btnVerPreventiva", function () {
-        const idOT = $(this).data("id");
+
+        idOTActual = $(this).data("id");
 
         $.ajax({
             url: "../api_adm_nortrans/preventivaOT/funVerPreventiva.php",
             type: "POST",
             dataType: "json",
-            data: { idPreventiva: idOT },
+            data: { idPreventiva: idOTActual },
             success: function (res) {
+
                 if (res.status === "ok") {
+
                     mostrarDatosPreventiva(res.data);
                     $("#modalPreventiva").modal("show");
+
                 } else {
+
                     mensajeInfo("No se encontraron tareas para esta orden preventiva.");
+
                 }
+
             },
             error: function (xhr) {
+
                 console.error(xhr.responseText);
                 mensajeError("Error al obtener los datos de la orden preventiva.");
+
             }
+
         });
+
     });
 
-    // 🧩 Mostrar datos de la OT (cabecera + tareas)
+    // Mostrar datos de la OT (cabecera + tareas)
     function mostrarDatosPreventiva(data) {
         // Cabecera
         $("#verNumOT").text(data.id_preventiva);
@@ -132,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#tablaTareasPrev tbody").html(filasTareas);
     }
 
-    // ⚠️ Alertas con SweetAlert
+    // Alertas con SweetAlert
     function mensajeError(msj) {
         if (typeof Swal !== "undefined" && typeof Swal.fire === "function") {
             Swal.fire({
@@ -174,5 +185,20 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(msj);
         }
     }
+
+    $("#btnImprimirPrev").click(function () {
+
+        if (!idOTActual) {
+            mensajeError("No se encontró la OT para imprimir");
+            return;
+        }
+
+        window.open(
+            "../api_adm_nortrans/preventivaOT/funImprimirPreventiva.php?id=" + idOTActual,
+            "OT_PREVENTIVA",
+            "width=900,height=700,scrollbars=yes"
+        );
+
+    });
 
 });

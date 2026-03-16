@@ -210,7 +210,7 @@ session_start();
         "terminarTareaOt",
         "detencionProgramada",
         "campania",
-        "pauta_mantencion",
+        "pautaInspeccion",
         "sistemaMaquina",
         "subsistemaMaquina",
         "tipoTareaMantencion",

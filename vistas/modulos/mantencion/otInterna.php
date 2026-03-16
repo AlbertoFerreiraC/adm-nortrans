@@ -37,8 +37,7 @@
 
                 <div class="form-group col-sm-3">
                     <label>Centro costo</label>
-                    <select class="form-control input-sm" id="centroCosto">
-                    </select>
+                    <select class="form-control input-sm" id="centroCosto" disabled></select>
                 </div>
             </div>
 
@@ -88,22 +87,36 @@
                 </div>
 
                 <!-- ===================== LISTA DE TAREAS ===================== -->
-                    <div class="box-body" style="margin-top:10px;">
-                        <table class="table table-bordered table-striped dt-responsive" id="tablaTareas" width="100%" style="text-align: center;">
-                            <thead>
-                                <tr>
-                                    <th><center>Tipo tarea</center></th>
-                                    <th><center>Sistema</center></th>
-                                    <th><center>Sub Sistema</center></th>
-                                    <th><center>Técnico</center></th>
-                                    <th><center>Observación</center></th>
-                                    <th><center>Fecha y Hora</center></th>
-                                    <th><center>Acciones</center></th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                <div class="box-body" style="margin-top:10px;">
+                    <table class="table table-bordered table-striped dt-responsive" id="tablaTareas" width="100%" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <center>Tipo tarea</center>
+                                </th>
+                                <th>
+                                    <center>Sistema</center>
+                                </th>
+                                <th>
+                                    <center>Sub Sistema</center>
+                                </th>
+                                <th>
+                                    <center>Técnico</center>
+                                </th>
+                                <th>
+                                    <center>Observación</center>
+                                </th>
+                                <th>
+                                    <center>Fecha y Hora</center>
+                                </th>
+                                <th>
+                                    <center>Acciones</center>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- ===================== REPUESTOS ===================== -->
@@ -131,17 +144,25 @@
                     <table class="table table-bordered table-striped dt-responsive" id="tablaRepuestos" width="100%" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th><center>ID</center></th>
-                                <th><center>Descripción</center></th>
-                                <th><center>Cantidad</center></th>
-                                <th><center>Acciones</center></th>
+                                <th>
+                                    <center>ID</center>
+                                </th>
+                                <th>
+                                    <center>Descripción</center>
+                                </th>
+                                <th>
+                                    <center>Cantidad</center>
+                                </th>
+                                <th>
+                                    <center>Acciones</center>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
                 </div>
-            </div>            
+            </div>
 
             <!-- ===================== BOTÓN FINAL ===================== -->
             <div class="box-footer text-right">

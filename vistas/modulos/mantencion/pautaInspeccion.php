@@ -27,7 +27,7 @@
                                                         <th>Nº Interno</th>
                                                         <th>Patente</th>
                                                         <th>N Inspeccion</th>
-                                                        <th>PAuta de Inspeccion</th>
+                                                        <th>Pauta de Inspeccion</th>
                                                         <th>Tipo Frecuencia</th>
                                                         <th>Fecha Propuesta</th>
                                                         <th>Seleccionar</th>
